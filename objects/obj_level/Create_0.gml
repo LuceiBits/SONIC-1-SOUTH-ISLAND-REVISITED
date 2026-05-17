@@ -9,7 +9,7 @@
 	//====================================================//
 	
 	//Set stage music and loop points
-	stage_music = noone;
+	stage_music = MUSIC.MENU;
 	loop_start = 0.00;
 	loop_end = 0.00;
 		
