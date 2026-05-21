@@ -54,4 +54,7 @@
 	{
 		//Handle player movement:
 		player_movement();
+		
+		//Handle player terrain collision:
+		player_collision();
 	}

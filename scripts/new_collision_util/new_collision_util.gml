@@ -154,3 +154,20 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR)
 	
 	return point_direction(ax, ay, bx, by);
 }
+
+function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR)
+{
+	var heightL = collision_get_height(x - radius_x, y + radius_y, mode);
+	var heightM = collision_get_height(x , y + radius_y, mode);
+	var heightR = collision_get_height(x + radius_x, y + radius_y, mode);
+	
+	var closest = heightL;
+
+	if (heightM < closest)
+		closest = heightM;
+
+	if (heightR < closest)
+		closest = heightR;
+
+    return closest;
+}

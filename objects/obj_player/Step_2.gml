@@ -2,7 +2,7 @@
 	repeat(steps)
 	{
 		//Stop player when hitting the walls (HAS TO BE IN END STEP)
-		player_wall_stoppers();
+		//player_wall_stoppers();
 	}
 	
 	

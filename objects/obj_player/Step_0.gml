@@ -9,11 +9,6 @@
 	//Include step movement
 	repeat(steps)
 	{
-		//Handle semi solid:
-		player_semisolids();
-		
-		//Handle player terrain collision:
-		player_collision();
 		
 		//Handle how player changes floor modes:
 		player_mode();	
