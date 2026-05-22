@@ -53,6 +53,7 @@
     {"name":"file_bin_util","order":2,"path":"scripts/file_bin_util/file_bin_util.yy",},
     {"name":"has_all_emeralds","order":1,"path":"scripts/has_all_emeralds/has_all_emeralds.yy",},
     {"name":"instance_util","order":1,"path":"scripts/instance_util/instance_util.yy",},
+    {"name":"math_util","order":4,"path":"scripts/math_util/math_util.yy",},
     {"name":"new_collision_util","order":2,"path":"scripts/new_collision_util/new_collision_util.yy",},
     {"name":"player_land_callback","order":1,"path":"scripts/player_land_callback/player_land_callback.yy",},
     {"name":"player_state_transform","order":1,"path":"scripts/player_state_transform/player_state_transform.yy",},

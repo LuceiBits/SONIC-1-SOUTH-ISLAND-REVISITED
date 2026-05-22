@@ -1,6 +1,12 @@
 {
   "$GMMainOptions":"v5",
   "%Name":"Main",
+  "ConfigValues":{
+    "Dev":{
+      "option_collision_compatibility":"false",
+      "option_legacy_primitive_drawing":"false",
+    },
+  },
   "name":"Main",
   "option_allow_instance_change":true,
   "option_audio_error_behaviour":true,

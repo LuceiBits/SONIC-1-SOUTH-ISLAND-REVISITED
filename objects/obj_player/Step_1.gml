@@ -55,6 +55,11 @@
 		//Handle player movement:
 		player_movement();
 		
+				//Handle how player changes floor modes:
+		player_mode();
+		
 		//Handle player terrain collision:
 		player_collision();
+		
+	
 	}

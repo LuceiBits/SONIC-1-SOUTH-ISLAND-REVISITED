@@ -128,7 +128,7 @@ function player_state_normal(){
 		break;
 	}
 	
-	
+	/*
 	//Ledge animation
 	if(!line_check(0, hitbox_h + 16, true) && ground && ground_speed == 0)
 	{
@@ -153,10 +153,11 @@ function player_state_normal(){
 		{
 			anim = ANIM.PUSH;
 		}
-	}
+	}*/
 	
 	//Play the animations
-	if (!skid) {
+	if (!skid) 
+	{
 		if(!animation_is_playing(animator, ANIM.BREATHE) || animation_has_finished(animator) && animation_is_playing(animator, ANIM.BREATHE))
 		{
 			animation_play(animator, anim);

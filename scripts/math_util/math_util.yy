@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"player_semisolids",
+  "%Name":"math_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"player_semisolids",
+  "name":"math_util",
   "parent":{
-    "name":"Movement",
-    "path":"folders/Scripts/Player Scripts/Movement.yy",
+    "name":"Utility Scripts",
+    "path":"folders/Scripts/Utility Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

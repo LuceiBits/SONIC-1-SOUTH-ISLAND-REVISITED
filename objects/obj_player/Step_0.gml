@@ -5,15 +5,7 @@
 	{
 		exit;	
 	}
-	
-	//Include step movement
-	repeat(steps)
-	{
-		
-		//Handle how player changes floor modes:
-		player_mode();	
-	}
-	
+
 	//Handle how player is controlled:
 	player_control();
 
