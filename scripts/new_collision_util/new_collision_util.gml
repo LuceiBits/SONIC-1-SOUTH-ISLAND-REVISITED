@@ -39,6 +39,13 @@ function collision_meeting(px, py, plane = PLANE_A, semi_solid = false)
 
 function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
+	px = floor(px);
+	py = floor(py);
+	
+	var h = tile_get_height(px, py, "CollisionMain");
+	
+	return h;
+	/*
 	// Mandatory flooring
 	px = floor(px);
 	py = floor(py);
@@ -84,11 +91,29 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
 				px++;
 			
 			return newX - px;
-	}
+	}*/
 }
 
 function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
+	px = floor(px);
+	py = floor(py);
+	
+	// Points
+	var ax, bx, ay, by; 
+	
+	var newY = py - py mod 16
+	newY += 16
+	
+	ax = px - px mod 16;
+	bx = px + (15 - px mod 16);
+	ay = tile_get_height(ax, py);	
+	by = tile_get_height(bx, py);
+	
+	var angle = point_direction(ax, ay, bx, by);
+	
+	return angle;
+	/*
 	// Mandatory flooring
 	px = floor(px);
 	py = floor(py);
@@ -179,7 +204,7 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_s
 		break;
 	}
 	
-	return point_direction(ax, ay, bx, by);
+	return point_direction(ax, ay, bx, by);*/
 }
 
 function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false, angle = true)
@@ -234,4 +259,97 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 	}
 	
     return colResult;
+}
+
+function tile_get_height2(xpos, ypos, l = "CollisionMain")
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_height(tile_id, xpos);
+	
+	height = -height;
+	
+	if(height > 0)
+	{
+		return 15 - (height + (ypos & 15));	
+			
+	}
+	else if(height < 0)
+	{
+		var d = ypos & 15
+		
+		if(height + d < 0)
+			return d ^ ~0;
+	}
+	
+	return 15 - (ypos & 15);
+}
+
+function tile_get_height(xpos, ypos, l = "CollisionMain")
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_height(tile_id, xpos);
+	
+	var a = -10;
+	ypos ^= 15
+	height = -height;
+	
+	if(height > 0)
+	{
+		if(height != 16)
+		{
+			return 15 - (height + (ypos & 15));	
+		}
+		else
+			return tile_get_height2(xpos, ypos - a) - 16;
+			
+	}
+	else
+	{
+		if(height + (ypos & 15) < 0)
+			return tile_get_height2(xpos, ypos - a) - 16; 
+	}
+	
+	return tile_get_height2(xpos, ypos + a) + 16;
+}
+
+
+
+
+function tiledata_get_height(tile_id, xpos)
+{
+	if(!tile_get_mirror(tile_id))
+		xpos %= 16;
+	else
+		xpos = 15 - xpos % 16;
+	
+	show_debug_message(xpos)
+	
+	var index = tile_get_index(tile_id);
+	
+	if index <= 0 && index >= 149
+	{
+		index = 0;
+	}
+	
+	return global.tile_top[index][xpos];
 }

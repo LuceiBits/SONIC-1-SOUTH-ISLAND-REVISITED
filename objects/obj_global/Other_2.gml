@@ -120,6 +120,7 @@
 	
 	//Initilize the music list
 	init_music_list();
+	game_init_collision();
 	
 	//Macros:
 	#macro Input obj_input
