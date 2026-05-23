@@ -1,11 +1,11 @@
 	//x = mouse_x;
 	//y = mouse_y;
 	
-	x += 1 * (Input.Right - Input.Left)
+	y += 1 * (Input.Right - Input.Left)
 	
-	var h = collision_get_height(x, y + 19);
+	var h = tile_get_width(x - 19, y,,true);
 	
-	y += h;
+	x -= h;
 	
 	//show_debug_message(h);
 	

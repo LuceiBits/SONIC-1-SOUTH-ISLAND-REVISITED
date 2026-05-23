@@ -42,14 +42,14 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
 	px = floor(px);
 	py = floor(py);
 	
-	var h = tile_get_height(px, py, "CollisionMain", false);
+	var h = tile_get_height(px, py, "CollisionMain", true);
 	
 	return h;
 }
 
 function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
-	px = floor(px);
+	/*px = floor(px);
 	py = floor(py);
 	
 	// Points
@@ -65,7 +65,9 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_s
 	
 	var angle = point_direction(ax, ay, bx, by);
 	
-	return angle;
+	return angle;*/
+	
+	return 0;
 }
 
 function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false, angle = true)
@@ -128,6 +130,7 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 
 function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 {
+
 	xpos = floor(xpos);
 	ypos = floor(ypos);
 	
@@ -141,9 +144,11 @@ function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
 	var height = tiledata_get_height(tile_id, xpos, flip);
 	
+	// Flip height
 	if(flip)
 		height = -height;
 	
+	// Return the correct distance
 	if(height > 0)
 	{
 		return 15 - (height + (ypos & 15));	
@@ -166,6 +171,7 @@ function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 	// Get the tile layer
 	var layer_id = layer_tilemap_get_id(l);
 	
+	// Get cell's position
 	var cellX = floor(xpos / 16);
 	var cellY = floor(ypos / 16);
 	
@@ -173,8 +179,10 @@ function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
 	var height = tiledata_get_height(tile_id, xpos, flip);
 	
+	// Second pass offset
 	var a = 16;
 	
+	// Flip everything needed
 	if(flip)
 	{
 		ypos ^= 15
@@ -182,6 +190,7 @@ function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 		a = -a;
 	}
 	
+	// Return the correct distance
 	if(height > 0)
 	{
 		if(height != 16)
@@ -201,6 +210,94 @@ function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 	return tile_get_height2(xpos, ypos + a, l, flip) + 16;
 }
 
+function tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	// Get cell's position
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_width(tile_id, ypos, flip);
+	
+	// Second pass offset
+	var a = 16;
+	
+	// Flip everything needed
+	if(flip)
+		height = -height;
+
+	// Return the correct distance
+	if(height > 0)
+	{
+		return 15 - (height + (xpos & 15));	
+			
+	}
+	else if(height < 0)
+	{
+		if(height + (xpos & 15) < 0)
+			return (xpos & 15) ^ ~0;
+	}
+	
+	return 15 - (xpos & 15);
+}
+
+function tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	// Get cell's position
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_width(tile_id, ypos, flip);
+	
+	// Second pass offset
+	var a = 16;
+	
+	// Flip everything needed
+	if(flip)
+	{
+		xpos ^= 15
+		height = -height;
+		a = -16;
+	}
+	
+	// Return the correct distance
+	if(height > 0)
+	{
+		if(height != 16)
+		{
+			return 15 - (height + (xpos & 15));	
+		}
+		else
+			return tile_get_width2(xpos - a, ypos, l, flip) - 16;
+			
+	}
+	else
+	{
+		if(height + (xpos & 15) < 0)
+			return tile_get_width2(xpos - a, ypos, l, flip) - 16; 
+	}
+	
+	return tile_get_width2(xpos + a, ypos, l, flip) + 16;
+}
+
+// ==========================================================================================
+// Tile data segment
+// ==========================================================================================
 function tiledata_get_height(tile_id, xpos, flip = false)
 {
 	// Turn X position into an offset
@@ -236,5 +333,43 @@ function tiledata_get_height(tile_id, xpos, flip = false)
 		
 		// Otherwise default to the normal one
 		return global.tile_top[index][xpos];
+	}
+}
+
+function tiledata_get_width(tile_id, ypos, flip = false)
+{
+	// Turn X position into an offset
+	if(!tile_get_flip(tile_id))
+		ypos %= 16;
+	else
+		ypos = 15 - ypos % 16;
+	
+	// Get the tile ID
+	var index = tile_get_index(tile_id);
+	
+	// Return blank height if the tile is invalid
+	if(index <= 0 || index > array_length(global.tile_top))
+	{
+		return 0;
+	}
+	
+	// Up direction collision height
+	if(flip)
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_mirror(tile_id))
+			return -global.tile_left[index][ypos];	
+			
+		// Otherwise default to the normal one
+		return -global.tile_right[index][ypos];
+	}
+	else
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_mirror(tile_id))
+			return global.tile_right[index][ypos];
+			
+		// Otherwise default to the normal one
+		return global.tile_left[index][ypos];	
 	}
 }
