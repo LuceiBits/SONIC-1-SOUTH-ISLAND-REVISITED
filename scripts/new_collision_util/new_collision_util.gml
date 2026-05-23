@@ -42,32 +42,72 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
 	px = floor(px);
 	py = floor(py);
 	
-	var h = tile_get_height(px, py, "CollisionMain", true);
+	var h = 0;
+	
+	switch(mode)
+	{
+		case CMODE_FLOOR:
+		h = tile_get_height(px, py);
+		break;
+		
+		case CMODE_LWALL:
+		h = tile_get_width(px, py);
+		break;
+		
+		case CMODE_CEILING:
+		h = tile_get_height(px, py, , true);
+		break;
+		
+		case CMODE_RWALL:
+		h = tile_get_width(px, py, ,true);
+		break;
+		
+	}
 	
 	return h;
 }
 
 function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
-	/*px = floor(px);
+	px = floor(px);
 	py = floor(py);
 	
 	// Points
 	var ax, bx, ay, by; 
 	
-	var newY = py - py mod 16
-	newY += 16
-	
-	ax = px - px mod 16;
-	bx = px + (15 - px mod 16);
-	ay = tile_get_height(ax, py);	
-	by = tile_get_height(bx, py);
-	
+	switch(mode)
+	{
+		case CMODE_FLOOR:
+			ax = px - px mod 16;
+			bx = px + (15 - px mod 16);
+			ay = tile_get_height(ax, py);	
+			by = tile_get_height(bx, py);
+		break;
+		
+		case CMODE_LWALL:
+			by = py - py mod 16;
+			ay = py + (15 - py mod 16);
+			ax = tile_get_width(px, ay);	
+			bx = tile_get_width(px, by);
+		break;
+		
+		case CMODE_CEILING:
+			bx = px - px mod 16;
+			ax = px + (15 - px mod 16);
+			by = tile_get_height(ax, py,, true);	
+			ay = tile_get_height(bx, py,, true);
+		break;
+		
+		case CMODE_RWALL:
+			ay = py - py mod 16;
+			by = py + (15 - py mod 16);
+			bx = tile_get_width(px, ay,, true);	
+			ax = tile_get_width(px, by,, true);
+		break;
+	}
 	var angle = point_direction(ax, ay, bx, by);
 	
-	return angle;*/
-	
-	return 0;
+	return angle;
 }
 
 function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false, angle = true)
