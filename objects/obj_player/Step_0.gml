@@ -32,6 +32,3 @@
 	
 	//Handle player's interaction with water
 	player_water();
-	
-	if(keyboard_check(vk_control))
-		ground_speed++

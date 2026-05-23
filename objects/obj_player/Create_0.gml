@@ -24,13 +24,13 @@
 	y_accel = 0.21875;					// Value used for player's vertical acceleration, specifically gravirt
 	friction_speed = 0.046875;			// Value used for player's friction when input is not being held
 	top_speed = 6;						// Value used for player's top running speed
-	max_speed = 999;						// Player's horizontal speed cap
+	max_speed = 24;						// Player's horizontal speed cap
 	jump_strength = 6.5;				// Value used for player's jump strength 
 	jump_release = 4;					// Value used for speed when player releases the jump button
 	roll_friction = 0.0234375;			   
 	roll_influence_up = 0.078125;		// Value that influences rolling up slopes
 	roll_influence_down = 0.3125;		// Value that influences rolling down slopes
-	roll_speed_cap = 999;				// Value for rolling's maximum speed
+	roll_speed_cap = 18;				// Value for rolling's maximum speed
 	
 	//State related values:
 	state = player_state_normal;		// Player's state machine

@@ -21,7 +21,7 @@ function player_collision()
 			x -= wallR;	
 			
 		// Get the active collision sensor
-		var c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_FLOOR, plane, true, false);
+		var c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_FLOOR, plane, true);
 		
 		// If player is colliding with floor, then ground the player
 		if(c.height < 0 && y_speed > 0)
@@ -52,7 +52,43 @@ function player_collision()
 			// Snap player to the floor
 			y += c.height * y_dir;
 			x += c.height * x_dir;
+			exit;
+		}
 		
+		// Ceiling collison
+		c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_CEILING, plane, true);	
+		
+		// Touching the ceiling
+		if(c.height < 0)
+		{
+			// Check if player can ceiling land
+			if(math_uangle(c.angle) <= PLAYER_CEIL_RANGE && y_speed < -PLAYER_CEIL_LAND_SPD)
+			{
+				// Set the angle and apply momentum
+				ground_angle = c.angle;
+				ground_speed = y_speed * -sign(dsin(ground_angle));
+				
+				// Trigger the landing callback and reposition the mode
+				player_land_callback();
+				player_mode();
+				
+				// Snap player to the floor
+				y += c.height * y_dir;
+				x += c.height * x_dir;
+				
+				// Flag as grounded
+				ground = true;
+				exit;
+			}
+			else
+			{
+				// If conditions aren't met for ceiling landing, just stop player's vertical movement
+				if(y_speed < 0)
+					y_speed = 0;	
+				
+				// Push out of the ceiling
+				y -= c.height
+			}
 		}
 		
 		// Wall stoppers

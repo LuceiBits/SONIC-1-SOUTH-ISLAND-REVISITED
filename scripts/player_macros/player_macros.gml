@@ -28,4 +28,6 @@ function player_macros(){
 	// Constants
 	#macro PLAYER_DETACH_DIST 14
 	#macro PLAYER_SLOPE_TOLERANCE 45
+	#macro PLAYER_CEIL_LAND_SPD 3.0
+	#macro PLAYER_CEIL_RANGE 135
 }

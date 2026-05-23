@@ -55,11 +55,11 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
 		break;
 		
 		case CMODE_CEILING:
-		h = tile_get_height(px, py, , true);
+		h = tile_get_height(px, py - 1, , true);
 		break;
 		
 		case CMODE_RWALL:
-		h = tile_get_width(px, py, ,true);
+		h = tile_get_width(px - 1, py, ,true);
 		break;
 		
 	}
