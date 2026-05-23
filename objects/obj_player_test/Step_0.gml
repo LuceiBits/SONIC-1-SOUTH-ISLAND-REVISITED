@@ -1,14 +1,11 @@
-	x = mouse_x;
-	y = mouse_y;
+	//x = mouse_x;
+	//y = mouse_y;
 	
 	x += 1 * (Input.Right - Input.Left)
 	
-	x = clamp(x, 32, 512);
-	y = clamp(y, 64, 512);
+	var h = collision_get_height(x, y + 19);
 	
-	var h = collision_get_height(x, y - 19);
-	
-	y -= h;
+	y += h;
 	
 	//show_debug_message(h);
 	

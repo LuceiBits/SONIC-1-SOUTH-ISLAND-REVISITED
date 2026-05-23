@@ -42,56 +42,9 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
 	px = floor(px);
 	py = floor(py);
 	
-	var h = tile_get_height(px, py, "CollisionMain");
+	var h = tile_get_height(px, py, "CollisionMain", false);
 	
 	return h;
-	/*
-	// Mandatory flooring
-	px = floor(px);
-	py = floor(py);
-	
-	var newX = px;
-	var newY = py;
-	var maxDist = 16;
-	
-	switch(mode)
-	{
-		case CMODE_FLOOR:
-			while(!collision_meeting(px, py, plane, semi_solid) && py < newY + maxDist)
-				py++;
-		
-			while(collision_meeting(px, py, plane, semi_solid) && py > newY - maxDist)
-				py--;
-		
-			return py - newY;
-		
-		case CMODE_LWALL:
-			while(!collision_meeting(px, py, plane, semi_solid) && px < newX + maxDist)
-				px++;
-		
-			while(collision_meeting(px, py, plane, semi_solid) && px > newX - maxDist)
-				px--;
-		
-			return px - newX;
-		
-		case CMODE_CEILING:
-			while(!collision_meeting(px, py - 1, plane, semi_solid) && py > newY - maxDist)
-				py--;
-		
-			while(collision_meeting(px, py - 1, plane, semi_solid) && py < newY + maxDist)
-				py++;
-			
-			return newY - py;
-		
-		case CMODE_RWALL:
-			while(!collision_meeting(px - 1, py, plane, semi_solid) && px > newX - maxDist)
-				px--;
-		
-			while(collision_meeting(px - 1, py, plane, semi_solid) && px < newX + maxDist)
-				px++;
-			
-			return newX - px;
-	}*/
 }
 
 function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
@@ -113,98 +66,6 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_s
 	var angle = point_direction(ax, ay, bx, by);
 	
 	return angle;
-	/*
-	// Mandatory flooring
-	px = floor(px);
-	py = floor(py);
-	
-	// Points
-	var ax, bx, ay, by; 
-			
-	switch(mode)
-	{
-		case CMODE_FLOOR:
-			ax = px - px mod 16;
-			bx = px + (15 - px mod 16);
-			ay = py;	
-			by = py;
-	
-			while(!collision_meeting(ax, ay, plane, semi_solid) && ay < py + 32)
-				ay++;
-
-			while(!collision_meeting(bx, by, plane, semi_solid) && by < py + 32)
-				by++;
-
-			while(collision_meeting(ax, ay, plane, semi_solid) && ay > py - 32)
-				ay--;
-
-			while(collision_meeting(bx, by, plane, semi_solid) && by > py - 32)
-				by--;
-
-		break;
-		
-		case CMODE_LWALL:
-			ax = px;
-			bx = px;
-			ay = py + (15 - py mod 16);	
-			by = py - py mod 16;
-	
-			while(!collision_meeting(ax, ay, plane, semi_solid) && ax < px + 32)
-				ax++;
-
-			while(!collision_meeting(bx, by, plane, semi_solid) && bx < px + 32)
-				bx++;
-
-			while(collision_meeting(ax, ay, plane, semi_solid) && ax > px - 32)
-				ax--;
-
-			while(collision_meeting(bx, by, plane, semi_solid) && bx > px - 32)
-				bx--;
-				
-		break;
-		
-		case CMODE_CEILING:
-			ax = px + (15 - px mod 16);
-			bx = px - px mod 16;
-			ay = py;	
-			by = py;
-	
-			while(!collision_meeting(ax, ay, plane, semi_solid) && ay > py - 32)
-				ay--;
-				
-			while(!collision_meeting(bx, by, plane, semi_solid) && by > py - 32)
-				by--;
-
-			while(collision_meeting(ax, ay, plane, semi_solid) && ay < py + 32)
-				ay++;
-
-			while(collision_meeting(bx, by, plane, semi_solid) && by < py + 32)
-				by++;
-				
-		break;
-		
-		case CMODE_RWALL:
-			ax = px;
-			bx = px;
-			ay = py - py mod 16;	
-			by = py + (15 - py mod 16);
-	
-			while(!collision_meeting(ax, ay, plane, semi_solid) && ax > px - 32)
-				ax--;
-
-			while(!collision_meeting(bx, by, plane, semi_solid) && bx > px - 32)
-				bx--;
-
-			while(collision_meeting(ax, ay, plane, semi_solid) && ax < px + 32)
-				ax++;
-
-			while(collision_meeting(bx, by, plane, semi_solid) && bx < px + 32)
-				bx++;
-			
-		break;
-	}
-	
-	return point_direction(ax, ay, bx, by);*/
 }
 
 function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false, angle = true)
@@ -261,7 +122,11 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
     return colResult;
 }
 
-function tile_get_height2(xpos, ypos, l = "CollisionMain")
+// ==========================================================================================
+// Utility script's internal function, do not use them outside
+// ==========================================================================================
+
+function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
 	ypos = floor(ypos);
@@ -274,9 +139,10 @@ function tile_get_height2(xpos, ypos, l = "CollisionMain")
 	
 	// Get the height from active tile ID
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
-	var height = tiledata_get_height(tile_id, xpos);
+	var height = tiledata_get_height(tile_id, xpos, flip);
 	
-	height = -height;
+	if(flip)
+		height = -height;
 	
 	if(height > 0)
 	{
@@ -285,16 +151,14 @@ function tile_get_height2(xpos, ypos, l = "CollisionMain")
 	}
 	else if(height < 0)
 	{
-		var d = ypos & 15
-		
-		if(height + d < 0)
-			return d ^ ~0;
+		if(height + (ypos & 15) < 0)
+			return (ypos & 15) ^ ~0;
 	}
 	
 	return 15 - (ypos & 15);
 }
 
-function tile_get_height(xpos, ypos, l = "CollisionMain")
+function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
 	ypos = floor(ypos);
@@ -307,11 +171,16 @@ function tile_get_height(xpos, ypos, l = "CollisionMain")
 	
 	// Get the height from active tile ID
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
-	var height = tiledata_get_height(tile_id, xpos);
+	var height = tiledata_get_height(tile_id, xpos, flip);
 	
-	var a = -10;
-	ypos ^= 15
-	height = -height;
+	var a = 16;
+	
+	if(flip)
+	{
+		ypos ^= 15
+		height = -height;
+		a = -a;
+	}
 	
 	if(height > 0)
 	{
@@ -320,36 +189,52 @@ function tile_get_height(xpos, ypos, l = "CollisionMain")
 			return 15 - (height + (ypos & 15));	
 		}
 		else
-			return tile_get_height2(xpos, ypos - a) - 16;
+			return tile_get_height2(xpos, ypos - a, l, flip) - 16;
 			
 	}
 	else
 	{
 		if(height + (ypos & 15) < 0)
-			return tile_get_height2(xpos, ypos - a) - 16; 
+			return tile_get_height2(xpos, ypos - a, l, flip) - 16; 
 	}
 	
-	return tile_get_height2(xpos, ypos + a) + 16;
+	return tile_get_height2(xpos, ypos + a, l, flip) + 16;
 }
 
-
-
-
-function tiledata_get_height(tile_id, xpos)
+function tiledata_get_height(tile_id, xpos, flip = false)
 {
+	// Turn X position into an offset
 	if(!tile_get_mirror(tile_id))
 		xpos %= 16;
 	else
 		xpos = 15 - xpos % 16;
 	
-	show_debug_message(xpos)
-	
+	// Get the tile ID
 	var index = tile_get_index(tile_id);
 	
-	if index <= 0 && index >= 149
+	// Return blank height if the tile is invalid
+	if(index <= 0 || index > array_length(global.tile_top))
 	{
-		index = 0;
+		return 0;
 	}
 	
-	return global.tile_top[index][xpos];
+	// Up direction collision height
+	if(flip)
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_flip(tile_id))
+			return -global.tile_top[index][xpos];
+		
+		// Otherwise default to the normal one
+		return -global.tile_bottom[index][xpos];
+	}
+	else	// Down direction
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_flip(tile_id))
+			return global.tile_bottom[index][xpos];
+		
+		// Otherwise default to the normal one
+		return global.tile_top[index][xpos];
+	}
 }
