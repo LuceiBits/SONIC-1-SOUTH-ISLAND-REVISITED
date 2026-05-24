@@ -280,7 +280,6 @@
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
     {"id":{"name":"rm_splash","path":"rooms/rm_splash/rm_splash.yy",},},
     {"id":{"name":"rm_stage_select","path":"rooms/rm_stage_select/rm_stage_select.yy",},},
-    {"id":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"id":{"name":"rm_your_zone","path":"rooms/rm_your_zone/rm_your_zone.yy",},},
     {"id":{"name":"add_background","path":"scripts/add_background/add_background.yy",},},
     {"id":{"name":"alpha_dither","path":"scripts/alpha_dither/alpha_dither.yy",},},
@@ -736,7 +735,6 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
-    {"roomId":{"name":"rm_test","path":"rooms/rm_test/rm_test.yy",},},
     {"roomId":{"name":"rm_splash","path":"rooms/rm_splash/rm_splash.yy",},},
     {"roomId":{"name":"rm_stage_select","path":"rooms/rm_stage_select/rm_stage_select.yy",},},
     {"roomId":{"name":"rm_your_zone","path":"rooms/rm_your_zone/rm_your_zone.yy",},},

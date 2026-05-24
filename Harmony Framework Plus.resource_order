@@ -48,7 +48,6 @@
     {"name":"obj_titlecard_bonus","order":1,"path":"objects/obj_titlecard_bonus/obj_titlecard_bonus.yy",},
     {"name":"par_gumball_solid","order":6,"path":"objects/par_gumball_solid/par_gumball_solid.yy",},
     {"name":"rm_bonus","order":1,"path":"rooms/rm_bonus/rm_bonus.yy",},
-    {"name":"rm_test","order":1,"path":"rooms/rm_test/rm_test.yy",},
     {"name":"background_visibility","order":1,"path":"scripts/background_visibility/background_visibility.yy",},
     {"name":"file_bin_util","order":2,"path":"scripts/file_bin_util/file_bin_util.yy",},
     {"name":"game_init_collision","order":3,"path":"scripts/game_init_collision/game_init_collision.yy",},
