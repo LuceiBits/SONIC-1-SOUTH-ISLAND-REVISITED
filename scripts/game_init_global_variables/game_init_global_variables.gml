@@ -1,0 +1,84 @@
+function game_init_global_variables()
+{
+	//Game variables
+	global.process_objects = true;			//Flag that allows step event of every object to be processed
+	global.dev_mode = DEVMODE;					//Flag for developer mode, which allows you to use dev commands, don't forget to turn this off when releasing the game
+	
+	//Character globals
+	global.character = CHAR_SONIC;			//Global value for the character
+	
+	//Screen values
+	global.window_width  = 426;				//Window's horizontal size
+	global.window_height = 240;				//Window's vertical size
+	global.window_size_limit = 4;			//Window size limiter
+	global.window_size = 2;					//Window size multiplier
+	global.draw_state = undefined;
+	
+	//keyboard inputs
+	global.up = vk_up;						
+    global.down = vk_down;
+    global.left = vk_left;
+    global.right = vk_right;
+    global.a = ord("A");
+    global.b = ord("S");
+    global.c = ord("D");
+    global.start = vk_enter;
+	
+	//Setup volume
+	global.bgm_volume = 1;					//Music's channel volume
+	global.sfx_volume = 1;					//Sound effects volume
+	
+	//Checkpoint values
+	global.checkpoint = ds_list_create();	//The list of active checkpoints
+	global.checkpoint_id = noone;			//Checkpoint that is currently active
+	global.time_store = 0;					//Store value for timer when checkpoint gets active
+	
+
+	
+	global.bonus_stage_state = BONUSSTAGE.OUTSIDE
+	global.store_object_state = ds_list_create();
+	global.previous_room = rm_splash
+	global.store_player_state = 
+	{
+		shield : S_NONE,
+		combinering : 0,
+		rings : 0
+	};
+	global.store_background_visibility = {};
+	
+	//Stage values
+	global.object_timer = 0;				//Object pre frame timer, every 60 frames in a 1 second
+	global.score = 0;						//Global variable for score
+	global.stage_timer = 0;					//Global variable for stage timer
+	global.rings = 0;						//Global variable for rings
+	global.life = 3;						//Global variable for life
+	global.title_card = true;				//Flag that allows title card to be triggered, used in dev
+	global.emeralds = [true, true, true, true, true, true, true];				//List of active emeralds
+	global.col_tile = ["CollisionMain", "CollisionSemi", "CollisionA", "CollisionB"];	//List of collision layers
+	global.extra_life_jingle = true;		//flag that plays a jingle that cuts out the music when true, plays a sound effect if false
+	
+	
+	//Act transition variables
+	global.monitor_store = [];				//List of monitor instances that were bumped with sign
+	global.monitor_id = 0;					//Current list ID of bumped monitor
+	global.act_transition = false;			//Act transition trigger, this is active for a single frame when new act starts
+	
+	//Extra life stuff
+	global.score_extralife = 50000;			//Score threshold for extra life
+	global.ring_extralife = 100;			//Ring threshold for extra life
+	
+	//Customizables variables
+	global.rotation_type = 2;				//This changes player's visual rotation 
+	global.use_battery_rings = false;		//If this is disabled, destroying enemies will spawn flickies instead
+	global.chaotix_monitors = false;		//Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
+	global.use_peelout = true;				//Flag that allows peel-out ability
+	global.use_dropdash = true;				//Flag that allows dropdash ability
+	global.use_airroll = false;				//Flag that allows rolling while air-borne
+	global.use_spindash = true;				//Flag taht allows player to use the spindash
+	global.camera_pan_type = 0;				//Variable that changes how camera panning works. 0 = No panning, 1 = Sonic CD panning[currently inaccurate], 2 = S1D/XG styled camera panning 
+	global.chaotix_dust_effect = false;		//Flag that disables classic spindash/skid dust effect
+	global.camera_type = 1;					//Vertical camera scrolling type, 0 = Megadrive, 1 = Mania
+	global.knux_camera_smooth = false;		//Flag for using smooth ledge climb camera movement
+	global.water_running_effect = 0;		//0 for the hydrocity effect, 1 for repeating splashes
+	global.no_skid_state = true;			//makes skidding work closer to the genesis games, instead of a seperate state
+}

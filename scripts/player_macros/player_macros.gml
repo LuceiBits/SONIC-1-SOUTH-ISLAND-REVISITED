@@ -18,13 +18,6 @@ function player_macros(){
 	#macro K_DROWN 3
 	#macro K_STUNNED 4
 	
-	//Collision side macros:
-	#macro C_MAIN 0
-	#macro C_BOTTOM 1
-	#macro C_TOP 2
-	#macro C_LEFT 3
-	#macro C_RIGHT 4
-	
 	// Constants
 	#macro PLAYER_DETACH_DIST 14
 	#macro PLAYER_SLOPE_TOLERANCE 45

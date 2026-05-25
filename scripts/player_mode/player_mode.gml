@@ -1,10 +1,4 @@
 function player_mode(){
-	//Mode macros
-	#macro CMODE_FLOOR 0
-	#macro CMODE_LWALL 1
-	#macro CMODE_RWALL 3
-	#macro CMODE_CEILING 2
-	
 	// Taken from mania, that's why its hex angle.
     var last_mode = mode;
 	var s = max(16 - floor(abs(ground_speed * 2)), 0);

@@ -1,12 +1,14 @@
 function music_add(music_id, sound_id, loop_start = 0.00, loop_end = 0.00, loop = true)
 {
-	if !ds_map_exists(global.music_map, music_id){
+	if !ds_map_exists(global.music_map, music_id)
+	{
 		ds_map_add(global.music_map, music_id, array_create(4))	
 		global.music_map[? music_id][0] = sound_id
 		global.music_map[? music_id][1] = loop_start
 		global.music_map[? music_id][2] = loop_end
 		global.music_map[? music_id][3] = loop
-	} else {
+	} else 
+	{
 		//trace("ALERT: Your are trying to add a music track that already exsits.")
 	}
 }

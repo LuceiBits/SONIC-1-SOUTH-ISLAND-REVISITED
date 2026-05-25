@@ -1,6 +1,3 @@
-#macro PLANE_A 0
-#macro PLANE_B 1
-
 function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
 	px = floor(px);

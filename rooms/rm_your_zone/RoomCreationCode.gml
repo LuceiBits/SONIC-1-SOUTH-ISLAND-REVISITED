@@ -4,10 +4,10 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = "FOREGONE DESTRUCTION - MICHIEL VAN DEN BOS"
+		stage_music = MUSIC.TECHDEMO_TOWER
 		
 		//Set level name
-		stage_name = "Your Level Here";
+		stage_name = "Techdemo Tower";
 		
 		//Set stage act
 		act = 0;
