@@ -4,7 +4,7 @@ function player_state_spring(){
 	animation_play(animator, ANIM.SPRING);
 	
 	//Change state when falling
-	if(y_speed >= 0) 
+	if(y_speed >= 0 || ground) 
 	{
 		state = player_state_normal;
 	}

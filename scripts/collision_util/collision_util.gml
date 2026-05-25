@@ -1,236 +1,397 @@
 #macro PLANE_A 0
 #macro PLANE_B 1
 
-function collision_point_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
+function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
-
-	//New capped position:
-	var new_x = floor(clamp(x, obj_camera.limit_left, obj_camera.limit_right));
-	var new_y = floor(clamp(y, obj_camera.limit_top, obj_camera.limit_bottom));
+	px = floor(px);
+	py = floor(py);
 	
-	//Change direction
-	var x_dir = dsin(90 * collision_mode);
-	var y_dir = dcos(90 * collision_mode);
+	var h = 0;
 	
-	//Solid terrain collision
-	if(collision_point(new_x+radius_x*y_dir+radius_y*x_dir, new_y+radius_y*y_dir+radius_x*-x_dir, par_solid, true, true))
+	switch(mode)
 	{
-		//Get the value from the object with what youre coliding
-		var solidCollisions = ds_list_create();
-		var SolidCount = collision_point_list(new_x + radius_x * y_dir + radius_y * x_dir, new_y + radius_y * y_dir + radius_x * -x_dir,par_solid,true,true,solidCollisions,false);
-		for (var i = 0; i < SolidCount; i++)
-		{
-			var Solid =  solidCollisions[| i];
-			if(Solid.collision_flag)
-			{
-				if (Solid.collision_type = "Full Solid" && Solid.collision_layer = "Both Layers"||
-				Solid.collision_type = "Full Solid" && Solid.collision_layer = "Layer A" && collision_plane = 0 ||
-				Solid.collision_type = "Full Solid" && Solid.collision_layer = "Layer B" && collision_plane = 1 ||
-				Solid.collision_type = "Semi Solid" && Solid.platform_check && semi_solid)
-				{
-					ds_list_destroy(solidCollisions);
-					return true;
-				}
-			}
-		}
-		ds_list_destroy(solidCollisions);
+		case CMODE_FLOOR:
+		h = tile_get_height(px, py);
+		break;
+		
+		case CMODE_LWALL:
+		h = tile_get_width(px, py);
+		break;
+		
+		case CMODE_CEILING:
+		h = tile_get_height(px, py - 1, , true);
+		break;
+		
+		case CMODE_RWALL:
+		h = tile_get_width(px - 1, py, ,true);
+		break;
+		
 	}
 	
-	//Get the size of collision layer array:
-	var a_col = array_length(global.col_tile);
+	return h;
+}
+
+function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
+{
+	px = floor(px);
+	py = floor(py);
 	
-	//Handle tile collision (Native GameMaker implementation):
-	for (var i = 0; i < a_col; ++i) 
+	// Points
+	var ax, bx, ay, by; 
+	
+	switch(mode)
 	{
-	    //Check if given layers exist(Prevents console output from spamming non existing layer):
-		if(layer_exists(global.col_tile[i]))
+		case CMODE_FLOOR:
+			ax = px - px mod 16;
+			bx = px + (15 - px mod 16);
+			ay = tile_get_height(ax, py);	
+			by = tile_get_height(bx, py);
+		break;
+		
+		case CMODE_LWALL:
+			by = py - py mod 16;
+			ay = py + (15 - py mod 16);
+			ax = tile_get_width(px, ay);	
+			bx = tile_get_width(px, by);
+		break;
+		
+		case CMODE_CEILING:
+			bx = px - px mod 16;
+			ax = px + (15 - px mod 16);
+			by = tile_get_height(ax, py,, true);	
+			ay = tile_get_height(bx, py,, true);
+		break;
+		
+		case CMODE_RWALL:
+			ay = py - py mod 16;
+			by = py + (15 - py mod 16);
+			bx = tile_get_width(px, ay,, true);	
+			ax = tile_get_width(px, by,, true);
+		break;
+	}
+	var angle = point_direction(ax, ay, bx, by);
+	
+	return angle;
+}
+
+function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false, angle = true)
+{
+	// Default struct
+	var colResult = {
+		height : 0,
+		angle : 0
+	}
+	
+	//Change direction
+	var x_dir = dsin(90 * mode);
+	var y_dir = dcos(90 * mode);
+	
+	// Get the correct point position
+	var pxL = x - radius_x * y_dir + radius_y * x_dir;
+	var pyL = y + radius_y * y_dir - radius_x * -x_dir;
+	
+	var pxM = x + 0 * y_dir + radius_y * x_dir;
+	var pyM = y + radius_y * y_dir + 0 * -x_dir;
+	
+	var pxR = x + radius_x * y_dir + radius_y * x_dir;
+	var pyR = y + radius_y * y_dir + radius_x * -x_dir;
+	
+	// Get all of 3 sensors
+	var heightL = collision_get_height(pxL, pyL, mode, plane, semi_solid);
+	var heightM = collision_get_height(pxM, pyM, mode, plane, semi_solid);
+	var heightR = collision_get_height(pxR, pyR, mode, plane, semi_solid);
+	
+	// Default to the left sensor
+	colResult.height = heightL;
+	
+	if(angle)
+		colResult.angle = collision_get_angle(pxL, pyL, mode, plane, semi_solid);
+	
+	// Set the result to the middle sensor
+	if(heightM < colResult.height)
+	{
+		colResult.height = heightM;
+		
+		if(angle)
+			colResult.angle = collision_get_angle(pxM, pyM, mode, plane, semi_solid);
+	}
+	
+	// Set the result to the right sensor
+	if(heightR < colResult.height)
+	{
+		colResult.height = heightR;
+		
+		if(angle)
+			colResult.angle = collision_get_angle(pxR, pyR, mode, plane, semi_solid);
+	}
+	
+    return colResult;
+}
+
+// ==========================================================================================
+// Utility script's internal function, do not use them outside
+// ==========================================================================================
+
+function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
+{
+
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_height(tile_id, xpos, flip);
+	
+	// Flip height
+	if(flip)
+		height = -height;
+	
+	// Return the correct distance
+	if(height > 0)
+	{
+		return 15 - (height + (ypos & 15));	
+			
+	}
+	else if(height < 0)
+	{
+		if(height + (ypos & 15) < 0)
+			return (ypos & 15) ^ ~0;
+	}
+	
+	return 15 - (ypos & 15);
+}
+
+function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	// Get cell's position
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_height(tile_id, xpos, flip);
+	
+	// Second pass offset
+	var a = 16;
+	
+	// Flip everything needed
+	if(flip)
+	{
+		ypos ^= 15
+		height = -height;
+		a = -a;
+	}
+	
+	// Return the correct distance
+	if(height > 0)
+	{
+		if(height != 16)
 		{
-			//Colide with the tile layer:
-			if(collision_point(new_x+radius_x*y_dir+radius_y*x_dir, new_y+radius_y*y_dir+radius_x*-x_dir, layer_tilemap_get_id(global.col_tile[i]), true, true) )
-			{
-				
-				//Different layers collide depending on different behaviour:
-				switch(i)
-				{
-					//Full solid:
-					case 0:
-						return true;
-					break;
-					
-					//Semi solid:
-					case 1:
-						if(semi_solid) return true;
-					break;
-					
-					//Full solid layer A:
-					case 2:
-						if(collision_plane == 0) return true;
-					break;
-					
-					//Full solid layer B:
-					case 3:
-						if(collision_plane == 1) return true;
-					break;
-					
-					//Full solid layer C[EVIL]:
-					case 4:
-						if(collision_plane == 2) return true;
-					break;
-				}
-			}
+			return 15 - (height + (ypos & 15));	
 		}
+		else
+			return tile_get_height2(xpos, ypos - a, l, flip) - 16;
+			
+	}
+	else
+	{
+		if(height + (ypos & 15) < 0)
+			return tile_get_height2(xpos, ypos - a, l, flip) - 16; 
+	}
+	
+	return tile_get_height2(xpos, ypos + a, l, flip) + 16;
+}
+
+function tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	// Get cell's position
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_width(tile_id, ypos, flip);
+	
+	// Second pass offset
+	var a = 16;
+	
+	// Flip everything needed
+	if(flip)
+		height = -height;
+
+	// Return the correct distance
+	if(height > 0)
+	{
+		return 15 - (height + (xpos & 15));	
+			
+	}
+	else if(height < 0)
+	{
+		if(height + (xpos & 15) < 0)
+			return (xpos & 15) ^ ~0;
+	}
+	
+	return 15 - (xpos & 15);
+}
+
+function tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
+{
+	xpos = floor(xpos);
+	ypos = floor(ypos);
+	
+	// Get the tile layer
+	var layer_id = layer_tilemap_get_id(l);
+	
+	// Get cell's position
+	var cellX = floor(xpos / 16);
+	var cellY = floor(ypos / 16);
+	
+	// Get the height from active tile ID
+	var tile_id = tilemap_get(layer_id, cellX, cellY);
+	var height = tiledata_get_width(tile_id, ypos, flip);
+	
+	// Second pass offset
+	var a = 16;
+	
+	// Flip everything needed
+	if(flip)
+	{
+		xpos ^= 15
+		height = -height;
+		a = -16;
+	}
+	
+	// Return the correct distance
+	if(height > 0)
+	{
+		if(height != 16)
+		{
+			return 15 - (height + (xpos & 15));	
+		}
+		else
+			return tile_get_width2(xpos - a, ypos, l, flip) - 16;
+			
+	}
+	else
+	{
+		if(height + (xpos & 15) < 0)
+			return tile_get_width2(xpos - a, ypos, l, flip) - 16; 
+	}
+	
+	return tile_get_width2(xpos + a, ypos, l, flip) + 16;
+}
+
+// ==========================================================================================
+// Tile data segment
+// ==========================================================================================
+function tiledata_get_height(tile_id, xpos, flip = false)
+{
+	// Turn X position into an offset
+	if(!tile_get_mirror(tile_id))
+		xpos %= 16;
+	else
+		xpos = 15 - xpos % 16;
+	
+	// Get the tile ID
+	var index = tile_get_index(tile_id);
+	
+	// Return blank height if the tile is invalid
+	if(index <= 0 || index > array_length(global.tile_top))
+	{
+		return 0;
+	}
+	
+	// Up direction collision height
+	if(flip)
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_flip(tile_id))
+			return -global.tile_top[index][xpos];
+		
+		// Otherwise default to the normal one
+		return -global.tile_bottom[index][xpos];
+	}
+	else	// Down direction
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_flip(tile_id))
+			return global.tile_bottom[index][xpos];
+		
+		// Otherwise default to the normal one
+		return global.tile_top[index][xpos];
 	}
 }
 
-function collision_line_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false){
+function tiledata_get_width(tile_id, ypos, flip = false)
+{
+	// Turn X position into an offset
+	if(!tile_get_flip(tile_id))
+		ypos %= 16;
+	else
+		ypos = 15 - ypos % 16;
+	
+	// Get the tile ID
+	var index = tile_get_index(tile_id);
+	
+	// Return blank height if the tile is invalid
+	if(index <= 0 || index > array_length(global.tile_top))
+	{
+		return 0;
+	}
+	
+	// Up direction collision height
+	if(flip)
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_mirror(tile_id))
+			return -global.tile_left[index][ypos];	
+			
+		// Otherwise default to the normal one
+		return -global.tile_right[index][ypos];
+	}
+	else
+	{
+		// Return collision height if the tile is flipped
+		if(tile_get_mirror(tile_id))
+			return global.tile_right[index][ypos];
+			
+		// Otherwise default to the normal one
+		return global.tile_left[index][ypos];	
+	}
+}
 
-	//Rotate line sensors	
-	var X1, X2, Y1, Y2;
-	switch(collision_mode)
-	{
-		case 0: X1 = radius_x Y1 = 0 X2 = radius_x Y2= radius_y break;
-		case 1: X1 = 0 Y1 = -radius_x X2 = radius_y Y2= -radius_x break;
-		case 2: X1 = radius_x Y1 = -0 X2 = radius_x Y2= -radius_y-1 break;
-		case 3: X1 = -0 Y1 = radius_x X2 = -radius_y-1 Y2= radius_x break;
-	}	
-	
-	//Collision with solid terrain "par_solid"
-	if(collision_line(floor(x)+X1,floor(y)+Y1,floor(x)+X2,floor(y)+Y2,par_solid,true,true))
-	{
-		//Get the value from the object with what youre coliding
-		var solidCollisions = ds_list_create();
-		var SolidCount = collision_line_list(floor(x)+X1,floor(y)+Y1,floor(x)+X2,floor(y)+Y2,par_solid,true,true,solidCollisions,false);
-		for (var i = 0; i < SolidCount; i++)
-		{
-			var Solid =  solidCollisions[| i];
-			if(Solid.collision_flag){
-				if (Solid.collision_type = "Full Solid" && Solid.collision_layer = "Both Layers"||
-				Solid.collision_type = "Full Solid" && Solid.collision_layer = "Layer A" && collision_plane = 0 ||
-				Solid.collision_type = "Full Solid" && Solid.collision_layer = "Layer B" && collision_plane = 1 ||
-				Solid.collision_type = "Semi Solid" && semi_solid && Solid.platform_check)
-				{
-					ds_list_destroy(solidCollisions);
-					return true;
-				}
-			}
-		}
-		ds_list_destroy(solidCollisions);
-	}
-	
-	//Get the size of collision layer array:
-	var a_col = array_length(global.col_tile);
-	
-	//Handle tile collision (Native GameMaker implementation):
-	for (var i = 0; i < a_col; ++i) 
-	{
-	    //Check if given layers exist(Prevents console output from spamming non existing layer):
-		if(layer_exists(global.col_tile[i]))
-		{
-			//Colide with the tile layer:
-			if(collision_line(floor(x)+X1, floor(y)+Y1, floor(x)+X2, floor(y)+Y2, layer_tilemap_get_id(global.col_tile[i]), true, true))
-			{
-				
-				//Different layers collide depending on different behaviour:
-				switch(i)
-				{
-					//Full solid:
-					case 0:
-						return true;
-					break;
-					
-					//Semi solid:
-					case 1:
-						if(semi_solid) return true;
-					break;
-					
-					//Full solid layer A:
-					case 2:
-						if(collision_plane == 0) return true;
-					break;
-					
-					//Full solid layer B:
-					case 3:
-						if(collision_plane == 1) return true;
-					break;
-					
-					//Full solid layer C[EVIL]:
-					case 4:
-						if(collision_plane == 2) return true;
-					break;
-				}
-			}
-		}
-	}
+// ==========================================================================================
+// Deprecated so it doesn't crash the game
+// ==========================================================================================
+function collision_point_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
+{
+
+}
+
+function collision_line_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
+{
+
 }
 
 function collision_instance(offset_x, offset_y, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
 {
 
-	//Collision with solid terrain "par_solid"
-	if(instance_place(floor(x) + offset_x, floor(y) + offset_y, par_solid))
-	{
-		//Get the value from the object with what youre coliding
-		var solidCollisions = ds_list_create();
-		var SolidCount = instance_place_list(floor(x) + offset_x, floor(y) + offset_y, par_solid, solidCollisions, false);
-		for (var i = 0; i < SolidCount; i++)
-		{
-			var Solid =  solidCollisions[| i];
-			if(Solid.collision_flag){
-				if (Solid.collision_type = "Full Solid" && Solid.collision_layer = "Both Layers"||
-				Solid.collision_type = "Full Solid" && Solid.collision_layer = "Layer A" && collision_plane = 0 ||
-				Solid.collision_type = "Full Solid" && Solid.collision_layer = "Layer B" && collision_plane = 1 ||
-				Solid.collision_type = "Semi Solid" && semi_solid && Solid.platform_check)
-				{
-					ds_list_destroy(solidCollisions);
-					return true;
-				}
-			}
-		}
-		ds_list_destroy(solidCollisions);
-	}
-	
-	//Get the size of collision layer array:
-	var a_col = array_length(global.col_tile);
-	
-	//Handle tile collision (Native GameMaker implementation):
-	for (var i = 0; i < a_col; ++i) 
-	{
-	    //Check if given layers exist(Prevents console output from spamming non existing layer):
-		if(layer_exists(global.col_tile[i]))
-		{
-			//Colide with the tile layer:
-			if(instance_place(floor(x) + offset_x, floor(y) + offset_y, layer_tilemap_get_id(global.col_tile[i])))
-			{
-				
-				//Different layers collide depending on different behaviour:
-				switch(i)
-				{
-					//Full solid:
-					case 0:
-						return true;
-					break;
-					
-					//Semi solid:
-					case 1:
-						if(semi_solid) return true;
-					break;
-					
-					//Full solid layer A:
-					case 2:
-						if(collision_plane == 0) return true;
-					break;
-					
-					//Full solid layer B:
-					case 3:
-						if(collision_plane == 1) return true;
-					break;
-					
-					//Full solid layer C[EVIL]:
-					case 4:
-						if(collision_plane == 2) return true;
-					break;
-				}
-			}
-		}
-	}
 }
