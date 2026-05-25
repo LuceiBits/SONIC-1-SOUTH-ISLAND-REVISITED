@@ -4,8 +4,8 @@
 	var angle = point_direction(target_x, target_y, knux_offset_x, knux_offset_y);
 	
 	//Move towards knuckles
-	target_x = approach(target_x, knux_offset_x, 2 * abs(dcos(angle)));
-	target_y = approach(target_y, knux_offset_y, 2 * abs(dsin(angle)));
+	target_x = math_approach(target_x, knux_offset_x, 2 * abs(dcos(angle)));
+	target_y = math_approach(target_y, knux_offset_y, 2 * abs(dsin(angle)));
 	
 	//If state is not the ledge climb return
 	if(target.state != player_state_ledgeclimb) 

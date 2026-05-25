@@ -43,11 +43,11 @@ function player_state_skid(){
 	//Decelerate
 	if(mov == -facing) 
 	{
-		ground_speed = approach(ground_speed, -1 * facing, 0.5);
+		ground_speed = math_approach(ground_speed, -1 * facing, 0.5);
 	}
 	else 
 	{
-		ground_speed = approach(ground_speed, -1 * facing, friction_speed);
+		ground_speed = math_approach(ground_speed, -1 * facing, friction_speed);
 	}
 	
 	//Change the animation to skid turn

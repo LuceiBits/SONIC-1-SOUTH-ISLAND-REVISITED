@@ -33,7 +33,7 @@
 	//Spin the checkpoint
 	if(triggered)
 	{
-		angle = approach(angle, -720, 22.5);	
+		angle = math_approach(angle, -720, 22.5);	
 	}
 	
 	if(showing_stars)

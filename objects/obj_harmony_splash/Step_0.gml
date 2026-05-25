@@ -17,14 +17,14 @@
 	
 		if(timer > 16)
 		{
-			ease_timer[3] = approach(ease_timer[3], 1, 0.005);
+			ease_timer[3] = math_approach(ease_timer[3], 1, 0.005);
 		}
 	
 		if(timer > 32)
 		{
-			dither_timer = approach(dither_timer, 1, 0.015);
-			ease_timer[0] = approach(ease_timer[0], 0, 0.01);
-			ease_timer[1] = approach(ease_timer[1], 0, 0.005);
+			dither_timer = math_approach(dither_timer, 1, 0.015);
+			ease_timer[0] = math_approach(ease_timer[0], 0, 0.01);
+			ease_timer[1] = math_approach(ease_timer[1], 0, 0.005);
 		}
 	
 	
@@ -47,7 +47,7 @@
 	{
 		fade_to_room(room_next(room), 1);
 		
-		ease_timer[2] = approach(ease_timer[2], 1, 0.008);
+		ease_timer[2] = math_approach(ease_timer[2], 1, 0.008);
 		
 		scale_x = 6 * ease_in_quad(ease_timer[2]);
 		scale_y = 6 * ease_in_quad(ease_timer[2]);

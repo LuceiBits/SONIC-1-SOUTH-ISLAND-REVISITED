@@ -8,7 +8,7 @@ function player_state_lookdown(){
 	animation_play(animator, ANIM.LOOKDOWN);
 	
 	//Slow crouch
-	ground_speed = approach(ground_speed, 0, friction_speed);
+	ground_speed = math_approach(ground_speed, 0, friction_speed);
 	
 	//Slope influence
 	if(ground_angle >= 40 && ground_angle <= 320) 

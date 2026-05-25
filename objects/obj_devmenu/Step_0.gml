@@ -55,7 +55,7 @@
 		case dev_menu_state.normal:
 			//Change the menu selection
 			menu_select += input_v_final;
-			menu_select = wrap(menu_select, 0, array_length(menu_list) - 1);
+			menu_select = math_wrap(menu_select, 0, array_length(menu_list) - 1);
 		
 			//Change the menu state
 			if(Input.StartPress || Input.APress)
@@ -89,7 +89,7 @@
 		case dev_menu_state.character_select:
 			//Change the menu selection
 			character_select += input_v_final;
-			character_select = wrap(character_select, 0, character_id - 1);
+			character_select = math_wrap(character_select, 0, character_id - 1);
 			
 			//Scroll menu text up
 			if(character_select > 6 + character_select_offset)
@@ -122,7 +122,7 @@
 		case dev_menu_state.category_select:
 			//Change the menu selection
 			category_select += input_v_final;
-			category_select = wrap(category_select, 0, category_id - 1);
+			category_select = math_wrap(category_select, 0, category_id - 1);
 			
 			//Scroll menu text up
 			if(category_select > 6 + category_offset)
@@ -153,7 +153,7 @@
 		case dev_menu_state.stage_select:
 			//Change the menu selection
 			scene_select += input_v_final;
-			scene_select = wrap(scene_select, 0, array_length(scene_name[category_select + 1]) - 1);
+			scene_select = math_wrap(scene_select, 0, array_length(scene_name[category_select + 1]) - 1);
 			
 			//Scroll menu text up
 			if(scene_select > 6 + scene_offset)
@@ -199,7 +199,7 @@
 		case dev_menu_state.options:
 			//Change the menu selection
 			option_select += input_v_final;
-			option_select = wrap(option_select, 0, option_id - 1);
+			option_select = math_wrap(option_select, 0, option_id - 1);
 			
 			//Scroll menu text up
 			if(option_select > 6 + option_offset)

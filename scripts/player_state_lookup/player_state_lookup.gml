@@ -25,7 +25,7 @@ function player_state_lookup(){
 	animation_play(animator, ANIM.LOOKUP);
 	
 	//Slow crouch
-	ground_speed = approach(ground_speed, 0, friction_speed);
+	ground_speed = math_approach(ground_speed, 0, friction_speed);
 	
 	//Release
 	if(!hold_up) 

@@ -21,7 +21,7 @@ function player_state_knuxslide(){
 	if(ground)
 	{
 		//Decelerate
-		ground_speed = approach(ground_speed, 0, 0.125);
+		ground_speed = math_approach(ground_speed, 0, 0.125);
 		
 		//Create dust effect
 		if(FRAME_TIMER mod 8 == 0 && ground_speed != 0)

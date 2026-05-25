@@ -136,18 +136,18 @@
 	//Shifting time
 	if(look_timer <= -120)
 	{
-		look_shift = approach(look_shift, -104, 2);
+		look_shift = math_approach(look_shift, -104, 2);
 	}
 	
 	if(look_timer >= 120)
 	{
-		look_shift = approach(look_shift, 88, 2);
+		look_shift = math_approach(look_shift, 88, 2);
 	}
 	
 	//Shift back
 	if(look_timer = 0)
 	{
-		look_shift = approach(look_shift, 0, 2);
+		look_shift = math_approach(look_shift, 0, 2);
 	}
 	
 	//Camera panning
@@ -164,16 +164,16 @@
 				//If sonic is running at top speed, pan the camera
 				if(abs(target.ground_speed) >= 6)
 				{
-					shift_x = approach(shift_x, 64 * sign(target.ground_speed), 2);
+					shift_x = math_approach(shift_x, 64 * sign(target.ground_speed), 2);
 				}
 				else	//Otherwise make it be based on the state and facing direction
 				{
-					shift_x = approach(shift_x, 64 * target.facing, 2);
+					shift_x = math_approach(shift_x, 64 * target.facing, 2);
 				}
 			}
 			else	//Pan the camera back
 			{
-				shift_x = approach(shift_x, 0, 2);	
+				shift_x = math_approach(shift_x, 0, 2);	
 			}
 		break;
 		

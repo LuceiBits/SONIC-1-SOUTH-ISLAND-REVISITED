@@ -27,7 +27,7 @@ function player_state_roll(){
 	}
 	
 	//Rolling driction
-	ground_speed = approach(ground_speed, 0, roll_friction);
+	ground_speed = math_approach(ground_speed, 0, roll_friction);
 	
 	//Trigger jump
 	if(player_check_jump())

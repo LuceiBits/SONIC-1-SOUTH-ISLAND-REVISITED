@@ -1,7 +1,7 @@
 /// @description Return to player
 
-	target_x = approach(target_x, target.x, return_speed);
-	target_y = approach(target_y, target.y, return_speed);
+	target_x = math_approach(target_x, target.x, return_speed);
+	target_y = math_approach(target_y, target.y, return_speed);
 	
 	return_speed += 0.25;
 	
