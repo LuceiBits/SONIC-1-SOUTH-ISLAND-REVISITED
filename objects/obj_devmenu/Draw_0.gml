@@ -38,7 +38,7 @@
 	draw_set_color(unselected_text_color);
 	draw_text(center_x, center_y - 48, window_get_caption());
 	draw_text(center_x, center_y - 40, GM_version);
-	draw_text(center_x, center_y - 32, os_get_string() + " - Runtime: " + GM_runtime_version /*+ " | Build Time: " + date_time_string(GM_build_date)*/);
+	draw_text(center_x, center_y - 32, game_os_get_string() + " - Runtime: " + GM_runtime_version /*+ " | Build Time: " + date_time_string(GM_build_date)*/);
 	draw_set_color(text_color);
 	
 	//Draw dev menu's text

@@ -1,6 +1,4 @@
 /// @description Destroy tiles
-	//Controller rumble
-	gamepad_rumble(10, 1);
 	
 	//Temp values
 	var tilelayer, tileset, size_x, size_y, obj, dir;

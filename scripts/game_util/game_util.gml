@@ -1,5 +1,5 @@
-//Gamemaker should've had this in the first place
-function os_get_string(){
+function game_os_get_string()
+{
 	switch(os_type)
 	{
 		case os_windows: return "Windows"		break; 
