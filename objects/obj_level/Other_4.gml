@@ -13,6 +13,9 @@
 		obj_camera.target_x = obj_player.x;
 		obj_camera.target_y = obj_player.y-16;
 		global.stage_timer = global.time_store;
+		if (global.checkpoint_id.face_left) {
+			obj_player.facing = -1	
+		}
 	}
 	
 	var force_visible_for_new_keys = (global.bonus_stage_state == BONUSSTAGE.GOING_TO || array_length(variable_struct_get_names(global.store_background_visibility)) == 0);

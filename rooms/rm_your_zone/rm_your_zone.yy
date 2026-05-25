@@ -33,6 +33,8 @@
     {"name":"inst_434131E3","path":"rooms/rm_your_zone/rm_your_zone.yy",},
     {"name":"inst_473A52FF","path":"rooms/rm_your_zone/rm_your_zone.yy",},
     {"name":"inst_6DABE6DD","path":"rooms/rm_your_zone/rm_your_zone.yy",},
+    {"name":"inst_DC3F7B4","path":"rooms/rm_your_zone/rm_your_zone.yy",},
+    {"name":"inst_34A50999","path":"rooms/rm_your_zone/rm_your_zone.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -225,6 +227,10 @@
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_moving_platform","path":"objects/par_moving_platform/par_moving_platform.yy",},"propertyId":{"name":"x_speed","path":"objects/par_moving_platform/par_moving_platform.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":144.0,"y":600.0,},
         {"$GMRInstance":"v4","%Name":"inst_473A52FF","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_473A52FF","objectId":{"name":"obj_debug_teleport","path":"objects/obj_debug_teleport/obj_debug_teleport.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":1376.0,"y":720.0,},
+        {"$GMRInstance":"v4","%Name":"inst_DC3F7B4","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_DC3F7B4","objectId":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"properties":[
+            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"propertyId":{"name":"face_left","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
+          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":680.0,"y":768.0,},
+        {"$GMRInstance":"v4","%Name":"inst_34A50999","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_34A50999","objectId":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":720.0,"y":768.0,},
       ],"layers":[],"name":"Objects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRTileLayer":"","%Name":"TilesBack","depth":900,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"TilesBack","properties":[],"resourceType":"GMRTileLayer","resourceVersion":"2.0","tiles":{"SerialiseHeight":64,"SerialiseWidth":313,"TileCompressedData":[
           -12842,-2147483648,6,26,27,28,29,30,31,-307,-2147483648,6,58,59,60,61,62,63,-16,-2147483648,10,32,0,
