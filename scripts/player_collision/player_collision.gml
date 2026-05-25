@@ -130,6 +130,7 @@ function player_collision()
 		
 		// Calculate the difference between both of the angles
 		var angleDiff = math_uangle(abs(newAngle - oldAngle));
+	
 		
 		if(!on_object)
 		{	

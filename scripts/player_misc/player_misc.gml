@@ -19,7 +19,7 @@ function player_misc(){
 		with(par_shield) instance_destroy();
 	}
 	
-	on_object = false;
+	//
 	ledge = 0;
 	pushing = 0;
 }

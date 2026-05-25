@@ -55,21 +55,14 @@
 	//Check variables:
 	ground = true;						// Check used to check if player is on ground or not
 	debug = false;						// Check if player is in debug mode or not
-	//on_edge = false;					// Check used when angle is out of tolerance range on the ledges
 	on_object = false;					// Check for if player is on object
 	on_terrain = false;
-	platform_check = true;				// Check if player is inside of a semi solid
 	touching_ceiling = false;			// Check if player is inside of a ceiling
 	underwater = false;					// Check if player is underwater or not
 	is_time_over = false;				// Check if player died from time over
-	//ground_push_flag = true;			// Check used when angle is out of tolerance range on the ledges, this disables push out of the ground
-	//can_jump = false;					// Check used for if player is able to perform a jump
-	//can_roll = false;					// Check used for if player is able to perform rolling
 	allow_super = false;				// Check used for if player is able to transform into their super form
 										   
 	//Flags:							   
-	ceiling_allow = true;				// Flag for allowing ceiling landing
-	detach_allow = true;				// Flag used to allow detaching off the ground or not
 	collision_allow = true;				// Flag used to allow solid collision or not
 	gravity_allow = true;				// Flag used to allow gravity on player
 	force_roll = false;					// Flag used to set the player into forced roll state, which is used for S-Tubes

@@ -6,11 +6,6 @@
 	if(character = CHAR_TAILS && !instance_exists(obj_tails_object)) instance_create_depth(x, y, depth + 1, obj_tails_object)
 	if(character != CHAR_TAILS)instance_destroy(obj_tails_object);
 	
-	//Flag reset
-	ramp_fix = false;
-	ceiling_allow = true;
-	detach_allow = true;
-	
 	//Hitbox variables
 	hitbox_top_offset = 0;
 	hitbox_left_offset = 0;
@@ -24,13 +19,15 @@
 	player_handle_physics();
 	
 	//prevent player for dieing in the bonus stage
-	if (instance_exists(obj_bonus_level)) {
+	if (instance_exists(obj_bonus_level)) 
+	{
 		disable_death = true	
 	}
 	
 	//check if player should be able to turn super
 	allow_super = true
-	if (input_disable || obj_level.disable_timer || instance_exists(obj_bonus_level) || instance_exists(par_shield)){
+	if (input_disable || obj_level.disable_timer || instance_exists(obj_bonus_level) || instance_exists(par_shield))
+	{
 		allow_super = false	
 	}
 	
@@ -39,8 +36,6 @@
 	
 	//Step movement for sticking on the collision
 	steps = 1 + abs(floor(x_speed/13)) + abs(floor(y_speed/13));
-
-	reach_range = 16;
 
 	//Cancel when in debug mode
 	if(debug)
@@ -63,3 +58,6 @@
 		
 	
 	}
+	
+	// Reset flags
+	on_object = false;
