@@ -8,7 +8,7 @@
 	size_y = sprite_height / 16;
 	
 	//Get layer tilemap
-	tilelayer = layer_tilemap_get_id(target_layer);
+	var target_tile_layers = string_split(target_layer,",", true)
 
 	//Collapsing platform's bounding box in 16x16 size
 	min_x = floor(x / 16.0);
@@ -16,16 +16,28 @@
     min_y = floor(y / 16.0);
     max_y = min_y + size_y;
 	
-	for (var i = min_x; i < max_x; i++) 
-	{
-        for (var j = min_y; j < max_y; j++) 
-		{	
-			//Remove tiles from the area
-			tilemap_set_at_pixel(tilelayer, 0, (i * 16.0), (i * 16.0));
-			for (var z = 0; z <= 1; ++z) 
-			{		
-				var tilelayer_c = layer_tilemap_get_id(global.col_tile[z]);
-				tilemap_set_at_pixel(tilelayer_c, 0, (i * 16.0), (i * 16.0));
-			}
-        }
-    }
+	var layers_size = array_length(target_tile_layers)
+	
+	if layers_size == 0 {
+		show_debug_message("WARNING! No Tile Layers found... Should have at least one.")	
+		return
+	}
+	
+	
+	
+		for (var i = min_x; i < max_x; i++) 
+		{
+	        for (var j = min_y; j < max_y; j++) 
+			{	
+				//Remove tiles from the area
+				for (var p = 0; p < layers_size; ++p) {
+					tilemap_set_at_pixel(layer_tilemap_get_id(target_tile_layers[p]), 0, (i * 16.0), (i * 16.0));
+				}
+				for (var z = 0; z <= 1; ++z) 
+				{		
+					var tilelayer_c = layer_tilemap_get_id(global.col_tile[z]);
+					tilemap_set_at_pixel(tilelayer_c, 0, (i * 16.0), (i * 16.0));
+				}
+	        }
+	    }
+	

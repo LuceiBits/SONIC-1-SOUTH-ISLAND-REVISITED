@@ -13,12 +13,15 @@
 		//refresh all tiles when reemerging on screen
 		if (on_screen(64,64) && offscreen && triggered) {
 			offscreen = false	
-			var tilelayer = layer_tilemap_get_id(target_layer);
-			for (var j = 0; j < ds_list_size(tile_memory); j++) {
-				var _x = tile_memory[| j]._x
-				var _y = tile_memory[| j]._y
-				var _data = tile_memory[| j]._id
-				tilemap_set(tilelayer, _data, _x, _y);
+			var target_tile_layers = string_split(target_layer,",", true)
+			for (var i = 0; i < array_length(target_tile_layers); i++){
+				var tilelayer = layer_tilemap_get_id(target_tile_layers[i]);
+				for (var j = 0; j < ds_list_size(tile_memory[i]); j++) {
+					var _x = tile_memory[i][| j]._x
+					var _y = tile_memory[i][| j]._y
+					var _data = tile_memory[i][| j]._id
+					tilemap_set(tilelayer, _data, _x, _y);
+				}
 			}
 			for (var i = 0; i < 2; i++){
 				var tilelayer_c = layer_tilemap_get_id(global.col_tile[i]);
