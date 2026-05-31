@@ -183,8 +183,6 @@
     {"name":"inst_2D5BDE93","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
     {"name":"inst_709DD83E","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
     {"name":"inst_76404529","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
-    {"name":"inst_12DFBD8B","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
-    {"name":"inst_37A0E0E0","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -195,12 +193,6 @@
         {"$GMRInstance":"v4","%Name":"inst_1AAA6524_1","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_1AAA6524_1","objectId":{"name":"obj_titlecard","path":"objects/obj_titlecard/obj_titlecard.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":32.0,"y":0.0,},
         {"$GMRInstance":"v4","%Name":"inst_7E6361A3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7E6361A3","objectId":{"name":"obj_act_trans_marker","path":"objects/obj_act_trans_marker/obj_act_trans_marker.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":1472.0,},
         {"$GMRInstance":"v4","%Name":"inst_AF96CA","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_AF96CA","objectId":{"name":"obj_water_effect","path":"objects/obj_water_effect/obj_water_effect.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":48.0,"y":0.0,},
-        {"$GMRInstance":"v4","%Name":"inst_12DFBD8B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_12DFBD8B","objectId":{"name":"obj_aaz_button","path":"objects/obj_aaz_button/obj_aaz_button.yy",},"properties":[
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_aaz_button","path":"objects/obj_aaz_button/obj_aaz_button.yy",},"propertyId":{"name":"collision_flag","path":"objects/obj_aaz_button/obj_aaz_button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":-180.0,"scaleX":1.0,"scaleY":1.0,"x":176.0,"y":2320.0,},
-        {"$GMRInstance":"v4","%Name":"inst_37A0E0E0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_37A0E0E0","objectId":{"name":"obj_aaz_button","path":"objects/obj_aaz_button/obj_aaz_button.yy",},"properties":[
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_aaz_button","path":"objects/obj_aaz_button/obj_aaz_button.yy",},"propertyId":{"name":"collision_flag","path":"objects/obj_aaz_button/obj_aaz_button.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"True",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":-360.0,"scaleX":1.0,"scaleY":1.0,"x":224.0,"y":2400.0,},
       ],"layers":[],"name":"Utilities","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRLayer":"","%Name":"Collision","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[
         {"$GMRInstanceLayer":"","%Name":"CollisionTriggers","depth":200,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
