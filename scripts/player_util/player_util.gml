@@ -166,21 +166,25 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 		//Bottom side of the hitbox:
 		case C_BOTTOM: 
 		pBox.top = 0;
+		pBox.bottom++;
 		break;
 		
 		//Top side of the hitbox:
 		case C_TOP: 
 		pBox.bottom = 0;
+		pBox.top--;
 		break;
 		
 		//Left side of the hitbox:
 		case C_LEFT: 
 		pBox.right = 0;
+		pBox.left--;
 		break;
 		
 		//Right side of the hitbox:
 		case C_RIGHT:
 		pBox.left = 0;
+		pBox.right++;
 		break;
 	}
 	
