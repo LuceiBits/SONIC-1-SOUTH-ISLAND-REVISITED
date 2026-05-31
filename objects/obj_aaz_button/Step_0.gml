@@ -2,7 +2,7 @@
     if (collision_flag) col = player_act_solid();
 
     if (!collision_flag)    side = C_MAIN;
-    else                    side = (image_yscale > 0)? C_BOTTOM : C_TOP;
+    else                    side = (image_angle == 180)? C_TOP : C_BOTTOM;
     
     if (player_collide_object(id, side) && !triggered){
         image_index = 1;
