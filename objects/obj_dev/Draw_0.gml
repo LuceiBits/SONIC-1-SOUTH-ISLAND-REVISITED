@@ -1,4 +1,11 @@
 /// @description Draw debug
+
+	//Camera variables
+	var c, cx, cy;
+	c = view_camera[view_current];
+	cx = camera_get_view_x(c);
+	cy = camera_get_view_y(c);
+	
 	//Draw hitboxes
 	if(show_hitbox)
 	{
@@ -31,7 +38,7 @@
 		surface_reset_target();
 		
 		//Draw surface
-		draw_surface(surf, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]))	
+		draw_surface(surf, cx, cy)	
 		
 		//Draw hitbox
 		draw_set_color(c_red);
@@ -81,14 +88,14 @@
 		surface_reset_target();
 		
 		//Draw surface
-		draw_surface(surf, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]))	
+		draw_surface(surf, cx, cy)	
 	}
 	//Disable not in debug mode
 	if(!debug || !instance_exists(obj_player)) exit;
 	
 	draw_set_alpha(0.75);
 	var sprite = object_get_sprite(object_list[object_select]);
-	draw_sprite(sprite, 0, mouse_x, mouse_y);
+	draw_sprite(sprite, 0, cursor_x + cx, cursor_y + cy);
 	draw_set_alpha(1);
 	
 	//Set surface target
@@ -107,11 +114,15 @@
 	draw_text(global.window_width, 0,"PLAYER: " + string(floor(obj_player.x)) + " " + string(floor(obj_player.y)));
 	draw_text(global.window_width, 8,"CAMERA: " + string(floor(obj_camera.camera_x)) + " " + string(floor(obj_camera.camera_y)));
 	draw_text(global.window_width, 16,"CANVAS: " + string(room_width) + " " + string(room_height));
+	draw_text(global.window_width, 24,"LX: " + string(Input.axis_l_h));
+	draw_text(global.window_width, 32,"LY: " + string(Input.axis_l_v));
+	draw_text(global.window_width, 40,"RX: " + string(Input.axis_r_h));
+	draw_text(global.window_width, 48,"RY: " + string(Input.axis_r_v));
 	
 	surface_reset_target()
 	
 	draw_set_halign(fa_center);
-	draw_text(mouse_x, mouse_y-32, string_upper(object_get_name(object_list[object_select])));
+	draw_text(cursor_x + cx, cursor_y - 32 + cy, string_upper(object_get_name(object_list[object_select])));
 	
 	//Draw surface
-	draw_surface(surf, camera_get_view_x(view_camera[view_current]), camera_get_view_y(view_camera[view_current]))	
+	draw_surface(surf, cx, cy)	

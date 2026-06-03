@@ -37,14 +37,28 @@
 	ActionRelease = ARelease || BRelease || CRelease;
 	StartRelease = keyboard_check_released((global.start))
 	
+	//Gamepad-exclusive debug:
+	BumperL = false;
+	BumperR = false;
+	BumperLPress = false;
+	BumperRPress = false;
+	BumperLRelease = false;
+	BumperRRelease = false;
+	
 	//Analog input Releasees:
 	axis_left_release = false;
 	axis_right_release = false;
 	axis_up_release = false;
 	axis_down_release = false;
 	
+	//Analog input general:
+	axis_l_h = 0.0;
+	axis_l_v = 0.0;
+	axis_r_h = 0.0;
+	axis_r_v = 0.0;
+	
 	//Analog deadzone:
-	deadzone_x = 0.7;
+	deadzone_x = 0.4;
 	deadzone_y = 0.4;
 	
 	//Vibration values:
@@ -52,4 +66,4 @@
 	vibration_strenght = 0;
 	
 	//Gamepad slot value:
-	global.gamepad_slot = 0;
+	global.gamepad_slot = -1;
