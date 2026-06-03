@@ -30,6 +30,7 @@
     {"$GMObjectProperty":"v2","%Name":"door_id","filters":[],"listItems":[],"multiselect":false,"name":"door_id","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"DEFAULT_ID","varType":2,},
     {"$GMObjectProperty":"v2","%Name":"reverse","filters":[],"listItems":[],"multiselect":false,"name":"reverse","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
     {"$GMObjectProperty":"v2","%Name":"move_once","filters":[],"listItems":[],"multiselect":false,"name":"move_once","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"true","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"move_horizontal","filters":[],"listItems":[],"multiselect":false,"name":"move_horizontal","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

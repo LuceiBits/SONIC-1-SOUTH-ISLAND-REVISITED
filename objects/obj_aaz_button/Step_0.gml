@@ -1,26 +1,28 @@
-    var col,side;
-    if (collision_flag) col = player_act_solid();
+    // Make the button solid
+	var col = player_act_solid();
 
-    if (!collision_flag)    side = C_MAIN;
-    else                    side = (image_angle == 180)? C_TOP : C_BOTTOM;
+   // Correct side conditions
+	var side = (sign(image_yscale)) ? C_TOP : C_BOTTOM;
     
-    if (player_collide_object(id, side) && !triggered){
-        image_index = 1;
+    if(col == side && !triggered)
+	{
         triggered = true;
         
-        with (obj_aaz_door){
-            if (door_id == other.button_id){
-                if (move_once && moved) continue;
+        with (obj_aaz_door)
+		{
+            if (door_id == other.button_id)
+			{
+                if (move_once && moved) 
+					continue;
                 
-				audio_play_sound(sfx_beep, 1, false, 2.5);
+				play_sound(sfx_beep);
                 state = DOOR.MOVING;
             }
         }
-    } else if (player_collide_object(id, side) && triggered){
-        image_index = 1;
-    } else {
-        image_index = 0;
-        triggered = false;
-    }
+    } 
 	
-	if (!on_screen()) instance_deactivate_object(id);
+	if(triggered)
+		image_index = 1;
+	
+	if(!on_screen()) 
+		instance_deactivate_object(id);

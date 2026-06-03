@@ -1,2 +1,3 @@
     triggered = false;
-    image_angle = abs(image_angle%360);
+	image_speed = 0;
+	image_index = 0;
