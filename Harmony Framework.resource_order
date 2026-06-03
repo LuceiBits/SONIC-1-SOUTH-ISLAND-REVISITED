@@ -3,6 +3,8 @@
     {"name":"Presentation","order":1,"path":"folders/Rooms/Presentation.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"obj_aaz_button","order":2,"path":"objects/obj_aaz_button/obj_aaz_button.yy",},
+    {"name":"obj_aaz_door","order":1,"path":"objects/obj_aaz_door/obj_aaz_door.yy",},
     {"name":"rm_stage_select","order":1,"path":"rooms/rm_stage_select/rm_stage_select.yy",},
     {"name":"game_init_collision","order":2,"path":"scripts/game_init_collision/game_init_collision.yy",},
     {"name":"game_init_font","order":4,"path":"scripts/game_init_font/game_init_font.yy",},
@@ -10,5 +12,7 @@
     {"name":"game_macros","order":3,"path":"scripts/game_macros/game_macros.yy",},
     {"name":"game_shell_functions","order":5,"path":"scripts/game_shell_functions/game_shell_functions.yy",},
     {"name":"game_util","order":1,"path":"scripts/game_util/game_util.yy",},
+    {"name":"spr_aaz_button","order":2,"path":"sprites/spr_aaz_button/spr_aaz_button.yy",},
+    {"name":"spr_aaz_door","order":1,"path":"sprites/spr_aaz_door/spr_aaz_door.yy",},
   ],
 }
