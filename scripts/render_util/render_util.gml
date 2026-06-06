@@ -134,8 +134,6 @@ function draw_background_layer(background_layer)
 		
 		var repSize = (camera_get_view_width(view_camera[view_current]) / sprite_get_width(background_sprite[background_layer]));
 		
-		show_debug_message(repSize)
-		
 		for (var i = -1; i < repSize; ++i) 
 		{
 		    var px = camera_get_view_x(view_camera[view_current]) + sprite_get_width(background_sprite[background_layer]) * i;
