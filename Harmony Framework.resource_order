@@ -14,5 +14,6 @@
     {"name":"game_util","order":1,"path":"scripts/game_util/game_util.yy",},
     {"name":"spr_aaz_button","order":2,"path":"sprites/spr_aaz_button/spr_aaz_button.yy",},
     {"name":"spr_aaz_door","order":1,"path":"sprites/spr_aaz_door/spr_aaz_door.yy",},
+    {"name":"spr_bg_aaz_water","order":3,"path":"sprites/spr_bg_aaz_water/spr_bg_aaz_water.yy",},
   ],
 }
