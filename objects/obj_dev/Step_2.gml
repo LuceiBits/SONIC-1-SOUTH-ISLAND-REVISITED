@@ -2,7 +2,7 @@
 	
 	//Stop if player doesn't exist
 	if(!instance_exists(obj_player)) exit;
-	/*
+	
 	//Show collision
 	layer_set_visible("CollisionObject", show_collision);
 	layer_set_visible("Triggers", show_collision);
