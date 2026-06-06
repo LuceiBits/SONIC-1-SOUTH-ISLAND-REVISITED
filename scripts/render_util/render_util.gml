@@ -1,49 +1,49 @@
-function draw_sprite_tiled_horizontal(sprite, subimg, pos_x, pos_y, vertical = false){
-	var Width, Height, Left, Right, Bottom;
- 
-	Width = sprite_get_width(sprite);
-	Height = sprite_get_height(sprite);
-	Left  = -1;
-	Right = camera_get_view_x(view_camera[view_current])/Width+global.window_width/Width+2;
-	Bottom = camera_get_view_y(view_camera[view_current])/Height+global.window_height/Height+2;
-	
-	if(!vertical)
-	{
-		for(var i = Left; i <= Right; i++)
-		{
-			draw_sprite(sprite, subimg, pos_x mod Width+Width*i, pos_y);
-		}
-	}
-	else
-	{
-		for(var i = Left; i <= Right; i++)
-		{
-			for(var j = -1; j <= Bottom; j++)
-			{
-				draw_sprite(sprite, subimg, pos_x mod Width+Width*i, pos_y mod Height+Height*j);
-			}
-		}		
-	}
-}
-
-function draw_sprite_tiled_horizontal_part(sprite, subimg, left, top, width, height, pos_x, pos_y)
+function draw_sprite_tiled_new(sprite, subimg, x, y, type = 0)
 {
-	var Width, Height, Left, Right, Bottom;
- 
-	Width = sprite_get_width(sprite);
-	Height = sprite_get_height(sprite);
-	Left  = -1;
-	Right = camera_get_view_x(view_camera[view_current])/Width+global.window_width/Width+2;
-	Bottom = camera_get_view_y(view_camera[view_current])/Height+global.window_height/Height+2;
+	var sprW = sprite_get_width(sprite);
+	var sprH = sprite_get_height(sprite);
 	
-
-
-		for(var i = -1; i <= Bottom; i++)
-		{
-			draw_sprite_part(sprite, subimg, left, top, width, height, pos_x mod Width+Width*i, pos_y);
-		}
-			
+	var camX = camera_get_view_x(view_camera[view_current]);
+	var camY = camera_get_view_y(view_camera[view_current]);
+	var camW = camera_get_view_width(view_camera[view_current]);
+	var camH = camera_get_view_height(view_camera[view_current]);
 	
+	var offsetX = x mod sprW;
+	var offsetY = y mod sprH;
+	
+	var startTileX = floor((camX - offsetX) / sprW) - 1;
+    var endTileX = ceil((camX + camW - offsetX) / sprW) + 1;
+	var startTileY = floor((camY - offsetY) / sprH) - 1;
+    var endTileY = ceil((camY + camH - offsetY) / sprH) + 1;
+	
+	switch(type)
+	{
+		default:
+		case 0:
+			for (var i = startTileX; i <= endTileX; i++)
+		    {
+				draw_sprite(sprite, subimg, offsetX + i * sprW, y);
+		    }
+		break;
+		
+
+		case 1:
+			for (var i = startTileY; i <= endTileY; i++)
+		    {
+				draw_sprite(sprite, subimg, x, offsetY + i * sprH);
+		    }
+		break;
+		
+		case 2:
+			for (var i = startTileX; i <= endTileX; i++)
+		    {
+				for (var j = startTileY; j <= endTileY; j++)
+				{
+					draw_sprite(sprite, subimg, offsetX + i * sprW, offsetY + j * sprH);
+				}
+		    }
+		break;
+	}
 }
 
 function draw_background_layer(background_layer)
@@ -76,13 +76,16 @@ function draw_background_layer(background_layer)
 		diff_y[background_layer] = pos_y[background_layer] - camera_get_view_y(view_camera[view_current]);
 
 		//Auto scrolling
-		offset_x[background_layer] += speed_x[background_layer];
-		offset_y[background_layer] += speed_y[background_layer];
+		if(global.process_objects)
+		{
+			offset_x[background_layer] += speed_x[background_layer];
+			offset_y[background_layer] += speed_y[background_layer];
+		}
 		
 		//Draw the background if the visibility flag is on
 		if (visibility[background_layer] == true) 
 		{
-			draw_sprite_tiled_horizontal(background_sprite[background_layer], background_frame[background_layer], floor(pos_x[background_layer]), floor(pos_y[background_layer]), background_vertical[background_layer]);
+			draw_sprite_tiled_new(background_sprite[background_layer], background_frame[background_layer], floor(pos_x[background_layer]), floor(pos_y[background_layer]), background_vertical[background_layer] ? 2 : 0);
 		}
 	}
 	else
@@ -128,21 +131,30 @@ function draw_background_layer(background_layer)
 		var StepY = shader_get_uniform(shd_line_scroll, "YSteps");
 		var ScaleY = shader_get_uniform(shd_line_scroll, "YScale");
 		var ShdHeight = shader_get_uniform(shd_line_scroll, "Height");
-			
-		//Set shader uniforms
-		shader_set_uniform_f(BGWidth, sprite_get_width(background_sprite[background_layer]));
-		shader_set_uniform_f(BGTexel, texture_get_texel_width(sprite_get_texture(background_sprite[background_layer], 0)));
-		shader_set_uniform_f(OffX, pos_x[background_layer]);
-		shader_set_uniform_f(PosX, camera_get_view_x(view_camera[view_current]), pos_y[background_layer]);
-		shader_set_uniform_f(StepY, line_steps[background_layer]/(1-factor_x[background_layer]));
-		shader_set_uniform_f(HeightY, line_gap[background_layer]);
-		shader_set_uniform_f(ScaleY, bg_scale[background_layer]); 
-		shader_set_uniform_f(ShdHeight, sprite_get_height(background_sprite[background_layer])); 
 		
-		//Draw the background if visibility flag is on
-		if (visibility[background_layer] == true) 
+		var repSize = (camera_get_view_width(view_camera[view_current]) / sprite_get_width(background_sprite[background_layer]));
+		
+		show_debug_message(repSize)
+		
+		for (var i = -1; i < repSize; ++i) 
 		{
-			draw_sprite_ext(background_sprite[background_layer], background_frame[background_layer], camera_get_view_x(view_camera[view_current]), floor(pos_y[background_layer]) , 1, bg_scale[background_layer], 0, c_white, 1);
+		    var px = camera_get_view_x(view_camera[view_current]) + sprite_get_width(background_sprite[background_layer]) * i;
+		
+			//Set shader uniforms
+			shader_set_uniform_f(BGWidth, sprite_get_width(background_sprite[background_layer]));
+			shader_set_uniform_f(BGTexel, texture_get_texel_width(sprite_get_texture(background_sprite[background_layer], 0)));
+			shader_set_uniform_f(OffX, pos_x[background_layer]);
+			shader_set_uniform_f(PosX, px, pos_y[background_layer]);
+			shader_set_uniform_f(StepY, line_steps[background_layer]/(1-factor_x[background_layer]));
+			shader_set_uniform_f(HeightY, line_gap[background_layer]);
+			shader_set_uniform_f(ScaleY, bg_scale[background_layer]); 
+			shader_set_uniform_f(ShdHeight, sprite_get_height(background_sprite[background_layer])); 
+		
+			//Draw the background if visibility flag is on
+			if (visibility[background_layer] == true) 
+			{
+				draw_sprite_ext(background_sprite[background_layer], background_frame[background_layer], px, floor(pos_y[background_layer]) , 1, bg_scale[background_layer], 0, c_white, 1);
+			}
 		}
 	}
 	
