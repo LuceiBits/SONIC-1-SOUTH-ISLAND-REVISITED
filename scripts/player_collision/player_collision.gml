@@ -119,10 +119,11 @@ function player_collision()
 		var c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
 		
 		// Mark the player object to be on terrain
-		if(c <= 16)
+		if(c.height < 16)
 		{
 			on_terrain = true;	
 		}
+		
 		
 		// Get the previous angle and angle from the active sensor
 		var oldAngle = ground_angle;
@@ -135,14 +136,14 @@ function player_collision()
 		if(!on_object)
 		{	
 			// If there's nothing below sonic, detach
-			if(c.height > (angleDiff > PLAYER_SLOPE_TOLERANCE ? 1 : PLAYER_DETACH_DIST))
+			if(c.height > (angleDiff > PLAYER_SLOPE_TOLERANCE ? 1 : PLAYER_DETACH_DIST) && !water_run)
 			{
 				ground = false;
 				exit;
 			}
 		
 			// Halt ground snapping and new angle if the difference is above the tolerance
-			if(angleDiff > PLAYER_SLOPE_TOLERANCE)
+			if(angleDiff > PLAYER_SLOPE_TOLERANCE || water_run && c.height > 0)
 				exit;
 		
 			// Snap player to the floor

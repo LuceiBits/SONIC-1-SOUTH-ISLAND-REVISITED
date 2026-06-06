@@ -140,6 +140,9 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 			colResult.angle = collision_get_angle(pxR, pyR, mode, plane, semi_solid);
 	}
 	
+	if(heightR == heightM || heightL == heightM || heightR == heightL)
+		colResult.angle = 90 * mode;
+		
     return colResult;
 }
 
