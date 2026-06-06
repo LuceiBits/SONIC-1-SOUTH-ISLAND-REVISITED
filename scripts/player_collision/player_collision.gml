@@ -56,7 +56,7 @@ function player_collision()
 		}
 		
 		// Ceiling collison
-		c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_CEILING, plane, true);	
+		c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_CEILING, plane);	
 		
 		// Touching the ceiling
 		if(c.height < 0)

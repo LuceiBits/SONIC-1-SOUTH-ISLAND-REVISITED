@@ -1,34 +1,52 @@
 function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
-	px = floor(px);
-	py = floor(py);
-	
-	var h = 0;
-	
-	switch(mode)
-	{
-		case CMODE_FLOOR:
-		h = tile_get_height(px, py);
-		break;
+    px = floor(px);
+    py = floor(py);
+
+    var best_h = 9999;
+
+    for (var i = 0; i < array_length(global.col_tile); i++)
+    {
+        var l = global.col_tile[i];
 		
-		case CMODE_LWALL:
-		h = tile_get_width(px, py);
-		break;
 		
-		case CMODE_CEILING:
-		h = tile_get_height(px, py - 1, , true);
-		break;
-		
-		case CMODE_RWALL:
-		h = tile_get_width(px - 1, py, ,true);
-		break;
-		
-	}
-	
-	return h;
+        if ((!semi_solid && l == "CollisionSemi")
+        ||  (plane != PLANE_A && l == "CollisionA")
+        ||  (plane != PLANE_B && l == "CollisionB"))
+        {
+            continue;
+        }
+
+
+        var h;
+
+        switch (mode)
+        {
+            case CMODE_FLOOR:
+                h = tile_get_height(px, py, l);
+            break;
+
+            case CMODE_LWALL:
+                h = tile_get_width(px, py, l);
+            break;
+
+            case CMODE_CEILING:
+                h = tile_get_height(px, py - 1, l, true);
+            break;
+
+            case CMODE_RWALL:
+                h = tile_get_width(px - 1, py, l, true);
+            break;
+        }
+
+        if (h < best_h)
+            best_h = h;
+    }
+
+    return best_h;
 }
 
-function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
+function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 {
 	px = floor(px);
 	py = floor(py);
@@ -41,29 +59,29 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_s
 		case CMODE_FLOOR:
 			ax = px - px mod 16;
 			bx = px + (15 - px mod 16);
-			ay = tile_get_height(ax, py);	
-			by = tile_get_height(bx, py);
+			ay = collision_get_height(ax, py, mode, plane, true);	
+			by = collision_get_height(bx, py, mode, plane, true);
 		break;
 		
 		case CMODE_LWALL:
 			by = py - py mod 16;
 			ay = py + (15 - py mod 16);
-			ax = tile_get_width(px, ay);	
-			bx = tile_get_width(px, by);
+			ax = collision_get_height(px, ay, mode, plane, true);	
+			bx = collision_get_height(px, by, mode, plane, true);
 		break;
 		
 		case CMODE_CEILING:
 			bx = px - px mod 16;
 			ax = px + (15 - px mod 16);
-			by = tile_get_height(ax, py,, true);	
-			ay = tile_get_height(bx, py,, true);
+			by = collision_get_height(ax, py, mode, plane, true);	
+			ay = collision_get_height(bx, py, mode, plane, true);
 		break;
 		
 		case CMODE_RWALL:
 			ay = py - py mod 16;
 			by = py + (15 - py mod 16);
-			bx = tile_get_width(px, ay,, true);	
-			ax = tile_get_width(px, by,, true);
+			bx = collision_get_height(px, ay, mode, plane, true);	
+			ax = collision_get_height(px, by, mode, plane, true);
 		break;
 	}
 	var angle = point_direction(ax, ay, bx, by);
