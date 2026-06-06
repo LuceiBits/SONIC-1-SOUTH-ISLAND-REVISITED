@@ -47,29 +47,6 @@
 		draw_set_alpha(1);
 		draw_set_color(c_white);
 		
-		//Draw main sensors
-		with(obj_player)
-		{
-			draw_set_color(#ff38ff);
-			draw_col_line_wall(-wall_h, -wall_w-1)
-			draw_set_color(#ff5454);
-			draw_col_line_wall(-wall_h, wall_w)
-			draw_set_color(#38ffa2);
-			draw_col_line(-hitbox_w, hitbox_h);
-			draw_set_color(#00f000);
-			draw_col_line(hitbox_w, hitbox_h);
-			draw_set_color(c_white);
-			draw_col_line(0, hitbox_h);
-			draw_set_color(#00aeef);
-			draw_col_line(-hitbox_w, -hitbox_h-1);
-			draw_set_color(#fff238);
-			draw_col_line(hitbox_w, -hitbox_h-1);
-			draw_set_color(c_white);
-			
-			draw_sprite(spr_point, 0, floor(x), floor(y));
-			
-			if(shield = S_ELECTRIC) draw_circle(floor(x), floor(y), 64, true);
-		}
 	}
 	
 	if(show_fps)

@@ -2,8 +2,8 @@
 	draw_sprite(spr_splash_bg, 0, 0, 0);
 	shader_reset();
 	
-	draw_sprite_tiled_horizontal(spr_splash_border_top, 0, -FRAME_TIMER, -bar_pos);
-	draw_sprite_tiled_horizontal(spr_splash_border_bottom, 0, FRAME_TIMER, WINDOW_HEIGHT+bar_pos);
+	draw_sprite_tiled_new(spr_splash_border_top, 0, -FRAME_TIMER, -bar_pos);
+	draw_sprite_tiled_new(spr_splash_border_bottom, 0, FRAME_TIMER, WINDOW_HEIGHT+bar_pos);
 	
 	for (var i = 0; i < 3; ++i) 
 	{
