@@ -68,7 +68,7 @@ function game_init_global_variables()
 	global.ring_extralife = 100;			//Ring threshold for extra life
 	
 	//Customizables variables
-	global.rotation_type = 2;				//This changes player's visual rotation 
+	global.rotation_type = 0;				//This changes player's visual rotation 
 	global.use_battery_rings = false;		//If this is disabled, destroying enemies will spawn flickies instead
 	global.chaotix_monitors = false;		//Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
 	global.use_peelout = true;				//Flag that allows peel-out ability

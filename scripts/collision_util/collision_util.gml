@@ -89,7 +89,7 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 	return angle;
 }
 
-function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false, angle = true)
+function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
 	// Default struct
 	var colResult = {
@@ -118,30 +118,21 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 	
 	// Default to the left sensor
 	colResult.height = heightL;
-	
-	if(angle)
-		colResult.angle = collision_get_angle(pxL, pyL, mode, plane, semi_solid);
+	colResult.angle = collision_get_angle(pxL, pyL, mode, plane);
 	
 	// Set the result to the middle sensor
 	if(heightM < colResult.height)
 	{
 		colResult.height = heightM;
-		
-		if(angle)
-			colResult.angle = collision_get_angle(pxM, pyM, mode, plane, semi_solid);
+		colResult.angle = collision_get_angle(pxM, pyM, mode, plane);
 	}
 	
 	// Set the result to the right sensor
 	if(heightR < colResult.height)
 	{
 		colResult.height = heightR;
-		
-		if(angle)
-			colResult.angle = collision_get_angle(pxR, pyR, mode, plane, semi_solid);
+		colResult.angle = collision_get_angle(pxR, pyR, mode, plane);
 	}
-	
-	if(heightR == heightM || heightL == heightM || heightR == heightL)
-		colResult.angle = 90 * mode;
 		
     return colResult;
 }
