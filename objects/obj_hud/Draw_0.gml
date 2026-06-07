@@ -79,18 +79,6 @@
 		}
 	}
 	
-	if (ds_map_exists(global.red_ring_map, obj_level.stage_name)) {
-		var i = 0;
-		repeat(obj_level.red_ring_count) {
-			if (global.red_ring_map[? obj_level.stage_name][i] == 1){
-				draw_sprite(spr_red_ring_hud,0,global.window_width -offset[3] - 10 - (obj_level.red_ring_count * 16) + (i * 16),  global.window_height - 18);
-			} else {
-				draw_sprite(spr_red_ring_hud,1,global.window_width -offset[3] - 10 - (obj_level.red_ring_count * 16) + (i * 16),  global.window_height - 18);
-			}
-			i++;
-		}
-	}
-	
 	surface_reset_target();
 	
 	draw_surface(surf, cx, cy);

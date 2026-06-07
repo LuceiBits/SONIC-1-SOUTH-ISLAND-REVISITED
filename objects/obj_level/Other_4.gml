@@ -13,7 +13,8 @@
 		obj_camera.target_x = obj_player.x;
 		obj_camera.target_y = obj_player.y-16;
 		global.stage_timer = global.time_store;
-		if (global.checkpoint_id.face_left) {
+		if (global.checkpoint_id.face_left) 
+		{
 			obj_player.facing = -1	
 		}
 	}
@@ -38,10 +39,3 @@
 	
 	show_debug_message(global.store_background_visibility);
 	
-	if !ds_map_exists(global.red_ring_map,stage_name) {
-		ds_map_add(global.red_ring_map,stage_name,array_create(red_ring_count))
-	}
-
-	if (red_ring_count > 10) || (instance_number(obj_red_ring) > 10) || (instance_number(obj_red_ring) > red_ring_count) {
-		throw "Red Ring count exceeds maximum count of " + string(min(red_ring_count,10));	
-	}
