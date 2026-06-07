@@ -32,3 +32,6 @@
 	
 	//Handle player's interaction with water
 	player_water();
+	
+	//Handle player recording
+	player_recorder();
