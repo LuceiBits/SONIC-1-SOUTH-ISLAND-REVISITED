@@ -15,9 +15,6 @@ function player_debug(){
 	var mov_x = hold_right - hold_left;
 	var mov_y = hold_down - hold_up;
 	
-	//Up-Down deadzone fix
-	mov_y = sign(mov_y + Input.axis_l_v);
-	
 	//Horizontal acceleration
 	if(mov_x != 0) 
 	{

@@ -91,10 +91,6 @@
 	draw_text(global.window_width, 0,"PLAYER: " + string(floor(obj_player.x)) + " " + string(floor(obj_player.y)));
 	draw_text(global.window_width, 8,"CAMERA: " + string(floor(obj_camera.camera_x)) + " " + string(floor(obj_camera.camera_y)));
 	draw_text(global.window_width, 16,"CANVAS: " + string(room_width) + " " + string(room_height));
-	draw_text(global.window_width, 24,"LX: " + string(Input.axis_l_h));
-	draw_text(global.window_width, 32,"LY: " + string(Input.axis_l_v));
-	draw_text(global.window_width, 40,"RX: " + string(Input.axis_r_h));
-	draw_text(global.window_width, 48,"RY: " + string(Input.axis_r_v));
 	
 	surface_reset_target()
 	

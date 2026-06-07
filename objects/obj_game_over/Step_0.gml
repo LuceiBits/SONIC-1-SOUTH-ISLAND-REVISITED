@@ -1,4 +1,5 @@
 /// @description Script
+	var actionPress = input_press(INPUT.A) || input_press(INPUT.B) || input_press(INPUT.C) || input_press(INPUT.START);
 	
 	//Add timer
 	timer++;
@@ -25,7 +26,7 @@
 	//Do the skip
 	if(timer >= 64 && timer < 560)
 	{
-		if(Input.ActionPress || Input.StartPress)
+		if(actionPress)
 		{
 			music_set_fade(FADE_OUT, 2);
 			timer = 560-1;

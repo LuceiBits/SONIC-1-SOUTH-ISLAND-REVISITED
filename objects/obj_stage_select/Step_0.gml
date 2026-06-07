@@ -1,6 +1,6 @@
 	//Get input
-	var press_x = Input.RightPress - Input.LeftPress;
-	var press_y = Input.DownPress - Input.UpPress;
+	var press_x = input_press(INPUT.RIGHT) - input_press(INPUT.LEFT);
+	var press_y = input_press(INPUT.DOWN) - input_press(INPUT.UP);
 	
 	//Get zone array size
 	var zone_arr = array_length(zone_list);
@@ -34,7 +34,7 @@
 		b = min(act_sel, array_length(zone_list[zone_sel])- 1);
 		
 		//Enter the gexus
-		if(Input.StartPress || Input.APress)
+		if(input_press(INPUT.START) || input_press(INPUT.A))
 		{
 			var set_room = zone_list[zone_sel][act_sel+1]
 			fade_to_room(set_room, 3);
@@ -56,7 +56,7 @@
 		
 		
 		//Play the sound
-		if(Input.StartPress || Input.APress)
+		if(input_press(INPUT.START) || input_press(INPUT.A))
 		{
 			play_music(sound_arr[sound_sel], 0);	
 		}

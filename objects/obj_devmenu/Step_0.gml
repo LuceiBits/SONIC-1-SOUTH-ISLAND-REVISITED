@@ -1,7 +1,7 @@
 /// @description Script
 
 	//Exit the dev menu
-	if(keyboard_check_pressed(vk_escape) && cool_down = 0 || Input.BPress && cool_down = 0 && state == dev_menu_state.normal)
+	if(keyboard_check_pressed(vk_escape) && cool_down = 0 || input_press(INPUT.B) && cool_down = 0 && state == dev_menu_state.normal)
 	{
 		//Trigger the window event
 		with(obj_window)
@@ -17,17 +17,17 @@
 	cool_down = max(cool_down - 1, 0);
 	
 	//Horizontal inputs
-	var input_h = Input.RightPress - Input.LeftPress;
-	var input_hold_h = Input.Right - Input.Left;
+	var input_h = input_press(INPUT.RIGHT) - input_press(INPUT.LEFT);
+	var input_hold_h = input_hold(INPUT.RIGHT) - input_hold(INPUT.LEFT);
 	var input_h_final = input_h + ((hold_h == 7) * input_hold_h);
 	
 	//Vertical inputs
-	var input_v = Input.DownPress - Input.UpPress;
-	var input_hold_v = Input.Down - Input.Up;
+	var input_v = input_press(INPUT.DOWN) - input_press(INPUT.UP);
+	var input_hold_v = input_hold(INPUT.DOWN) - input_hold(INPUT.UP);
 	var input_v_final = input_v + ((hold_v == 7) * input_hold_v);
 	
 	//Holding the horizontal input
-	if(Input.Right - Input.Left != 0)
+	if(input_hold(INPUT.RIGHT) - input_hold(INPUT.LEFT) != 0)
 	{
 		hold_h++;	
 		hold_h %= 8;	
@@ -38,7 +38,7 @@
 	}
 	
 	//Holding the vertical input
-	if(Input.Down - Input.Up != 0 && input_v == 0)
+	if(input_hold(INPUT.DOWN) - input_hold(INPUT.UP) != 0 && input_v == 0)
 	{
 		hold_v++;	
 		hold_v %= 8;	
@@ -58,7 +58,7 @@
 			menu_select = math_wrap(menu_select, 0, array_length(menu_list) - 1);
 		
 			//Change the menu state
-			if(Input.StartPress || Input.APress)
+			if(input_press(INPUT.START) || input_press(INPUT.A))
 			{
 				switch(menu_select)
 				{
@@ -104,14 +104,14 @@
 			}
 			
 			//Go back to the normal state
-			if(Input.BPress)
+			if(input_press(INPUT.B))
 			{
 				character_select = 0;
 				state = dev_menu_state.normal;
 			}
 			
 			//Proceed to the scene category select
-			if(Input.StartPress || Input.APress)
+			if(input_press(INPUT.START) || input_press(INPUT.A))
 			{
 				state = dev_menu_state.category_select;
 			}
@@ -137,14 +137,14 @@
 			}
 			
 			//Go back to character select
-			if(Input.BPress)
+			if(input_press(INPUT.B))
 			{
 				category_select = 0;
 				state = dev_menu_state.character_select;
 			}
 			
 			//Proceed to scene select
-			if(Input.StartPress || Input.APress)
+			if(input_press(INPUT.START) || input_press(INPUT.A))
 			{
 				state = dev_menu_state.stage_select;
 			}
@@ -168,14 +168,14 @@
 			}
 			
 			//Go back to category select
-			if(Input.BPress)
+			if(input_press(INPUT.B))
 			{
 				scene_select = 0;
 				state = dev_menu_state.category_select;
 			}
 			
 			//Enter the scene
-			if(Input.StartPress || Input.APress)
+			if(input_press(INPUT.START) || input_press(INPUT.A))
 			{
 				//Destroy the dev menu and activate everything
 				instance_destroy();
@@ -214,7 +214,7 @@
 			}
 			
 			//Go back to normal state
-			if(Input.BPress)
+			if(input_press(INPUT.B))
 			{
 				//Refresh the window
 				with(obj_window)

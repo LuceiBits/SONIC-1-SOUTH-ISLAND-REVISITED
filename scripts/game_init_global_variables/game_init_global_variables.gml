@@ -14,16 +14,6 @@ function game_init_global_variables()
 	global.window_size = 2;					//Window size multiplier
 	global.draw_state = undefined;
 	
-	//keyboard inputs
-	global.up = vk_up;						
-    global.down = vk_down;
-    global.left = vk_left;
-    global.right = vk_right;
-    global.a = ord("A");
-    global.b = ord("S");
-    global.c = ord("D");
-    global.start = vk_enter;
-	
 	//Setup volume
 	global.bgm_volume = 1;					//Music's channel volume
 	global.sfx_volume = 1;					//Sound effects volume
@@ -32,8 +22,6 @@ function game_init_global_variables()
 	global.checkpoint = ds_list_create();	//The list of active checkpoints
 	global.checkpoint_id = noone;			//Checkpoint that is currently active
 	global.time_store = 0;					//Store value for timer when checkpoint gets active
-	
-
 	
 	global.bonus_stage_state = BONUSSTAGE.OUTSIDE
 	global.store_object_state = ds_list_create();
@@ -57,7 +45,6 @@ function game_init_global_variables()
 	global.col_tile = ["CollisionMain", "CollisionSemi", "CollisionA", "CollisionB"];	//List of collision layers
 	global.extra_life_jingle = true;		//flag that plays a jingle that cuts out the music when true, plays a sound effect if false
 	
-	
 	//Act transition variables
 	global.monitor_store = [];				//List of monitor instances that were bumped with sign
 	global.monitor_id = 0;					//Current list ID of bumped monitor
@@ -68,17 +55,18 @@ function game_init_global_variables()
 	global.ring_extralife = 100;			//Ring threshold for extra life
 	
 	//Customizables variables
-	global.rotation_type = 0;				//This changes player's visual rotation 
-	global.use_battery_rings = false;		//If this is disabled, destroying enemies will spawn flickies instead
-	global.chaotix_monitors = false;		//Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
-	global.use_peelout = true;				//Flag that allows peel-out ability
-	global.use_dropdash = true;				//Flag that allows dropdash ability
-	global.use_airroll = false;				//Flag that allows rolling while air-borne
-	global.use_spindash = true;				//Flag taht allows player to use the spindash
-	global.camera_pan_type = 0;				//Variable that changes how camera panning works. 0 = No panning, 1 = Sonic CD panning[currently inaccurate], 2 = S1D/XG styled camera panning 
-	global.chaotix_dust_effect = false;		//Flag that disables classic spindash/skid dust effect
-	global.camera_type = 1;					//Vertical camera scrolling type, 0 = Megadrive, 1 = Mania
-	global.knux_camera_smooth = false;		//Flag for using smooth ledge climb camera movement
-	global.water_running_effect = 0;		//0 for the hydrocity effect, 1 for repeating splashes
-	global.no_skid_state = true;			//makes skidding work closer to the genesis games, instead of a seperate state
+	global.rotation_type = 0;				// This changes player's visual rotation 
+	global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead
+	global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
+	global.use_peelout = true;				// Flag that allows peel-out ability
+	global.use_dropdash = true;				// Flag that allows dropdash ability
+	global.use_airroll = false;				// Flag that allows rolling while air-borne
+	global.use_spindash = true;				// Flag taht allows player to use the spindash
+	global.camera_pan_type = 0;				// Variable that changes how camera panning works. 0 = No panning, 1 = Sonic CD panning[currently inaccurate], 2 = S1D/XG styled camera panning 
+	global.chaotix_dust_effect = false;		// Flag that disables classic spindash/skid dust effect
+	global.camera_type = 1;					// Vertical camera scrolling type, 0 = Megadrive, 1 = Mania
+	global.knux_camera_smooth = false;		// Flag for using smooth ledge climb camera movement
+	global.water_running_effect = 0;		// 0 for the hydrocity effect, 1 for repeating splashes
+	global.no_skid_state = true;			// makes skidding work closer to the genesis games, instead of a seperate state
+	global.super_button = INPUT.C			// This defines which input will be used for super transformation
 }

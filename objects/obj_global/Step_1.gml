@@ -1,5 +1,8 @@
 	/// @description Pre - Game events
 	
+	// Process the controllers
+	input_update();
+	
 	//Deactivate all of the objects if the flag is off
 	if(!global.process_objects)
 	{

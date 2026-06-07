@@ -1,24 +1,24 @@
 function player_get_input(){
 	
 	//Button holds
-	hold_up = Input.Up;
-	hold_down = Input.Down;
-	hold_left = Input.Left;
-	hold_right = Input.Right;
-	hold_a = Input.A;
-	hold_b = Input.B;
-	hold_c = Input.C;
-	hold_action = Input.Action;
+	hold_up = input_hold(INPUT.UP);
+	hold_down = input_hold(INPUT.DOWN);
+	hold_left = input_hold(INPUT.LEFT);
+	hold_right = input_hold(INPUT.RIGHT);
+	hold_a = input_hold(INPUT.A);
+	hold_b = input_hold(INPUT.B);
+	hold_c = input_hold(INPUT.C);
+	hold_action = hold_a || hold_b || hold_c;
 	
 	//Button holds
-	press_up = Input.UpPress;
-	press_down = Input.DownPress;
-	press_left = Input.LeftPress;
-	press_right = Input.RightPress;
-	press_a = Input.APress;
-	press_b = Input.BPress;
-	press_c = Input.CPress;
-	press_action = Input.ActionPress;	
+	press_up = input_press(INPUT.UP);
+	press_down = input_press(INPUT.DOWN);
+	press_left = input_press(INPUT.LEFT);
+	press_right = input_press(INPUT.RIGHT);
+	press_a = input_press(INPUT.A);
+	press_b = input_press(INPUT.B);
+	press_c = input_press(INPUT.C);
+	press_action = press_a || press_b || press_c;	
 	
 	//Disable inputs
 	if(input_disable)

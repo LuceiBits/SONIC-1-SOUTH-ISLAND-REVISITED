@@ -2,6 +2,8 @@
 	//Add timer
 	timer += 1;
 	
+	var actionPress = input_press(INPUT.A) || input_press(INPUT.B) || input_press(INPUT.C);
+	
 	//Force to victory state
 	with(obj_player)
 	{
@@ -66,14 +68,16 @@
 			play_sound(sfx_scoreadd);
 		
 		//Skip the count down
-		if(Input.ActionPress && time_bonus > 0){
+		if(actionPress && time_bonus > 0)
+		{
 			//Time bonus skip
 			global.score += time_bonus; 
 			total_bonus += time_bonus;
 			time_bonus -= time_bonus; 
 		}
 		
-		if(Input.ActionPress && ring_bonus > 0){
+		if(actionPress && ring_bonus > 0)
+		{
 			//Ring bonus skip
 			global.score += ring_bonus; 
 			total_bonus += ring_bonus;

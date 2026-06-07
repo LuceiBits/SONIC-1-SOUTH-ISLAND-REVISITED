@@ -1,4 +1,6 @@
-if(Input.StartPress || Input.ActionPress){
+var actionPress = input_press(INPUT.A) || input_press(INPUT.B) || input_press(INPUT.C) || input_press(INPUT.START);
+
+if(actionPress){
 	if delay > 2 
 	{
 		global.process_objects = true;

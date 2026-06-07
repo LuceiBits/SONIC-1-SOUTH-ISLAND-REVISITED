@@ -41,7 +41,8 @@ function player_state_jump(){
 	}
 	
 	//super transformation
-	if (!super && allow_super && global.rings >= 50 && game_has_all_emeralds() && press_action && y_speed > -jump_release)
+	var superButton = input_press(global.super_button) && !input_disable;
+	if (!super && allow_super && global.rings >= 50 && game_has_all_emeralds() && superButton && y_speed > -jump_release)
 	{
 		state = player_state_transform
 		x_speed = 0;

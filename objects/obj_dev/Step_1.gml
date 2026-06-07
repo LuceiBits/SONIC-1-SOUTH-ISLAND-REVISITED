@@ -1,7 +1,7 @@
 /// @description Dev menu
 	room_speed = 60;
 	
-	if((keyboard_check_pressed(vk_escape) || gamepad_button_check_pressed(global.gamepad_slot, gp_select)) && !instance_exists(obj_devmenu) && !obj_shell.isOpen)
+	if(keyboard_check_pressed(vk_escape) && !instance_exists(obj_devmenu) && !obj_shell.isOpen)
 	{
 		instance_create_depth(0, 0, -99999, obj_devmenu)
 	}
@@ -24,7 +24,7 @@
 	
 	if(!obj_shell.isOpen)
 	{
-		if(keyboard_check_pressed(vk_tab) || Input.BumperLPress) debug = !debug;
+		if(keyboard_check_pressed(vk_tab)) debug = !debug;
 		if(keyboard_check_pressed(ord("B")) && instance_exists(obj_hud)) obj_hud.render = !obj_hud.render;
 		if(keyboard_check_pressed(ord("T"))) global.title_card = !global.title_card;
 		if(keyboard_check_pressed(vk_f9)) show_collision = !show_collision;
@@ -50,7 +50,7 @@
 		}
 		
 		if(keyboard_check(vk_f6)) room_speed = 5;
-		if(keyboard_check(vk_backspace) || Input.BumperR) room_speed = 240;
+		if(keyboard_check(vk_backspace)) room_speed = 240;
 	
 		//Stop if player doesn't exist
 		if(!instance_exists(obj_player)) exit;
@@ -155,50 +155,20 @@
 	cx = camera_get_view_x(c);
 	cy = camera_get_view_y(c);
 	
-	//Set up previous mouse x and y vars when getting into debug
-	if (!variable_instance_exists(id, "prev_win_mouse_x"))
-	{
-	    prev_win_mouse_x = window_mouse_get_x();
-	    prev_win_mouse_y = window_mouse_get_y();
-	}
-	
-	//Check
-	if (abs(window_mouse_get_x() - prev_win_mouse_x) > 0.5 || abs(window_mouse_get_y() - prev_win_mouse_y) > 0.5)
-	{
-	    debug_use_analog = false;
-	}
-	prev_win_mouse_x = window_mouse_get_x();
-	prev_win_mouse_y = window_mouse_get_y();
-	
-	if (Input.axis_r_h != 0 || Input.axis_r_v != 0)
-	{
-	    debug_use_analog = true;
-	}
-	
 	//Move cursor
-	if (!debug_use_analog)
-	{
-	    cursor_x = mouse_x - cx;
-	    cursor_y = mouse_y - cy;
-	}
-	else
-	{
-	    cursor_x += Input.axis_r_h * 2;
-	    cursor_y += Input.axis_r_v * 2;
-	    cursor_x = clamp(cursor_x, 0, WINDOW_WIDTH);
-	    cursor_y = clamp(cursor_y, 0, WINDOW_HEIGHT);
-	}
+	cursor_x = mouse_x - cx;
+	cursor_y = mouse_y - cy;
 	
 	//The scroll!
-	if((mouse_wheel_up() && !debug_use_analog) || (Input.CPress && debug_use_analog)) object_select += 1;
-	if((mouse_wheel_down() && !debug_use_analog)) object_select -= 1;
+	if(mouse_wheel_up()) object_select += 1;
+	if(mouse_wheel_down()) object_select -= 1;
 	
 	//Repeat
 	if(object_select < 0) object_select = array_length(object_list) - 1;
 	if(object_select > array_length(object_list) - 1) object_select = 0;
 	
 	//Spawn the object
-	if((mouse_check_button_pressed(mb_left) && !debug_use_analog) || (Input.APress && debug_use_analog))
+	if(mouse_check_button_pressed(mb_left))
 	{
 		instance_create_layer(cursor_x + cx, cursor_y + cy, "Objects", object_list[object_select]);
 		if(object_select = 11)
@@ -212,7 +182,7 @@
 	{
 		var mouse_overlap = instance_position(cursor_x + cx, cursor_y + cy, object_list[i])
 
-		if(mouse_overlap && (mouse_check_button_pressed(mb_right) && !debug_use_analog) || (Input.BPress && debug_use_analog))
+		if(mouse_overlap && (mouse_check_button_pressed(mb_right)))
 		{
 			instance_destroy(mouse_overlap);
 		}

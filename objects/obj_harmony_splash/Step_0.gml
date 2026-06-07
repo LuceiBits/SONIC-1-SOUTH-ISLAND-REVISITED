@@ -1,5 +1,6 @@
 	timer++
-		
+	var actionPress = input_press(INPUT.A) || input_press(INPUT.B) || input_press(INPUT.C) || input_press(INPUT.START);
+	
 	if(timer < 240)
 	{
 		for (var i = 0; i < 64; ++i) 
@@ -37,7 +38,7 @@
 		bar_pos = 80 * ease_out_elastic(ease_timer[3]);
 		bar_pos += 108;
 	
-		if (Input.StartPress || Input.ActionPress) && !skipped {
+		if (actionPress) && !skipped {
 			fade_to_room(room_next(room), 4);
 			skipped = true;
 		}
