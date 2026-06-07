@@ -50,8 +50,8 @@ function player_collision()
 			c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
 			
 			// Snap player to the floor
+			ground_angle = c.angle;
 			y += c.height * y_dir;
-			x += c.height * x_dir;
 			exit;
 		}
 		
