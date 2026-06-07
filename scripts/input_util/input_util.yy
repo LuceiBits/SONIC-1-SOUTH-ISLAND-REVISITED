@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"zone_util",
+  "%Name":"input_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"zone_util",
+  "name":"input_util",
   "parent":{
     "name":"Utility Scripts",
     "path":"folders/Scripts/Utility Scripts.yy",

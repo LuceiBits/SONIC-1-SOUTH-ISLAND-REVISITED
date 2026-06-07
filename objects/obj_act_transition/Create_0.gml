@@ -43,7 +43,7 @@
 	}
 	
 	//Store bg visibility
-	zone_store_bg_visibility();
+	level_store_bg_visibility();
 
 	//Store monitors
 	monitor_len = array_length(global.monitor_store);
@@ -68,5 +68,5 @@
 	global.act_transition = true;
 	
 	//Go to the next act
-	zone_reset_data();
-	room_goto(obj_zone.next_level);
+	level_reset_data();
+	room_goto(obj_level.next_level);

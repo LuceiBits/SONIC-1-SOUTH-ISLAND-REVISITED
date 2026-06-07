@@ -11,8 +11,8 @@
 	zone_list = [["ARBOREAL AGATE", rm_arboreal_agate1, rm_arboreal_agate2],
 	["TEST STAGE", rm_your_zone]];
 	
-	zone_reset_data();
-	zone_reset_bg_visibility();
+	level_reset_data();
+	level_reset_bg_visibility();
 	global.score = 0;
 
 	quotes = ["WELCOME TO HARMONY FRAMEWORK!"];

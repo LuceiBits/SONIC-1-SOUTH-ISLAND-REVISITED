@@ -15,7 +15,7 @@
 		}
 		
 		obj_player.input_disable = false;
-		obj_zone.disable_timer = false;	
+		obj_level.disable_timer = false;	
 		obj_hud.slide_in = true;
 	}
 	
@@ -80,7 +80,7 @@
 		}
 		
 		obj_player.input_disable = false;
-		obj_zone.disable_timer = false;	
+		obj_level.disable_timer = false;	
 		obj_hud.slide_in = true;
 		
 		//End card

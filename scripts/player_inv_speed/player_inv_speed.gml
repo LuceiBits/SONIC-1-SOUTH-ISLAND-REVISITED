@@ -106,7 +106,7 @@ function player_inv_speed(){
 			}
 		}
 		//exit conditions
-		if (obj_zone.disable_timer || knockout_type = K_DIE || knockout_type = K_DROWN) {
+		if (obj_level.disable_timer || knockout_type = K_DIE || knockout_type = K_DROWN) {
 			super = false
 			speed_shoes = 0
 			invincible_timer = 0

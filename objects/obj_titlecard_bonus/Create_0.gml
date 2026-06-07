@@ -15,4 +15,4 @@
 	
 	//Disable flags
 	obj_player.input_disable = true;
-	obj_zone.disable_timer = true;
+	obj_level.disable_timer = true;

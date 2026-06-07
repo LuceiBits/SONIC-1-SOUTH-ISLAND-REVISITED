@@ -188,8 +188,8 @@
 				global.character = character_select;
 				
 				//Reset the stage data
-				zone_reset_data();
-				zone_reset_bg_visibility();
+				level_reset_data();
+				level_reset_bg_visibility();
 				
 				//Go to the room
 				room_goto(scene_room[category_select + 1][scene_select]);

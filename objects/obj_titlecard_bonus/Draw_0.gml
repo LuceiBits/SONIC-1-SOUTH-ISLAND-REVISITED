@@ -49,10 +49,10 @@
 	
 	draw_set_color(c_white);
 	draw_set_halign(fa_center)
-	draw_text((WINDOW_WIDTH / 2) + 2, offset[1]+2, string(obj_zone.stage_name));
+	draw_text((WINDOW_WIDTH / 2) + 2, offset[1]+2, string(obj_level.stage_name));
 	//draw_text(152 - offset[2], 96, "ACT " + string(obj_level.act));
 	draw_set_color(c_black);
-	draw_text(WINDOW_WIDTH / 2, offset[1], string(obj_zone.stage_name));
+	draw_text(WINDOW_WIDTH / 2, offset[1], string(obj_level.stage_name));
 
 	
 	draw_set_halign(fa_left)

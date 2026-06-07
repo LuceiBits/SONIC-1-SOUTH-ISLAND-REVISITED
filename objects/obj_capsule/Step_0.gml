@@ -70,8 +70,8 @@
 		
 		//Act clear
 		if(!instance_exists(obj_act_clear) && timer = 100){
-			obj_zone.disable_timer = true;
-			obj_zone.act_transition = false;
+			obj_level.disable_timer = true;
+			obj_level.act_transition = false;
 			instance_create_depth(0, 0, obj_hud.depth, obj_act_clear);
 		}
 		

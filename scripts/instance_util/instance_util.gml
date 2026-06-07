@@ -257,7 +257,7 @@ function instance_act_badnik()
 			obj_player.y_speed = -abs(obj_player.y_speed);
 		
 			//Create score object and add combo and badnik chain
-			obj_zone.badnik_chain += 1;
+			obj_level.badnik_chain += 1;
 			create_score();
 		
 			//Create explosion effect

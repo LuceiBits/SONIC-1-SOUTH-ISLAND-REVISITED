@@ -9,10 +9,10 @@
 	#macro A_PICKY 6
 	
 	//Randomize the animal
-	random_animal = random(array_length(obj_zone.animal));
+	random_animal = random(array_length(obj_level.animal));
 	
 	//Flicky values for different type
-	animal_type = obj_zone.animal[random_animal];
+	animal_type = obj_level.animal[random_animal];
 	animal_sprite = [spr_flicky, spr_pocky, spr_cucky, spr_ricky, spr_pecky, spr_rocky, spr_picky];
 	grav_arr = [0.09375, 0.21875, 0.09375, 0.21875, 0.21875, 0.21875, 0.21875];
 	jump_force = [4, 4, 3, 3.5, 3, 1.5, 3]

@@ -39,8 +39,8 @@
 	//Clear alpha
 	draw_clear_alpha(c_black, 0)
 	
-	var act_text = "Zone " + string(obj_zone.act)
-	if (obj_zone.act == 0) {
+	var act_text = "Zone " + string(obj_level.act)
+	if (obj_level.act == 0) {
 		act_text = "Zone"	
 	}
 	
@@ -50,7 +50,7 @@
 		var curve = animcurve_get(curve_titlecard)
 		var c_channel_3 = animcurve_get_channel(curve,"curve3")
 		var c_channel_4 = animcurve_get_channel(curve,"curve4")
-		offset[4] = (-string_width(string(obj_zone.stage_name))) - 24 + (animcurve_channel_evaluate(c_channel_3, min(timer / 100,1)) * (string_width(string(obj_zone.stage_name))+ 71 + 24))
+		offset[4] = (-string_width(string(obj_level.stage_name))) - 24 + (animcurve_channel_evaluate(c_channel_3, min(timer / 100,1)) * (string_width(string(obj_level.stage_name))+ 71 + 24))
 		offset[6] = -string_width(act_text) - 24 + (animcurve_channel_evaluate(c_channel_4, min(timer / 100,1)) * (string_width(act_text)+ 71 + 24))
 	}
 	
@@ -60,10 +60,10 @@
 	
 	
 	draw_set_color(c_black);
-	draw_text(offset[4] +10, offset[2]+2, string(obj_zone.stage_name));
+	draw_text(offset[4] +10, offset[2]+2, string(obj_level.stage_name));
 	//draw_text(152 - offset[2], 96, "ACT " + string(obj_level.act));
 	draw_set_color(c_white);
-	draw_text(offset[4]+8, offset[2], string(obj_zone.stage_name));
+	draw_text(offset[4]+8, offset[2], string(obj_level.stage_name));
 	
 	//Draw the left part of the sprite
 	

@@ -1,4 +1,4 @@
-function zone_reset_data()
+function level_reset_data()
 {
 	global.checkpoint_id = noone;
 	global.time_store = 0;
@@ -12,7 +12,7 @@ function zone_reset_data()
 	//do note this only runs when a stage is fully reset or loaded for this first time
 }
 
-function zone_get_end_results()
+function level_get_end_results()
 {
 	//Ring bonus
 	ring_bonus = global.rings * 100;
@@ -36,7 +36,7 @@ function zone_get_end_results()
 	
 }
 
-function zone_store_bg_visibility()
+function level_store_bg_visibility()
 {
 	for (var i = 0; i < instance_number(par_background); ++i)
 	{
@@ -47,7 +47,7 @@ function zone_store_bg_visibility()
 	}
 }
 
-function zone_reset_bg_visibility()
+function level_reset_bg_visibility()
 {
 	global.store_background_visibility = {};
 }
