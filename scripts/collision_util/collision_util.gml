@@ -23,19 +23,19 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
         switch (mode)
         {
             case CMODE_FLOOR:
-                h = tile_get_height(px, py, l);
+                h = _tile_get_height(px, py, l);
             break;
 
             case CMODE_LWALL:
-                h = tile_get_width(px, py, l);
+                h = _tile_get_width(px, py, l);
             break;
 
             case CMODE_CEILING:
-                h = tile_get_height(px, py - 1, l, true);
+                h = _tile_get_height(px, py - 1, l, true);
             break;
 
             case CMODE_RWALL:
-                h = tile_get_width(px - 1, py, l, true);
+                h = _tile_get_width(px - 1, py, l, true);
             break;
         }
 
@@ -141,7 +141,7 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 // Utility script's internal function, do not use them outside
 // ==========================================================================================
 
-function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
+function _tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 {
 
 	xpos = floor(xpos);
@@ -155,7 +155,7 @@ function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 	
 	// Get the height from active tile ID
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
-	var height = tiledata_get_height(tile_id, xpos, flip);
+	var height = _tiledata_get_height(tile_id, xpos, flip);
 	
 	// Flip height
 	if(flip)
@@ -176,7 +176,7 @@ function tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 	return 15 - (ypos & 15);
 }
 
-function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
+function _tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
 	ypos = floor(ypos);
@@ -190,7 +190,7 @@ function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 	
 	// Get the height from active tile ID
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
-	var height = tiledata_get_height(tile_id, xpos, flip);
+	var height = _tiledata_get_height(tile_id, xpos, flip);
 	
 	// Second pass offset
 	var a = 16;
@@ -211,19 +211,19 @@ function tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 			return 15 - (height + (ypos & 15));	
 		}
 		else
-			return tile_get_height2(xpos, ypos - a, l, flip) - 16;
+			return _tile_get_height2(xpos, ypos - a, l, flip) - 16;
 			
 	}
 	else
 	{
 		if(height + (ypos & 15) < 0)
-			return tile_get_height2(xpos, ypos - a, l, flip) - 16; 
+			return _tile_get_height2(xpos, ypos - a, l, flip) - 16; 
 	}
 	
-	return tile_get_height2(xpos, ypos + a, l, flip) + 16;
+	return _tile_get_height2(xpos, ypos + a, l, flip) + 16;
 }
 
-function tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
+function _tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
 	ypos = floor(ypos);
@@ -237,7 +237,7 @@ function tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
 	
 	// Get the height from active tile ID
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
-	var height = tiledata_get_width(tile_id, ypos, flip);
+	var height = _tiledata_get_width(tile_id, ypos, flip);
 	
 	// Second pass offset
 	var a = 16;
@@ -261,7 +261,7 @@ function tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
 	return 15 - (xpos & 15);
 }
 
-function tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
+function _tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
 	ypos = floor(ypos);
@@ -275,7 +275,7 @@ function tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
 	
 	// Get the height from active tile ID
 	var tile_id = tilemap_get(layer_id, cellX, cellY);
-	var height = tiledata_get_width(tile_id, ypos, flip);
+	var height = _tiledata_get_width(tile_id, ypos, flip);
 	
 	// Second pass offset
 	var a = 16;
@@ -296,22 +296,22 @@ function tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
 			return 15 - (height + (xpos & 15));	
 		}
 		else
-			return tile_get_width2(xpos - a, ypos, l, flip) - 16;
+			return _tile_get_width2(xpos - a, ypos, l, flip) - 16;
 			
 	}
 	else
 	{
 		if(height + (xpos & 15) < 0)
-			return tile_get_width2(xpos - a, ypos, l, flip) - 16; 
+			return _tile_get_width2(xpos - a, ypos, l, flip) - 16; 
 	}
 	
-	return tile_get_width2(xpos + a, ypos, l, flip) + 16;
+	return _tile_get_width2(xpos + a, ypos, l, flip) + 16;
 }
 
 // ==========================================================================================
 // Tile data segment
 // ==========================================================================================
-function tiledata_get_height(tile_id, xpos, flip = false)
+function _tiledata_get_height(tile_id, xpos, flip = false)
 {
 	// Turn X position into an offset
 	if(!tile_get_mirror(tile_id))
@@ -349,7 +349,7 @@ function tiledata_get_height(tile_id, xpos, flip = false)
 	}
 }
 
-function tiledata_get_width(tile_id, ypos, flip = false)
+function _tiledata_get_width(tile_id, ypos, flip = false)
 {
 	// Turn X position into an offset
 	if(!tile_get_flip(tile_id))
