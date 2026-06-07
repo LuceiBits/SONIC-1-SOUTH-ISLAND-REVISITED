@@ -29,7 +29,7 @@
 			ground = false;
 			y_speed = abs(player.ground_speed) / -3;
 		}
-		obj_level.disable_timer = true;
+		obj_zone.disable_timer = true;
 	}
 	
 	//Slow dow the spin
@@ -52,7 +52,7 @@
 		play_sound(sfx_twinkle);
 		create_score(0, -48);
 		global.score += 100;
-		obj_level.badnik_chain = 1;
+		obj_zone.badnik_chain = 1;
 		
 		y_speed = -2;
 		x_speed = (x - player.x) / 16;

@@ -18,3 +18,15 @@ function game_os_get_string()
 		default: return "Unknown"
 	}
 }
+
+function game_has_all_emeralds(){
+	for (var i = 0; i < array_length(global.emeralds); ++i) 
+	{
+	    if (!global.emeralds[i]) 
+		{
+			return false;
+		}
+	}
+	
+	return true;
+}

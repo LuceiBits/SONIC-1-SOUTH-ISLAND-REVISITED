@@ -9,4 +9,4 @@
 		offset_x[i] = global.window_width;
 	
 	//Bonus
-	get_end_results();
+	zone_get_end_results();

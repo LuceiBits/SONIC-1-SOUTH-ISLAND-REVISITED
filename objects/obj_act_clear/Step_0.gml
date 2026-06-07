@@ -95,7 +95,7 @@
 	}
 	
 	//Ending events
-	if(state = 1 && !obj_level.act_transition)
+	if(state = 1 && !obj_zone.act_transition)
 	{
 		if(timer = 80)
 		{
@@ -105,13 +105,13 @@
 		//Go to the next stage
 		if(timer = 110)
 		{
-			reset_stage_data();
-			reset_background_visibility();
-			room_goto(obj_level.next_level);
+			zone_reset_data();
+			zone_reset_bg_visibility();
+			room_goto(obj_zone.next_level);
 		}
 	}
 	
-	if(state = 1 && obj_level.act_transition){
+	if(state = 1 && obj_zone.act_transition){
 		//Move in card stuff
 		if(timer >= 24+64)	offset_x[0] += 16;
 		if(timer >= 32+64)	offset_x[1] += 16;

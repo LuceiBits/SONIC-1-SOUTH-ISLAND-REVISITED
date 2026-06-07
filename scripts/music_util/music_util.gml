@@ -7,10 +7,7 @@ function music_add(music_id, sound_id, loop_start = 0.00, loop_end = 0.00, loop 
 		global.music_map[? music_id][1] = loop_start
 		global.music_map[? music_id][2] = loop_end
 		global.music_map[? music_id][3] = loop
-	} else 
-	{
-		//trace("ALERT: Your are trying to add a music track that already exsits.")
-	}
+	} 
 }
 
 function music_fade_channel(channel, fade_type, fade_speed)

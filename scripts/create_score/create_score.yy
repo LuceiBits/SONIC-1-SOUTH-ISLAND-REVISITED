@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"create_score",
   "parent":{
-    "name":"Stage Scripts",
-    "path":"folders/Scripts/Stage Scripts.yy",
+    "name":"Misc. Scripts",
+    "path":"folders/Scripts/Engine Scripts/Misc. Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -38,8 +38,8 @@
 		//Game over event
 		if(type = 0)
 		{
-			reset_stage_data();
-			reset_background_visibility();
+			zone_reset_data();
+			zone_reset_bg_visibility();
 			game_restart();
 		}else // Time over event
 		{

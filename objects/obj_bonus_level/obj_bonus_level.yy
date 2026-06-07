@@ -15,8 +15,8 @@
     "path":"folders/Objects/Stage Objects/Common Objects/Important.yy",
   },
   "parentObjectId":{
-    "name":"obj_level",
-    "path":"objects/obj_level/obj_level.yy",
+    "name":"obj_zone",
+    "path":"objects/obj_zone/obj_zone.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,

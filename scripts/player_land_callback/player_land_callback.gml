@@ -2,7 +2,7 @@
 function player_land_callback()
 {
 	// Reset the badnik chain
-	obj_level.badnik_chain = 0;
+	obj_zone.badnik_chain = 0;
 	
 	// Stop rolling when landing
 	if(state == player_state_roll)

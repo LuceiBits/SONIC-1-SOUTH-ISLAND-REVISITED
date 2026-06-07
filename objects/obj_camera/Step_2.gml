@@ -40,4 +40,4 @@
 	v_lag = max(v_lag - 1, 0);
 	
 	//Function for camera boundaries
-	camera_boundaries();
+	_camera_boundaries();

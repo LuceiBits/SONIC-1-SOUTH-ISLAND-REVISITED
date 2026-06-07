@@ -1,4 +1,4 @@
-	with(obj_level)
+	with(obj_zone)
 	{
 		//Set stage music and loop points
 		stage_music = MUSIC.ARBOREAL_AGATE2;

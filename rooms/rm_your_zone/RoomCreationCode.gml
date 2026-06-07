@@ -1,7 +1,7 @@
 
 	
 	//NOTE: Duplicate this room to make levels!
-	with(obj_level)
+	with(obj_zone)
 	{
 		//Set stage music and loop points
 		stage_music = MUSIC.TECHDEMO_TOWER

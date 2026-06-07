@@ -57,7 +57,7 @@
 	
 		if(keyboard_check_pressed(ord("V")) && !instance_exists(obj_act_clear)){
 			instance_create_layer(0, 0, "Utilities", obj_act_clear)
-			obj_level.act_transition = false;
+			obj_zone.act_transition = false;
 		}
 		
 		//Add rings
@@ -203,7 +203,7 @@
 		instance_create_layer(cursor_x + cx, cursor_y + cy, "Objects", object_list[object_select]);
 		if(object_select = 11)
 		{
-			obj_level.act_transition = false;	
+			obj_zone.act_transition = false;	
 		}
 	}
 	

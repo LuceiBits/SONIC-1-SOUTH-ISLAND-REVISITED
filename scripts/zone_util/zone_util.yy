@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"get_end_results",
+  "%Name":"zone_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"get_end_results",
+  "name":"zone_util",
   "parent":{
-    "name":"Stage Scripts",
-    "path":"folders/Scripts/Stage Scripts.yy",
+    "name":"Utility Scripts",
+    "path":"folders/Scripts/Utility Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",
