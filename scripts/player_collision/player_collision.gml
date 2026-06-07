@@ -143,7 +143,7 @@ function player_collision()
 			}
 		
 			// Halt ground snapping and new angle if the difference is above the tolerance
-			if(angleDiff > PLAYER_SLOPE_TOLERANCE)
+			if(angleDiff > PLAYER_SLOPE_TOLERANCE || water_run && c.height > 0 && !on_terrain)
 				exit;
 		
 			// Snap player to the floor
