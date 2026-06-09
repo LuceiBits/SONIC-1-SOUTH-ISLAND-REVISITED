@@ -134,6 +134,9 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 			// Flag player as on object
 			o.on_object = true;
 			
+			// Make sure the ground is flat
+			o.ground_angle = 0;
+			
 			// Ledge direction
 			if(o.ground && o.x < this.x + thisHitbox.left)
 				o.ledge = -1;

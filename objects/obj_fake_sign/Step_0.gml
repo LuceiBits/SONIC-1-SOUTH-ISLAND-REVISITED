@@ -3,6 +3,8 @@
 	//Update the position
 	y += y_speed;
 	
+	var c = collision_get_height(x, y - 1, CMODE_FLOOR, PLANE_A, true);
+	
 	//Airborne events
 	if(!ground)
 	{
@@ -10,16 +12,14 @@
 		y_speed += grav;
 		
 		//Floor detection
-		while(collision_instance(0, 0, PLANE_A, true, false))
+		if(c < 0)
 		{
-			y--;
+			y += c;
+			ground = true;
 			y_speed = 0;
-			ground = true;	
 		}
 	}
 	
 	//If there's no floor, make the signpost airborn
-	if(!collision_instance(0, 8, PLANE_A, true, false))
-	{
+	if(c > 14)
 		ground = false;	
-	}

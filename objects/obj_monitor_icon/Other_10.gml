@@ -1,54 +1,54 @@
 /// @description Rewards
 	switch(monitor_type)
 	{
-		case "10 Rings":
+		case MONITOR.RINGS:
 			global.rings += 10;
 			play_sound(sfx_superring);
 		break;
 		
-		case "Shield":
+		case MONITOR.SHIELD:
 			obj_player.shield = S_NORMAL;
 			play_sound(sfx_shield);
 		break;
 		
-		case "Electric Shield":
+		case MONITOR.ELECTRIC_SHIELD:
 			obj_player.shield = S_ELECTRIC;
 			play_sound(sfx_shieldelec);
 		break;
 		
-		case "Fire Shield":
+		case MONITOR.FIRE_SHIELD:
 			obj_player.shield = S_FIRE;
 			play_sound(sfx_shieldfire);
 		break;
 		
-		case "Bubble Shield":
+		case MONITOR.BUBBLE_SHIELD:
 			obj_player.shield = S_BUBBLE;
 			play_sound(sfx_shieldbubble);
 		break;
 		
-		case "Invincible":
+		case MONITOR.INVINCIBLE:
 			obj_player.invincible = true
 			obj_player.invincible_timer = 1200;
 			if(!audio_is_playing(j_super))
 				play_music(MUSIC.J_INVINCIBLE, Jingle);
 		break;
 		
-		case "Speed Shoes":
+		case MONITOR.SPEED_SHOES:
 			obj_player.speed_shoes = 1200;
 			if(!audio_is_playing(j_super))
 				play_music(MUSIC.J_SPEEDSHOE, Jingle);	
 		break;
 		
-		case "Eggman":
+		case MONITOR.EGGMAN:
 			player_hurt();
 		break;
 		
-		case "Extra Life":
+		case MONITOR.EXTRA_LIFE:
 			SOUND_EXTRA_LIFE;
 			global.life += 1;
 		break;
 		
-		case "Combine Ring":
+		case MONITOR.COMBINE_RING:
 			obj_player.combinering = 1;
 			play_sound(sfx_combinering);
 		break;

@@ -63,22 +63,25 @@
 	y += y_speed;
 	
 	//Add gravity
-	if(!ground) y_speed += 0.046875;
-	
+	if(!ground) 
+		y_speed += 0.046875;
 	
 	//Ground detection
-	while(instance_place(x, y, [layer_tilemap_get_id(global.col_tile[0]), layer_tilemap_get_id(global.col_tile[1])]))
+	var c = collision_get_height(x, y - 1, CMODE_FLOOR, PLANE_A, true);
+	if(c < 0 && !ground)
 	{
-		y -= 1;	
+		y += c;
 		ground = true;
 		x_speed = 0;
 		y_speed = 0;
 		play_sound(sfx_slide);
 	}
 	
-	//Ground detection
-	if(instance_place(x + 8 * sign(x_speed), y, layer_tilemap_get_id(global.col_tile[0])))
+	//Wall detection
+	c = collision_get_height(x + 8 * sign(x_speed), y - 8, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, PLANE_A, true);
+	if(c < 0)
 	{
+		x += c;
 		x_speed *= -1;
 	}
 	
@@ -111,6 +114,7 @@
 			new_monitor.y_speed = -4;
 			new_monitor.monitor_type = monitor.monitor_type;
 			new_monitor.culling = false;
+			
 			y_speed = -2.75;
 			instance_destroy(monitor);	
 			play_sound(sfx_bubble_jump);
@@ -119,13 +123,7 @@
 			
 		}
 	}
-	
-	//Stop timer
-	if(triggered) 
-	{
-		input_disable = true;
-	}
-	
+
 	//Create act clear object
 	if(!instance_exists(obj_act_clear) && triggered && angle = 180 && spin_speed = 0) 
 	{

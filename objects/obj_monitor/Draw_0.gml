@@ -2,7 +2,8 @@
 	draw_self_floor();
 	
 	//Stop if destroyed
-	if(destroyed) exit;
+	if(destroyed) 
+		exit;
 	
 	var iconOffset = 4 * sign(image_yscale);
 	

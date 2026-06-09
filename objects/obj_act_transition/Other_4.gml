@@ -71,4 +71,5 @@
 		new_monitor.monitor_type = monitor_type[i];
 		new_monitor.destroyed = monitor_destroy[i];
 		new_monitor.depth = monitor_depth[i];
+		new_monitor.check_ground_below = true;
 	}

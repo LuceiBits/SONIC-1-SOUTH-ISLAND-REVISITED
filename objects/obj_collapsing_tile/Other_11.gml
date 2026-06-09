@@ -22,7 +22,6 @@
 	}
 	
 	
-	
 	for (var i = min_x; i < max_x; i++) 
 	{
 	    for (var j = min_y; j < max_y; j++) 

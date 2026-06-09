@@ -17,7 +17,7 @@
 		{
 			if(sign(image_yscale) == 1)
 			{
-				if(player.attacking && player.y_speed >= 0 && player.state != player_state_spindash)
+				if(player.attacking && player.y_speed >= 0 && player.state != player_state_spindash && ground)
 				{
 					collision_flag = false;
 				}
@@ -31,10 +31,13 @@
 			}
 		}
 		
+		// Hacky fixes
+		var oldPlayerY = player.y;
+		var oldMonitorX = x;
+		
+		// Make monitor solid
 		if(collision_flag)
-		{
 			col = player_act_solid();
-		}
 		
 		//Bump the monitor
 		if(col == C_BOTTOM && sign(image_yscale) == 1)
@@ -42,18 +45,29 @@
 			ground = false;
 			y_speed = -2;	
 			
-			player.y_speed = 1;
+			player.y_speed = 0;
 			
 			//Change depth
 			if(layer_bump)
 			{
 				depth = layer_get_depth("Objects");	
 			}
+			
+			// Make sure the player doesn't clip
+			if(!ground && player.ground)
+				player.y = oldPlayerY;
+			
+			// Make the player solid for the monitor
+			instance_act_solid(id, noone, player, player_get_hitbox(0));
+			
+			// Make sure the monitor doesn't move
+			x = oldMonitorX;
 		}
 		
 		//Destroy the monitor
 		if(player_collide_object())
 		{
+
 			destroyed = true;
 			ground = false;
 			y_speed = -2 * sign(image_yscale);
@@ -84,6 +98,7 @@
 		//Flip it back
 		image_yscale = 1;
 	}
+	
 	if(!ground)
 	{
 		//Update position by speed
@@ -95,28 +110,39 @@
 			y_speed += 0.2;
 		}
 		
-		
 		//Collision
-		while(collision_instance(0, 1, 0, true, true) && y_speed >= 0)
-		{
-			if(!instance_place(x, y, player))
-			{
-				ground = true;
-			}
-			y -= 1;
-			y = floor(y);
-			y_speed = 0;
-		}
+		var c = collision_active_sensor(floor((bbox_right - bbox_left) / 2), floor(bbox_bottom - y - 1), CMODE_FLOOR, PLANE_A, true);
 		
+		if(c.height < 0 && y_speed >= 0)
+		{
+			y_speed = 0;
+			ground = true;
+			y += c.height;
+		}
 	}
-	else
+	else if(check_ground_below)
 	{
-		y = floor(y);	
+		//Collision
+		var c = collision_active_sensor(floor((bbox_right - bbox_left) / 2), floor(bbox_bottom - y - 1), CMODE_FLOOR, PLANE_A, true);
+		
+		// Detach if theres nothing below
+		if(c.height > 14)
+			ground = false;
 	}
-	//User event for icon
-	event_user(0);
+
+	// Character life icon
+	var charIcon = [spr_monitor_icon_life_sonic, spr_monitor_icon_life_tails, spr_monitor_icon_life_knuckles];
+	
+	// Make the monitor icon list
+	var iconList = [spr_monitor_icon_10ring, spr_monitor_icon_shield, spr_monitor_icon_fire_shield,
+					spr_monitor_icon_electric_shield, spr_monitor_icon_bubble_shield, spr_monitor_icon_inv,
+					spr_monitor_icon_shoes, spr_monitor_icon_life_sonic, spr_monitor_icon_eggman, spr_monitor_icon_combine_ring];
+	
+	// Correct the life icon
+	iconList[MONITOR.EXTRA_LIFE] = charIcon[player_find(0).character];
+	
+	// Give it the correct icon
+	monitor_icon = iconList[monitor_type];
 
 	if(!on_screen() && ground && culling) 
-	{
 		instance_deactivate_object(id);
-	}

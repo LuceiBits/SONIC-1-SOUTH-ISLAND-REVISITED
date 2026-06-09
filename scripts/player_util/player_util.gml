@@ -78,6 +78,9 @@ function player_react_solid(result)
 		{
 			o.on_object = true;
 			
+			if(!o.on_terrain)
+				o.ground_angle = 0;
+			
 			// Ledge direction
 			if(o.ground && o.x < this.x + result.this_box.left)
 				o.ledge = -1;
