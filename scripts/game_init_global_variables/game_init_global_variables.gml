@@ -56,8 +56,6 @@ function game_init_global_variables()
 	
 	//Customizables variables
 	global.rotation_type = 0;				// This changes player's visual rotation 
-	global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead
-	global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
 	global.use_peelout = true;				// Flag that allows peel-out ability
 	global.use_dropdash = true;				// Flag that allows dropdash ability
 	global.use_airroll = false;				// Flag that allows rolling while air-borne
@@ -69,4 +67,8 @@ function game_init_global_variables()
 	global.water_running_effect = 0;		// 0 for the hydrocity effect, 1 for repeating splashes
 	global.no_skid_state = true;			// makes skidding work closer to the genesis games, instead of a seperate state
 	global.super_button = INPUT.C			// This defines which input will be used for super transformation
+	
+	// Not in use as of now
+	//global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead
+	//global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
 }
