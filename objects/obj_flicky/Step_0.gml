@@ -18,7 +18,9 @@
 	landed = false;
 	
 	//Handle collision
-	while(collision_instance(0, 6, PLANE_A, true, true) && y_speed >= 0)
+	var c = collision_get_height(x, y + 8, CMODE_FLOOR, PLANE_A, true)
+	
+	if(c < 0 && y_speed >= 0)
 	{
 		if(!triggered)
 		{
@@ -32,7 +34,8 @@
 			//Its triggered
 			triggered = true;	
 		}
-		y -= 1;	
+		
+		y += c;	
 		landed = true;
 	}
 	
@@ -40,6 +43,7 @@
 	{
 		y_speed = -jump_force[animal_type];
 	}
+	
 	//Capsule event
 	if(instance_exists(obj_capsule))
 	{
@@ -56,4 +60,5 @@
 	}
 	
 	//Destroy offscreen
-	if(!on_screen(32, 32)) instance_destroy();
+	if(!on_screen(32, 32)) 
+		instance_destroy();

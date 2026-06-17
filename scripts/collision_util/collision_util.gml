@@ -399,8 +399,3 @@ function collision_line_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, 
 {
 
 }
-
-function collision_instance(offset_x, offset_y, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
-{
-
-}
