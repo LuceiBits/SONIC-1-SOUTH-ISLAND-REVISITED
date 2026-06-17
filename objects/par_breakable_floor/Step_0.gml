@@ -25,5 +25,3 @@
 		player.y_speed = abs(player.y_speed)*-1;
 		instance_destroy();	
 	}
-	
-	if(!on_screen()) instance_deactivate_object(id);

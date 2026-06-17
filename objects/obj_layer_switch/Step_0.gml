@@ -22,5 +22,3 @@
 			}
 		}
 	}
-	
-	if(!on_screen()) instance_deactivate_object(id);

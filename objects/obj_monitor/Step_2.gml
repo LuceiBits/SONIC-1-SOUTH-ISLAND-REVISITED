@@ -143,6 +143,3 @@
 	
 	// Give it the correct icon
 	monitor_icon = iconList[monitor_type];
-
-	if(!on_screen() && ground && culling) 
-		instance_deactivate_object(id);

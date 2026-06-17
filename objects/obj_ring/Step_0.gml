@@ -115,6 +115,3 @@
 			x -= 1;
 		}
 	}
-	
-	//Temp culling
-	if(!on_screen() && !ringloss && !magnet && culling) instance_deactivate_object(id);
