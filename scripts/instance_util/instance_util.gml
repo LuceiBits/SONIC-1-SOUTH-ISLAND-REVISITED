@@ -250,11 +250,8 @@ function instance_act_badnik()
 		var fly_cond = (obj_player.state == player_state_tailsfly && abs(fly_angle) < 45)
 		if(obj_player.attacking || obj_player.invincible || fly_cond)
 		{
-			//Create battery ring
-			if(global.use_battery_rings)
-				instance_create_depth(x, y, depth, obj_battery_ring);
-			else	//Create flickies instead
-				instance_create_depth(x, y, depth, obj_flicky);
+			//Create flickies instead
+			instance_create_depth(x, y, depth, obj_flicky);
 		
 			//Player bounce
 			obj_player.y_speed = -abs(obj_player.y_speed);
