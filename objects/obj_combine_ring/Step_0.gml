@@ -45,32 +45,22 @@
 	//Gravity
 	y_speed += 0.09375;
 			
-	//Collision offset
-	var offx, offy;
-	offx = (bbox_right - bbox_right)/2;
-	offy = (bbox_bottom - bbox_top)/2;
-			
 	//Collision detection
-	while(collision_point_check(0, -16, 0, plane, false, true) && y_speed < 0)
+	var hc = collision_get_height(x + 16 * sign(x_speed), y, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, plane, false);
+	var vc = collision_get_height(x, y + 16 * sign(y_speed), sign(y_speed) ? CMODE_FLOOR : CMODE_CEILING, plane, sign(y_speed));
+		
+	// Bounce off floor and ceiling
+	if(vc < 0)
 	{
+		y += vc * sign(y_speed);
 		y_speed *= -1;
-		y += 1;
 	}
-	while(collision_point_check(0, 16, 0, plane, true, true) && y_speed > 0)
+		
+	// Bounce off walls
+	if(hc < 0)
 	{
-		y_speed *= -1;
-		y -= 1;
-	}
-	while(collision_point_check(-16, 0, 0, plane, false, true) && x_speed < 0)
-	{
+		x += hc * sign(x_speed);
 		x_speed *= -1;
-		x += 1;
-	}
-	while(collision_point_check(16, 0, 0, plane, false, true) && x_speed > 0)
-	{
-		x_speed *= -1;
-		x -= 1;
- 
 	}
 
 	
