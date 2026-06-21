@@ -1,4 +1,5 @@
  function palette_swap(texture, index){
+	 
 	//Get the shader
 	var shader = shd_color_replacer;
 	

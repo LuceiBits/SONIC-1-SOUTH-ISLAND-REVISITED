@@ -2,21 +2,6 @@
 	//Update the animator
 	animator_update(animator);
 	
-	//Different spring types
-	switch(spring_type)
-	{
-		case "Yellow":
-			sprite_index = spr_spring_diagonal_yellow;
-			spring_power = 7;
-		break;
-		
-		case "Red":
-			sprite_index = spr_spring_diagonal_red;
-			spring_power = 11;
-		break;
-	}
-	
-
 	//Hit from the bottom
 	if(player_collide_object() && !triggered && !inside_trigger)
 	{
