@@ -1,6 +1,7 @@
 /// @description Set the value
 	//Variables for this object only
 	process_object_list = ds_list_create();
+	instance_list = ds_list_create();
 	
 	#macro DEVMODE false
 	#macro Dev:DEVMODE true

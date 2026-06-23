@@ -1,5 +1,6 @@
 /// @description Setup
-
+	instance_list = ds_list_create();
+	
 	disable_timer = false;
 	badnik_chain = 0;
 	emerald_array = [];

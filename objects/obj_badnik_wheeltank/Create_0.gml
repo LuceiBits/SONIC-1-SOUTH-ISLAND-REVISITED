@@ -7,3 +7,5 @@
 	waittimer = 0
 	badnikdirection = 1
 	grounded = false
+	
+	instance_register_culling();

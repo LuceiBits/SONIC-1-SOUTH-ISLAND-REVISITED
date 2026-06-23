@@ -6,6 +6,8 @@
 	monitor_icon = spr_monitor_icon_10ring;
 	culling = true;
 	
+	instance_register_culling();
+	
 	// This has to be moved later
 	enum MONITOR
 	{

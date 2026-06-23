@@ -14,3 +14,5 @@
 			instance_destroy()	
 		}
 	}
+	
+	instance_register_culling();

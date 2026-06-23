@@ -1,1 +1,0 @@
-	Object110.inst = id;

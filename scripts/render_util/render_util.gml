@@ -169,6 +169,8 @@ function draw_self_floor()
 function draw_state_save()
 {
     global.draw_state = {
+		col : draw_get_colour(),
+		alpha : draw_get_alpha(),
         blendmode : gpu_get_blendmode(),
         blendmode_ext : gpu_get_blendmode_ext(),
         colourwriteenable : gpu_get_colourwriteenable(),
@@ -192,6 +194,9 @@ function draw_state_restore()
 {
     var _state = global.draw_state;
     
+	draw_set_color(_state.col);
+	draw_set_alpha(_state.alpha);
+	
     gpu_set_blendmode(_state.blendmode);
     
     var blend_src = _state.blendmode_ext[0];

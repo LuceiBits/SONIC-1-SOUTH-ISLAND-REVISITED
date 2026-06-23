@@ -8,3 +8,5 @@
 		frame[i] = 0;
 		log_y[i] = y;
 	}
+	
+	instance_register_culling();

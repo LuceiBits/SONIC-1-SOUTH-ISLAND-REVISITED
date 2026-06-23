@@ -22,3 +22,6 @@
 	
 	//Play the first animation
 	animation_play(animator, 0)
+	
+	// Register the object for culling
+	instance_register_culling();

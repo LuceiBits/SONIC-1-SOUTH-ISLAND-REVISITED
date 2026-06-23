@@ -280,6 +280,19 @@ function instance_act_badnik()
 	}	
 }
 
+function instance_register_culling(culling_region = [32, 32])
+{
+
+	var inst_struct =
+	{
+		inst_id : id,
+		region : culling_region,
+		cull_flag : false
+	}
+	
+	ds_list_add(obj_level.instance_list, inst_struct);	
+}
+
 // ===========================================================================================================
 // Utilities internal functions
 // ===========================================================================================================
@@ -322,7 +335,13 @@ function _instance_react_solid(result)
 
 function _instance_orient_hitbox(this, hitbox) 
 {
-	var dstBox = new instance_hitbox();
+	var dstBox = 
+	{
+		left : 0,
+		right : 0,
+		top : 0,
+		bottom : 0
+	};
 	
 	dstBox.left = hitbox.left * this.image_xscale;
 	dstBox.right = hitbox.right * this.image_xscale;
@@ -348,7 +367,13 @@ function _instance_orient_hitbox(this, hitbox)
 
 function _instance_make_hitbox(inst)
 {
-	var newBox = new instance_hitbox();
+	var newBox = 
+	{
+		left : 0,
+		right : 0,
+		top : 0,
+		bottom : 0
+	};
 	var s = inst.sprite_index;
 	
 	if(inst.mask_index)

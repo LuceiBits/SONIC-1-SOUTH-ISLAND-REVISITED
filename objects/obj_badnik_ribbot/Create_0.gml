@@ -6,3 +6,5 @@
 	x_speed = 1;
 	y_speed = 0;
 	badnikframe = 0;
+	
+	instance_register_culling();
