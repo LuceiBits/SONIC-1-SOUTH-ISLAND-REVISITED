@@ -233,8 +233,6 @@
     {"id":{"name":"obj_water_effect","path":"objects/obj_water_effect/obj_water_effect.yy",},},
     {"id":{"name":"obj_water","path":"objects/obj_water/obj_water.yy",},},
     {"id":{"name":"obj_window","path":"objects/obj_window/obj_window.yy",},},
-    {"id":{"name":"Object110","path":"objects/Object110/Object110.yy",},},
-    {"id":{"name":"Object111","path":"objects/Object111/Object111.yy",},},
     {"id":{"name":"par_background","path":"objects/par_background/par_background.yy",},},
     {"id":{"name":"par_breakable_floor","path":"objects/par_breakable_floor/par_breakable_floor.yy",},},
     {"id":{"name":"par_bullet","path":"objects/par_bullet/par_bullet.yy",},},

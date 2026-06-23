@@ -9,18 +9,7 @@
 	//Draw hitboxes
 	if(show_hitbox)
 	{
-		with(all)
-		{
-			if(object_index != obj_player && object_index != obj_effect && object_index != obj_dust_effect)	
-			{
-				if(object_index = par_solid) exit
-				draw_set_color(c_blue);
-				draw_set_alpha(0.5);
-				draw_rectangle(bbox_left, bbox_top, bbox_right, bbox_bottom, false);
-				draw_set_alpha(1);
-				draw_set_color(c_white);
-			}
-		}
+		// TODO
 	}
 	
 	//Create surface
@@ -28,25 +17,7 @@
 			
 	if(show_player && !debug && instance_exists(obj_player))
 	{
-		//Set surface target
-		surface_set_target(surf);
-		draw_clear_alpha(c_black, 0);
-		
-		draw_set_font(global.font_small);
-		
-		//Reset surface target
-		surface_reset_target();
-		
-		//Draw surface
-		draw_surface(surf, cx, cy)	
-		
-		//Draw hitbox
-		draw_set_color(c_red);
-		draw_set_alpha(0.7);
-		draw_rectangle(floor(obj_player.x)-obj_player.wall_w - obj_player.hitbox_left_offset, floor(obj_player.y)-obj_player.hitbox_h - obj_player.hitbox_top_offset, floor(obj_player.x)+obj_player.wall_w + obj_player.hitbox_right_offset, floor(obj_player.y)+obj_player.hitbox_h + obj_player.hitbox_bottom_offset, false);
-		draw_set_alpha(1);
-		draw_set_color(c_white);
-		
+		// TODO:
 	}
 	
 	if(show_fps)
@@ -67,6 +38,7 @@
 		//Draw surface
 		draw_surface(surf, cx, cy)	
 	}
+	
 	//Disable not in debug mode
 	if(!debug || !instance_exists(obj_player)) exit;
 	

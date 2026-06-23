@@ -1,4 +1,5 @@
 /// @description Draw Title Card
+
 	var c, cx, cy;
 	
 	//Screen values

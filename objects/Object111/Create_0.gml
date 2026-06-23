@@ -1,1 +1,0 @@
-	instance_register_culling();

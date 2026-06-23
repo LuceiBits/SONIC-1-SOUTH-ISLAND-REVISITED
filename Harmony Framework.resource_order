@@ -5,8 +5,6 @@
   "ResourceOrderSettings":[
     {"name":"obj_aaz_button","order":2,"path":"objects/obj_aaz_button/obj_aaz_button.yy",},
     {"name":"obj_aaz_door","order":1,"path":"objects/obj_aaz_door/obj_aaz_door.yy",},
-    {"name":"Object110","order":2,"path":"objects/Object110/Object110.yy",},
-    {"name":"Object111","order":1,"path":"objects/Object111/Object111.yy",},
     {"name":"rm_splash_1","order":2,"path":"rooms/rm_splash_1/rm_splash_1.yy",},
     {"name":"rm_stage_select","order":1,"path":"rooms/rm_stage_select/rm_stage_select.yy",},
     {"name":"create_score","order":4,"path":"scripts/create_score/create_score.yy",},

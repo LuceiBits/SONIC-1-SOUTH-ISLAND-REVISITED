@@ -2,6 +2,8 @@
 	//Variables for this object only
 	process_object_list = ds_list_create();
 	instance_list = ds_list_create();
+	time_start = 0;
+	time_end = 0;
 	
 	#macro DEVMODE false
 	#macro Dev:DEVMODE true

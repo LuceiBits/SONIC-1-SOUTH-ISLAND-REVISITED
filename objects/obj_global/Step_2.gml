@@ -8,3 +8,8 @@
 	
 	//Clear the list
 	ds_list_clear(process_object_list);
+	
+	// Get the timer at the end of processing
+	time_end = get_timer();
+	
+	//sshow_debug_message("Step event execution: {0} ms", (time_end - time_start) / 1000.0);

@@ -1,5 +1,7 @@
 	/// @description Pre - Game events
 	
+	time_start = get_timer();
+	
 	// Process the controllers
 	input_update();
 	
