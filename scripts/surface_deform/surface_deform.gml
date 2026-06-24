@@ -1,4 +1,5 @@
 function surface_deform(width, height, deform_data, offset, mode = 0){
+	
 	//Surface deform argument description
 	/*
 		width - The width of the surface;

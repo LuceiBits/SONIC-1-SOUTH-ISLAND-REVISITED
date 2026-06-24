@@ -1,16 +1,10 @@
 /// @description Set the value
-	//Variables for this object only
+	
+	// Variables for this object only
 	process_object_list = ds_list_create();
 	instance_list = ds_list_create();
 	time_start = 0;
 	time_end = 0;
-	
-	#macro DEVMODE false
-	#macro Dev:DEVMODE true
-	
-	//TO ENABLE DEVELOPER FEATURES, PLEASE GO INTO THE TARGET ICON AND SELECT "Dev"
-	//This helps you easily switch dev features on or off when compiling or testing your game
-	
 	
 	// Initilize the game globals
 	game_init_global_variables();
@@ -31,7 +25,7 @@
 	input_add_action(INPUT.C, "D", gp_face3);
 	input_add_action(INPUT.START, vk_enter, gp_start);
 	
-	// Bullshit to clean up
+	#region // Bullshit to clean up
 	#macro SOUND_EXTRA_LIFE if (global.extra_life_jingle){ play_sound(j_extra_life)} else {play_sound(sfx_extralife)}
 	
 	enum BONUSSTAGE 
@@ -43,6 +37,7 @@
 	}
 	
 	bonus_stage_trigger = false
+	#endregion
 	
 	//Create controllers:
 	instance_create_depth(0, 0, 0, obj_window);
@@ -55,11 +50,6 @@
 		instance_create_depth(0, 0, 0, obj_dev);
 		instance_create_depth(0, 0, 0, obj_shell);
 	}
-	
-	//Macros:
-	#macro WINDOW_WIDTH global.window_width
-	#macro WINDOW_HEIGHT global.window_height
-	#macro FRAME_TIMER global.object_timer
 	
 	//Ending event:
 	room_goto_next();

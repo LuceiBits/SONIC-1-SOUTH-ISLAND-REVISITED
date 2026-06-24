@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"game_macros",
+  "%Name":"game_enums",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"game_macros",
+  "name":"game_enums",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

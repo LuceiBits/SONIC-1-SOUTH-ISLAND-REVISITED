@@ -1,6 +1,9 @@
 {
   "FolderOrderSettings":[
     {"name":"Presentation","order":1,"path":"folders/Rooms/Presentation.yy",},
+    {"name":"Game Scripts","order":1,"path":"folders/Scripts/Game Scripts.yy",},
+    {"name":"Player Scripts","order":2,"path":"folders/Scripts/Player Scripts.yy",},
+    {"name":"Utility Scripts","order":3,"path":"folders/Scripts/Utility Scripts.yy",},
   ],
   "ResourceOrderSettings":[
     {"name":"obj_aaz_button","order":2,"path":"objects/obj_aaz_button/obj_aaz_button.yy",},
@@ -8,10 +11,11 @@
     {"name":"rm_splash_1","order":2,"path":"rooms/rm_splash_1/rm_splash_1.yy",},
     {"name":"rm_stage_select","order":1,"path":"rooms/rm_stage_select/rm_stage_select.yy",},
     {"name":"create_score","order":4,"path":"scripts/create_score/create_score.yy",},
+    {"name":"game_enums","order":4,"path":"scripts/game_enums/game_enums.yy",},
     {"name":"game_init_collision","order":2,"path":"scripts/game_init_collision/game_init_collision.yy",},
     {"name":"game_init_font","order":4,"path":"scripts/game_init_font/game_init_font.yy",},
     {"name":"game_init_music_list","order":1,"path":"scripts/game_init_music_list/game_init_music_list.yy",},
-    {"name":"game_macros","order":3,"path":"scripts/game_macros/game_macros.yy",},
+    {"name":"game_macros","order":5,"path":"scripts/game_macros/game_macros.yy",},
     {"name":"game_shell_functions","order":5,"path":"scripts/game_shell_functions/game_shell_functions.yy",},
     {"name":"game_util","order":1,"path":"scripts/game_util/game_util.yy",},
     {"name":"input_util","order":3,"path":"scripts/input_util/input_util.yy",},

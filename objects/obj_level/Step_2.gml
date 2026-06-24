@@ -7,9 +7,6 @@
 	sw = global.window_width;
 	sh = global.window_height;
 	
-	#macro CULL_REGION_W 128
-	#macro CULL_REGION_H 128
-	
 	var inside;
 	var a;
 	var count = ds_list_size(instance_list);
