@@ -68,6 +68,10 @@ function game_init_global_variables()
 	global.no_skid_state = true;			// makes skidding work closer to the genesis games, instead of a seperate state
 	global.super_button = INPUT.C			// This defines which input will be used for super transformation
 	
+	global.other_box_temp = {left : 0, right : 0, top : 0, bottom : 0};
+	global.this_box_temp = {left : 0, right : 0, top : 0, bottom : 0};
+	global.box_temp = {left : 0, right : 0, top : 0, bottom : 0};
+	
 	// Not in use as of now
 	//global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead
 	//global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust

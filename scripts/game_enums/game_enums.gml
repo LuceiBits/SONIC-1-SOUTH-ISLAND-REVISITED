@@ -12,3 +12,19 @@
 		EGGMAN,
 		COMBINE_RING
 	}
+	
+	// Enums for culling type
+	enum CULL_TYPE
+	{
+		DISABLE,
+		DEACTIVATE
+	}
+	
+	// Enums for bounding box sides
+	enum BBOX
+	{
+		LEFT,
+		TOP,
+		RIGHT,
+		BOTTOM
+	}

@@ -1,8 +1,3 @@
-#macro BOX_LEFT 0
-#macro BOX_TOP 1
-#macro BOX_RIGHT 2
-#macro BOX_BOTTOM 3
-
 function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = noone)
 {	
 	// Temps
@@ -20,40 +15,40 @@ function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = no
 	otherHitbox = _instance_orient_hitbox(o, otherHitbox);
 	
 	// Horizontal collision
-	if(this.y + thisHitbox.top < o.y + otherHitbox.bottom && this.y + thisHitbox.bottom > o.y + otherHitbox.top)
+	if(this.y + thisHitbox[BBOX.TOP] < o.y + otherHitbox[BBOX.BOTTOM] && this.y + thisHitbox[BBOX.BOTTOM] > o.y + otherHitbox[BBOX.TOP])
 	{
-		var cenX = this.x + (thisHitbox.right + thisHitbox.left) * 0.5;
+		var cenX = this.x + (thisHitbox[BBOX.RIGHT] + thisHitbox[BBOX.LEFT]) * 0.5;
 		if(o.x <= cenX)
 		{
-			if(o.x + otherHitbox.right + 1 >= this.x + thisHitbox.left)
+			if(o.x + otherHitbox[BBOX.RIGHT] + 1 >= this.x + thisHitbox[BBOX.LEFT])
 			{
 				sideH = C_LEFT;
-				colX = this.x + (thisHitbox.left - otherHitbox.right) - 1;
+				colX = this.x + (thisHitbox[BBOX.LEFT] - otherHitbox[BBOX.RIGHT]) - 1;
 			}
 		} 
-		else if(o.x + otherHitbox.left <= this.x + thisHitbox.right)
+		else if(o.x + otherHitbox[BBOX.LEFT] <= this.x + thisHitbox[BBOX.RIGHT])
 		{
 			sideH = C_RIGHT;
-			colX = this.x + (thisHitbox.right - otherHitbox.left);
+			colX = this.x + (thisHitbox[BBOX.RIGHT] - otherHitbox[BBOX.LEFT]);
 		}
 	}
 	
 	// Vertical collision
-	var cenY = this.y + (thisHitbox.top + thisHitbox.bottom) * 0.5;
-	if(this.x + thisHitbox.left < o.x + otherHitbox.right && this.x + thisHitbox.right > o.x + otherHitbox.left)
+	var cenY = this.y + (thisHitbox[BBOX.TOP] + thisHitbox[BBOX.BOTTOM]) * 0.5;
+	if(this.x + thisHitbox[BBOX.LEFT] < o.x + otherHitbox[BBOX.RIGHT] && this.x + thisHitbox[BBOX.RIGHT] > o.x + otherHitbox[BBOX.LEFT])
 	{
 		if(o.y < cenY)
 		{
-			if(o.y + otherHitbox.bottom + 1 >= this.y + thisHitbox.top)
+			if(o.y + otherHitbox[BBOX.BOTTOM] + 1 >= this.y + thisHitbox[BBOX.TOP])
 			{
 				sideV = C_TOP;	
-				colY = this.y + (thisHitbox.top - otherHitbox.bottom) - 1;
+				colY = this.y + (thisHitbox[BBOX.TOP] - otherHitbox[BBOX.BOTTOM]) - 1;
 			}
 		} 
-		else if(o.y + otherHitbox.top <= this.y + thisHitbox.bottom)
+		else if(o.y + otherHitbox[BBOX.TOP] <= this.y + thisHitbox[BBOX.BOTTOM])
 		{
 			sideV = C_BOTTOM;	
-			colY = this.y + (thisHitbox.bottom - otherHitbox.top);
+			colY = this.y + (thisHitbox[BBOX.BOTTOM] - otherHitbox[BBOX.TOP]);
 		}
 	}
 	
@@ -112,19 +107,19 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 	thisHitbox = _instance_orient_hitbox(this, thisHitbox);
 	otherHitbox = _instance_orient_hitbox(o, otherHitbox);
 	
-	var otherEdge = o.y + otherHitbox.bottom;
-	var otherEdgePrev = (o.y - o.y_speed) + otherHitbox.bottom;
+	var otherEdge = o.y + otherHitbox[BBOX.BOTTOM];
+	var otherEdgePrev = (o.y - o.y_speed) + otherHitbox[BBOX.BOTTOM];
 	
-	var platformTop = this.y + thisHitbox.top - 1;
-	var platformBottom = this.y + thisHitbox.top + 4;
+	var platformTop = this.y + thisHitbox[BBOX.TOP] - 1;
+	var platformBottom = this.y + thisHitbox[BBOX.TOP] + 4;
 	
-	var isColliding = (this.x + thisHitbox.left < o.x + otherHitbox.right) &&
-		(this.x + thisHitbox.right > o.x + otherHitbox.left) &&
+	var isColliding = (this.x + thisHitbox[BBOX.LEFT] < o.x + otherHitbox[BBOX.RIGHT]) &&
+		(this.x + thisHitbox[BBOX.RIGHT] > o.x + otherHitbox[BBOX.LEFT]) &&
 		o.y_speed >= 0 && otherEdge >= platformTop - 1 && otherEdgePrev <= platformBottom;
 		
 	if(isColliding)
 	{
-		o.y = platformTop - otherHitbox.bottom;
+		o.y = platformTop - otherHitbox[BBOX.BOTTOM];
 		
 		// Check if this is a player object
 		var isPlayer = o.object_index == obj_player;
@@ -138,10 +133,10 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 			o.ground_angle = 0;
 			
 			// Ledge direction
-			if(o.ground && o.x < this.x + thisHitbox.left)
+			if(o.ground && o.x < this.x + thisHitbox[BBOX.LEFT])
 				o.ledge = -1;
 				
-			if(o.ground && o.x > this.x + thisHitbox.right)
+			if(o.ground && o.x > this.x + thisHitbox[BBOX.RIGHT])
 				o.ledge = 1;
 		
 			// Going down
@@ -166,17 +161,10 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 		
 		return true;
 	}
-	
 }
 
 function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noone)
 {
-		// Temps
-	var sideH = 0;
-	var sideV = 0;
-	var colX = o.x;
-	var colY = o.y;
-	
 	// Make hitboxes
 	var thisHitbox = _instance_evaluate_hitbox(this, this_hitbox);
 	var otherHitbox = _instance_evaluate_hitbox(o, hitbox_other);
@@ -186,59 +174,9 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 	otherHitbox = _instance_orient_hitbox(o, otherHitbox);
 	
 	// Horizontal collision
-	if(this.y + thisHitbox.top < o.y + otherHitbox.bottom && this.y + thisHitbox.bottom > o.y + otherHitbox.top)
-	{
-		var cenX = this.x + (thisHitbox.right + thisHitbox.left) * 0.5;
-		if(o.x <= cenX)
-		{
-			if(o.x + otherHitbox.right >= this.x + thisHitbox.left)
-			{
-				sideH = C_LEFT;
-				colX = this.x + (thisHitbox.left - otherHitbox.right) - 1;
-			}
-		} 
-		else if(o.x + otherHitbox.left < this.x + thisHitbox.right)
-		{
-			sideH = C_RIGHT;
-			colX = this.x + (thisHitbox.right - otherHitbox.left);
-		}
-	}
-	
-	// Vertical collision
-	if(this.x + thisHitbox.left < o.x + otherHitbox.right && this.x + thisHitbox.right > o.x + otherHitbox.left)
-	{
-		var cenY = this.y + (thisHitbox.top + thisHitbox.bottom) * 0.5;
-		if(o.y < cenY)
-		{
-			if(o.y + otherHitbox.bottom >= this.y + thisHitbox.top)
-			{
-				sideV = C_TOP;	
-				colY = this.y + (thisHitbox.top - otherHitbox.bottom) - 1;
-			}
-		} 
-		else if(o.y + otherHitbox.top < this.y + thisHitbox.bottom)
-		{
-			sideV = C_BOTTOM;	
-			colY = this.y + (thisHitbox.bottom - otherHitbox.top);
-		}
-	}
-	
-	// Temps
-	var side = 0;
-	var deltaX = colX - o.x;
-	var deltaY = colY - o.y;
-	 
-	// Get the correct collision side
-	if((deltaX * deltaX >= deltaY * deltaY && (sideV || !sideH)) || (!sideH && sideV))
-	{
-		side = sideV;	
-	}
-	else
-	{
-		side = sideH;	
-	}
-	
-	return side;
+	if(rectangle_in_rectangle(this.x + thisHitbox[BBOX.LEFT], this.y + thisHitbox[BBOX.TOP], this.x + thisHitbox[BBOX.RIGHT], this.y + thisHitbox[BBOX.BOTTOM],
+		o.x + otherHitbox[BBOX.LEFT], o.y + otherHitbox[BBOX.TOP], o.x + otherHitbox[BBOX.RIGHT], o.y + otherHitbox[BBOX.BOTTOM]))
+		return true;
 }
 
 function instance_act_badnik()
@@ -280,17 +218,28 @@ function instance_act_badnik()
 	}	
 }
 
-function instance_register_culling(culling_region = [32, 32])
+function instance_register_culling(culling_region = noone)
 {
-
-	var inst_struct =
+	// Make a hitbox
+	/*if(culling_region == noone)
+		culling_region = _instance_make_hitbox(id);
+	
+	culling_region = _instance_evaluate_hitbox(id, culling_region);
+	*/
+	
+	culling_region = {left : 0, right : 0, top : 0, bottom : 0}
+	
+	// Make a default struct
+	culling_struct =
 	{
 		inst_id : id,
 		region : culling_region,
+		type : CULL_TYPE.DEACTIVATE,
 		cull_flag : false
 	}
 	
-	ds_list_add(obj_level.instance_list, inst_struct);	
+	// Add the object to the list
+	ds_list_add(obj_level.instance_list, culling_struct);	
 }
 
 // ===========================================================================================================
@@ -335,31 +284,25 @@ function _instance_react_solid(result)
 
 function _instance_orient_hitbox(this, hitbox) 
 {
-	var dstBox = 
-	{
-		left : 0,
-		right : 0,
-		top : 0,
-		bottom : 0
-	};
+	var dstBox
 	
-	dstBox.left = hitbox.left * this.image_xscale;
-	dstBox.right = hitbox.right * this.image_xscale;
-	dstBox.top = hitbox.top * this.image_yscale;
-	dstBox.bottom = hitbox.bottom * this.image_yscale;
+	dstBox[BBOX.LEFT] = hitbox[BBOX.LEFT] * this.image_xscale;
+	dstBox[BBOX.RIGHT] = hitbox[BBOX.RIGHT] * this.image_xscale;
+	dstBox[BBOX.TOP] = hitbox[BBOX.TOP] * this.image_yscale;
+	dstBox[BBOX.BOTTOM] = hitbox[BBOX.BOTTOM] * this.image_yscale;
 
-	if (dstBox.left > dstBox.right) 
+	if (dstBox[BBOX.LEFT] > dstBox[BBOX.RIGHT]) 
 	{
-		var s = dstBox.left
-		dstBox.left = dstBox.right;
-		dstBox.right = s;
+		var s = dstBox[BBOX.LEFT]
+		dstBox[BBOX.LEFT] = dstBox[BBOX.RIGHT];
+		dstBox[BBOX.RIGHT] = s;
 	}
 	
-	if (dstBox.top > dstBox.bottom) 
+	if (dstBox[BBOX.TOP] > dstBox[BBOX.BOTTOM]) 
 	{
-		var s = dstBox.top
-		dstBox.top = dstBox.bottom;
-		dstBox.bottom = s;
+		var s = dstBox[BBOX.TOP]
+		dstBox[BBOX.TOP] = dstBox[BBOX.BOTTOM];
+		dstBox[BBOX.BOTTOM] = s;
 	}
 	
 	return dstBox;
@@ -367,22 +310,16 @@ function _instance_orient_hitbox(this, hitbox)
 
 function _instance_make_hitbox(inst)
 {
-	var newBox = 
-	{
-		left : 0,
-		right : 0,
-		top : 0,
-		bottom : 0
-	};
+	var newBox;
 	var s = inst.sprite_index;
 	
 	if(inst.mask_index)
 		s = mask_index;
 	
-	newBox.left = sprite_get_bbox_left(s) - sprite_get_xoffset(s);
-	newBox.right = sprite_get_bbox_right(s) - sprite_get_xoffset(s) + 1;
-	newBox.top = sprite_get_bbox_top(s) - sprite_get_yoffset(s);
-	newBox.bottom = sprite_get_bbox_bottom(s) - sprite_get_yoffset(s) + 1;
+	newBox[BBOX.LEFT] = sprite_get_bbox_left(s) - sprite_get_xoffset(s);
+	newBox[BBOX.RIGHT] = sprite_get_bbox_right(s) - sprite_get_xoffset(s) + 1;
+	newBox[BBOX.TOP] = sprite_get_bbox_top(s) - sprite_get_yoffset(s);
+	newBox[BBOX.BOTTOM] = sprite_get_bbox_bottom(s) - sprite_get_yoffset(s) + 1;
 	
 	return newBox;
 }
@@ -394,17 +331,23 @@ function _instance_evaluate_hitbox(this, hitbox)
 	// Check if hitbox is a valid array
 	if(is_array(hitbox))
 	{
-		newBox = new instance_hitbox(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
+		//newBox = new instance_hitbox(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
+		newBox = hitbox;
 	}
 	else if(is_struct(hitbox))
 	{
 		// If it's not an array, check if it's a struct
-		newBox = new instance_hitbox(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
+		//newBox = new instance_hitbox(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
+		newBox[BBOX.LEFT] = hitbox.left;
+		newBox[BBOX.RIGHT] = hitbox.right;
+		newBox[BBOX.TOP] = hitbox.top;
+		newBox[BBOX.BOTTOM] = hitbox.bottom;
+
 	}
 	else
 	{
 		// If it's not a struct either, build a new hitbox
-		newBox = new instance_hitbox();
+		//newBox = new instance_hitbox();
 		newBox = _instance_make_hitbox(this);
 	}	
 	

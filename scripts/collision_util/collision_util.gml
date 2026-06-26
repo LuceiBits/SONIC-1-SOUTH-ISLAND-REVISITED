@@ -10,13 +10,10 @@ function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_
         var l = global.col_tile[i];
 		
 		
-        if ((!semi_solid && l == "CollisionSemi")
-        ||  (plane != PLANE_A && l == "CollisionA")
-        ||  (plane != PLANE_B && l == "CollisionB"))
+        if ((!semi_solid && l == "CollisionSemi") ||  (plane != PLANE_A && l == "CollisionA") ||  (plane != PLANE_B && l == "CollisionB"))
         {
             continue;
         }
-
 
         var h;
 

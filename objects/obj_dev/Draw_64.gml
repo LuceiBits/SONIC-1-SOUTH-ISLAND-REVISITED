@@ -15,6 +15,8 @@
 		draw_set_valign(fa_top);
 		
 		var t = (obj_global.time_end - obj_global.time_start) / 1000.0
+		
 		draw_text(0, 0, "Total Step Time: " + string_format(t, 2, 4))
+		draw_text(0, 8, "Object Culling Pool: " + string(ds_list_size(obj_level.instance_list)))
 	}
 	

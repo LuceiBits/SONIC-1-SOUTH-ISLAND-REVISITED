@@ -1,4 +1,5 @@
 /// @description Culling
+
 	//Screen values
 	var c, cx, cy, sw, sh;
 	c = view_camera[view_current]
@@ -29,8 +30,12 @@
 		}
 			
 		// Check if the object is inside the culling area
-		inside = cullR > a.inst_id.x - a.region[0] && cullL < a.inst_id.x + a.region[0] &&
-		cullB > a.inst_id.y - a.region[1] && cullT < a.inst_id.y + a.region[1];
+		inside = cullR > a.inst_id.x + a.region.left && cullL < a.inst_id.x + a.region.right &&
+		cullB > a.inst_id.y + a.region.top && cullT < a.inst_id.y + a.region.bottom;
+		
+		// Do not cull if the object is ignored for culling
+		if(a.type = CULL_TYPE.DISABLE)
+			continue;
 		
 		// Entering the culling region
 		if(!inside && !a.cull_flag)

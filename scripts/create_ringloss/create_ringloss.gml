@@ -12,6 +12,7 @@ function create_ringloss(ring_counter){
 	    ring.x_speed = dcos(ring_angle) * spd;
 	    ring.y_speed = -dsin(ring_angle) * spd;
 		ring.ringloss = true;
+		ring.culling_struct.type = CULL_TYPE.DISABLE;
 		
 	    //Make ring go in circle
 	    if(flip)

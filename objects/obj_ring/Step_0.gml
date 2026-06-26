@@ -21,9 +21,9 @@
         create_effect(x, y, spr_ring_sparkle, 0.2);
         
         //Destroy the ring
-		if (!instance_exists(obj_bonus_level)) {
+		if(!instance_exists(obj_bonus_level)) 
 			global.store_object_state[| id] = true
-		}
+		
         instance_destroy();
     }
 	
@@ -85,7 +85,8 @@
 		timer += 1;
 			
 		//Destroy
-		if(timer > 256) instance_destroy();
+		if(timer > 256) 
+			instance_destroy();
 			
 		//Gravity
 		y_speed += 0.09375;
