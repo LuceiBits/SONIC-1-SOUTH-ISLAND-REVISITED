@@ -1,5 +1,5 @@
 /// @description Culling
-
+	
 	//Screen values
 	var c, cx, cy, sw, sh;
 	c = view_camera[view_current]
