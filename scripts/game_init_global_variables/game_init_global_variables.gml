@@ -74,5 +74,5 @@ function game_init_global_variables()
 	
 	// Not in use as of now
 	//global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead
-	//global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
+	global.chaotix_monitors = true;			// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
 }

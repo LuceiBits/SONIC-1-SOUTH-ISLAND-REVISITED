@@ -4,9 +4,9 @@
 	y += y_speed;
 	y_speed += 0.2;
 	landed = false;
-
+	
 	//Bounce physics
-	while(collision_line_check(0, 8, CMODE_FLOOR, PLANE_A, true, true) && y_speed >= 0)
+	if(collision_get_height(x, y + 8) < 0)
 	{
 		y -= 1;
 		landed = true;
@@ -23,7 +23,7 @@
 	if(bounce) timer++;
 	
 	//Turn into dust
-	if(timer = 36)
+	if(timer == 36)
 	{
 		play_sound(sfx_dust);
 		dust_effect(0);
