@@ -218,7 +218,7 @@ function instance_act_badnik()
 	}	
 }
 
-function instance_register_culling(culling_region = noone)
+function instance_register_culling(culling_region = noone, on_culling = noone, check_start = false)
 {
 	// Make a hitbox
 	/*if(culling_region == noone)
@@ -235,7 +235,9 @@ function instance_register_culling(culling_region = noone)
 		inst_id : id,
 		region : culling_region,
 		type : CULL_TYPE.DEACTIVATE,
-		cull_flag : false
+		cull_flag : false,
+		culled : on_culling,
+		use_start_pos : check_start
 	}
 	
 	// Add the object to the list

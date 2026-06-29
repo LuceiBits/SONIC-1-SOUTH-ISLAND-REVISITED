@@ -2,22 +2,29 @@
 	instance_act_badnik();
 
 	// Change some values
-	y_speed += 0.18; // Gravity
 	x += x_speed;
 	y += y_speed;
-
+	
+	// Gravity
+	y_speed += 0.18; 
+	
 	// Check for collision on ground
-	while(collision_point_check(0, 0, CMODE_FLOOR, PLANE_A, true) && y_speed > 0)
+	if(y_speed > 0)
 	{
-		x_speed *= -1;
-		y_speed = -5;
-		y -= 1;
-		badnikframe = 0
-		if (on_screen()) 
+		var c = collision_get_height(x, y, CMODE_FLOOR, PLANE_A, true)
+		if(c < 0)
 		{
+			x_speed *= -1;
+			y_speed = -5;
+			badnikframe = 0
+			
+			// Snap it to the floor
+			y += c;
+			
 			// Play spring sound ONLY when on screen
-			play_sound(sfx_spring);
-		} 
+			if (on_screen()) 
+				play_sound(sfx_spring);
+		}
 	}
 
 	// Visuals etc

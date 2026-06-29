@@ -7,4 +7,12 @@
 	y_speed = 0;
 	badnikframe = 0;
 	
-	instance_register_culling();
+	on_reset = function()
+	{
+		x = xstart;
+		y = ystart;
+		
+		show_debug_message(x)
+	}
+	
+	instance_register_culling([-32, -32, 32, 32], on_reset);

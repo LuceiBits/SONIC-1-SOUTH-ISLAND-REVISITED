@@ -33,6 +33,13 @@
 		inside = cullR > a.inst_id.x + a.region.left && cullL < a.inst_id.x + a.region.right &&
 		cullB > a.inst_id.y + a.region.top && cullT < a.inst_id.y + a.region.bottom;
 		
+		// Check if the object's starting position is in the culling area
+		if (!inside)
+		{
+		    inside = a.use_start_pos || (cullR > a.inst_id.xstart + a.region.left && cullL < a.inst_id.xstart + a.region.right &&
+			cullB > a.inst_id.ystart + a.region.top && cullT < a.inst_id.ystart + a.region.bottom);
+		}
+		
 		// Do not cull if the object is ignored for culling
 		if(a.type = CULL_TYPE.DISABLE)
 			continue;
@@ -40,6 +47,9 @@
 		// Entering the culling region
 		if(!inside && !a.cull_flag)
 		{
+			if(a.culled)
+				a.culled();
+			
 			a.cull_flag = true;
 			instance_deactivate_object(a.inst_id);
 		}

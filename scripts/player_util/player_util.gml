@@ -78,21 +78,25 @@ function player_react_solid(result)
 		{
 			o.on_object = true;
 			
+			var isLeft = false;
+			var isRight = false;
+			
 			if(!o.on_terrain)
 				o.ground_angle = 0;
 			
 			// Ledge direction
-			if(o.ground && o.x < this.x + result.this_box.left)
-				o.ledge = -1;
+			if(o.ground && o.x < this.x + result.this_box[BBOX.LEFT])
+				isLeft = true;
 				
-			if(o.ground && o.x > this.x + result.this_box.right)
-				o.ledge = 1;
+			if(o.ground && o.x > this.x + result.this_box[BBOX.RIGHT])
+				isRight = true;
+			
+			o.ledge = isRight - isLeft;
 		}
 		
 		// Going down
 		if(o.y_speed > 0)
 		{
-			
 			// If player is going down the falls and hits an object, stop the player
 			if(o.ground && (o.mode == 1 || o.mode == 3))
 			{
