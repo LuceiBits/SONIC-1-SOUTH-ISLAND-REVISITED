@@ -29,4 +29,10 @@ function game_macros()
 	// Culling region size
 	#macro CULL_REGION_W 128
 	#macro CULL_REGION_H 128
+	
+	// Macros for camera position and sides (All viewports)
+	#macro CAMERA_VIEW_X camera_get_view_x(view_camera[view_current])
+	#macro CAMERA_VIEW_Y camera_get_view_y(view_camera[view_current])
+	#macro CAMERA_VIEW_W camera_get_view_width(view_camera[view_current])
+	#macro CAMERA_VIEW_H camera_get_view_width(view_camera[view_current])
 }

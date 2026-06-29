@@ -8,10 +8,10 @@ function game_init_global_variables()
 	global.character = CHAR_SONIC;			//Global value for the character
 	
 	//Screen values
-	global.window_width  = 426;				//Window's horizontal size
-	global.window_height = 240;				//Window's vertical size
-	global.window_size_limit = 4;			//Window size limiter
-	global.window_size = 2;					//Window size multiplier
+	global.window_width  = GAME_WINDOW_WIDTH;				//Window's horizontal size
+	global.window_height = GAME_WINDOW_HEIGHT;				//Window's vertical size
+	global.window_size_limit = 4;							//Window size limiter
+	global.window_size = 2;									//Window size multiplier
 	global.draw_state = undefined;
 	
 	//Setup volume

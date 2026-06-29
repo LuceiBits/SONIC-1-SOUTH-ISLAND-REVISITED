@@ -11,6 +11,7 @@
     {"name":"rm_splash_1","order":2,"path":"rooms/rm_splash_1/rm_splash_1.yy",},
     {"name":"rm_stage_select","order":1,"path":"rooms/rm_stage_select/rm_stage_select.yy",},
     {"name":"create_score","order":4,"path":"scripts/create_score/create_score.yy",},
+    {"name":"game_config","order":6,"path":"scripts/game_config/game_config.yy",},
     {"name":"game_enums","order":4,"path":"scripts/game_enums/game_enums.yy",},
     {"name":"game_init_collision","order":2,"path":"scripts/game_init_collision/game_init_collision.yy",},
     {"name":"game_init_font","order":4,"path":"scripts/game_init_font/game_init_font.yy",},

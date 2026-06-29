@@ -20,6 +20,13 @@
 		DEACTIVATE
 	}
 	
+	// Enums for culling flags
+	enum CULL_FLAG
+	{
+		CHECK_ENTITY_POS = 1 << 0,	
+		CHECK_ENTITY_START = 1 << 1
+	}
+	
 	// Enums for bounding box sides
 	enum BBOX
 	{

@@ -218,26 +218,31 @@ function instance_act_badnik()
 	}	
 }
 
-function instance_register_culling(culling_region = noone, on_culling = noone, check_start = false)
+function instance_register_culling(culling_region = noone, on_culling = noone, flags = CULL_FLAG.CHECK_ENTITY_POS)
 {
-	// Make a hitbox
-	/*if(culling_region == noone)
-		culling_region = _instance_make_hitbox(id);
+	var c = {left : 0, right : 0, top : 0, bottom : 0}
 	
-	culling_region = _instance_evaluate_hitbox(id, culling_region);
-	*/
-	
-	culling_region = {left : 0, right : 0, top : 0, bottom : 0}
+	if(is_array(culling_region))
+	{
+		c.left = culling_region[BBOX.LEFT];	
+		c.right = culling_region[BBOX.RIGHT];	
+		c.top = culling_region[BBOX.TOP];	
+		c.bottom = culling_region[BBOX.BOTTOM];	
+	}
+	else if(culling_region)
+	{
+		c = culling_region;	
+	}
 	
 	// Make a default struct
 	culling_struct =
 	{
 		inst_id : id,
-		region : culling_region,
+		region : c,
 		type : CULL_TYPE.DEACTIVATE,
 		cull_flag : false,
 		culled : on_culling,
-		use_start_pos : check_start
+		flag : flags
 	}
 	
 	// Add the object to the list
