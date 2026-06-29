@@ -10,8 +10,8 @@ function player_collision()
 		ground_angle = 0;
 		
 		// Wall collision
-		var wallR = collision_get_height(x - wall_w, y, CMODE_RWALL, plane);
-		var wallL = collision_get_height(x + wall_w, y, CMODE_LWALL, plane);
+		var wallR = collision_get_distance(x - wall_w, y, CMODE_RWALL, plane);
+		var wallL = collision_get_distance(x + wall_w, y, CMODE_LWALL, plane);
 		
 		// Snap to the wall
 		if(wallL <= 0)
@@ -98,8 +98,8 @@ function player_collision()
 	else
 	{
 		// Wall collision
-		var wallR = collision_get_height(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (CMODE_LWALL + mode) mod 4, plane);
-		var wallL = collision_get_height(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (CMODE_RWALL + mode) mod 4, plane);
+		var wallR = collision_get_distance(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (CMODE_LWALL + mode) mod 4, plane);
+		var wallL = collision_get_distance(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (CMODE_RWALL + mode) mod 4, plane);
 		
 		// Snap to the left wall with the right sensor
 		if(wallR < 0)

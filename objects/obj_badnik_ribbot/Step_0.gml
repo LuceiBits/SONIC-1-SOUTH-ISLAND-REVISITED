@@ -11,7 +11,7 @@
 	// Check for collision on ground
 	if(y_speed > 0)
 	{
-		var c = collision_get_height(x, y, CMODE_FLOOR, PLANE_A, true)
+		var c = collision_get_distance(x, y, CMODE_FLOOR, PLANE_A, true)
 		if(c < 0)
 		{
 			x_speed *= -1;
