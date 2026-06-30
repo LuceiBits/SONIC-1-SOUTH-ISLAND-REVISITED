@@ -338,13 +338,11 @@ function _instance_evaluate_hitbox(this, hitbox)
 	// Check if hitbox is a valid array
 	if(is_array(hitbox))
 	{
-		//newBox = new instance_hitbox(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
 		newBox = hitbox;
 	}
 	else if(is_struct(hitbox))
 	{
 		// If it's not an array, check if it's a struct
-		//newBox = new instance_hitbox(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
 		newBox[BBOX.LEFT] = hitbox.left;
 		newBox[BBOX.RIGHT] = hitbox.right;
 		newBox[BBOX.TOP] = hitbox.top;
@@ -354,20 +352,8 @@ function _instance_evaluate_hitbox(this, hitbox)
 	else
 	{
 		// If it's not a struct either, build a new hitbox
-		//newBox = new instance_hitbox();
 		newBox = _instance_make_hitbox(this);
 	}	
 	
 	return newBox;
-}
-
-// ===========================================================================================================
-// Utilities constructors
-// ===========================================================================================================
-function instance_hitbox(box_left = 0, box_top = 0, box_right = 0, box_bottom = 0) constructor
-{
-	left = box_left;
-	top = box_top;
-	right = box_right;
-	bottom = box_bottom;
 }

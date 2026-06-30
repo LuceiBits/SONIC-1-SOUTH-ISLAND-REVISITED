@@ -383,16 +383,3 @@ function _tiledata_get_width(tile_id, ypos, flip = false)
 		return global.tile_left[index][ypos];	
 	}
 }
-
-// ==========================================================================================
-// Deprecated so it doesn't crash the game
-// ==========================================================================================
-function collision_point_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
-{
-
-}
-
-function collision_line_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
-{
-
-}
