@@ -11,12 +11,12 @@
 	{
 		case "Yellow":
 			animation_add(0, spr_spring_diagonal_yellow, 0.6, 0, false);
-			spring_power = 10;
+			spring_power = 7;
 		break;
 		
 		case "Red":
 			animation_add(0, spr_spring_diagonal_red, 0.6, 0, false);
-			spring_power = 16;
+			spring_power = 11;
 		break;
 	}
 	

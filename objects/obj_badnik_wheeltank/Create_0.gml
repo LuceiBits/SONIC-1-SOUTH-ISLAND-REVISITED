@@ -16,7 +16,7 @@
 		waittimer = 0;
 	}
 	
-	animation_add(0, sprite_index, 0.3);
 	instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
 	
+	animation_add(0, sprite_index, 0.3);
 	animation_play(animator, 0);

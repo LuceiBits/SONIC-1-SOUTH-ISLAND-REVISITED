@@ -3,7 +3,7 @@
 	
 	disable_timer = false;
 	badnik_chain = 0;
-	emerald_array = [];
+	platform_oscillate_timer = 0;
 	
 	//====================================================//
 	//				 **DEFAULT STAGE SETUP**			  //

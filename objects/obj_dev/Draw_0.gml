@@ -52,6 +52,9 @@
 			// Get the object from the list
 			inst = obj_level.instance_list[| i];
 			
+			if(!instance_exists(inst.inst_id))
+				continue;
+				
 			if(inst.flag & CULL_FLAG.CHECK_ENTITY_POS)
 				draw_rectangle_color(floor(inst.inst_id.x + inst.region.left), floor(inst.inst_id.y + inst.region.top), floor(inst.inst_id.x + inst.region.right), floor(inst.inst_id.y + inst.region.bottom), c_maroon, c_maroon, c_maroon, c_maroon, false)
 			

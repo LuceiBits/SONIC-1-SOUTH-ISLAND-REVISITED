@@ -174,8 +174,8 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 	otherHitbox = _instance_orient_hitbox(o, otherHitbox);
 	
 	// Horizontal collision
-	if(rectangle_in_rectangle(this.x + thisHitbox[BBOX.LEFT], this.y + thisHitbox[BBOX.TOP], this.x + thisHitbox[BBOX.RIGHT], this.y + thisHitbox[BBOX.BOTTOM],
-		o.x + otherHitbox[BBOX.LEFT], o.y + otherHitbox[BBOX.TOP], o.x + otherHitbox[BBOX.RIGHT], o.y + otherHitbox[BBOX.BOTTOM]))
+	if(rectangle_in_rectangle(this.x + thisHitbox[BBOX.LEFT], this.y + thisHitbox[BBOX.TOP], this.x + thisHitbox[BBOX.RIGHT] - 1, this.y + thisHitbox[BBOX.BOTTOM] - 1,
+		o.x + otherHitbox[BBOX.LEFT], o.y + otherHitbox[BBOX.TOP], o.x + otherHitbox[BBOX.RIGHT] - 1, o.y + otherHitbox[BBOX.BOTTOM]) - 1)
 		return true;
 }
 

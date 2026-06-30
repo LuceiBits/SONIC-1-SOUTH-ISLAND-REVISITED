@@ -30,6 +30,9 @@
 	//Ring physics
 	if(magnet)
 	{
+		// Disable culling
+		culling_struct.type = CULL_TYPE.DISABLE;
+		
 		//when i steal from the physics guide (:exploding_head:)
 		var ringacceleration = [0.75, 0.1875];
 		
@@ -59,9 +62,13 @@
 			magnet = false;
 		}
 	}
+	
 	//Ring loss physics
 	if(ringloss)
 	{
+		// Disable culling
+		culling_struct.type = CULL_TYPE.DISABLE;
+		
 		x += x_speed;
 		y += y_speed;
 			

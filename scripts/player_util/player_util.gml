@@ -34,14 +34,7 @@ function player_find(player_id)
 function player_get_hitbox(player_id)
 {
 	var player = instance_find(obj_player, player_id);
-	var hitbox = new instance_hitbox();
-	
-	hitbox.left = -player.wall_w;
-	hitbox.right = player.wall_w;
-	hitbox.top = -player.hitbox_h;
-	hitbox.bottom = player.hitbox_h;
-	
-	return hitbox;
+	return [-player.wall_w, -player.hitbox_h, player.wall_w, player.hitbox_h];
 }
 
 function player_act_solid(this_hitbox = -1, player_id = 0)
@@ -172,26 +165,26 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 	{
 		//Bottom side of the hitbox:
 		case C_BOTTOM: 
-		pBox.top = 0;
-		pBox.bottom++;
+		pBox[BBOX.TOP] = 0;
+		pBox[BBOX.BOTTOM]++;
 		break;
 		
 		//Top side of the hitbox:
 		case C_TOP: 
-		pBox.bottom = 0;
-		pBox.top--;
+		pBox[BBOX.BOTTOM] = 0;
+		pBox[BBOX.TOP]--;
 		break;
 		
 		//Left side of the hitbox:
 		case C_LEFT: 
-		pBox.right = 0;
-		pBox.left--;
+		pBox[BBOX.RIGHT] = 0;
+		pBox[BBOX.LEFT]--;
 		break;
 		
 		//Right side of the hitbox:
 		case C_RIGHT:
-		pBox.left = 0;
-		pBox.right++;
+		pBox[BBOX.LEFT] = 0;
+		pBox[BBOX.RIGHT]++;
 		break;
 	}
 	
