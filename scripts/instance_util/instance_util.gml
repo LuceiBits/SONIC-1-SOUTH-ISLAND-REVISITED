@@ -220,7 +220,7 @@ function instance_act_badnik()
 
 function instance_register_culling(culling_region = noone, on_culling = noone, flags = CULL_FLAG.CHECK_ENTITY_POS)
 {
-	var c = {left : 0, right : 0, top : 0, bottom : 0}
+	var c = {left : -32, right : 32, top : -32, bottom : 32}
 	
 	if(is_array(culling_region))
 	{
