@@ -1,1 +1,0 @@
-draw_animator(animator,x,y,steep_side)
