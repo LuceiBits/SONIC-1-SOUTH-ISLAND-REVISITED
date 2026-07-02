@@ -53,8 +53,11 @@ function player_debug(){
 		
 	
 	//Become alive again
-	if(state == player_state_knockout && knockout_type == K_DIE || state == player_state_knockout && knockout_type == K_DROWN)
+	if(state == player_state_death || state == player_state_drown)
 	{
+		fade_change(FADE_IN, 5);
+		music_reset_fade();
+		
 		state = player_state_normal;
 		knockout_type = 0;
 		death_timer = 0;

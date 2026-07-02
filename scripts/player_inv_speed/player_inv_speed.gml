@@ -7,7 +7,8 @@ function player_inv_speed(){
 		
 		//Subtract values
 		speed_shoes = max(speed_shoes - 1, 0);
-		if(knockout_type = 0)invincible_timer = max(invincible_timer - 1, 0);
+		if(state != player_state_knockout)
+			invincible_timer = max(invincible_timer - 1, 0);
 	
 		//Adjust flags
 		if(speed_shoes = 0) speed_shoes_flag = false; else speed_shoes_flag = true;

@@ -4,7 +4,8 @@ function player_water()
 	water_run = false;
 	
 	//Stop executing if theres no water
-	if(!instance_exists(obj_water) || !collision_allow) exit;
+	if(!instance_exists(obj_water) || !collision_allow) 
+		exit;
 	
 	// Constants 
 	var waterY = obj_water.y;
@@ -87,7 +88,8 @@ function player_water()
 	//Aquaphobia
 	if(underwater)
 	{
-		if (shield != S_BUBBLE) {
+		if (shield != S_BUBBLE) 
+		{
 			//bubbles
 			if (bubble_delay > 0 && (air mod bubble_delay == 0)){
 				bubble_delay = 0
@@ -110,34 +112,36 @@ function player_water()
 			
 			}
 		}
+		
 		//Add air timer
-		air += 1;
+		air++;
 			
 		//Play warning sound
-		if(air == 6*60 || air == 12*60 || air == 18*60) play_sound(sfx_air_warning);
+		if(air == 6 * 60 || air == 12 * 60 || air == 18 * 60) 
+			play_sound(sfx_air_warning);
 			
 		//Uh oh drowning music
-		if(!audio_is_playing(j_drowning) && air == 20 * 60){
-			var jing = audio_play_sound(j_drowning, 0, false);
-			audio_sound_gain(jing, global.bgm_volume, 0);
-		}
+		if(!audio_is_playing(j_drowning) && air == 20 * 60)
+			audio_play_sound(j_drowning, 0, false, global.bgm_volume);
 		
 	}else
 	{
 		air = 0;
 	}
 	
-	if(air < 20*60) audio_stop_sound(j_drowning);
+	if(air < 20 * 60) 
+		audio_stop_sound(j_drowning);
 	
 	//Drown!
-	if(air > 32*60 && knockout_type != K_DROWN){
+	if(air == 32 * 60)
+	{
 		play_sound(sfx_drown);
-		obj_camera.mode = 99;
-		state = player_state_knockout;
-		knockout_type = K_DROWN;
-		x_speed = 0
-		y_speed = 0
+		camera_set_mode(CAM_NULL);
+		state = player_state_drown;
+		x_speed = 0;
+		y_speed = 0;
 	}
+	
 	//Create the countdown
 	switch(air){
 		case 20*60:

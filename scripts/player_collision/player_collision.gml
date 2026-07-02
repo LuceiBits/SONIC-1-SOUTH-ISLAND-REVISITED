@@ -3,6 +3,10 @@ function player_collision()
 	// Reset the flag
 	on_terrain = false;
 	
+	// Disable the collision if the flag is off
+	if(!collision_allow)
+		exit;
+		
 	// Player's airborne state
 	if(!ground)
 	{

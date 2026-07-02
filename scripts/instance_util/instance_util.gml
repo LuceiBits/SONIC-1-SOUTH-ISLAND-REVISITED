@@ -173,6 +173,11 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 	thisHitbox = _instance_orient_hitbox(this, thisHitbox);
 	otherHitbox = _instance_orient_hitbox(o, otherHitbox);
 	
+	if(!instance_exists(this))
+	{
+		return false;	
+	}
+	
 	// Horizontal collision
 	if(rectangle_in_rectangle(this.x + thisHitbox[BBOX.LEFT], this.y + thisHitbox[BBOX.TOP], this.x + thisHitbox[BBOX.RIGHT] - 1, this.y + thisHitbox[BBOX.BOTTOM] - 1,
 		o.x + otherHitbox[BBOX.LEFT], o.y + otherHitbox[BBOX.TOP], o.x + otherHitbox[BBOX.RIGHT] - 1, o.y + otherHitbox[BBOX.BOTTOM]) - 1)
@@ -293,6 +298,15 @@ function _instance_orient_hitbox(this, hitbox)
 {
 	var dstBox
 	
+	if(!instance_exists(this))
+	{
+		dstBox[BBOX.LEFT] = hitbox[BBOX.LEFT];
+		dstBox[BBOX.RIGHT] = hitbox[BBOX.RIGHT];
+		dstBox[BBOX.TOP] = hitbox[BBOX.TOP];
+		dstBox[BBOX.BOTTOM] = hitbox[BBOX.BOTTOM];
+		return dstBox;
+	}
+	
 	dstBox[BBOX.LEFT] = hitbox[BBOX.LEFT] * this.image_xscale;
 	dstBox[BBOX.RIGHT] = hitbox[BBOX.RIGHT] * this.image_xscale;
 	dstBox[BBOX.TOP] = hitbox[BBOX.TOP] * this.image_yscale;
@@ -318,6 +332,17 @@ function _instance_orient_hitbox(this, hitbox)
 function _instance_make_hitbox(inst)
 {
 	var newBox;
+	
+	// Fallback
+	if(!instance_exists(inst))
+	{
+		newBox[BBOX.LEFT] = 0;
+		newBox[BBOX.RIGHT] = 0;
+		newBox[BBOX.TOP] = 0;
+		newBox[BBOX.BOTTOM] = 0;
+		return newBox;
+	}
+	
 	var s = inst.sprite_index;
 	
 	if(inst.mask_index)

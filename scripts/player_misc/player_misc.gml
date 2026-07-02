@@ -19,6 +19,17 @@ function player_misc(){
 		with(par_shield) instance_destroy();
 	}
 	
+	//Kill the player after time has reached the limit
+	if(global.stage_timer == 599999) 
+	{
+		_player_kill();
+		is_time_over = true;
+	}
+
+	//Bottomless pit death event
+	if(y > obj_camera.target_bottom && y > obj_camera.limit_bottom)
+		_player_kill();
+	
 	//
 	ledge = 0;
 	pushing = 0;

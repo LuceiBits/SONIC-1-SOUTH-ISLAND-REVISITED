@@ -14,14 +14,87 @@ function player_reposition_mode(force_mode = -1)
 	y_dir = dcos(90 * true_mode);
 }
 
-function player_hurt(hazard_x = x, player_id = 0)
+function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 {
 	with(player_find(player_id))
 	{
-		if(invincible_timer == 0)
+		// Do not even bother.
+		if(disable_death)
+			exit;
+		
+		// Hurt the player if not invincible
+		if(invincible_timer == 0 && !invincible)
 		{
-			hurt_position = hazard_x;
-			knockout_type = K_HURT;
+			//hurt_position = hazard_x;
+			knockout_type = hurt_type;
+			
+			switch(hurt_type)
+			{
+				case K_DIE:
+					_player_kill();
+				break;
+				
+				case K_STUNNED:
+				case K_HURT:	
+					//Get the hurt side
+					var side = sign(x - hazard_x) ? 1 : -1;
+				
+					// Knock the player out
+					facing = -side;
+					x_speed = (2 * side) / (1 + underwater);
+					y_speed = -4 / (1 + underwater);
+					ground = false;
+					invincible_timer = 120;
+					state = player_state_knockout;
+
+					// Unrelated to stunned behaviour [ordering of this matters a lot]
+					if(hurt_type == K_HURT)
+					{
+						//Remove the shield when player gets hurt
+						if(shield != S_NONE)
+						{
+							shield = S_NONE;
+							play_sound(sfx_hurt);
+							exit;
+						}
+					
+						//Commit ring loss when player gets hurt
+						if(global.rings == 0 && shield == S_NONE)
+						{
+							_player_kill();
+							exit;	
+						}
+						
+						// Lose the combine ring
+						if(shield == S_NONE && combinering != 0)
+						{
+							//Chaotix combine ring
+							var combi = instance_create_depth(x, y, depth-1, obj_combine_ring);
+							combi.rings = global.rings;
+							combi.x_speed = 1 * facing;
+							play_sound(sfx_hurt);
+							global.rings = 0;
+							combineloss = 1;
+							combinering = 0;
+							exit;
+						}
+						
+						// Lose all of your rings
+						if(shield == S_NONE && !combinering)
+						{
+							create_ringloss(global.rings);	
+							play_sound(sfx_ringloss);
+							global.rings = 0;
+							exit;
+						}
+					}
+					else
+					{
+						play_sound(sfx_hurt);
+					}
+					
+				break;
+			}
 		}
 	}
 }
@@ -193,4 +266,26 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 	if(p.hitbox_allow)
 		return col;
 	
+}
+
+// Player internals
+function _player_kill()
+{
+	// No need to kill again
+	if(state == player_state_death)
+		exit;
+		
+	//Set player to the knockout state
+	state = player_state_death;
+			
+	//Bounce the player out
+	y_speed = -7;
+	x_speed = 0;
+	ground = false;
+	
+	//Disable camera movement
+	camera_set_mode(CAM_NULL);
+			
+	//Play the hurt sound
+	play_sound(sfx_hurt);
 }

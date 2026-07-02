@@ -116,7 +116,7 @@
 		//Hurt the player
 		if(keyboard_check_pressed(ord("8")))
 		{
-			obj_player.knockout_type = K_DIE;
+			player_hurt(0, K_DIE);
 		}
 		
 		//Toggle teleport

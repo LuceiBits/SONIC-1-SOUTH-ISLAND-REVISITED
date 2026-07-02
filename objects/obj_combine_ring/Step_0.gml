@@ -4,6 +4,7 @@
 	image_yscale = _scale
 	
 	var RandomRingSparkle = [spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle];
+	
 	//Add timer
 	timer++
 	
@@ -13,7 +14,6 @@
 		create_ringloss(rings);
 		play_sound(sfx_dust);
 		play_sound(sfx_ringloss);
-		dust_effect(0);
 		obj_player.combineloss = 0;
 		instance_destroy();	
 	}
@@ -36,7 +36,6 @@
 		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 	}
-	
 	
 	//Add speeds to position
 	x += x_speed;
