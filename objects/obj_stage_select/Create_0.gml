@@ -9,7 +9,33 @@
 	
 	//The lists
 	zone_list = [["ARBOREAL AGATE", rm_arboreal_agate1, rm_arboreal_agate2],
-	["TEST STAGE", rm_your_zone]];
+	["TEST STAGE", rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone],
+	["TEST STAGE1", rm_your_zone],
+	["TEST STAGE2", rm_your_zone],
+	["TEST STAGE3", rm_your_zone],
+	["TEST STAGE4", rm_your_zone],
+	["TEST STAGE5", rm_your_zone],
+	["TEST STAGE6", rm_your_zone],
+	["TEST STAGE7", rm_your_zone],
+	["TEST STAGE8", rm_your_zone],
+	["TEST STAGE9", rm_your_zone],
+	["TEST STAGE67", rm_your_zone],
+	["TEST STAGE69", rm_your_zone],
+	["TEST STAGE420", rm_your_zone],
+	["TEST STAGElol", rm_your_zone],
+	["TEST STAGE6969", rm_your_zone],
+	["TEST STAGE420", rm_your_zone],
+	["TEST STAGE720", rm_your_zone],
+	["TEST STAGErtter", rm_your_zone],
+	["TEST STAGEbigger", rm_your_zone],
+	["TEST STAGEcritter", rm_your_zone],
+	["TEST STAGElitter", rm_your_zone],
+	["TEST STAGEnagger", rm_your_zone],
+	["TEST STAGEblitter", rm_your_zone],
+	["TEST STAGEbitter", rm_your_zone],
+	["TEST STAGEwiitter", rm_your_zone],
+	["TEST STAGEmitter", rm_your_zone],
+	["TEST STAGEwriyrte", rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone, rm_your_zone]];
 	
 	level_reset_data();
 	level_reset_bg_visibility();
