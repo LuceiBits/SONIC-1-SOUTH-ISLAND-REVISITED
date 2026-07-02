@@ -62,7 +62,7 @@
 				draw_rectangle_color(floor(inst.inst_id.xstart + inst.region.left), floor(inst.inst_id.ystart + inst.region.top), floor(inst.inst_id.xstart + inst.region.right), floor(inst.inst_id.ystart + inst.region.bottom), c_teal, c_teal, c_teal, c_teal, false)
 		}
 		
-		draw_state_restore();
+		draw_state_pop();
 	}
 	
 	//Disable not in debug mode
