@@ -1,5 +1,3 @@
-
-	
 	//NOTE: Duplicate this room to make levels!
 	with(obj_level)
 	{
@@ -7,7 +5,7 @@
 		stage_music = MUSIC.TECHDEMO_TOWER
 		
 		//Set level name
-		stage_name = "Techdemo Tower";
+		stage_name = "Template Level";
 		
 		//Set stage act
 		act = 0;

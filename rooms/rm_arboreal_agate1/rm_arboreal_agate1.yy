@@ -3456,8 +3456,8 @@
   ],
   "name":"rm_arboreal_agate1",
   "parent":{
-    "name":"Stages",
-    "path":"folders/Rooms/Stages.yy",
+    "name":"01 - Arboreal Agate",
+    "path":"folders/Rooms/Stages/01 - Arboreal Agate.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
