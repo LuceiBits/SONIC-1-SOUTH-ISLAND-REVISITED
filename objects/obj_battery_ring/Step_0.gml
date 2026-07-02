@@ -6,9 +6,9 @@
 	landed = false;
 
 	//Bounce physics
-	while(collision_line_check(0, 8, CMODE_FLOOR, PLANE_A, true, true) && y_speed >= 0)
+	if(collision_get_distance(x, y + 8) < 0)
 	{
-		y -= 1;
+		y_speed--;
 		landed = true;
 	}
 	

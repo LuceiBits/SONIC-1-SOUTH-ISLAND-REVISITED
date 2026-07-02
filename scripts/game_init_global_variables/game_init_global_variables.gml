@@ -62,6 +62,7 @@ function game_init_global_variables()
 	global.use_spindash = true;				// Flag taht allows player to use the spindash
 	global.camera_pan_type = 0;				// Variable that changes how camera panning works. 0 = No panning, 1 = Sonic CD panning[currently inaccurate], 2 = S1D/XG styled camera panning 
 	global.chaotix_dust_effect = false;		// Flag that disables classic spindash/skid dust effect
+	global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
 	global.camera_type = 1;					// Vertical camera scrolling type, 0 = Megadrive, 1 = Mania
 	global.knux_camera_smooth = false;		// Flag for using smooth ledge climb camera movement
 	global.water_running_effect = 0;		// 0 for the hydrocity effect, 1 for repeating splashes
@@ -74,5 +75,4 @@ function game_init_global_variables()
 	
 	// Not in use as of now
 	//global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead
-	//global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust
 }
