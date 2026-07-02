@@ -166,9 +166,11 @@ function draw_self_floor()
 	draw_sprite_ext(sprite_index, image_index, floor(x) , floor(y), image_xscale, image_yscale, image_angle, draw_get_color(), draw_get_alpha());
 }
 
-function draw_state_save()
+function draw_state_push()
 {
-    global.draw_state = {
+	
+	global.draw_state_holder = 
+	{
 		col : draw_get_colour(),
 		alpha : draw_get_alpha(),
         blendmode : gpu_get_blendmode(),
@@ -184,15 +186,17 @@ function draw_state_save()
         filter : gpu_get_texfilter(),
         wrap : gpu_get_texrepeat(),
         shader : shader_current(),
-        matrix_world : matrix_get(matrix_world),
-        matrix_view : matrix_get(matrix_view),
-        matrix_projection : matrix_get(matrix_projection)
+        mw : matrix_get(matrix_world),
+        mv : matrix_get(matrix_view),
+        mp : matrix_get(matrix_projection)
     };
+	
+	ds_stack_push(global.draw_state, global.draw_state_holder);
 }
 
-function draw_state_restore()
+function draw_state_pop()
 {
-    var _state = global.draw_state;
+    var _state = ds_stack_pop(global.draw_state);
     
 	draw_set_color(_state.col);
 	draw_set_alpha(_state.alpha);
@@ -223,7 +227,17 @@ function draw_state_restore()
     
     shader_set(_state.shader);
     
-    matrix_set(matrix_world, _state.matrix_world);
-    matrix_set(matrix_view, _state.matrix_view);
-    matrix_set(matrix_projection, _state.matrix_projection);
+    matrix_set(matrix_world, _state.mw);
+    matrix_set(matrix_view, _state.mv);
+    matrix_set(matrix_projection, _state.mp);
+}
+
+function draw_set_follow_camera()
+{
+	
+}
+
+function draw_set_follow_end()
+{
+	
 }
