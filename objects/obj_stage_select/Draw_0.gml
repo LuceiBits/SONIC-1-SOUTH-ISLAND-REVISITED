@@ -34,24 +34,28 @@
 		{
 			palette_swap(tex_pal_textselect1, 1);
 		}
-		
+		var i_offset = i-(zone_sel-min(zone_sel, 8))+(zone_sel == zone_arr)
 		//Draw zones
-	    draw_text((global.window_width / 2)-128, ((global.window_height/2) - 64)+14*i, zone_list[i][0]);
+		if(i_offset >= 0 && i_offset <= 8) {
+	    draw_text((global.window_width / 2)-128, ((global.window_height/2) - 64)+14*i_offset, zone_list[i][0]);
 		
 		//Draw act text
-		draw_text((global.window_width / 2)+64-16, ((global.window_height/2) - 64)+14*i, "ACT:");
-		
+		draw_text((global.window_width / 2)+64-16, ((global.window_height/2) - 64)+14*i_offset, "ACT:");
+		}
 		//Draw acts
 		for(var j = 0; j < array_length( zone_list[i]) - 1; ++j) {
+			var act_x_offset = (act_sel-min(act_sel, 8));
+			var j_offset = j-act_x_offset
 			//Do the selection
-			if(i == zone_sel && j == act_sel)
+			if(i == zone_sel && j_offset == act_sel)
 			{
 				palette_swap(tex_pal_textselect1, 1);
 			}else
 			{
 				shader_reset();
 			}
-			draw_text((global.window_width / 2)+96+ (12*j)-16 , ((global.window_height/2) - 64)+14*i, string(j+1));
+			if(j_offset >= 0 && i_offset >= 0 && i_offset <= 8)
+			draw_text((global.window_width / 2)+96+ (12*j_offset)-16-(act_x_offset*8) , ((global.window_height/2) - 64)+14*i_offset, string(j_offset+1));
 			shader_reset();
 		}
 	}
