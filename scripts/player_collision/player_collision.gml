@@ -34,6 +34,7 @@ function player_collision()
 			c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
 			ground_angle = c.angle;
 			ground = true;	
+			on_terrain = true;
 			
 			// Landing physics
 			ground_speed = x_speed;

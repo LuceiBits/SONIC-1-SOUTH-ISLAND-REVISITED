@@ -272,7 +272,7 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 function _player_kill()
 {
 	// No need to kill again
-	if(state == player_state_death)
+	if(state == player_state_death || state == player_state_drown)
 		exit;
 		
 	//Set player to the knockout state

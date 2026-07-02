@@ -60,8 +60,6 @@ function animator_update(animator)
 		
 	}
 	
-	animator.animation_finished = false;
-	
 	if(animator.animation_frame >= sprite_get_number(animator.animation_sprite))
 	{
 		if(animator.animation_loop) 
@@ -74,6 +72,11 @@ function animator_update(animator)
 			animator.animation_frame = sprite_get_number(animator.animation_sprite) - 1;
 			animator.animation_finished = true;
 		}
+	}
+	
+	if(animator.animation_frame < sprite_get_number(animator.animation_sprite) - 1)
+	{
+		animator.animation_finished = false;	
 	}
 	
 

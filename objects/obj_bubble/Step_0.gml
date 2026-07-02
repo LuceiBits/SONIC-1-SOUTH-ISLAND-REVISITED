@@ -3,12 +3,15 @@
 	animator_update(animator);
 	animation_play(animator, type);
 	
+	// Bounding box reasons
+	sprite_index = animation_get_sprite(animator);
+	
 	//Movement
-	y -= 0.5;
-	x = xstart + 3 * dsin(angle);
+	y -= 0.53125;
+	x = xstart + 4 * dsin(angle);
 	
 	//Add and modulate angle
-	angle = (angle + 2) mod 360;
+	angle = (angle + 2.8125) mod 360;
 	
 	//Destroy outside of window or above water horizon
 	if(!on_screen() || bbox_top < obj_water.y) 

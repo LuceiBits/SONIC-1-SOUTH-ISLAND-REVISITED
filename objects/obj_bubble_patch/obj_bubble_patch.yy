@@ -1,12 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bubblepatch",
+  "%Name":"obj_bubble_patch",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bubblepatch",
+  "name":"obj_bubble_patch",
   "overriddenProperties":[],
   "parent":{
     "name":"Water",

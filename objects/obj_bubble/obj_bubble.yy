@@ -32,8 +32,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bubble_3",
-    "path":"sprites/spr_bubble_3/spr_bubble_3.yy",
+    "name":"spr_bubble_1",
+    "path":"sprites/spr_bubble_1/spr_bubble_1.yy",
   },
   "spriteMaskId":null,
   "visible":true,
