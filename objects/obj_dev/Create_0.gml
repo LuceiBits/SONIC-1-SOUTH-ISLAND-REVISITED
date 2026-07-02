@@ -7,6 +7,8 @@
 	show_hitbox = false;
 	show_player = false;
 	show_fps = false;
+	show_culling = false;
+	
 	shell_open = false;
 	store_truefps = fps_real;
 	alarm[0] = 10;

@@ -3,6 +3,10 @@ function player_collision()
 	// Reset the flag
 	on_terrain = false;
 	
+	// Disable the collision if the flag is off
+	if(!collision_allow)
+		exit;
+		
 	// Player's airborne state
 	if(!ground)
 	{
@@ -10,8 +14,8 @@ function player_collision()
 		ground_angle = 0;
 		
 		// Wall collision
-		var wallR = collision_get_height(x - wall_w, y, CMODE_RWALL, plane);
-		var wallL = collision_get_height(x + wall_w, y, CMODE_LWALL, plane);
+		var wallR = collision_get_distance(x - wall_w, y, CMODE_RWALL, plane);
+		var wallL = collision_get_distance(x + wall_w, y, CMODE_LWALL, plane);
 		
 		// Snap to the wall
 		if(wallL <= 0)
@@ -30,6 +34,7 @@ function player_collision()
 			c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
 			ground_angle = c.angle;
 			ground = true;	
+			on_terrain = true;
 			
 			// Landing physics
 			ground_speed = x_speed;
@@ -98,8 +103,8 @@ function player_collision()
 	else
 	{
 		// Wall collision
-		var wallR = collision_get_height(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (CMODE_LWALL + mode) mod 4, plane);
-		var wallL = collision_get_height(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (CMODE_RWALL + mode) mod 4, plane);
+		var wallR = collision_get_distance(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (CMODE_LWALL + mode) mod 4, plane);
+		var wallL = collision_get_distance(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (CMODE_RWALL + mode) mod 4, plane);
 		
 		// Snap to the left wall with the right sensor
 		if(wallR < 0)

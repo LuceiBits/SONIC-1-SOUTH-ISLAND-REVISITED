@@ -80,7 +80,7 @@
 	
 	//Add the presentation category
 	dev_menu_add_category("REGULAR STAGES");
-	dev_menu_add_entry("YOUR LEVEL", rm_your_zone);
+	dev_menu_add_entry("YOUR LEVEL", rm_techdemo_tower);
 	dev_menu_add_entry("ARBOREAL AGATE 1", rm_arboreal_agate1);
 	dev_menu_add_entry("ARBOREAL AGATE 2", rm_arboreal_agate2);
 	

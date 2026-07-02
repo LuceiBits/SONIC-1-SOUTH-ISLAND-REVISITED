@@ -173,9 +173,14 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 	thisHitbox = _instance_orient_hitbox(this, thisHitbox);
 	otherHitbox = _instance_orient_hitbox(o, otherHitbox);
 	
+	if(!instance_exists(this))
+	{
+		return false;	
+	}
+	
 	// Horizontal collision
-	if(rectangle_in_rectangle(this.x + thisHitbox[BBOX.LEFT], this.y + thisHitbox[BBOX.TOP], this.x + thisHitbox[BBOX.RIGHT], this.y + thisHitbox[BBOX.BOTTOM],
-		o.x + otherHitbox[BBOX.LEFT], o.y + otherHitbox[BBOX.TOP], o.x + otherHitbox[BBOX.RIGHT], o.y + otherHitbox[BBOX.BOTTOM]))
+	if(rectangle_in_rectangle(this.x + thisHitbox[BBOX.LEFT], this.y + thisHitbox[BBOX.TOP], this.x + thisHitbox[BBOX.RIGHT] - 1, this.y + thisHitbox[BBOX.BOTTOM] - 1,
+		o.x + otherHitbox[BBOX.LEFT], o.y + otherHitbox[BBOX.TOP], o.x + otherHitbox[BBOX.RIGHT] - 1, o.y + otherHitbox[BBOX.BOTTOM]) - 1)
 		return true;
 }
 
@@ -218,26 +223,31 @@ function instance_act_badnik()
 	}	
 }
 
-function instance_register_culling(culling_region = noone, on_culling = noone, check_start = false)
+function instance_register_culling(culling_region = noone, on_culling = noone, flags = CULL_FLAG.CHECK_ENTITY_POS)
 {
-	// Make a hitbox
-	/*if(culling_region == noone)
-		culling_region = _instance_make_hitbox(id);
+	var c = {left : -32, right : 32, top : -32, bottom : 32}
 	
-	culling_region = _instance_evaluate_hitbox(id, culling_region);
-	*/
-	
-	culling_region = {left : 0, right : 0, top : 0, bottom : 0}
+	if(is_array(culling_region))
+	{
+		c.left = culling_region[BBOX.LEFT];	
+		c.right = culling_region[BBOX.RIGHT];	
+		c.top = culling_region[BBOX.TOP];	
+		c.bottom = culling_region[BBOX.BOTTOM];	
+	}
+	else if(culling_region)
+	{
+		c = culling_region;	
+	}
 	
 	// Make a default struct
 	culling_struct =
 	{
 		inst_id : id,
-		region : culling_region,
+		region : c,
 		type : CULL_TYPE.DEACTIVATE,
 		cull_flag : false,
 		culled : on_culling,
-		use_start_pos : check_start
+		flag : flags
 	}
 	
 	// Add the object to the list
@@ -288,6 +298,15 @@ function _instance_orient_hitbox(this, hitbox)
 {
 	var dstBox
 	
+	if(!instance_exists(this))
+	{
+		dstBox[BBOX.LEFT] = hitbox[BBOX.LEFT];
+		dstBox[BBOX.RIGHT] = hitbox[BBOX.RIGHT];
+		dstBox[BBOX.TOP] = hitbox[BBOX.TOP];
+		dstBox[BBOX.BOTTOM] = hitbox[BBOX.BOTTOM];
+		return dstBox;
+	}
+	
 	dstBox[BBOX.LEFT] = hitbox[BBOX.LEFT] * this.image_xscale;
 	dstBox[BBOX.RIGHT] = hitbox[BBOX.RIGHT] * this.image_xscale;
 	dstBox[BBOX.TOP] = hitbox[BBOX.TOP] * this.image_yscale;
@@ -313,6 +332,17 @@ function _instance_orient_hitbox(this, hitbox)
 function _instance_make_hitbox(inst)
 {
 	var newBox;
+	
+	// Fallback
+	if(!instance_exists(inst))
+	{
+		newBox[BBOX.LEFT] = 0;
+		newBox[BBOX.RIGHT] = 0;
+		newBox[BBOX.TOP] = 0;
+		newBox[BBOX.BOTTOM] = 0;
+		return newBox;
+	}
+	
 	var s = inst.sprite_index;
 	
 	if(inst.mask_index)
@@ -333,13 +363,11 @@ function _instance_evaluate_hitbox(this, hitbox)
 	// Check if hitbox is a valid array
 	if(is_array(hitbox))
 	{
-		//newBox = new instance_hitbox(hitbox[0], hitbox[1], hitbox[2], hitbox[3]);
 		newBox = hitbox;
 	}
 	else if(is_struct(hitbox))
 	{
 		// If it's not an array, check if it's a struct
-		//newBox = new instance_hitbox(hitbox.left, hitbox.top, hitbox.right, hitbox.bottom);
 		newBox[BBOX.LEFT] = hitbox.left;
 		newBox[BBOX.RIGHT] = hitbox.right;
 		newBox[BBOX.TOP] = hitbox.top;
@@ -349,20 +377,8 @@ function _instance_evaluate_hitbox(this, hitbox)
 	else
 	{
 		// If it's not a struct either, build a new hitbox
-		//newBox = new instance_hitbox();
 		newBox = _instance_make_hitbox(this);
 	}	
 	
 	return newBox;
-}
-
-// ===========================================================================================================
-// Utilities constructors
-// ===========================================================================================================
-function instance_hitbox(box_left = 0, box_top = 0, box_right = 0, box_bottom = 0) constructor
-{
-	left = box_left;
-	top = box_top;
-	right = box_right;
-	bottom = box_bottom;
 }

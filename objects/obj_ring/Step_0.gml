@@ -30,6 +30,9 @@
 	//Ring physics
 	if(magnet)
 	{
+		// Disable culling
+		culling_struct.type = CULL_TYPE.DISABLE;
+		
 		//when i steal from the physics guide (:exploding_head:)
 		var ringacceleration = [0.75, 0.1875];
 		
@@ -59,9 +62,13 @@
 			magnet = false;
 		}
 	}
+	
 	//Ring loss physics
 	if(ringloss)
 	{
+		// Disable culling
+		culling_struct.type = CULL_TYPE.DISABLE;
+		
 		x += x_speed;
 		y += y_speed;
 			
@@ -92,8 +99,8 @@
 		y_speed += 0.09375;
 			
 		//Collision detection
-		var hc = collision_get_height(x + 8 * sign(x_speed), y, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, plane, false);
-		var vc = collision_get_height(x, y + 8 * sign(y_speed), sign(y_speed) ? CMODE_FLOOR : CMODE_CEILING, plane, sign(y_speed));
+		var hc = collision_get_distance(x + 8 * sign(x_speed), y, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, plane, false);
+		var vc = collision_get_distance(x, y + 8 * sign(y_speed), sign(y_speed) ? CMODE_FLOOR : CMODE_CEILING, plane, sign(y_speed));
 		
 		// Bounce off floor and ceiling
 		if(vc < 0)

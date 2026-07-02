@@ -222,8 +222,8 @@
   ],
   "name":"rm_bonus",
   "parent":{
-    "name":"Stages",
-    "path":"folders/Rooms/Stages.yy",
+    "name":"Special and Bonus",
+    "path":"folders/Rooms/Special and Bonus.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

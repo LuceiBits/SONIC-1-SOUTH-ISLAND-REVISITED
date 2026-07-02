@@ -32,6 +32,7 @@
 		if(keyboard_check_pressed(vk_f3)) show_fps = !show_fps;
 		if(keyboard_check_pressed(ord("N"))) global.bgm_volume = (global.bgm_volume + 1) mod 2;
 		if(keyboard_check_pressed(vk_f7)) show_player = !show_player;
+		if(keyboard_check_pressed(vk_f12)) show_culling = !show_culling;
 		if(keyboard_check_pressed(vk_f2)) 
 		{
 			fade_to_room(room, 5);
@@ -115,7 +116,7 @@
 		//Hurt the player
 		if(keyboard_check_pressed(ord("8")))
 		{
-			obj_player.knockout_type = K_DIE;
+			player_hurt(0, K_DIE);
 		}
 		
 		//Toggle teleport

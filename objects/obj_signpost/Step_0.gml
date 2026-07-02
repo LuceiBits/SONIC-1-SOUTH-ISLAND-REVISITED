@@ -67,7 +67,7 @@
 		y_speed += 0.046875;
 	
 	//Ground detection
-	var c = collision_get_height(x, y - 1, CMODE_FLOOR, PLANE_A, true);
+	var c = collision_get_distance(x, y - 1, CMODE_FLOOR, PLANE_A, true);
 	if(c < 0 && !ground)
 	{
 		y += c;
@@ -78,7 +78,7 @@
 	}
 	
 	//Wall detection
-	c = collision_get_height(x + 8 * sign(x_speed), y - 8, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, PLANE_A, true);
+	c = collision_get_distance(x + 8 * sign(x_speed), y - 8, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, PLANE_A, true);
 	if(c < 0)
 	{
 		x += c;

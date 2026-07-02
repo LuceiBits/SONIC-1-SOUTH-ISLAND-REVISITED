@@ -5,3 +5,5 @@
 		instance_create_depth(0, 0, -100, obj_pause);
 	}
 	
+	// Always increnment this
+	platform_oscillate_timer++;

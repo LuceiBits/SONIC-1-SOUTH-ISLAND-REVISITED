@@ -45,6 +45,7 @@
 	attacking = false;					// Check used for when sonic is in attacking state or not
 	air = 0;							// Used for underwater timer for drowning
 	bubble_delay = 0;					// Used to determine the delay for when to spawn the small bubble
+	bubble_number = 0;					// Used to determine which is the corret bubble number
 	hurt_position = 0;					// Horizontal position of hazard that player has touched
 	spindash_pitch = 0;					// Separate rev value used for spindash pitch
 	idle_timer = 0;						// Timer used for idle animation

@@ -4,6 +4,7 @@
 	image_yscale = _scale
 	
 	var RandomRingSparkle = [spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle, spr_ring_sparkle];
+	
 	//Add timer
 	timer++
 	
@@ -13,7 +14,6 @@
 		create_ringloss(rings);
 		play_sound(sfx_dust);
 		play_sound(sfx_ringloss);
-		dust_effect(0);
 		obj_player.combineloss = 0;
 		instance_destroy();	
 	}
@@ -37,7 +37,6 @@
 		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 	}
 	
-	
 	//Add speeds to position
 	x += x_speed;
 	y += y_speed;
@@ -46,8 +45,8 @@
 	y_speed += 0.09375;
 			
 	//Collision detection
-	var hc = collision_get_height(x + 16 * sign(x_speed), y, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, plane, false);
-	var vc = collision_get_height(x, y + 16 * sign(y_speed), sign(y_speed) ? CMODE_FLOOR : CMODE_CEILING, plane, sign(y_speed));
+	var hc = collision_get_distance(x + 16 * sign(x_speed), y, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, plane, false);
+	var vc = collision_get_distance(x, y + 16 * sign(y_speed), sign(y_speed) ? CMODE_FLOOR : CMODE_CEILING, plane, sign(y_speed));
 		
 	// Bounce off floor and ceiling
 	if(vc < 0)

@@ -1,4 +1,5 @@
 /// @description Scripts
+	
 	//Update y position
 	y += y_speed;
 		
@@ -16,5 +17,5 @@
 	if(timer == 50)
 	{
 		event_user(0);
-		if(global.chaotix_monitors) dust_effect(1); else instance_destroy();
+		instance_destroy();
 	}

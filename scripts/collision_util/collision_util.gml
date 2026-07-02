@@ -1,4 +1,4 @@
-function collision_get_height(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
+function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
     px = floor(px);
     py = floor(py);
@@ -56,29 +56,29 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 		case CMODE_FLOOR:
 			ax = px - px mod 16;
 			bx = px + (15 - px mod 16);
-			ay = collision_get_height(ax, py, mode, plane, true);	
-			by = collision_get_height(bx, py, mode, plane, true);
+			ay = collision_get_distance(ax, py, mode, plane, true);	
+			by = collision_get_distance(bx, py, mode, plane, true);
 		break;
 		
 		case CMODE_LWALL:
 			by = py - py mod 16;
 			ay = py + (15 - py mod 16);
-			ax = collision_get_height(px, ay, mode, plane, true);	
-			bx = collision_get_height(px, by, mode, plane, true);
+			ax = collision_get_distance(px, ay, mode, plane, true);	
+			bx = collision_get_distance(px, by, mode, plane, true);
 		break;
 		
 		case CMODE_CEILING:
 			bx = px - px mod 16;
 			ax = px + (15 - px mod 16);
-			by = collision_get_height(ax, py, mode, plane, true);	
-			ay = collision_get_height(bx, py, mode, plane, true);
+			by = collision_get_distance(ax, py, mode, plane, true);	
+			ay = collision_get_distance(bx, py, mode, plane, true);
 		break;
 		
 		case CMODE_RWALL:
 			ay = py - py mod 16;
 			by = py + (15 - py mod 16);
-			bx = collision_get_height(px, ay, mode, plane, true);	
-			ax = collision_get_height(px, by, mode, plane, true);
+			bx = collision_get_distance(px, ay, mode, plane, true);	
+			ax = collision_get_distance(px, by, mode, plane, true);
 		break;
 	}
 	var angle = point_direction(ax, ay, bx, by);
@@ -109,9 +109,9 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 	var pyR = y + radius_y * y_dir + radius_x * -x_dir;
 	
 	// Get all of 3 sensors
-	var heightL = collision_get_height(pxL, pyL, mode, plane, semi_solid);
-	var heightM = collision_get_height(pxM, pyM, mode, plane, semi_solid);
-	var heightR = collision_get_height(pxR, pyR, mode, plane, semi_solid);
+	var heightL = collision_get_distance(pxL, pyL, mode, plane, semi_solid);
+	var heightM = collision_get_distance(pxM, pyM, mode, plane, semi_solid);
+	var heightR = collision_get_distance(pxR, pyR, mode, plane, semi_solid);
 	
 	// Default to the left sensor
 	colResult.height = heightL;
@@ -382,17 +382,4 @@ function _tiledata_get_width(tile_id, ypos, flip = false)
 		// Otherwise default to the normal one
 		return global.tile_left[index][ypos];	
 	}
-}
-
-// ==========================================================================================
-// Deprecated so it doesn't crash the game
-// ==========================================================================================
-function collision_point_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
-{
-
-}
-
-function collision_line_check(radius_x, radius_y, collision_mode = CMODE_FLOOR, collision_plane = PLANE_A, semi_solid = false, solid_object = false)
-{
-
 }

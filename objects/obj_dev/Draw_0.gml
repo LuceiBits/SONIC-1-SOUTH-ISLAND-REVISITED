@@ -39,6 +39,32 @@
 		draw_surface(surf, cx, cy)	
 	}
 	
+	if(instance_exists(obj_level) && show_culling)
+	{
+		var inst;
+		var count = ds_list_size(obj_level.instance_list);
+		
+		draw_state_save();
+		
+		draw_set_alpha(0.5);
+		for (var i = 0; i < count; ++i)
+		{
+			// Get the object from the list
+			inst = obj_level.instance_list[| i];
+			
+			if(!instance_exists(inst.inst_id))
+				continue;
+				
+			if(inst.flag & CULL_FLAG.CHECK_ENTITY_POS)
+				draw_rectangle_color(floor(inst.inst_id.x + inst.region.left), floor(inst.inst_id.y + inst.region.top), floor(inst.inst_id.x + inst.region.right), floor(inst.inst_id.y + inst.region.bottom), c_maroon, c_maroon, c_maroon, c_maroon, false)
+			
+			if(inst.flag & CULL_FLAG.CHECK_ENTITY_START)
+				draw_rectangle_color(floor(inst.inst_id.xstart + inst.region.left), floor(inst.inst_id.ystart + inst.region.top), floor(inst.inst_id.xstart + inst.region.right), floor(inst.inst_id.ystart + inst.region.bottom), c_teal, c_teal, c_teal, c_teal, false)
+		}
+		
+		draw_state_restore();
+	}
+	
 	//Disable not in debug mode
 	if(!debug || !instance_exists(obj_player)) exit;
 	

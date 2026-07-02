@@ -9,9 +9,6 @@
 	//Handle how player is controlled:
 	player_control();
 
-	//Handle player's hurt system
-	player_handle_hurt()
-	
 	//Update player's animator
 	animator_update(animator);
 	
