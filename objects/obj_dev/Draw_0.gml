@@ -44,7 +44,7 @@
 		var inst;
 		var count = ds_list_size(obj_level.instance_list);
 		
-		draw_state_save();
+		draw_state_push();
 		
 		draw_set_alpha(0.5);
 		for (var i = 0; i < count; ++i)

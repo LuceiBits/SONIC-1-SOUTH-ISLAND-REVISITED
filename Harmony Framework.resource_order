@@ -1,5 +1,6 @@
 {
   "FolderOrderSettings":[
+    {"name":"Special and Bonus","order":2,"path":"folders/Rooms/Special and Bonus.yy",},
     {"name":"Presentation","order":1,"path":"folders/Rooms/Presentation.yy",},
     {"name":"Special and Bonus","order":2,"path":"folders/Rooms/Special and Bonus.yy",},
     {"name":"00 - Test Stage","order":2,"path":"folders/Rooms/Stages/00 - Test Stage.yy",},

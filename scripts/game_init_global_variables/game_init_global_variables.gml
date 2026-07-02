@@ -12,7 +12,7 @@ function game_init_global_variables()
 	global.window_height = GAME_WINDOW_HEIGHT;				//Window's vertical size
 	global.window_size_limit = 4;							//Window size limiter
 	global.window_size = 2;									//Window size multiplier
-	global.draw_state = undefined;
+	global.draw_state = ds_stack_create();
 	
 	//Setup volume
 	global.bgm_volume = 1;					//Music's channel volume
@@ -69,9 +69,28 @@ function game_init_global_variables()
 	global.no_skid_state = true;			// makes skidding work closer to the genesis games, instead of a seperate state
 	global.super_button = INPUT.C			// This defines which input will be used for super transformation
 	
-	global.other_box_temp = {left : 0, right : 0, top : 0, bottom : 0};
-	global.this_box_temp = {left : 0, right : 0, top : 0, bottom : 0};
-	global.box_temp = {left : 0, right : 0, top : 0, bottom : 0};
+	global.draw_state_holder = 
+	{
+		col : draw_get_colour(),
+		alpha : draw_get_alpha(),
+        blendmode : gpu_get_blendmode(),
+        blendmode_ext : gpu_get_blendmode_ext(),
+        colourwriteenable : gpu_get_colourwriteenable(),
+        cullmode : gpu_get_cullmode(),
+        fog : gpu_get_fog(),
+        ztestenable : gpu_get_ztestenable(),
+        zfunc : gpu_get_zfunc(),
+        zwriteenable : gpu_get_zwriteenable(),
+        alphatestenable : gpu_get_alphatestenable(),
+        alphatestref : gpu_get_alphatestref(),
+        filter : gpu_get_texfilter(),
+        wrap : gpu_get_texrepeat(),
+        shader : shader_current(),
+        mw : matrix_get(matrix_world),
+        mv : matrix_get(matrix_view),
+        mp : matrix_get(matrix_projection)
+    };
+	
 	
 	// Not in use as of now
 	//global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead

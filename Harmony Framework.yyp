@@ -46,6 +46,7 @@
     {"$GMFolder":"","%Name":"Particle Systems","folderPath":"folders/Particle Systems.yy","name":"Particle Systems","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Paths","folderPath":"folders/Paths.yy","name":"Paths","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Rooms","folderPath":"folders/Rooms.yy","name":"Rooms","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Special and Bonus","folderPath":"folders/Rooms/Special and Bonus.yy","name":"Special and Bonus","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Presentation","folderPath":"folders/Rooms/Presentation.yy","name":"Presentation","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Special and Bonus","folderPath":"folders/Rooms/Special and Bonus.yy","name":"Special and Bonus","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Stages","folderPath":"folders/Rooms/Stages.yy","name":"Stages","resourceType":"GMFolder","resourceVersion":"2.0",},
