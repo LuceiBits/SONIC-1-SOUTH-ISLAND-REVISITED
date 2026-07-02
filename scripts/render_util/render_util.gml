@@ -169,7 +169,7 @@ function draw_self_floor()
 function draw_state_push()
 {
 	
-	global.draw_state_holder = 
+	var _state = 
 	{
 		col : draw_get_colour(),
 		alpha : draw_get_alpha(),
@@ -191,7 +191,7 @@ function draw_state_push()
         mp : matrix_get(matrix_projection)
     };
 	
-	ds_stack_push(global.draw_state, global.draw_state_holder);
+	ds_stack_push(global.draw_state, _state);
 }
 
 function draw_state_pop()
@@ -234,10 +234,15 @@ function draw_state_pop()
 
 function draw_set_follow_camera()
 {
+	// Store because of the matrices
+	draw_state_push();
 	
+	// Make the view matrix follow the camera
+	matrix_set(matrix_view, matrix_build(-CAMERA_VIEW_W / 2, -CAMERA_VIEW_H / 2, 16000, 0, 0, 0, 1, 1, 1));
 }
 
 function draw_set_follow_end()
 {
-	
+	// Restore the old stuff, pretty much a wrapper
+	draw_state_pop();
 }

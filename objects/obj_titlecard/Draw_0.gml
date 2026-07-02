@@ -31,14 +31,8 @@
 		gpu_set_blendmode(bm_normal);	
 	}
 	
-	//Draw whole ass water
-	if(!surface_exists(surf_bg)) surf_bg = surface_create(global.window_width, global.window_height);
-	
-	//Draw shit in this
-	surface_set_target(surf_bg);
-	
-	//Clear alpha
-	draw_clear_alpha(c_black, 0)
+	// Make the HUD follow the camera
+	draw_set_follow_camera();
 	
 	var act_text = "Zone " + string(obj_level.act)
 	if (obj_level.act == 0) {
@@ -89,9 +83,4 @@
 	draw_set_color(c_white);
 	draw_text(offset[6]+8, offset[1], act_text);
 	
-	
-	//Done
-	surface_reset_target();
-
-	//Draw surface
-	draw_surface(surf_bg, cx, cy);
+	draw_set_follow_end();

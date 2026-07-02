@@ -30,14 +30,8 @@
 		gpu_set_blendmode(bm_normal);	
 	}
 	
-	//Draw whole ass water
-	if(!surface_exists(surf_bg)) surf_bg = surface_create(global.window_width, global.window_height);
-	
-	//Draw shit in this
-	surface_set_target(surf_bg);
-	
-	//Clear alpha
-	draw_clear_alpha(c_black, 0)
+	// Make the HUD follow the camera
+	draw_set_follow_camera();
 	
 	draw_set_font(fon_titlecard);
 	draw_set_halign(fa_left);
@@ -55,10 +49,6 @@
 	draw_set_color(c_black);
 	draw_text(WINDOW_WIDTH / 2, offset[1], string(name));
 
-	
 	draw_set_halign(fa_left)
-	//Done
-	surface_reset_target();
 
-	//Draw surface
-	draw_surface(surf_bg, cx, cy);
+	draw_set_follow_end();

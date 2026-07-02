@@ -7,27 +7,18 @@
 	}
 	
 	//Temp value
-	var minute, sec, milsec, c, cx, cy;
-	
-	//Screen values
-	c = view_camera[view_current]
-	cx = camera_get_view_x(c)
-	cy = camera_get_view_y(c)
+	var minute, sec, milsec;
 	
 	//Time
 	milsec = floor(global.stage_timer/10) mod 100;
 	sec = floor(global.stage_timer/1000) mod 60;
 	minute = floor(global.stage_timer/60000);
 	
-	//Draw whole ass water
-	if(!surface_exists(surf)) surf = surface_create(global.window_width, global.window_height);
+	// Make the HUD follow the camera
+	draw_set_follow_camera();
 	
-		
-	surface_set_target(surf);
-	draw_clear_alpha(c_black, 0);
-	
-	if (!instance_exists(obj_bonus_level)) {
-	
+	if (!instance_exists(obj_bonus_level)) 
+	{
 		//Draw normal text
 		draw_sprite(spr_hudtext, 0, 16 + offset[0], 8);
 		draw_sprite(spr_hudtext, 1, 16 + offset[1], 24);
@@ -59,7 +50,9 @@
 			}
 		}
 		
-	} else {
+	} 
+	else 
+	{
 		draw_sprite(spr_hudtext, 2, 16 + offset[0], 8);
 		
 		//Red flashing text
@@ -74,15 +67,14 @@
 		draw_text(96 + offset[0], 9, string(global.rings));
 		draw_text(56 + offset[1], global.window_height - 24, (global.life > 9 ? "" : "0") + string(global.life));
 		
-		if (obj_player.combinering == 1){
+		if (obj_player.combinering == 1)
+		{
 			draw_sprite(spr_monitor_icon_combine_ring, 0, 24 + offset[0], 16);	
 		}
 	}
 	
-	surface_reset_target();
-	
-	draw_surface(surf, cx, cy);
-	
+	// Stop following the camera
+	draw_set_follow_end();
 	
 	if(slide_in)
 	{
