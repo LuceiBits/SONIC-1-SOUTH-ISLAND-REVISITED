@@ -170,8 +170,8 @@ switch (state)
 					}
 					palette_page ^= 1;
 					spin_state = 0;
-					player_x = (player_x + ashr(global.bss.sin256[angle], 8)) & 31;
-					player_y = (player_y - ashr(global.bss.cos256[angle], 8)) & 31;
+					player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+					player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 				}
 			}
 			else if (globe_timer < 0)
@@ -181,8 +181,8 @@ switch (state)
 					case 0:
 						globe_timer += 256;
 						palette_page ^= 1;
-						player_x = (player_x - ashr(global.bss.sin256[angle], 8)) & 31;
-						player_y = (player_y + ashr(global.bss.cos256[angle], 8)) & 31;
+						player_x = (player_x - ashr(sin256(angle), 8)) & 31;
+						player_y = (player_y + ashr(cos256(angle), 8)) & 31;
 						break;
 					case 1: state = BS_TURNL; globe_timer = 0; spin_timer = 0; break;
 					case 2: state = BS_TURNR; globe_timer = 0; spin_timer = 0; break;
@@ -342,15 +342,15 @@ switch (state)
 		{
 			palette_page ^= 1;
 			globe_timer += 256;
-			player_x = (player_x - ashr(global.bss.sin256[angle], 8)) & 31;
-			player_y = (player_y + ashr(global.bss.cos256[angle], 8)) & 31;
+			player_x = (player_x - ashr(sin256(angle), 8)) & 31;
+			player_y = (player_y + ashr(cos256(angle), 8)) & 31;
 		}
 		else if (globe_timer >= 256)
 		{
 			palette_page ^= 1;
 			globe_timer -= 256;
-			player_x = (player_x + ashr(global.bss.sin256[angle], 8)) & 31;
-			player_y = (player_y - ashr(global.bss.cos256[angle], 8)) & 31;
+			player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+			player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 		}
 		palette_line = ashr(globe_timer, 4) & 15;
 
@@ -375,15 +375,15 @@ switch (state)
 		{
 			palette_page ^= 1;
 			globe_timer += 256;
-			player_x = (player_x - ashr(global.bss.sin256[angle], 8)) & 31;
-			player_y = (player_y + ashr(global.bss.cos256[angle], 8)) & 31;
+			player_x = (player_x - ashr(sin256(angle), 8)) & 31;
+			player_y = (player_y + ashr(cos256(angle), 8)) & 31;
 		}
 		else if (globe_timer >= 256)
 		{
 			palette_page ^= 1;
 			globe_timer -= 256;
-			player_x = (player_x + ashr(global.bss.sin256[angle], 8)) & 31;
-			player_y = (player_y - ashr(global.bss.cos256[angle], 8)) & 31;
+			player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+			player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 		}
 		palette_line = ashr(globe_timer, 4) & 15;
 		break;

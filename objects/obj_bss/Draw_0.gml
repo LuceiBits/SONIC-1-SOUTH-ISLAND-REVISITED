@@ -35,8 +35,8 @@ draw_sprite_ext(spr_bss_player_shadow, 0, center_x, 170, 1, 1, 0, c_white, 0.5);
 
 //BSS_Setup_HandleCollectableMovement port
 var aa = angle & 255;
-var cs = global.bss.cos256[aa];
-var sn = global.bss.sin256[aa];
+var cs = cos256(aa);
+var sn = sin256(aa);
 var offset_dir = (aa >> 6) & 3;
 
 var use_f2 = ((aa & 0x3F) != 0);

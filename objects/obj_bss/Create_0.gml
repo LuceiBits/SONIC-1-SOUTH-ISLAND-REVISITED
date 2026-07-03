@@ -3,7 +3,7 @@
 global.bss = {}; //all blue-spheres state + tables live under one namespace
 
 bss_build_tables();
-bss_load_data();      //sin256/cos256, frustum tables, ring count
+bss_load_data();      //frustum projection tables
 bss_load_playfield(); //32x32 playfield from the room's "Playfield" tilemap
 
 global.bss.chain = array_create(1024, C_NONE);
@@ -106,8 +106,8 @@ setup_finish = function() {
 	for (var gy = 0; gy < BSS_H; gy++)
 		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * 32) + gy] = C_NONE;
 
-	var fx = ashr(global.bss.sin256[angle], 5) + player_x;
-	var fy = (player_y - ashr(global.bss.cos256[angle], 5)) & 31;
+	var fx = ashr(sin256(angle), 5) + player_x;
+	var fy = (player_y - ashr(cos256(angle), 5)) & 31;
 	var fp = fy + (32 * (fx & 31));
 
 	global.bss.pf[fp] = (ring_count > 0) ? C_MEDAL_SILVER : C_MEDAL_GOLD;
@@ -232,8 +232,8 @@ stepped_objects = function() {
 	}
 
 	//cell ahead
-	var posX = (player_x + ashr(global.bss.sin256[angle], 8)) & 31;
-	var posY = (player_y - ashr(global.bss.cos256[angle], 8)) & 31;
+	var posX = (player_x + ashr(sin256(angle), 8)) & 31;
+	var posY = (player_y - ashr(cos256(angle), 8)) & 31;
 	fp = posY + (32 * posX);
 
 	switch (global.bss.pf[fp])
@@ -270,8 +270,8 @@ stepped_objects = function() {
 				state = BS_EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
-				player_x = (player_x + ashr(global.bss.sin256[angle], 8)) & 31;
-				player_y = (player_y - ashr(global.bss.cos256[angle], 8)) & 31;
+				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 				exit_result = "fail";
 				play_sound(sfx_warp_exit);
 				music_fade_channel(BGM, FADE_OUT, 1);
@@ -351,8 +351,8 @@ stepped_objects = function() {
 				state = BS_EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
-				player_x = (player_x + ashr(global.bss.sin256[angle], 8)) & 31;
-				player_y = (player_y - ashr(global.bss.cos256[angle], 8)) & 31;
+				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 				play_sound(sfx_warp_exit);
 			}
 			break;
