@@ -13,6 +13,7 @@
 	star_ydiff = 72; 
 	
 	#macro MIN_BONUS_STAGE 30
+	#macro MIN_BLUE_SPHERES 50
 	
 	//Set all checkpoints to be triggered
 	if(ds_list_find_index(global.checkpoint, id) != -1)

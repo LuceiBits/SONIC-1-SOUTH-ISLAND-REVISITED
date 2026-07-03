@@ -24,6 +24,7 @@ function game_init_global_variables()
 	global.time_store = 0;					//Store value for timer when checkpoint gets active
 	
 	global.bonus_stage_state = BONUSSTAGE.OUTSIDE
+	global.bonus_room = rm_bonus				//Which bonus stage a checkpoint sends you to
 	global.store_object_state = ds_list_create();
 	global.previous_room = rm_splash
 	global.store_player_state = 
