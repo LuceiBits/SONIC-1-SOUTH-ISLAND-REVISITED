@@ -74,9 +74,9 @@ setup_start_info = function() {
 				case C_GREEN: sphere_count++; break;
 				case C_PINK:  pink_count++; break;
 				case C_SPAWN_UP:    angle = 0x00; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
-				case C_SPAWN_RIGHT: angle = 0xC0; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
+				case C_SPAWN_RIGHT: angle = 0x40; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
 				case C_SPAWN_DOWN:  angle = 0x80; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
-				case C_SPAWN_LEFT:  angle = 0x40; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
+				case C_SPAWN_LEFT:  angle = 0xC0; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
 			}
 		}
 	}
