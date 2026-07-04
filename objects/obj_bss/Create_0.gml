@@ -18,7 +18,7 @@ center_x = WINDOW_WIDTH div 2;
 //Per-stage config
 stage_music = MUSIC.BLUE_SPHERES;
 ring_target = 64;
-palette_index = 1; //tex_pal_bss row used to recolour the stage
+palette_index = 0; //tex_pal_bss row used to recolour the stage
 
 //Character animator
 var _stand, _walk, _roll, _tail;
