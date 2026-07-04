@@ -54,29 +54,29 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 	switch(mode)
 	{
 		case CMODE_FLOOR:
-			ax = px - px mod 16;
-			bx = px + (15 - px mod 16);
+			ax = px - px mod ANGLE_GRID_SIZE;
+			bx = px + ((ANGLE_GRID_SIZE - 1) - px mod ANGLE_GRID_SIZE);
 			ay = collision_get_distance(ax, py, mode, plane, true);	
 			by = collision_get_distance(bx, py, mode, plane, true);
 		break;
 		
 		case CMODE_LWALL:
-			by = py - py mod 16;
-			ay = py + (15 - py mod 16);
+			by = py - py mod ANGLE_GRID_SIZE;
+			ay = py + ((ANGLE_GRID_SIZE - 1) - py mod ANGLE_GRID_SIZE);
 			ax = collision_get_distance(px, ay, mode, plane, true);	
 			bx = collision_get_distance(px, by, mode, plane, true);
 		break;
 		
 		case CMODE_CEILING:
-			bx = px - px mod 16;
-			ax = px + (15 - px mod 16);
+			bx = px - px mod ANGLE_GRID_SIZE;
+			ax = px + ((ANGLE_GRID_SIZE - 1) - px mod ANGLE_GRID_SIZE);
 			by = collision_get_distance(ax, py, mode, plane, true);	
 			ay = collision_get_distance(bx, py, mode, plane, true);
 		break;
 		
 		case CMODE_RWALL:
-			ay = py - py mod 16;
-			by = py + (15 - py mod 16);
+			ay = py - py mod ANGLE_GRID_SIZE;
+			by = py + ((ANGLE_GRID_SIZE - 1) - py mod ANGLE_GRID_SIZE);
 			bx = collision_get_distance(px, ay, mode, plane, true);	
 			ax = collision_get_distance(px, by, mode, plane, true);
 		break;
@@ -130,7 +130,14 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 		colResult.height = heightR;
 		colResult.angle = collision_get_angle(pxR, pyR, mode, plane);
 	}
-		
+	
+	// Make angle flat if the results of the height are also flat
+	if(colResult.height == heightL && (heightL == heightM || heightL == heightR)) ||
+	(colResult.height == heightM && heightM == heightR)
+	{
+		colResult.angle = 90 * mode;
+	}
+	
     return colResult;
 }
 

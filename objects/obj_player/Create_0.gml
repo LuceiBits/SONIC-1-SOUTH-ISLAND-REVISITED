@@ -72,6 +72,7 @@
 	flag_override = true;				// This is used to prevent flags from being override in player state list script when false
 	disable_death = false;				// If true, disables the ability to die via pits or other means 
 	water_run = false;					// Flag used of player is water running
+	semi_solid_condition = false		// A condition flag used to see if semi solids can be collided with or not
 	
 	//Hitbox values:					   
 	hitbox_w = 9;						// Hitbox width variable

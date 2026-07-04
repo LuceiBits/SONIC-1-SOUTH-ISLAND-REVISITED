@@ -13,6 +13,13 @@ function player_collision()
 		// Reset the ground angle to default
 		ground_angle = 0;
 		
+		// Make sure to reset the mode in alt mode
+		if(PLAYER_ALT_COLLISION_MODE)
+		{
+			mode = CMODE_FLOOR;
+			player_mode();
+		}
+		
 		// Wall collision
 		var wallR = collision_get_distance(x - wall_w, y, CMODE_RWALL, plane);
 		var wallL = collision_get_distance(x + wall_w, y, CMODE_LWALL, plane);
@@ -23,15 +30,21 @@ function player_collision()
 			
 		if(wallR <= 0)
 			x -= wallR;	
-			
+		
+		// If player is going up, disable semi solids [NOTE: THIS IS WHERE THE IMPROVEMENTS WILL HAPPEN FOR 1.1]
+		if(y_speed < 0)
+			semi_solid_condition = false;
+		else
+			semi_solid_condition = true;
+		
 		// Get the active collision sensor
-		var c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_FLOOR, plane, true);
+		var c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_FLOOR, plane, semi_solid_condition);
 		
 		// If player is colliding with floor, then ground the player
 		if(c.height < 0 && y_speed > 0)
 		{
 			// Push the player out of the ground
-			c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
+			c = collision_active_sensor(hitbox_w, hitbox_h, mode, plane, semi_solid_condition);
 			ground_angle = c.angle;
 			ground = true;	
 			on_terrain = true;
@@ -52,7 +65,7 @@ function player_collision()
 			player_mode();
 			
 			// Get new collision to prevent floor clipping
-			c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
+			c = collision_active_sensor(hitbox_w, hitbox_h, mode, plane, semi_solid_condition);
 			
 			// Snap player to the floor
 			ground_angle = c.angle;
@@ -119,24 +132,29 @@ function player_collision()
 			x -= wallL * y_dir;	
 			y += wallL * x_dir;	
 		}
-			
+		
+		// If the ground collision mode isn't floor, make sure semi solids are inactive
+		if(mode != CMODE_FLOOR)
+			semi_solid_condition = false;
+		else
+			semi_solid_condition = true;
+		
 		// Get the active sensor
-		var c = collision_active_sensor(-hitbox_w, hitbox_h, mode, plane, true);
+		var c = collision_active_sensor(hitbox_w, hitbox_h, mode, plane, semi_solid_condition);
 		
 		// Mark the player object to be on terrain
 		if(c.height < 16)
 		{
 			on_terrain = true;	
 		}
-		
-		
+				
 		// Get the previous angle and angle from the active sensor
 		var oldAngle = ground_angle;
 		var newAngle = c.angle;
-		
+				
 		// Calculate the difference between both of the angles
-		var angleDiff = math_uangle(abs(newAngle - oldAngle));
-	
+		var angleDiff = abs(math_uangle(newAngle) - math_uangle(oldAngle));
+		
 		// If there's nothing below sonic, detach
 		if(c.height > (angleDiff > PLAYER_SLOPE_TOLERANCE ? 1 : PLAYER_DETACH_DIST) && !water_run && !on_object)
 		{
@@ -161,8 +179,59 @@ function player_collision()
 			ground_angle = newAngle;
 		}
 		
+		// Plyer ground collision mode
+		if(PLAYER_ALT_COLLISION_MODE)
+		{
+			// Get the old angle
+			oldAngle = ground_angle;
+			
+			// Position sensor to the right side
+			var px = x + hitbox_h * y_dir + hitbox_w * x_dir;
+			var py = y + hitbox_w * y_dir + hitbox_h * -x_dir;
+			
+			// Get the collision distance and angle of the right sensor
+			var col = collision_get_distance(px, py, (mode + CMODE_LWALL) % 4, plane, true);
+			var a = collision_get_angle(px, py, (mode + CMODE_LWALL) % 4, plane);
+			
+			// Calculate the difference between old and new angle
+			angleDiff = abs(math_uangle(a) - math_uangle(oldAngle));
+			
+			// If the conditions are met, change the ground collision mode
+			if(col < 0 && angleDiff < PLAYER_SLOPE_TOLERANCE)
+			{
+				ground_angle = a
+				player_mode();
+			}
+			
+			// Position sensor to the left side
+			px = x - hitbox_h * y_dir + hitbox_w * x_dir;
+			py = y + hitbox_w * y_dir - hitbox_h * -x_dir;
+			
+			// Get the collision distance and angle of the left sensor
+			col = collision_get_distance(px, py, (mode + 3) % 4, plane, true);
+			a = collision_get_angle(px, py, (mode + 3) % 4, plane);
+
+			// Calculate the difference between old and new angle
+			angleDiff = abs(math_uangle(a) - math_uangle(oldAngle));
+			
+			// If the conditions are met, change the ground collision mode
+			if(col < 0 && angleDiff < PLAYER_SLOPE_TOLERANCE)
+			{
+				ground_angle = a
+				player_mode();
+			}
+		}
+		
 		// Wall stoppers
 		if(wallR < 0 || wallL < 0)
+		{
+			if(mode != CMODE_FLOOR)
+			{
+				ground_angle = 0;
+				player_mode();	
+			}
+			
 			ground_speed = 0;
+		}
 	}
 }
