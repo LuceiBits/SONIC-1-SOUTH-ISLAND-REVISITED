@@ -3,70 +3,65 @@
 	//Get player object
 	var player = instance_nearest(x, y, obj_player);
 	
-	//Get current segment
-	current_segment = (player.x - x) / 16;
+	// Get the current log that the player is standing on
+	var currentLog = clamp(((player.x - x) / 16), 0, bridge_size - 1);
 	
-	//Limit the current segment
-	current_segment = clamp(current_segment, 0, log_amount);
+	// Calculate the tension on the left side
+	var logMulti = ((currentLog - current_log_offset) / bridge_size) * 2
 	
-	//Get max dipping
-	if(current_segment <= log_amount / 2)
+	// Calculate the tension for the right side
+	if(currentLog > (bridge_size / 2))
 	{
-		max_dip = current_segment * dip_multiplier;
-	}else
+		current_log_offset = lerp(current_log_offset, standing, 0.25);
+		logMulti = ((bridge_size - (currentLog + current_log_offset)) / bridge_size) * 2
+	}
+	else
 	{
-		max_dip = (log_amount-current_segment) * dip_multiplier;
+		current_log_offset = lerp(current_log_offset, 0, 0.25);	
+		
+		if(current_log_offset < 0.2)
+			current_log_offset = 0;
 	}
 	
 	//Make bridge dip when you land
-	stand_offset = lerp(stand_offset, standing, 0.2);
+	standing_multi = lerp(standing_multi, standing, 0.2);
 	
-	//When you land on it
-	max_dip *= stand_offset;
+	// Lerp quirk fix
+	if(standing_multi < 0.1)
+		standing_multi = 0;
 	
-	var c = player_act_semi_solid();
-	
-	//Log code
-	for (var i = 0; i < log_amount; ++i){
-		//Temp values
-		var log_diff, log_dist;
+	// Logic for individual bridge logs
+	for (var i = 0; i < bridge_size; i++)
+	{
+		var t;
 		
-		//Log difference
-		log_diff = abs(i - current_segment);
+		// Calcualte the offset for the logs
+		if (i < currentLog)
+			t = i / currentLog;
+		else
+			t = (bridge_size - 1 - i) / max(bridge_size - 1 - currentLog, 1);
 		
-		//Log distance
-		if(i < current_segment)
-		{
-			log_dist = 1 - (log_diff / current_segment);
-		}else
-		{
-			log_dist = 1 - (log_diff / (log_amount-current_segment));	
-		}
-		
-		//Position the log
-		log_y[i] = ystart + (max_dip*dsin(log_dist * 90));
-		
-		//Offset log if its a slope:
-		var p_offset = 0//(player.x - x) / push_offset
-		
-		//Position the hitbox
-		y = log_y[floor(min(current_segment, log_amount-1))] + (push_offset * current_segment) + p_offset;
+		// Push the logs down
+		log_offset[i] = max_dip * standing_multi * logMulti * dsin(t * 90);
 	}
 	
+	// Make the bridge semi solid
+	var c = player_act_semi_solid();
+	
+	// Tilted bridge offset
+	var pushOffset = ((ystart + push_offset) - ystart) * ((1 / bridge_size) * currentLog);
+	
+	// Offset the hitbox
+	y = ystart + log_offset[floor(min(currentLog, bridge_size - 1))] + pushOffset;
+
 	//Player standing on the bridge
 	if(c && player.mode = 0 && player.ground)
 	{
-		//Bubble shield effect
-		if(instance_exists(obj_bubble_shield) && obj_bubble_shield.shield_state = 1 && player.ground)
-		{
-			stand_offset = 1;
-		}
 		if(!player.on_terrain)
 		{
 			player.y = bbox_top - player.hitbox_h - 1;
 		}
 		standing = true;
-	}else
-	{
-		standing = false;	
 	}
+	else
+		standing = false;	
