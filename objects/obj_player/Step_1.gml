@@ -35,28 +35,27 @@
 	player_inv_speed();
 	
 	//Step movement for sticking on the collision
-	steps = 1 + abs(floor(x_speed/13)) + abs(floor(y_speed/13));
-
+	steps = min(1 + abs(round(x_speed / PLAYER_STEPS_AMOUNT)) + abs(round(y_speed / PLAYER_STEPS_AMOUNT)), PLAYER_MAX_STEPS);
+	
 	//Cancel when in debug mode
 	if(debug)
 	{
 		player_debug();
 		exit;	
 	}
-	
+
 	//Include step movement
 	repeat(steps)
 	{
 		//Handle player movement:
 		player_movement();
 		
-				//Handle how player changes floor modes:
-		player_mode();
+		//Handle how player changes floor modes:
+		if(!PLAYER_ALT_COLLISION_MODE)
+			player_mode();
 		
 		//Handle player terrain collision:
 		player_collision();
-		
-	
 	}
 	
 	// Reset flags
