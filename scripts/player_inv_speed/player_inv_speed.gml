@@ -1,10 +1,11 @@
 function player_inv_speed(){
-	if (obj_music.play_data[Jingle] == "j_super" && !super) {
+	if(obj_global.music.play_data[Jingle] == "j_super" && !super) 
+	{
 		stop_jingle(true, 1);	
 	}
 	
-	if (!super) {
-		
+	if(!super) 
+	{
 		//Subtract values
 		speed_shoes = max(speed_shoes - 1, 0);
 		if(state != player_state_knockout)
@@ -15,12 +16,12 @@ function player_inv_speed(){
 		if(invincible_timer = 0 && invincible) invincible = false;
 	
 		//Stop jingles
-		if(obj_music.play_data[Jingle] = "j_speedshoe" && speed_shoes = 0)
+		if(obj_global.music.play_data[Jingle] = "j_speedshoe" && speed_shoes = 0)
 		{
 			stop_jingle(true, 1);
 		}
 	
-		if(obj_music.play_data[Jingle] = "j_invincible" && !invincible)
+		if(obj_global.music.play_data[Jingle] = "j_invincible" && !invincible)
 		{
 			stop_jingle(true, 1);
 		}
@@ -28,18 +29,10 @@ function player_inv_speed(){
 		//Invincible sparkles
 		if(invincible)
 		{
-			if (obj_music.play_data[Jingle] != "j_invincible" && speed_shoes == 0) {
-				
-			}
-		
 			if(!instance_number(obj_invinciblespark))
 			{
 				instance_create_depth(x, y, depth-10, obj_invinciblespark);
 			}
-		}
-	
-		if (speed_shoes > 0 && obj_music.play_data[Jingle] != "j_speedshoe") {
-			
 		}
 		
 		//return to normal color smoothly if lost super
@@ -55,13 +48,16 @@ function player_inv_speed(){
 		invincible = true
 		
 		//super form behavior
-		if (obj_music.play_data[Jingle] != "j_super" && transform_timer < 25) {
+		if (obj_global.music.play_data[Jingle] != "j_super" && transform_timer < 25) 
+		{
 			play_music(MUSIC.SUPER, Jingle);	
 		}
+		
 		if(instance_exists(obj_invinciblespark))
 		{
 			instance_destroy(obj_invinciblespark)
 		}	
+		
 		//palette cycle
 		if (super_color > 0){
 			if (FRAME_TIMER mod 6 == 0){
