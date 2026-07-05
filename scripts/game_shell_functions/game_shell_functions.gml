@@ -43,13 +43,13 @@ function sh_suicide(args)
 	if(instance_exists(obj_player))obj_player.knockout_type = 2; else return "There's no player to kill"
 }
 
-function sh_play_music(args)
+function sh_music_play(args)
 {
 	var sound = asset_get_index(args[1])
-	play_music(args[1], 0);
+	music_play(args[1], 0);
 }
 
-function meta_play_music()
+function meta_music_play()
 {
 	 return 
     {

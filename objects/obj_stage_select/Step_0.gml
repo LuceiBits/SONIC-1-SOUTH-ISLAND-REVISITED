@@ -62,7 +62,7 @@
 		//Play the sound
 		if(input_press(INPUT.START) || input_press(INPUT.A))
 		{
-			play_music(sound_arr[sound_sel], 0);	
+			music_play(sound_arr[sound_sel], 0);	
 		}
 		
 		

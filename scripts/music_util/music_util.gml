@@ -153,7 +153,7 @@ function music_reset_fade()
 	obj_global.music.general_fade_multiplier = 1;
 }
 
-function play_music(music_id, channel = 0)
+function music_play(music_id, channel = 0)
 {
 	//Music macros
 	#macro BGM 0
@@ -184,7 +184,7 @@ function play_music(music_id, channel = 0)
 	}
 }
 
-function play_music_priority(music_id, channel)
+function music_play_priority(music_id, channel)
 {
 	for (var i = 0; i < MUSIC_CHANNEL_SIZE; ++i) 
 	{
@@ -195,17 +195,22 @@ function play_music_priority(music_id, channel)
 		}
 	}
 	
-	play_music(music_id, channel);
+	music_play(music_id, channel);
 }
 
-function pause_music(channel = 0)
+function music_pause(channel = 0)
 {
 	with(obj_global) if (music.playing[channel] != noone) audio_pause_sound(music.playing[channel]);
 }
 
-function resume_music(channel = 0)
+function music_resume(channel = 0)
 {
 	with(obj_global) if (music.playing[channel] != noone) audio_resume_sound(music.playing[channel]);
+}
+
+function music_set_pitch(channel = 0, pitch = 1)
+{
+	with(obj_global) if (music.playing[channel] != noone) audio_sound_pitch(music.playing[channel], pitch);
 }
 
 function stop_jingle(fade_music_in, fade_speed = 1)
@@ -228,9 +233,4 @@ function stop_jingle(fade_music_in, fade_speed = 1)
 			music.play_data[Jingle] = "";
 		}
 	}
-}
-
-function music_set_pitch(channel = 0, pitch = 1)
-{
-	with(obj_global) if (music.playing[channel] != noone) audio_sound_pitch(music.playing[channel], pitch);
 }

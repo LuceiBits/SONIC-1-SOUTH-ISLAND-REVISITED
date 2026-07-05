@@ -50,7 +50,7 @@
 	image_index = 0//irandom(image_number);
 	
 	fade_in_room(5);
-	play_music(MUSIC.MENU);
+	music_play(MUSIC.MENU);
 	
 	//Create stage data
 	for (var i = 0; i < 128; ++i) 

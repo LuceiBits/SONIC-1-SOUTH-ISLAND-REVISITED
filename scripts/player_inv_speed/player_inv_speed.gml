@@ -50,7 +50,7 @@ function player_inv_speed(){
 		//super form behavior
 		if (obj_global.music.play_data[Jingle] != "j_super" && transform_timer < 25) 
 		{
-			play_music(MUSIC.SUPER, Jingle);	
+			music_play(MUSIC.SUPER, Jingle);	
 		}
 		
 		if(instance_exists(obj_invinciblespark))

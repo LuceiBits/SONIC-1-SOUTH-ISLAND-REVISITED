@@ -1,6 +1,6 @@
 /// @description Stage start
 	//Play stage music
-	play_music(stage_music, 0);
+	music_play(stage_music, 0);
 	
 	//Reset stage data
 	global.stage_timer = 0;
