@@ -48,77 +48,13 @@ function draw_sprite_tiled_new(sprite, subimg, x, y, type = 0)
 
 function draw_background_layer(background_layer)
 {
+	if(!visibility[background_layer]) exit;
+	
 	//Draw the background
-	if(line_scroll[background_layer] = false)
-	{
-		//Act transition background offset adjustments
-		if(trigger[background_layer])
-		{
-			//Horizontal offset
-			var reposition_x =  ((camera_get_view_x(view_camera[view_current])*factor_x[background_layer]) + offset_x[background_layer])
-			diff_x[background_layer] = reposition_x - camera_get_view_x(view_camera[view_current]);
-			offset_x[background_layer] += offset_x[background_layer] - diff_x[background_layer]
-			
-			//Vertical offset
-			var reposition_y =  ((camera_get_view_y(view_camera[view_current])*factor_y[background_layer]) + offset_y[background_layer])
-			diff_y[background_layer] = reposition_y - camera_get_view_y(view_camera[view_current]);
-			offset_y[background_layer] += offset_y[background_layer] - diff_y[background_layer]
-			
-			//Disable the trigger
-			trigger[background_layer] = false;
-		}
-		
-		//Normal scrolling
-		pos_x[background_layer] = ((camera_get_view_x(view_camera[view_current])*factor_x[background_layer]) + offset_x[background_layer])
-		pos_y[background_layer] = floor(camera_get_view_y(view_camera[view_current])*factor_y[background_layer] + offset_y[background_layer]);
-		
-		diff_x[background_layer] = pos_x[background_layer] - camera_get_view_x(view_camera[view_current]);
-		diff_y[background_layer] = pos_y[background_layer] - camera_get_view_y(view_camera[view_current]);
-
-		//Auto scrolling
-		if(global.process_objects)
-		{
-			offset_x[background_layer] += speed_x[background_layer];
-			offset_y[background_layer] += speed_y[background_layer];
-		}
-		
-		//Draw the background if the visibility flag is on
-		if (visibility[background_layer] == true) 
-		{
-			draw_sprite_tiled_new(background_sprite[background_layer], background_frame[background_layer], floor(pos_x[background_layer]), floor(pos_y[background_layer]), background_vertical[background_layer] ? 2 : 0);
-		}
-	}
+	if(!line_scroll[background_layer])
+		draw_sprite_tiled_new(background_sprite[background_layer], background_frame[background_layer], floor(pos_x[background_layer]), floor(pos_y[background_layer]), background_vertical[background_layer] ? 2 : 0);
 	else
 	{
-		//Act transition background offset adjustments
-		if(trigger[background_layer])
-		{
-			//Horizontal offset
-			var reposition_x = ((camera_get_view_x(view_camera[view_current])*(factor_x[background_layer])) + offset_x[background_layer]);
-			diff_x[background_layer] = reposition_x - camera_get_view_x(view_camera[view_current]);
-			offset_x[background_layer] += offset_x[background_layer] - diff_x[background_layer]
-			
-			//Vertical offset
-			var reposition_y =  ((camera_get_view_y(view_camera[view_current])*factor_y[background_layer]) + offset_y[background_layer])
-			diff_y[background_layer] = reposition_y - camera_get_view_y(view_camera[view_current]);
-			offset_y[background_layer] += offset_y[background_layer] - diff_y[background_layer]
-			
-			//Disable the trigger
-			trigger[background_layer] = false;
-		}
-		
-		//Normal scrolling
-		pos_x[background_layer] = ((camera_get_view_x(view_camera[view_current])*(1-factor_x[background_layer])) - offset_x[background_layer]);
-		pos_y[background_layer] = floor(camera_get_view_y(view_camera[view_current])*factor_y[background_layer] + offset_y[background_layer]);
-		
-		diff_x[background_layer] = ((camera_get_view_x(view_camera[view_current])*factor_x[background_layer]) + offset_x[background_layer]) - camera_get_view_x(view_camera[view_current])
-		diff_y[background_layer] = (floor(camera_get_view_y(view_camera[view_current])*factor_y[background_layer]) + offset_y[background_layer]) - camera_get_view_y(view_camera[view_current])
-
-
-		//Auto scrolling
-		offset_x[background_layer] += speed_x[background_layer];
-		offset_y[background_layer] += speed_y[background_layer];
-		
 		//Set the linescroll shader
 		shader_set(shd_line_scroll);
 		
@@ -147,17 +83,60 @@ function draw_background_layer(background_layer)
 			shader_set_uniform_f(HeightY, line_gap[background_layer]);
 			shader_set_uniform_f(ScaleY, bg_scale[background_layer]); 
 			shader_set_uniform_f(ShdHeight, sprite_get_height(background_sprite[background_layer])); 
-		
-			//Draw the background if visibility flag is on
-			if (visibility[background_layer] == true) 
-			{
-				draw_sprite_ext(background_sprite[background_layer], background_frame[background_layer], px, floor(pos_y[background_layer]) , 1, bg_scale[background_layer], 0, c_white, 1);
-			}
+			
+			draw_sprite_ext(background_sprite[background_layer], background_frame[background_layer], px, floor(pos_y[background_layer]) , 1, bg_scale[background_layer], 0, c_white, 1);
 		}
 	}
 	
 	//Reset the shader
 	shader_reset();
+}
+
+function position_background_layer(background_layer)
+{
+	//Act transition background offset adjustments
+	if(trigger[background_layer])
+	{
+		//Horizontal offset
+		var reposition_x =  ((camera_get_view_x(view_camera[view_current])*factor_x[background_layer]) + offset_x[background_layer])
+		diff_x[background_layer] = reposition_x - camera_get_view_x(view_camera[view_current]);
+		offset_x[background_layer] += offset_x[background_layer] - diff_x[background_layer]
+			
+		//Vertical offset
+		var reposition_y =  ((camera_get_view_y(view_camera[view_current])*factor_y[background_layer]) + offset_y[background_layer])
+		diff_y[background_layer] = reposition_y - camera_get_view_y(view_camera[view_current]);
+		offset_y[background_layer] += offset_y[background_layer] - diff_y[background_layer]
+			
+		//Disable the trigger
+		trigger[background_layer] = false;
+	}
+	
+	//Different types of scrolling
+	if(!line_scroll[background_layer])
+	{
+		//Normal scrolling
+		pos_x[background_layer] = ((camera_get_view_x(view_camera[view_current])*factor_x[background_layer]) + offset_x[background_layer])
+		pos_y[background_layer] = floor(camera_get_view_y(view_camera[view_current])*factor_y[background_layer] + offset_y[background_layer]);
+		
+		diff_x[background_layer] = pos_x[background_layer] - camera_get_view_x(view_camera[view_current]);
+		diff_y[background_layer] = pos_y[background_layer] - camera_get_view_y(view_camera[view_current]);
+	}
+	else
+	{
+		//Normal scrolling
+		pos_x[background_layer] = ((camera_get_view_x(view_camera[view_current])*(1-factor_x[background_layer])) - offset_x[background_layer]);
+		pos_y[background_layer] = floor(camera_get_view_y(view_camera[view_current])*factor_y[background_layer] + offset_y[background_layer]);
+		
+		diff_x[background_layer] = ((camera_get_view_x(view_camera[view_current])*factor_x[background_layer]) + offset_x[background_layer]) - camera_get_view_x(view_camera[view_current])
+		diff_y[background_layer] = (floor(camera_get_view_y(view_camera[view_current])*factor_y[background_layer]) + offset_y[background_layer]) - camera_get_view_y(view_camera[view_current])
+	}
+		
+	//Auto scrolling
+	if(global.process_objects)
+	{
+		offset_x[background_layer] += speed_x[background_layer];
+		offset_y[background_layer] += speed_y[background_layer];
+	}
 }
 
 function draw_self_floor()
