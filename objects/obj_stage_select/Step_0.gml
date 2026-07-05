@@ -12,7 +12,7 @@
 	zone_sel += press_y;
 	
 	//Mod
-	zone_sel %= zone_arr+1;
+	zone_sel %= zone_arr + 1;
 		
 	//Warp
 	if(zone_sel < 0) zone_sel = zone_arr;
@@ -20,18 +20,22 @@
 	//Select acts
 	if(zone_sel != zone_arr && zone_sel != -1)
 	{
+		//Get act array size
+		var act_arr = array_length(zone_list[zone_sel]) - 1;
+		
+		//Select act
 		act_sel += press_x;
 		
 		//Mod
-		act_sel %= array_length(zone_list[zone_sel]) -1;
+		act_sel %= act_arr;
 		
 		//Warp
-		if(act_sel < 0) act_sel = array_length(zone_list[zone_sel]);
+		if(act_sel < 0) act_sel = act_arr - 1;
 		
 		//Temp
 		var a, b;
 		a = min(zone_sel, zone_arr);
-		b = min(act_sel, array_length(zone_list[zone_sel])- 1);
+		b = min(act_sel, act_arr - 1);
 		
 		//Enter the gexus
 		if(input_press(INPUT.START) || input_press(INPUT.A))
@@ -45,7 +49,7 @@
 	//Sound test stuff
 	if(zone_sel == zone_arr)
 	{	
-		var size = array_length(sound_arr)
+		var size = array_length(sound_arr);
 		sound_sel += press_x;
 		
 		//Mod
