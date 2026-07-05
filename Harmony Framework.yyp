@@ -213,6 +213,7 @@
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},},
     {"id":{"name":"obj_ramp","path":"objects/obj_ramp/obj_ramp.yy",},},
     {"id":{"name":"obj_ring","path":"objects/obj_ring/obj_ring.yy",},},
+    {"id":{"name":"obj_s_tube_area","path":"objects/obj_s_tube_area/obj_s_tube_area.yy",},},
     {"id":{"name":"obj_s_tube","path":"objects/obj_s_tube/obj_s_tube.yy",},},
     {"id":{"name":"obj_score_effect","path":"objects/obj_score_effect/obj_score_effect.yy",},},
     {"id":{"name":"obj_shell","path":"objects/obj_shell/obj_shell.yy",},},
