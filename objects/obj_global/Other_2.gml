@@ -14,6 +14,7 @@
 	
 	// Controllers init
 	input_init();
+	music_init();
 	game_call_window_resize();
 	
 	// Define input actions
@@ -41,7 +42,6 @@
 	#endregion
 	
 	//Create controllers:
-	instance_create_depth(0, 0, 0, obj_music);
 	instance_create_depth(0, 0, -100, obj_fade);
 	
 	//Controlers for dev mode

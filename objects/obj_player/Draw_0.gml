@@ -1,5 +1,5 @@
 /// @description Draw the player
-	
+	show_debug_message(super_color)
 	//character palettes for super form
 	palette_swap(super_palettes[character],super_color);
 	
