@@ -1,17 +1,7 @@
 /// @description Draw End Card
-	//Local variables
-	var cx, cy;
 
-	//Get screen position
-	cx = camera_get_view_x(view_camera[view_current]);
-	cy = camera_get_view_y(view_camera[view_current]);
-	
-	//Create surface if it doesn't exist
-	if(!surface_exists(surface)) surface = surface_create(global.window_width, global.window_height);
-	
-	//Set surface target
-	surface_set_target(surface);
-	draw_clear_alpha(c_black,0);
+	// Make the HUD follow the camera
+	draw_set_follow_camera();
 	
 	//Draw the end card text
 	draw_sprite(spr_hud_actclear_character, global.character, global.window_width/2 - offset_x[0], global.window_height/2 - 50);
@@ -33,8 +23,5 @@
 	
 	draw_set_halign(fa_left);
 	
-	//Reset surface target ID
-	surface_reset_target();
-	
-	//Draw the surface
-	draw_surface(surface, cx, cy);
+	// Stop following the camera
+	draw_set_follow_end();

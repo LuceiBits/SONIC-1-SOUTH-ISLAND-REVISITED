@@ -1,6 +1,5 @@
 /// @description Creation
 	//General dev menu variables
-	surface = noone;
 	cool_down = 4;
 	hold_h = 0;
 	hold_v = 0;

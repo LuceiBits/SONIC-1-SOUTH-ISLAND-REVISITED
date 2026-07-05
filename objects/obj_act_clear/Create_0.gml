@@ -1,5 +1,4 @@
 /// @description Values
-	surface = surface_create(global.window_width, global.window_height);
 	timer = 0;
 	state = 0;
 	total_bonus = 0;

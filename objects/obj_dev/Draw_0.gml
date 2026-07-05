@@ -12,8 +12,6 @@
 		// TODO
 	}
 	
-	//Create surface
-	if(!surface_exists(surf)) surf = surface_create(global.window_width, global.window_height);
 			
 	if(show_player && !debug && instance_exists(obj_player))
 	{
@@ -22,9 +20,8 @@
 	
 	if(show_fps)
 	{
-		//Set surface target
-		surface_set_target(surf);
-		draw_clear_alpha(c_black, 0);
+		// Make the HUD follow the camera
+		draw_set_follow_camera();
 		
 		//Draw text in rectangle
 		draw_set_font(global.font_small);
@@ -32,11 +29,8 @@
 		draw_text(0, global.window_height-8, "FPS: " + string(fps) + " " + "TRUE FPS:" +string(store_truefps));
 		draw_text(0, global.window_height-16, "INSTANCES: " + string(instance_count));
 		
-		//Reset surface target
-		surface_reset_target();
-		
-		//Draw surface
-		draw_surface(surf, cx, cy)	
+		// Stop following
+		draw_set_follow_end();
 	}
 	
 	if(instance_exists(obj_level) && show_culling)
@@ -73,9 +67,8 @@
 	draw_sprite(sprite, 0, cursor_x + cx, cursor_y + cy);
 	draw_set_alpha(1);
 	
-	//Set surface target
-	surface_set_target(surf);
-	draw_clear_alpha(c_black, 0);
+	// Make the HUD follow the camera
+	draw_set_follow_camera();
 	
 	//Draw text in rectangle
 	draw_set_font(global.font_small);
@@ -90,10 +83,7 @@
 	draw_text(global.window_width, 8,"CAMERA: " + string(floor(obj_camera.camera_x)) + " " + string(floor(obj_camera.camera_y)));
 	draw_text(global.window_width, 16,"CANVAS: " + string(room_width) + " " + string(room_height));
 	
-	surface_reset_target()
+	draw_set_follow_end();
 	
 	draw_set_halign(fa_center);
 	draw_text(cursor_x + cx, cursor_y - 32 + cy, string_upper(object_get_name(object_list[object_select])));
-	
-	//Draw surface
-	draw_surface(surf, cx, cy)	

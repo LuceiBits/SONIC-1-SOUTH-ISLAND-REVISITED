@@ -1,7 +1,6 @@
 /// @description Draw logs
-	//Don't render if off screen
-	if(!on_screen()) exit;
-	
-	for (var i = 0; i < log_amount; ++i) {
-		draw_sprite(sprite_index, frame[i], x + 16*i, log_y[i] + push_offset * i)
+	for (var i = 0; i < bridge_size; ++i) 
+	{
+		var pushOffset = ((ystart + push_offset) - ystart) * ((1 / bridge_size) * i);
+		draw_sprite(sprite_index, log_frames[i], x + 16 * i, floor(ystart + log_offset[i] + pushOffset));
 	}

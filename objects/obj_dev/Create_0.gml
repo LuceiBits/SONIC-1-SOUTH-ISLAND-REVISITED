@@ -12,14 +12,11 @@
 	shell_open = false;
 	store_truefps = fps_real;
 	alarm[0] = 10;
-	surf = surface_create(global.window_width, global.window_height);
 	caption = window_get_caption();
 	teleport_id = 0;
 	
 	cursor_x = WINDOW_WIDTH / 2;
 	cursor_y = WINDOW_HEIGHT / 2;
 	debug_use_analog = true;
-	
-	graded_surf = surface_create(WINDOW_WIDTH * 2, WINDOW_HEIGHT * 2);
 	
 	depth = -1000;

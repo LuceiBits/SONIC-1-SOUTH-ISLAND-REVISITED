@@ -1,6 +1,5 @@
 {
   "FolderOrderSettings":[
-    {"name":"Special and Bonus","order":2,"path":"folders/Rooms/Special and Bonus.yy",},
     {"name":"Presentation","order":1,"path":"folders/Rooms/Presentation.yy",},
     {"name":"Special and Bonus","order":2,"path":"folders/Rooms/Special and Bonus.yy",},
     {"name":"00 - Test Stage","order":2,"path":"folders/Rooms/Stages/00 - Test Stage.yy",},
@@ -14,6 +13,7 @@
     {"name":"obj_aaz_door","order":1,"path":"objects/obj_aaz_door/obj_aaz_door.yy",},
     {"name":"obj_dust_effect","order":1,"path":"objects/obj_dust_effect/obj_dust_effect.yy",},
     {"name":"rm_arboreal_agate2","order":1,"path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
+    {"name":"rm_splash_1","order":2,"path":"rooms/rm_splash_1/rm_splash_1.yy",},
     {"name":"rm_stage_select","order":1,"path":"rooms/rm_stage_select/rm_stage_select.yy",},
     {"name":"rm_template","order":1,"path":"rooms/rm_template/rm_template.yy",},
     {"name":"create_score","order":4,"path":"scripts/create_score/create_score.yy",},

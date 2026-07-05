@@ -1,6 +1,4 @@
 /// @description Values
-	surf_bg = surface_create(global.window_width, global.window_height);
-	surf = surface_create(global.window_width, global.window_height);
 	timer = 0;
 	act_card = true
 	

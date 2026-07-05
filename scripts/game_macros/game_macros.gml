@@ -38,5 +38,5 @@ function game_macros()
 	#macro CAMERA_VIEW_X camera_get_view_x(view_camera[view_current])
 	#macro CAMERA_VIEW_Y camera_get_view_y(view_camera[view_current])
 	#macro CAMERA_VIEW_W camera_get_view_width(view_camera[view_current])
-	#macro CAMERA_VIEW_H camera_get_view_width(view_camera[view_current])
+	#macro CAMERA_VIEW_H camera_get_view_height(view_camera[view_current])
 }

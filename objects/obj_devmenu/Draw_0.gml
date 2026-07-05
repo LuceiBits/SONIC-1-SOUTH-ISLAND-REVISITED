@@ -5,14 +5,8 @@
 	var cx = camera_get_view_x(c);
 	var cy = camera_get_view_y(c);
 	
-	//Create surface if it doesn't exist
-	if(!surface_exists(surface))
-	{
-		surface = surface_create(WINDOW_WIDTH, WINDOW_HEIGHT);
-	}
-	
-	//Set the target surface
-	surface_set_target(surface)
+	// Make the HUD follow the camera
+	draw_set_follow_camera();
 	
 	//Screen center values
 	var center_x = WINDOW_WIDTH / 2;
@@ -20,9 +14,6 @@
 	
 	//Change the font
 	draw_set_font(global.font_debug);
-	
-	//Clear the surface
-	draw_clear_alpha(c_black, 0);
 	
 	//Draw rectangle for the background
 	draw_set_color(bg_color);
@@ -105,8 +96,5 @@
 	draw_set_color(c_white);
 	draw_set_halign(fa_left)
 
-	//Reset the surface target
-	surface_reset_target()
-	
-	//Draw the dev menu
-	draw_surface(surface, cx, cy);	
+	// Stop following the camera
+	draw_set_follow_end();
