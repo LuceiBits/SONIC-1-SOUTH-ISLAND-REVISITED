@@ -57,6 +57,7 @@
 		
 		if (star_timer > 60 && obj_player.x > x-xoffset && obj_player.x < x+xoffset && obj_player.y > y-yoffset-star_ydiff+6 && obj_player.y < y+yoffset-star_ydiff+6)
 		{
+			global.bonus_room = (global.rings >= MIN_BLUE_SPHERES) ? rm_blue_spheres : rm_bonus
 			global.bonus_stage_state = BONUSSTAGE.GOING_TO
 		}
 	}

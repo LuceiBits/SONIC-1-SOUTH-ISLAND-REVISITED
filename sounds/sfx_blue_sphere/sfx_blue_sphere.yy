@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sfx_blue_sphere",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":0.52380955,
+  "exportDir":"",
+  "name":"sfx_blue_sphere",
+  "parent":{
+    "name":"Objects",
+    "path":"folders/Sounds/Sound Effects/Objects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_blue_sphere.wav",
+  "volume":1.0,
+}

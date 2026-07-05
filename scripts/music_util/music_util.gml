@@ -219,3 +219,7 @@ function stop_jingle(fade_music_in, fade_speed = 1)
 		}
 	}
 }
+function music_set_pitch(channel = 0, pitch = 1)
+{
+	with(obj_music) if (playing[channel] != noone) audio_sound_pitch(playing[channel], pitch);
+}
