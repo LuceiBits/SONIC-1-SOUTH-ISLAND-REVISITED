@@ -1,4 +1,6 @@
 /// @description Script
+	death_timer++;
+	
 	for(var w = 0; w < array_length(dust); w++)
 	{
 		for(var h = 0; h < array_length(dust[w]); h++)
@@ -31,4 +33,5 @@
 	});
 	
 	//Destroy the effect if there's no more dust
-	if(array_length(dust) == 0) instance_destroy();
+	if(death_timer > 40) 
+		instance_destroy();

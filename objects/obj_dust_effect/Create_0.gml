@@ -1,6 +1,7 @@
 /// @description Values
 	type = 0;
 	frame = 0;
+	death_timer = 0;
 	
 	for(var w = 0; w < sprite_width; w++)
 	{
