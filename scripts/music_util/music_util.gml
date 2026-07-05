@@ -198,6 +198,16 @@ function play_music_priority(music_id, channel)
 	play_music(music_id, channel);
 }
 
+function pause_music(channel = 0)
+{
+	with(obj_global) if (music.playing[channel] != noone) audio_pause_sound(music.playing[channel]);
+}
+
+function resume_music(channel = 0)
+{
+	with(obj_global) if (music.playing[channel] != noone) audio_resume_sound(music.playing[channel]);
+}
+
 function stop_jingle(fade_music_in, fade_speed = 1)
 {
 	with(obj_global)
