@@ -14,6 +14,7 @@
 	
 	// Controllers init
 	input_init();
+	game_call_window_resize();
 	
 	// Define input actions
 	input_add_action(INPUT.UP, vk_up, gp_padu, [gp_axislv, true]);
@@ -40,7 +41,6 @@
 	#endregion
 	
 	//Create controllers:
-	instance_create_depth(0, 0, 0, obj_window);
 	instance_create_depth(0, 0, 0, obj_music);
 	instance_create_depth(0, 0, -100, obj_fade);
 	

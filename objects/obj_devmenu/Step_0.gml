@@ -4,10 +4,7 @@
 	if(keyboard_check_pressed(vk_escape) && cool_down = 0 || input_press(INPUT.B) && cool_down = 0 && state == dev_menu_state.normal)
 	{
 		//Trigger the window event
-		with(obj_window)
-		{
-			event_user(0);	
-		}
+		game_call_window_resize();
 		
 		global.process_objects = true;
 		instance_destroy();
@@ -217,10 +214,7 @@
 			if(input_press(INPUT.B))
 			{
 				//Refresh the window
-				with(obj_window)
-				{
-					event_user(0);	
-				}
+				game_call_window_resize();
 				
 				//Reset
 				option_select = 0;
