@@ -22,3 +22,7 @@
 	
 	// Configuration for water flashing color
 	#macro WATER_FLASH_COLOR #e0e0e0
+	
+	// Configuration flag for allowing water to flash when the electric shield is lost
+	#macro WATER_FLASH false
+	

@@ -372,6 +372,7 @@
     {"id":{"name":"sfx_drown","path":"sounds/sfx_drown/sfx_drown.yy",},},
     {"id":{"name":"sfx_dust","path":"sounds/sfx_dust/sfx_dust.yy",},},
     {"id":{"name":"sfx_electric_shield_jump","path":"sounds/sfx_electric_shield_jump/sfx_electric_shield_jump.yy",},},
+    {"id":{"name":"sfx_electric_shield_lose","path":"sounds/sfx_electric_shield_lose/sfx_electric_shield_lose.yy",},},
     {"id":{"name":"sfx_event","path":"sounds/sfx_event/sfx_event.yy",},},
     {"id":{"name":"sfx_extralife","path":"sounds/sfx_extralife/sfx_extralife.yy",},},
     {"id":{"name":"sfx_fire_dash","path":"sounds/sfx_fire_dash/sfx_fire_dash.yy",},},

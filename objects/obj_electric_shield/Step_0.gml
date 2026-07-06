@@ -30,6 +30,7 @@
 	//Begone when underwater
 	if(obj_player.underwater) 
 	{
+		play_sound(sfx_electric_shield_lose);
 		obj_player.shield = S_NONE;
 		
 		if(instance_exists(obj_water))

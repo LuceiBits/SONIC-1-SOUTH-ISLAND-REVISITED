@@ -17,7 +17,7 @@
 	gpu_set_blendmode(bm_normal);
 	draw_set_color(c_white);
 	
-	if(flash_hold_timer > 0)
+	if(flash_hold_timer > 0 && WATER_FLASH)
 	{
 		draw_set_color(WATER_FLASH_COLOR);
 		draw_rectangle(cx, max(y, cy), cx + sw + 64, max(y, cy) + sh, false);
