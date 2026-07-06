@@ -26,6 +26,12 @@ function game_macros()
 	#macro CMODE_RWALL 3
 	#macro CMODE_CEILING 2
 	
+	// Fading macros			[MAKE IT ENUM]
+	#macro FADE_IN 1
+	#macro FADE_OUT -1
+	#macro FADE_BLACK 0
+	#macro FADE_WHITE 1
+	
 	// Culling region size
 	#macro CULL_REGION_W 128
 	#macro CULL_REGION_H 128

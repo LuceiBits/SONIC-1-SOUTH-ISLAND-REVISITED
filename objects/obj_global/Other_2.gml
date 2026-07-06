@@ -1,4 +1,6 @@
 /// @description Set the value
+	// Force the controller object to be above everything
+	depth = -1000;
 	
 	// Variables for this object only
 	process_object_list = ds_list_create();
@@ -15,6 +17,7 @@
 	// Controllers init
 	input_init();
 	music_init();
+	fade_init();
 	game_call_window_resize();
 	
 	// Define input actions
@@ -40,9 +43,6 @@
 	
 	bonus_stage_trigger = false
 	#endregion
-	
-	//Create controllers:
-	instance_create_depth(0, 0, -100, obj_fade);
 	
 	//Controlers for dev mode
 	if(global.dev_mode) 

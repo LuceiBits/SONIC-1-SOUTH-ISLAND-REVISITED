@@ -4,3 +4,7 @@
 
 	//Resize the surface:
 	surface_resize(application_surface, global.window_width, global.window_height);
+	
+	// Reset the fade system if needed
+	if(fade.reset)
+		fade_init();

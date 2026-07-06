@@ -1,6 +1,4 @@
-/// @description Clear the culling system
-	ds_list_clear(instance_list);
-	
+/// @description Clear and reset
 	// Reset music values
 	audio_stop_all();
 	
