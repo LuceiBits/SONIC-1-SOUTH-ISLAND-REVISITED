@@ -117,8 +117,16 @@ function bss_load_playfield()
 		show_debug_message("BSS Playfield: expected exactly 1 spawn tile, found " + string(spawns));
 }
 
+// One-time setup at game start: the namespace and its static tables never change per stage
+function bss_init()
+{
+	global.bss = {};
+	bss_build_tables();
+	bss_load_data();
+}
+
 // Lookup tables copied verbatim from Mania's BSS_Setup.h / BSS_Collectable.h
-function bss_build_tables() 
+function bss_build_tables()
 {
 	global.bss.screenYTable = [
 		280, 270, 260, 251, 243, 235, 228, 221, 215, 208, 202, 197, 191, 185, 180, 175, 170, 165, 160, 155, 151, 147, 143,

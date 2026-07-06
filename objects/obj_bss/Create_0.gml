@@ -1,9 +1,5 @@
 /// @description Blue Spheres controller
 
-global.bss = {}; //all blue-spheres state + tables live under one namespace
-
-bss_build_tables();
-bss_load_data();      //frustum projection tables
 bss_load_playfield(); //32x32 playfield from the room's "Playfield" tilemap
 
 global.bss.chain = array_create(1024, BSS_CELL.NONE);
