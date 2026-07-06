@@ -35,7 +35,8 @@
 	["TEST STAGEbitter", rm_techdemo_tower],
 	["TEST STAGEwiitter", rm_techdemo_tower],
 	["TEST STAGEmitter", rm_techdemo_tower],
-	["TEST STAGEwriyrte", rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower]];
+	["TEST STAGEwriyrte", rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower, rm_techdemo_tower],
+	["BLUE SPHERES", rm_blue_spheres]];
 	
 	level_reset_data();
 	level_reset_bg_visibility();
