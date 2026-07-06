@@ -117,12 +117,6 @@ function bss_load_playfield()
 		show_debug_message("BSS Playfield: expected exactly 1 spawn tile, found " + string(spawns));
 }
 
-// Arithmetic (floor) right shift, matching C's signed >> on negatives
-function ashr(_v, _n) 
-{
-	return floor(_v / (1 << _n));
-}
-
 // Lookup tables copied verbatim from Mania's BSS_Setup.h / BSS_Collectable.h
 function bss_build_tables() 
 {
