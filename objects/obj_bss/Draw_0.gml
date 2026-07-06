@@ -57,7 +57,7 @@ for (var i = 0; i < fcount; i++)
 
 	var idx = ((oy + player_y) & 31) + (32 * ((ox + player_x) & 31));
 	var tile = global.bss.pf[idx];
-	if (tile == C_NONE) continue;
+	if (tile == BSS_CELL.NONE) continue;
 
 	var sx = ashr(ox * cs + oy * sn, 4);
 	var sy = ashr(oy * cs - ox * sn, 4);
@@ -75,14 +75,14 @@ for (var i = 0; i < fcount; i++)
 	var dy = global.bss.screenYTable[dep] + (worldX * worldX) div global.bss.divisorTable[dep];
 
 	//Jettisonning
-	if (state == BS_JETTISON)
+	if (state == BSS_STATE.JETTISON)
 	{
 		dx = ashr((256 + spin_timer) * (dx - center_x), 8) + center_x;
 		dy -= spin_timer * 2;
 	}
 
 	var spark_n = sprite_get_number(spr_bss_ring_sparkle);
-	var spark_f = (tile == C_SPARKLE) ? min(global.bss.spark[idx] * spark_n div 16, spark_n - 1) : 0;
+	var spark_f = (tile == BSS_CELL.SPARKLE) ? min(global.bss.spark[idx] * spark_n div 16, spark_n - 1) : 0;
 	draw_bss_cell(tile, dx, dy, f, ring_spin, floor(medal_spin), spark_f);
 }
 

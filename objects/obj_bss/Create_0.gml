@@ -6,8 +6,8 @@ bss_build_tables();
 bss_load_data();      //frustum projection tables
 bss_load_playfield(); //32x32 playfield from the room's "Playfield" tilemap
 
-global.bss.chain = array_create(1024, C_NONE);
-global.bss.coll  = array_create(1024, C_NONE);
+global.bss.chain = array_create(1024, BSS_CELL.NONE);
+global.bss.coll  = array_create(1024, BSS_CELL.NONE);
 global.bss.spark = array_create(1024, 0);
 global.bss.lastSX = 0;
 global.bss.lastSY = 0;
@@ -45,18 +45,18 @@ switch (global.character)
 }
 
 animator = new animator_create();
-animation_add(ANIM_BSS_STAND,  _stand, 0, 0, false);
-animation_add(ANIM_BSS_WALK,   _walk,  0, 0, true);
-animation_add(ANIM_BSS_JUMP,   _roll,  0, 0, true);
-animation_add(ANIM_BSS_SPRING, _roll,  0, 0, true);
-animation_play(animator, ANIM_BSS_STAND);
+animation_add(BSS_ANIM.STAND,  _stand, 0, 0, false);
+animation_add(BSS_ANIM.WALK,   _walk,  0, 0, true);
+animation_add(BSS_ANIM.JUMP,   _roll,  0, 0, true);
+animation_add(BSS_ANIM.SPRING, _roll,  0, 0, true);
+animation_play(animator, BSS_ANIM.STAND);
 
 has_tail = (_tail != noone);
 if (has_tail)
 {
-	animation_add(ANIM_BSS_TAIL, _tail, 0, 0, true);
+	animation_add(BSS_ANIM.TAIL, _tail, 0, 0, true);
 	tail_animator = new animator_create();
-	animation_play(tail_animator, ANIM_BSS_TAIL);
+	animation_play(tail_animator, BSS_ANIM.TAIL);
 }
 
 //---- BSS_Setup_GetStartupInfo port ----
@@ -70,13 +70,13 @@ setup_start_info = function() {
 			var p = (gx * 32) + gy;
 			switch (global.bss.pf[p])
 			{
-				case C_BLUE:
-				case C_GREEN: sphere_count++; break;
-				case C_PINK:  pink_count++; break;
-				case C_SPAWN_UP:    angle = 0x00; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
-				case C_SPAWN_RIGHT: angle = 0x40; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
-				case C_SPAWN_DOWN:  angle = 0x80; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
-				case C_SPAWN_LEFT:  angle = 0xC0; player_x = gx; player_y = gy; global.bss.pf[p] = C_NONE; break;
+				case BSS_CELL.BLUE:
+				case BSS_CELL.GREEN: sphere_count++; break;
+				case BSS_CELL.PINK:  pink_count++; break;
+				case BSS_CELL.SPAWN_UP:    angle = 0x00; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+				case BSS_CELL.SPAWN_RIGHT: angle = 0x40; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+				case BSS_CELL.SPAWN_DOWN:  angle = 0x80; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+				case BSS_CELL.SPAWN_LEFT:  angle = 0xC0; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
 			}
 		}
 	}
@@ -104,13 +104,13 @@ collect_ring = function() {
 //---- BSS_Setup_SetupFinishSequence port ----
 setup_finish = function() {
 	for (var gy = 0; gy < BSS_H; gy++)
-		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * 32) + gy] = C_NONE;
+		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * 32) + gy] = BSS_CELL.NONE;
 
 	var fx = ashr(sin256(angle), 5) + player_x;
 	var fy = (player_y - ashr(cos256(angle), 5)) & 31;
 	var fp = fy + (32 * (fx & 31));
 
-	global.bss.pf[fp] = (ring_count > 0) ? C_MEDAL_SILVER : C_MEDAL_GOLD;
+	global.bss.pf[fp] = (ring_count > 0) ? BSS_CELL.MEDAL_SILVER : BSS_CELL.MEDAL_GOLD;
 };
 
 //---- BSS_Setup_HandleSteppedObjects port (runs every grounded frame) ----
@@ -122,7 +122,7 @@ stepped_objects = function() {
 	var fp = player_y + (32 * player_x);
 	switch (global.bss.pf[fp])
 	{
-		case C_BLUE:
+		case BSS_CELL.BLUE:
 			if (globe_timer < 128)
 			{
 				global.bss.lastSX = player_x;
@@ -131,13 +131,13 @@ stepped_objects = function() {
 				sphere_count--;
 				if (!global.bss.loop)
 				{
-					array_push(collected, { ce : CE_BLUE, cx : player_x, cy : player_y, t : 0 });
-					global.bss.pf[fp] = C_BLUE_STOOD;
+					array_push(collected, { ce : BSS_COLLECT.BLUE, cx : player_x, cy : player_y, t : 0 });
+					global.bss.pf[fp] = BSS_CELL.BLUE_STOOD;
 				}
 				if (sphere_count <= 0)
 				{
 					sphere_count = 0;
-					state = BS_JETTISON;
+					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
 					play_sound(sfx_jettison);
 					music_fade_channel(BGM, FADE_OUT, 1);
@@ -147,10 +147,10 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_RED:
-			if (state != BS_EXIT && globe_timer < 32)
+		case BSS_CELL.RED:
+			if (state != BSS_STATE.EXIT && globe_timer < 32)
 			{
-				state = BS_EXIT;
+				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
 				exit_result = "fail";
@@ -159,7 +159,7 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_BUMPER:
+		case BSS_CELL.BUMPER:
 			if (!disable_bumpers && globe_timer < 112)
 			{
 				if (globe_timer > 16)
@@ -186,12 +186,12 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_YELLOW:
+		case BSS_CELL.YELLOW:
 			if (globe_timer < 128)
 			{
 				velocity_y = -1572864; //-TO_FIXED(24)
 				on_ground = false;
-				animation_play(animator, ANIM_BSS_SPRING);
+				animation_play(animator, BSS_ANIM.SPRING);
 				globe_speed *= 2;
 				spin_state = 0;
 				globe_speed_inc = 4;
@@ -199,19 +199,19 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_GREEN:
+		case BSS_CELL.GREEN:
 			if (globe_timer > 128)
 			{
-				array_push(collected, { ce : CE_GREEN, cx : player_x, cy : player_y, t : 0 });
-				global.bss.pf[fp] = C_GREEN_STOOD;
+				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : player_x, cy : player_y, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
 				play_sound(sfx_blue_sphere);
 			}
 			break;
 
-		case C_PINK:
-			if (state != BS_TELE_IN && globe_timer < 64)
+		case BSS_CELL.PINK:
+			if (state != BSS_STATE.TELE_IN && globe_timer < 64)
 			{
-				state = BS_TELE_IN;
+				state = BSS_STATE.TELE_IN;
 				spin_timer = 0;
 				globe_timer = 0;
 				tele_timer = 0;
@@ -220,11 +220,11 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_RING:
+		case BSS_CELL.RING:
 			if (globe_timer < 128)
 			{
-				array_push(collected, { ce : CE_RING, cx : player_x, cy : player_y, t : 0 });
-				global.bss.pf[fp] = C_SPARKLE;
+				array_push(collected, { ce : BSS_COLLECT.RING, cx : player_x, cy : player_y, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.SPARKLE;
 				global.bss.spark[fp] = 0;
 				collect_ring();
 			}
@@ -238,7 +238,7 @@ stepped_objects = function() {
 
 	switch (global.bss.pf[fp])
 	{
-		case C_BLUE:
+		case BSS_CELL.BLUE:
 			if (globe_timer > 128)
 			{
 				global.bss.lastSX = posX;
@@ -247,13 +247,13 @@ stepped_objects = function() {
 				sphere_count--;
 				if (!global.bss.loop)
 				{
-					array_push(collected, { ce : CE_BLUE, cx : posX, cy : posY, t : 0 });
-					global.bss.pf[fp] = C_BLUE_STOOD;
+					array_push(collected, { ce : BSS_COLLECT.BLUE, cx : posX, cy : posY, t : 0 });
+					global.bss.pf[fp] = BSS_CELL.BLUE_STOOD;
 				}
 				if (sphere_count <= 0)
 				{
 					sphere_count = 0;
-					state = BS_JETTISON;
+					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
 					play_sound(sfx_jettison);
 					music_fade_channel(BGM, FADE_OUT, 1);
@@ -263,11 +263,11 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_RED:
-			if (state != BS_EXIT && globe_timer > 224)
+		case BSS_CELL.RED:
+			if (state != BSS_STATE.EXIT && globe_timer > 224)
 			{
 				palette_page ^= 1;
-				state = BS_EXIT;
+				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
 				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
@@ -278,7 +278,7 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_BUMPER:
+		case BSS_CELL.BUMPER:
 			if (!disable_bumpers && globe_timer > 144)
 			{
 				if (globe_timer >= 240)
@@ -308,12 +308,12 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_YELLOW:
+		case BSS_CELL.YELLOW:
 			if (globe_timer > 128)
 			{
 				velocity_y = -1572864;
 				on_ground = false;
-				animation_play(animator, ANIM_BSS_SPRING);
+				animation_play(animator, BSS_ANIM.SPRING);
 				globe_speed *= 2;
 				spin_state = 0;
 				globe_speed_inc = 4;
@@ -321,34 +321,34 @@ stepped_objects = function() {
 			}
 			break;
 
-		case C_GREEN:
+		case BSS_CELL.GREEN:
 			if (globe_timer > 128)
 			{
-				array_push(collected, { ce : CE_GREEN, cx : posX, cy : posY, t : 0 });
-				global.bss.pf[fp] = C_GREEN_STOOD;
+				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : posX, cy : posY, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
 				play_sound(sfx_blue_sphere);
 			}
 			break;
 
-		case C_RING:
+		case BSS_CELL.RING:
 			if (globe_timer > 128)
 			{
-				array_push(collected, { ce : CE_RING, cx : posX, cy : posY, t : 0 });
-				global.bss.pf[fp] = C_SPARKLE;
+				array_push(collected, { ce : BSS_COLLECT.RING, cx : posX, cy : posY, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.SPARKLE;
 				global.bss.spark[fp] = 0;
 				collect_ring();
 			}
 			break;
 
-		case C_EMERALD_CHAOS:
-		case C_EMERALD_SUPER:
-		case C_MEDAL_SILVER:
-		case C_MEDAL_GOLD:
+		case BSS_CELL.EMERALD_CHAOS:
+		case BSS_CELL.EMERALD_SUPER:
+		case BSS_CELL.MEDAL_SILVER:
+		case BSS_CELL.MEDAL_GOLD:
 			if (globe_timer > 240)
 			{
-				exit_result = (global.bss.pf[fp] == C_MEDAL_GOLD) ? "gold" : "silver";
+				exit_result = (global.bss.pf[fp] == BSS_CELL.MEDAL_GOLD) ? "gold" : "silver";
 				palette_page ^= 1;
-				state = BS_EXIT;
+				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
 				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
@@ -369,61 +369,61 @@ update_collected = function() {
 
 		switch (e.ce)
 		{
-			case CE_RING:
+			case BSS_COLLECT.RING:
 				e.t++;
 				global.bss.spark[fp] = e.t;
-				if (e.t >= 16 && state == BS_MOVE)
+				if (e.t >= 16 && state == BSS_STATE.MOVE)
 				{
-					global.bss.pf[fp] = C_NONE;
+					global.bss.pf[fp] = BSS_CELL.NONE;
 					remove = true;
 				}
 				break;
 
-			case CE_BLUE:
+			case BSS_COLLECT.BLUE:
 				if (sphere_count <= 0)
 				{
-					if (global.bss.pf[fp] == C_BLUE_STOOD) global.bss.pf[fp] = C_RED;
+					if (global.bss.pf[fp] == BSS_CELL.BLUE_STOOD) global.bss.pf[fp] = BSS_CELL.RED;
 					remove = true;
 				}
 				else if (globe_timer < 32 || globe_timer > 224) {
-					e.ce = CE_BLUE_STOOD;
+					e.ce = BSS_COLLECT.BLUE_STOOD;
 				}
 				break;
 
-			case CE_BLUE_STOOD:
-				if (state == BS_MOVE && globe_timer > 32 && globe_timer < 224)
+			case BSS_COLLECT.BLUE_STOOD:
+				if (state == BSS_STATE.MOVE && globe_timer > 32 && globe_timer < 224)
 				{
-					if (global.bss.pf[fp] == C_BLUE_STOOD) global.bss.pf[fp] = C_RED;
+					if (global.bss.pf[fp] == BSS_CELL.BLUE_STOOD) global.bss.pf[fp] = BSS_CELL.RED;
 					remove = true;
 				}
 				break;
 
-			case CE_GREEN:
+			case BSS_COLLECT.GREEN:
 				if (globe_timer < 32 || globe_timer > 224)
 				{
 					e.t = 10;
-					e.ce = CE_GREEN_STOOD;
+					e.ce = BSS_COLLECT.GREEN_STOOD;
 				}
 				break;
 
-			case CE_GREEN_STOOD:
-				if (state == BS_MOVE)
+			case BSS_COLLECT.GREEN_STOOD:
+				if (state == BSS_STATE.MOVE)
 				{
 					e.t--;
 					if (e.t <= 0)
 					{
-						if (global.bss.pf[fp] == C_GREEN_STOOD) global.bss.pf[fp] = C_BLUE;
+						if (global.bss.pf[fp] == BSS_CELL.GREEN_STOOD) global.bss.pf[fp] = BSS_CELL.BLUE;
 						remove = true;
 					}
 				}
 				break;
 
-			case CE_PINK:
-				if (state == BS_MOVE)
+			case BSS_COLLECT.PINK:
+				if (state == BSS_STATE.MOVE)
 				{
 					if (player_x != e.cx || player_y != e.cy)
 					{
-						if (global.bss.pf[fp] == C_PINK_STOOD) global.bss.pf[fp] = C_PINK;
+						if (global.bss.pf[fp] == BSS_CELL.PINK_STOOD) global.bss.pf[fp] = BSS_CELL.PINK;
 						remove = true;
 					}
 				}
@@ -446,7 +446,7 @@ bonus_stage_start = function() {
 	ring_count      = ring_target;
 	rings_collected = 0;
 
-	state             = BS_MOVE;
+	state             = BSS_STATE.MOVE;
 	globe_timer       = 0;
 	globe_speed       = 0;
 	globe_speed_inc   = 0;
@@ -478,7 +478,7 @@ bonus_stage_start = function() {
 	walk_timer       = 0;
 	roll_timer       = 0;
 	input_active     = true;
-	animation_play(animator, ANIM_BSS_STAND);
+	animation_play(animator, BSS_ANIM.STAND);
 
 	collected = [];
 
