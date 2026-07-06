@@ -10,7 +10,7 @@ function game_init_music_list()
 	music_add(MUSIC.ARBOREAL_AGATE1, bgm_arboreal_agate1);
 	music_add(MUSIC.ARBOREAL_AGATE2, bgm_arboreal_agate2, 15.239);
 	music_add(MUSIC.BONUS, bgm_bonus, 16.657, 92.33, true);
-	music_add(MUSIC.BLUE_SPHERES, bgm_blue_spheres, 5.729, 68.451);
+	music_add(MUSIC.BLUE_SPHERES, bgm_blue_spheres, 6.923);
 
 	//Game jingles:
 	music_add(MUSIC.J_GAME_OVER, j_game_over, 0.00, 0.00, false);

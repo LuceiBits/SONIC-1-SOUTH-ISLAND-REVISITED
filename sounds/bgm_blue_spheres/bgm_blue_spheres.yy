@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":145.9233,
+  "duration":69.69202,
   "exportDir":"",
   "name":"bgm_blue_spheres",
   "parent":{
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"bgm_blue_spheres.mp3",
+  "soundFile":"bgm_blue_spheres.ogg",
   "volume":1.0,
 }

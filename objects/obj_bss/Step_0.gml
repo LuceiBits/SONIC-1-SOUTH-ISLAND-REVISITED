@@ -53,7 +53,7 @@ else
 var cur_anim = animation_get_current_animation(animator);
 if (cur_anim == ANIM_BSS_WALK)
 {
-	walk_timer += abs(globe_speed);
+	walk_timer += abs(globe_speed div 2);
 	if (walk_timer > 31)
 	{
 		walk_timer &= 31;

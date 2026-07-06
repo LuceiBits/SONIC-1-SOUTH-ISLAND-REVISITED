@@ -384,12 +384,12 @@ function bss_process_chain() {
 function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark) {
 	switch (_t)
 	{
-		case C_BLUE:   draw_sprite(spr_bss_sphere_blue,   _f, _x, _y); break;
-		case C_RED:    draw_sprite(spr_bss_sphere_red,    _f, _x, _y); break;
-		case C_BUMPER: draw_sprite(spr_bss_bumper,        _f, _x, _y); break;
-		case C_YELLOW: draw_sprite(spr_bss_sphere_yellow, _f, _x, _y); break;
-		case C_GREEN:  draw_sprite(spr_bss_sphere_green,  _f, _x, _y); break;
-		case C_PINK:   draw_sprite(spr_bss_sphere_pink,   _f, _x, _y); break;
+		case C_BLUE:   draw_sprite(spr_bss_sphere_blue,   _f div 2, _x, _y); break;
+		case C_RED:    draw_sprite(spr_bss_sphere_red,    _f div 2, _x, _y); break;
+		case C_BUMPER: draw_sprite(spr_bss_bumper,        _f div 2, _x, _y); break;
+		case C_YELLOW: draw_sprite(spr_bss_sphere_yellow, _f div 2, _x, _y); break;
+		case C_GREEN:  draw_sprite(spr_bss_sphere_green,  _f div 2, _x, _y); break;
+		case C_PINK:   draw_sprite(spr_bss_sphere_pink,   _f div 2, _x, _y); break;
 
 		case C_RING:
 			var spin = floor(_spin) mod sprite_get_number(spr_bss_ring);
@@ -406,9 +406,9 @@ function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark) {
 				_x, _y - (global.bss.ringScreenY[_f] / 65536), ms, ms, 0, c_white, 1);
 			break;
 
-		case C_BLUE_STOOD:  draw_sprite_ext(spr_bss_sphere_blue,  _f, _x, _y, 1, 1, 0, c_white, 0.5); break;
-		case C_GREEN_STOOD: draw_sprite_ext(spr_bss_sphere_green, _f, _x, _y, 1, 1, 0, c_white, 0.5); break;
-		case C_PINK_STOOD:  draw_sprite_ext(spr_bss_sphere_pink,  _f, _x, _y, 1, 1, 0, c_white, 0.5); break;
+		case C_BLUE_STOOD:  draw_sprite_ext(spr_bss_sphere_blue,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
+		case C_GREEN_STOOD: draw_sprite_ext(spr_bss_sphere_green, _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
+		case C_PINK_STOOD:  draw_sprite_ext(spr_bss_sphere_pink,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
 
 		case C_SPARKLE: draw_sprite(spr_bss_ring_sparkle, _spark, _x, _y); break;
 		default: break;

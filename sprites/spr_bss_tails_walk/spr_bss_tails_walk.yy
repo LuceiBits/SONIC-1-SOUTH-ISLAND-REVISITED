@@ -36,8 +36,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Tails",
-    "path":"folders/Sprites/Player Sprites/Tails.yy",
+    "name":"Blue Spheres",
+    "path":"folders/Sprites/Player Sprites/Blue Spheres.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

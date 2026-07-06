@@ -31,7 +31,7 @@ draw_sprite_ext(spr_bss_rimlight, 0, center_x, 240, 1, 1, 0, c_white, 0.5);
 gpu_set_blendmode(bm_normal);
 
 //Player shadow
-draw_sprite_ext(spr_bss_player_shadow, 0, center_x, 170, 1, 1, 0, c_white, 0.5);
+draw_sprite_ext(spr_bss_player_shadow, 0, center_x, 170, 1, 1, 0, c_white, 1);
 
 //BSS_Setup_HandleCollectableMovement port
 var aa = angle & 255;
