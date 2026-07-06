@@ -3,36 +3,24 @@
 	//character palettes for super form
 	palette_swap(super_palettes[character],super_color);
 	
+	// Default flag
+	var render = true;
 	
-	if(state = player_state_knockout || invincible_timer mod 12 >= 6 || invincible_timer = 0 || invincible)
+	// Conditions to not render (flashing)
+	if(instance_flash(6) && state != player_state_knockout && !invincible && invincible_timer > 0)
+		render = false;
+		
+	if(render)
 	{
-		if(speed_shoes || super)
-		{
-			for (var i = 0; i < 3; ++i) 
-			{
-				if((FRAME_TIMER mod 3) = i )
-				{
-					if(x_speed != 0 || y_speed != 0)
-					{
-						var gap = 9 - (3 * i);
-						/*with(obj_tails_object)
-						{
-							if(appear)
-							{
-								draw_sprite_ext(record_sprite[max(record_timer - gap, 0) mod 60], record_frame[max(record_timer - gap, 0) mod 60], other.record_x[max(other.record_timer - gap, 0) mod 60], other.record_y[max(other.record_timer - gap, 0) mod 60], obj_tails_object.record_direction[max(record_timer - gap, 0) mod 60], 1, obj_tails_object.record_angle[max(record_timer - gap, 0) mod 60], c_white, 1);
-							}
-						}*/
-						draw_sprite_ext(record_sprite[max(record_timer - gap, 0) mod 60], record_frame[max(record_timer - gap, 0) mod 60], record_x[max(record_timer - gap, 0) mod 60], record_y[max(record_timer - gap, 0) mod 60], record_direction[max(record_timer - gap, 0) mod 60], 1, record_angle[max(record_timer - gap, 0) mod 60], c_white, 1);
-					}
-				}
-			}
-		}
+		// Render the player after images
+		_player_draw_after_images();
+		
 		//Draw tails segment
 		if(character = CHAR_TAILS && tails.appear)
 		{
-			var px = floor(x) + tails.offset_x * dcos(tails.visual_angle_final) + tails.offset_y * dsin(tails.visual_angle_final)
-			var py = floor(y) + tails.offset_y * dcos(tails.visual_angle_final) - tails.offset_x * dsin(tails.visual_angle_final)
-			draw_animator(tails.animator, floor(px), floor(py), tails.facing, image_yscale, tails.visual_angle_final, c_white, 1.0)
+			var px = floor(x) + tails.offset_x * dcos(tails.visual_angle_final) + tails.offset_y * dsin(tails.visual_angle_final);
+			var py = floor(y) + tails.offset_y * dcos(tails.visual_angle_final) - tails.offset_x * dsin(tails.visual_angle_final);
+			draw_animator(tails.animator, floor(px), floor(py), tails.facing, image_yscale, tails.visual_angle_final, c_white, 1.0);
 		}
 		
 		//Draw the player:

@@ -30,5 +30,5 @@
 	//Handle player's interaction with water
 	player_water();
 	
-	//Handle player recording
-	player_recorder();
+	// Update the recorder
+	instance_recorder_update(recorder);

@@ -303,3 +303,52 @@ function _player_kill()
 	//Play the hurt sound
 	play_sound(sfx_hurt);
 }
+
+function _player_draw_after_images()
+{
+	// Render when these flags are on
+	if(!speed_shoes_flag && !super)
+		exit;
+	
+	// Don't render when not moving
+	if(x_speed == 0 && y_speed == 0)
+		exit;
+	
+	
+	var xpos, ypos, sprite, frame, f, vangle, t_visible, t_sprite, t_frame, t_x, t_y, t_f, t_vangle
+	
+	for (var i = 3; i > 0; --i) 
+	{
+		// Flashing
+		if(instance_flash(2, i))
+			continue;
+			
+		var gap = i * 3;
+		
+		xpos = instance_recorder_get_value(recorder, rec_vals.xpos, gap);
+		ypos = instance_recorder_get_value(recorder, rec_vals.ypos, gap);
+		sprite = instance_recorder_get_value(recorder, rec_vals.sprite, gap);
+		frame = instance_recorder_get_value(recorder, rec_vals.frame, gap);
+		f = instance_recorder_get_value(recorder, rec_vals.facing, gap);
+		vangle = instance_recorder_get_value(recorder, rec_vals.vangle, gap);
+		
+		t_visible = instance_recorder_get_value(recorder, rec_vals.t_visible, gap);
+		t_sprite = instance_recorder_get_value(recorder, rec_vals.t_sprite, gap);
+		t_frame = instance_recorder_get_value(recorder, rec_vals.t_frame, gap);
+		t_x = instance_recorder_get_value(recorder, rec_vals.t_x, gap);
+		t_y = instance_recorder_get_value(recorder, rec_vals.t_y, gap);
+		t_f = instance_recorder_get_value(recorder, rec_vals.t_facing, gap);
+		t_vangle = instance_recorder_get_value(recorder, rec_vals.t_angle, gap);
+		
+		// Render Tails' tails
+		if(character == CHAR_TAILS && t_visible)
+		{
+			var px = floor(xpos) + t_x * dcos(t_vangle) + t_y * dsin(t_vangle);
+			var py = floor(ypos) + t_y * dcos(t_vangle) - t_x * dsin(t_vangle);
+			
+			draw_sprite_ext(t_sprite, t_frame, floor(px), floor(py), t_f, 1, t_vangle, c_white, 1);
+		}
+		
+		draw_sprite_ext(sprite, frame, floor(xpos), floor(ypos), f, 1, vangle, c_white, 1);
+	}	
+}

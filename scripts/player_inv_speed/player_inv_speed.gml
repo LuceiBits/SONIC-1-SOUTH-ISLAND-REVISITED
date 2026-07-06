@@ -13,8 +13,9 @@ function player_inv_speed(){
 			invincible_timer = max(invincible_timer - 1, 0);
 		
 		//Adjust flags
-		if(speed_shoes = 0) speed_shoes_flag = false; else speed_shoes_flag = true;
-		if(invincible_timer = 0 && invincible) invincible = false;
+		speed_shoes_flag = (speed_shoes > 0);
+		if(invincible_timer == 0 && invincible) 
+			invincible = false;
 	
 		//Stop jingles
 		if(obj_global.music.play_data[Jingle] = "j_speedshoe" && speed_shoes = 0)

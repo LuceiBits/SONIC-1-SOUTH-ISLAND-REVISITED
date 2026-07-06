@@ -142,7 +142,6 @@
 	#macro SUPER_PALETTE_LOOP 7
 	
 	//Setup scripts
-	player_recorder_setup();			//Setup player visuals recorder
 	player_get_input();					//Setup player inputs
 	player_animation_list();			//Initilize the animation list
 	
@@ -161,6 +160,28 @@
 	}
 	
 	animation_play(tails.animator, ANIM.SKID);
+	
+	// Recorder setup
+	recorder = new instance_recorder_init(60);
+	
+	// Recorder value pointers
+	rec_vals = {
+		xpos : instance_recorder_add(recorder, "x", id),
+		ypos : instance_recorder_add(recorder, "y", id),
+		sprite : instance_recorder_add(recorder, "animation_sprite", id.animator),
+		frame : instance_recorder_add(recorder, "animation_frame", id.animator),
+		facing : instance_recorder_add(recorder, "facing", id),
+		vangle : instance_recorder_add(recorder, "image_angle", id),
+		
+		// Tails related
+		t_sprite : instance_recorder_add(recorder, "animation_sprite", id.tails.animator),
+		t_frame : instance_recorder_add(recorder, "animation_frame", id.tails.animator),
+		t_angle : instance_recorder_add(recorder, "visual_angle_final", id.tails),
+		t_visible : instance_recorder_add(recorder, "appear", id.tails),
+		t_facing : instance_recorder_add(recorder, "facing", id.tails),
+		t_x : instance_recorder_add(recorder, "offset_x", id.tails),
+		t_y : instance_recorder_add(recorder, "offset_y", id.tails),
+	}
 	
 	//Disable title card input
 	if(instance_exists(obj_titlecard)) 

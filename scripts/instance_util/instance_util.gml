@@ -215,6 +215,59 @@ function instance_register_culling(culling_region = noone, on_culling = noone, f
 	ds_list_add(obj_level.instance_list, culling_struct);	
 }
 
+function instance_flash(interval, offset = 0)
+{
+	if((FRAME_TIMER + offset) mod (interval * 2) < interval)
+		return true;
+}
+
+function instance_recorder_init(size = 60) constructor
+{
+	timer = 0;
+	value_id = 0;
+	record_size = size;
+	instance_list = [];
+	variable_list = [];
+	update_list = [[]];
+}
+
+function instance_recorder_add(recorder, variable_name, inst_id = id)
+{
+	// Store the old ID
+	var oldID = recorder.value_id;
+	
+	// Store the data
+	recorder.variable_list[oldID] = variable_name;
+	recorder.instance_list[oldID] = inst_id;
+	
+	// Increment the ID
+	recorder.value_id++;
+	
+	// Return it
+	return oldID;
+}
+
+function instance_recorder_update(recorder)
+{
+	// Get the recording list
+	var s = array_length(recorder.variable_list);
+	
+	// Update the timer
+	recorder.timer++;
+	
+	// Update all of the values
+	for (var i = 0; i < s; ++i) 
+	{
+		//if(variable_instance_get(recorder.instance_list[i], recorder.variable_list))
+		recorder.update_list[i][recorder.timer mod recorder.record_size] = variable_instance_get(recorder.instance_list[i], recorder.variable_list[i]);
+	}
+}
+
+function instance_recorder_get_value(recorder, value_id, offset)
+{
+	return recorder.update_list[value_id][(max(recorder.timer - offset, 0) mod recorder.record_size)];
+}
+
 // ===========================================================================================================
 // Utilities internal functions
 // ===========================================================================================================
