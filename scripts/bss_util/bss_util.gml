@@ -50,12 +50,14 @@
 #macro ANIM_BSS_SPRING 3
 #macro ANIM_BSS_TAIL   4
 
-function bss_idx(_x, _y) {
+function bss_idx(_x, _y) 
+{
 	return (((_x & 31) << 5) + (_y & 31));
 }
 
 // BSS_Message two-part message
-function draw_bss_message(_spr, _cx, _cy, _offset) {
+function draw_bss_message(_spr, _cx, _cy, _offset) 
+{
 	var fw = sprite_get_width(_spr);
 	var fh = sprite_get_height(_spr);
 	draw_sprite(_spr, 0, _cx - _offset - fw, _cy - (fh div 2));
@@ -63,7 +65,8 @@ function draw_bss_message(_spr, _cx, _cy, _offset) {
 }
 
 // BSS_HUD_DrawNumbers
-function draw_bss_number(_value, _right_x, _y) {
+function draw_bss_number(_value, _right_x, _y) 
+{
 	var s = string(_value mod 1000);
 	s = string_repeat("0", max(0, 3 - string_length(s))) + s;
 	draw_set_font(global.bss_number);
@@ -75,7 +78,8 @@ function draw_bss_number(_value, _right_x, _y) {
 
 // Build global.bss.pf_stage from the room's "Playfield" tilemap (mirrors Mania's BSS_Setup_StageLoad,
 // which reads the playfield from a tile layer). Tile index == cell value; index 0 = C_NONE.
-function bss_load_playfield() {
+function bss_load_playfield() 
+{
 	global.bss.pf_stage = array_create(1024, C_NONE);
 
 	var lay = layer_get_id("Playfield");
@@ -102,12 +106,14 @@ function bss_load_playfield() {
 }
 
 // Arithmetic (floor) right shift, matching C's signed >> on negatives
-function ashr(_v, _n) {
+function ashr(_v, _n) 
+{
 	return floor(_v / (1 << _n));
 }
 
 // Lookup tables copied verbatim from Mania's BSS_Setup.h / BSS_Collectable.h
-function bss_build_tables() {
+function bss_build_tables() 
+{
 	global.bss.screenYTable = [
 		280, 270, 260, 251, 243, 235, 228, 221, 215, 208, 202, 197, 191, 185, 180, 175, 170, 165, 160, 155, 151, 147, 143,
 		139, 135, 131, 127, 124, 121, 117, 114, 111, 108, 105, 103, 100, 97,  95,  92,  90,  88,  86,  83,  81,  79,  77,
@@ -165,7 +171,8 @@ function bss_build_tables() {
 }
 
 // Blue sphere -> ring enclosure (BSS_Setup_ProcessChain family), masks verbatim
-function bss_check_sphere_valid(_x, _y) {
+function bss_check_sphere_valid(_x, _y) 
+{
 	var pf = global.bss.pf;
 	var x1 = 32 * ((_x - 1) & 31);
 	var y1 = (_y - 1) & 31;
@@ -179,7 +186,8 @@ function bss_check_sphere_valid(_x, _y) {
 	return true;
 }
 
-function bss_scan_up(_x, _y) {
+function bss_scan_up(_x, _y) 
+{
 	if (global.bss.loop) return true;
 	var pf = global.bss.pf;
 	var px = 32 * _x;
@@ -203,7 +211,8 @@ function bss_scan_up(_x, _y) {
 	return false;
 }
 
-function bss_scan_down(_x, _y) {
+function bss_scan_down(_x, _y) 
+{
 	if (global.bss.loop) return true;
 	var pf = global.bss.pf;
 	var px = 32 * _x;
@@ -227,7 +236,8 @@ function bss_scan_down(_x, _y) {
 	return false;
 }
 
-function bss_scan_left(_x, _y) {
+function bss_scan_left(_x, _y) 
+{
 	if (global.bss.loop) return true;
 	var pf = global.bss.pf;
 	var cid = 0;
@@ -251,7 +261,8 @@ function bss_scan_left(_x, _y) {
 	return false;
 }
 
-function bss_scan_right(_x, _y) {
+function bss_scan_right(_x, _y) 
+{
 	if (global.bss.loop) return true;
 	var pf = global.bss.pf;
 	var cid = 0;
@@ -275,7 +286,8 @@ function bss_scan_right(_x, _y) {
 	return false;
 }
 
-function bss_chained_count(_x, _y) {
+function bss_chained_count(_x, _y) 
+{
 	var pf = global.bss.pf;
 	var px = 32 * _x;
 
@@ -318,7 +330,8 @@ function bss_chained_count(_x, _y) {
 
 // Runs when a blue sphere is collected. Sets global.bss.loop, converts enclosed cells to rings.
 // Returns spheres converted (caller subtracts from sphere count)
-function bss_process_chain() {
+function bss_process_chain() 
+{
 	for (var i = 0; i < 1024; i++) { global.bss.chain[i] = C_NONE; global.bss.coll[i] = C_NONE; }
 
 	var lp = bss_idx(global.bss.lastSX, global.bss.lastSY);
@@ -381,7 +394,8 @@ function bss_process_chain() {
 
 // Draw one projected cell at screen (_x,_y), scale frame _f (0..31, 31 = closest).
 // Sphere/bumper subimages are pre-scaled, rings/medals scale a full-size sprite
-function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark) {
+function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark) 
+{
 	switch (_t)
 	{
 		case C_BLUE:   draw_sprite(spr_bss_sphere_blue,   _f, _x, _y); break;
