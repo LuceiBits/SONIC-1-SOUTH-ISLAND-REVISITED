@@ -16,22 +16,23 @@ function player_states(){
 	//State allowing flags:
 	can_jump = false;
 	can_roll = false;
-	
+
 	script_execute(state);	
 	player_state_conditions();
+	
 	//Tails object
 	player_handle_tails();
 }
 
 
-function player_state_conditions(){
+function player_state_conditions()
+{
 	
-	if(state == player_state_normal){
-		if (ground_speed != 0 || x_speed != 0 || y_speed != 0) {
-			idle_timer = 0;	
-		}
-	} else {
-		idle_timer = 0;	
+	// Reset the idle and skid timer if the state isn't normal
+	if(state != player_state_normal)
+	{
+		idle_timer = 0;
+		skid_timer = 0;
 	}
 	
 	//Reset the timer
@@ -47,7 +48,6 @@ function player_state_conditions(){
 		{
 			state = player_state_jump;
 			jump_flag = false;
-			ceiling_lock = 2;
 			jump_anim_speed = floor(max(0, 4-abs(ground_speed)));
 		}
 	}

@@ -1,3 +1,4 @@
-function player_state_null(){
+function player_state_null()
+{
 	exit;
 }

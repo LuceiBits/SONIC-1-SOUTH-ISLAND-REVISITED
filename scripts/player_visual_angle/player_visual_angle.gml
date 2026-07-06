@@ -1,5 +1,6 @@
-function player_visual_angle(){
-	//Visual angle
+function player_visual_angle()
+{
+	//Visual angle portion
 	if(ground)
 	{
 		switch(global.rotation_type)

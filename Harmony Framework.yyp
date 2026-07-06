@@ -325,7 +325,6 @@
     {"id":{"name":"player_state_null","path":"scripts/player_state_null/player_state_null.yy",},},
     {"id":{"name":"player_state_peelout","path":"scripts/player_state_peelout/player_state_peelout.yy",},},
     {"id":{"name":"player_state_roll","path":"scripts/player_state_roll/player_state_roll.yy",},},
-    {"id":{"name":"player_state_skid","path":"scripts/player_state_skid/player_state_skid.yy",},},
     {"id":{"name":"player_state_spindash","path":"scripts/player_state_spindash/player_state_spindash.yy",},},
     {"id":{"name":"player_state_spring","path":"scripts/player_state_spring/player_state_spring.yy",},},
     {"id":{"name":"player_state_tailsfly","path":"scripts/player_state_tailsfly/player_state_tailsfly.yy",},},

@@ -1,5 +1,7 @@
 function player_control(){
-	if(!movement_allow) exit;
+	if(!movement_allow) 
+		exit;
+		
 	//Temp value
 	var movement = hold_right - hold_left;
 	
@@ -45,12 +47,16 @@ function player_control(){
 			if(ground_speed > 0 && ground_speed <= 2.5 && ground_angle >= 45 && ground_angle <= 90 && movement = -1)
 			{
 				ground_speed = -x_deaccel;
-				facing = -1;
+				
+				if(skid_timer == -1)
+					facing = -1;
 			}
-			if(ground_speed < 0 && ground_speed >= 2.5 && ground_angle <= 315 && ground_angle >= 270 && movement = 1)
+			if(ground_speed >= -2.5 && ground_speed < 0 && ground_angle <= 315 && ground_angle >= 270 && movement = 1)
 			{
 				ground_speed = x_deaccel;
-				facing = 1;
+				
+				if(skid_timer == -1)
+					facing = 1;
 			}
 		}
 		
