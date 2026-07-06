@@ -148,7 +148,7 @@ switch (state)
 				if (kR) spin_state = 2;
 			}
 			globe_timer += globe_speed;
-			stepped_objects(); //may change state
+			bss_stepped_objects(); //may change state
 		}
 		else
 		{
@@ -359,7 +359,7 @@ switch (state)
 			spin_timer = 0;
 			speedup_level = 8;
 			globe_speed = 8;
-			setup_finish();
+			bss_setup_finish();
 			input_active = false;
 			state = BSS_STATE.EMERALD;
 		}
@@ -369,7 +369,7 @@ switch (state)
 		globe_timer += globe_speed;
 		spin_timer++;
 		if (spin_timer == 120) play_sound(sfx_shard_collect);
-		stepped_objects();
+		bss_stepped_objects();
 
 		if (globe_speed <= 0 && globe_timer < 0)
 		{
@@ -419,7 +419,7 @@ switch (state)
 }
 
 //---- BSS_Collected updates ----
-update_collected();
+bss_update_collected();
 
 //cosmetic
 ring_spin += 0.25;
