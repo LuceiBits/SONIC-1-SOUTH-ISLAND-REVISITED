@@ -149,6 +149,19 @@
 	//Create important objects:
 	instance_create_depth(0, 0, 0, obj_camera);		//Create the camera object
 	
+	// Tails related setup
+	tails = {
+		animator : new animator_create(),
+		visual_angle : 0,
+		visual_angle_final : 0,
+		facing : 1,
+		appear : true,
+		offset_x : 0,
+		offset_y : 0,
+	}
+	
+	animation_play(tails.animator, ANIM.SKID);
+	
 	//Disable title card input
 	if(instance_exists(obj_titlecard)) 
 	{

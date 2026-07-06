@@ -2,10 +2,6 @@
 	//Change character
 	character = global.character;
 	
-	//Tails object
-	if(character = CHAR_TAILS && !instance_exists(obj_tails_object)) instance_create_depth(x, y, depth + 1, obj_tails_object)
-	if(character != CHAR_TAILS)instance_destroy(obj_tails_object);
-	
 	//Hitbox variables
 	hitbox_top_offset = 0;
 	hitbox_left_offset = 0;

@@ -36,13 +36,18 @@ function player_animation_list(){
 		KNUXSLIDE, 
 		KNUXGETUP, 
 		TRANSFORM,
+		
+		// Tails' tails animations
+		TAILS_NORMAL,
+		TAILS_ROLL,
 	}
 	
 	
 	switch(global.character)
 	{
 		case CHAR_SONIC:
-		if (!super) {
+		if (!super) 
+		{
 			animation_add(ANIM.STAND, spr_sonic_idle, 0.2)
 			animation_add(ANIM.WAIT, spr_sonic_wait, 6, 2, true, true);
 			animation_add(ANIM.WALK, spr_sonic_walk, 3, 0, true, true);
@@ -51,7 +56,9 @@ function player_animation_list(){
 			animation_add(ANIM.LOOKDOWN, spr_sonic_lookdown, 0.4, 0, false, false);
 			animation_add(ANIM.LOOKUP, spr_sonic_lookup, 0.4, 0, false, false);
 			animation_add(ANIM.PUSH, spr_sonic_push, 0.1, 0, true, false);
-		} else {
+		} 
+		else 
+		{
 			animation_add(ANIM.STAND, spr_super_sonic_idle, 0.2)
 			animation_add(ANIM.WAIT, spr_super_sonic_wait, 12, 1, true, true);
 			animation_add(ANIM.WALK, spr_super_sonic_walk, 3, 0, true, true);
@@ -103,6 +110,10 @@ function player_animation_list(){
 		animation_add(ANIM.LEDGE2, spr_tails_ledge2, 0.1, 0, true, false);
 		animation_add(ANIM.VICTORY, spr_tails_victory, 0.1, 0, false, false);
 		animation_add(ANIM.TRANSFORM, spr_tails_transform, 0.4, 0, false, false);
+		
+		// Tails' tails animations
+		animation_add(ANIM.TAILS_NORMAL, spr_tails_tail1, 0.15, 0, true, false);
+		animation_add(ANIM.TAILS_ROLL, spr_tails_tail2, 0.25, 0, true, false);
 		break;
 		
 		case CHAR_KNUX:

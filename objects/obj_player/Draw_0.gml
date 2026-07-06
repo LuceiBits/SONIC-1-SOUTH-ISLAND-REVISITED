@@ -15,33 +15,30 @@
 					if(x_speed != 0 || y_speed != 0)
 					{
 						var gap = 9 - (3 * i);
-						with(obj_tails_object)
+						/*with(obj_tails_object)
 						{
 							if(appear)
 							{
 								draw_sprite_ext(record_sprite[max(record_timer - gap, 0) mod 60], record_frame[max(record_timer - gap, 0) mod 60], other.record_x[max(other.record_timer - gap, 0) mod 60], other.record_y[max(other.record_timer - gap, 0) mod 60], obj_tails_object.record_direction[max(record_timer - gap, 0) mod 60], 1, obj_tails_object.record_angle[max(record_timer - gap, 0) mod 60], c_white, 1);
 							}
-						}
+						}*/
 						draw_sprite_ext(record_sprite[max(record_timer - gap, 0) mod 60], record_frame[max(record_timer - gap, 0) mod 60], record_x[max(record_timer - gap, 0) mod 60], record_y[max(record_timer - gap, 0) mod 60], record_direction[max(record_timer - gap, 0) mod 60], 1, record_angle[max(record_timer - gap, 0) mod 60], c_white, 1);
 					}
 				}
 			}
 		}
 		//Draw tails segment
-		if(character = CHAR_TAILS)
+		if(character = CHAR_TAILS && tails.appear)
 		{
-			with(obj_tails_object)
-			{
-				if(appear)
-				{
-					draw_animator(animator, floor(other.x), floor(other.y), image_xscale, 1, image_angle, c_white, 1);
-				}
-			}
+			var px = floor(x) + tails.offset_x * dcos(tails.visual_angle_final) + tails.offset_y * dsin(tails.visual_angle_final)
+			var py = floor(y) + tails.offset_y * dcos(tails.visual_angle_final) - tails.offset_x * dsin(tails.visual_angle_final)
+			draw_animator(tails.animator, floor(px), floor(py), tails.facing, image_yscale, tails.visual_angle_final, c_white, 1.0)
 		}
 		
 		//Draw the player:
 		draw_animator(animator, floor(x), floor(y), image_xscale, 1, image_angle, c_white, 1);
 	}
+	
 	shader_reset()
 	
 	//Draw spindash dust effect
