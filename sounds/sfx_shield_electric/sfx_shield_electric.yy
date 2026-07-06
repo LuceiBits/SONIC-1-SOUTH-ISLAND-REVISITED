@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_shieldbubble",
+  "%Name":"sfx_shield_electric",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.717302,
+  "duration":0.7170975,
   "exportDir":"",
-  "name":"sfx_shieldbubble",
+  "name":"sfx_shield_electric",
   "parent":{
     "name":"Shield",
     "path":"folders/Sounds/Sound Effects/Shield.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_shieldbubble.wav",
+  "soundFile":"sfx_shield_electric.wav",
   "volume":1.0,
 }

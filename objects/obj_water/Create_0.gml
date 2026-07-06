@@ -5,3 +5,5 @@
 	
 	//Change animation speed
 	anim_speed = 0.15;
+	
+	flash_hold_timer = 0;

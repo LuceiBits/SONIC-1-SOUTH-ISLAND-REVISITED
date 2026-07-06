@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_instashield",
+  "%Name":"sfx_shield_bubble",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.26993197,
+  "duration":0.7173016,
   "exportDir":"",
-  "name":"sfx_instashield",
+  "name":"sfx_shield_bubble",
   "parent":{
     "name":"Shield",
     "path":"folders/Sounds/Sound Effects/Shield.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_instashield.ogg",
+  "soundFile":"sfx_shield_bubble.wav",
   "volume":1.0,
 }

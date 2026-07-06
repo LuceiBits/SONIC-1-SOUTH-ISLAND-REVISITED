@@ -28,4 +28,10 @@
 	}
 	
 	//Begone when underwater
-	if(obj_player.underwater) obj_player.shield = S_NONE;
+	if(obj_player.underwater) 
+	{
+		obj_player.shield = S_NONE;
+		
+		if(instance_exists(obj_water))
+			obj_water.flash_hold_timer = 4;
+	}

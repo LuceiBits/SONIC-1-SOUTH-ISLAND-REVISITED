@@ -13,17 +13,17 @@
 		
 		case MONITOR.ELECTRIC_SHIELD:
 			obj_player.shield = S_ELECTRIC;
-			play_sound(sfx_shieldelec);
+			play_sound(sfx_shield_electric);
 		break;
 		
 		case MONITOR.FIRE_SHIELD:
 			obj_player.shield = S_FIRE;
-			play_sound(sfx_shieldfire);
+			play_sound(sfx_shield_fire);
 		break;
 		
 		case MONITOR.BUBBLE_SHIELD:
 			obj_player.shield = S_BUBBLE;
-			play_sound(sfx_shieldbubble);
+			play_sound(sfx_shield_bubble);
 		break;
 		
 		case MONITOR.INVINCIBLE:

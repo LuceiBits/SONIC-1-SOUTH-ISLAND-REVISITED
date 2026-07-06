@@ -19,3 +19,6 @@
 	
 	// Configuration for insta shield's hitbox size for all four sides
 	#macro INSTA_SHIELD_BOX_SIZE 24
+	
+	// Configuration for water flashing color
+	#macro WATER_FLASH_COLOR #e0e0e0

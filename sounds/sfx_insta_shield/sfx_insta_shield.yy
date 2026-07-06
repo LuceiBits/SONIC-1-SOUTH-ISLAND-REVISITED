@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_shieldfire",
+  "%Name":"sfx_insta_shield",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.716939,
+  "duration":0.26993197,
   "exportDir":"",
-  "name":"sfx_shieldfire",
+  "name":"sfx_insta_shield",
   "parent":{
     "name":"Shield",
     "path":"folders/Sounds/Sound Effects/Shield.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_shieldfire.wav",
+  "soundFile":"sfx_insta_shield.ogg",
   "volume":1.0,
 }

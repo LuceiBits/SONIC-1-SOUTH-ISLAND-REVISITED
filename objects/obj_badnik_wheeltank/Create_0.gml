@@ -1,5 +1,8 @@
 	// Grounded badnik by joshyflip
-
+	
+	// Inherit the parent event's code for the badnik
+	event_inherited();
+	
 	// This is an example of a simple grounded badnik akin to a Motobug from Sonic 1.
 
 	// Set up badnik's values

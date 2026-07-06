@@ -11,8 +11,6 @@
 	{
 		x = xstart;
 		y = ystart;
-		
-		show_debug_message(x)
 	}
 	
 	instance_register_culling([-32, -32, 32, 32], on_reset);

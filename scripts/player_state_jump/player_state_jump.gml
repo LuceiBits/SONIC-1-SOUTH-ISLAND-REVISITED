@@ -48,7 +48,7 @@ function player_state_jump(){
 			insta_shield_ptr = instance_create_depth(x, y, depth - 10, obj_insta_shield);
 			insta_shield_ptr.player = id;
 		
-			play_sound(sfx_instashield);
+			play_sound(sfx_insta_shield);
 		}
 	}
 	

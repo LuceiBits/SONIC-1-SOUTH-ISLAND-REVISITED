@@ -1,5 +1,5 @@
 	// Inherit the parent event's code for the badnik
-	instance_act_badnik();
+	event_inherited();
 
 	// Change some values
 	x += x_speed;

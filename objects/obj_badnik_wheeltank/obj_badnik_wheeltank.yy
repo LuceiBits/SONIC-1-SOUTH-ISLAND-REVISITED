@@ -14,7 +14,10 @@
     "name":"Base Stage",
     "path":"folders/Objects/Stage Objects/Base Stage.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_badnik",
+    "path":"objects/par_badnik/par_badnik.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

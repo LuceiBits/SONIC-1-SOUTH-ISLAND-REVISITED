@@ -184,46 +184,6 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 		return true;
 }
 
-function instance_act_badnik()
-{
-	//Destroy the enemy
-	if(player_collide_object() || player_insta_shield_collide())
-	{
-		var fly_angle = 90 - point_direction(obj_player.x, obj_player.y,x,y) 
-		var fly_cond = (obj_player.state == player_state_tailsfly && abs(fly_angle) < 45)
-		
-		if(obj_player.attacking || obj_player.invincible || fly_cond)
-		{
-			//Create flickies instead
-			instance_create_depth(x, y, depth, obj_flicky);
-		
-			//Player bounce
-			obj_player.y_speed = -abs(obj_player.y_speed);
-		
-			//Create score object and add combo and badnik chain
-			obj_level.badnik_chain += 1;
-			create_score();
-		
-			//Create explosion effect
-			create_effect(x, y, spr_effect_explosion01, 0.3);
-		
-			//Play destroying sound
-			play_sound(sfx_destroy);
-		
-			//Destroy badnik
-			if (!instance_exists(obj_bonus_level)) {
-				global.store_object_state[| id] = true
-			}
-			instance_destroy();	
-		}
-		else
-		{
-			//Player getting hurt
-			player_hurt();
-		}
-	}	
-}
-
 function instance_register_culling(culling_region = noone, on_culling = noone, flags = CULL_FLAG.CHECK_ENTITY_POS)
 {
 	var c = {left : -32, right : 32, top : -32, bottom : 32}

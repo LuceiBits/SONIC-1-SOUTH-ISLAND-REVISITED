@@ -13,9 +13,16 @@
 	//Draw basic rectangle with blendmode
 	draw_set_color($5b301e);
 	gpu_set_blendmode(bm_subtract);
-	draw_rectangle(cx, max(y, cy), cx+sw+64, max(y, cy)+sh, false);
+	draw_rectangle(cx, max(y, cy), cx + sw + 64, max(y, cy) + sh, false);
 	gpu_set_blendmode(bm_normal);
 	draw_set_color(c_white);
+	
+	if(flash_hold_timer > 0)
+	{
+		draw_set_color(WATER_FLASH_COLOR);
+		draw_rectangle(cx, max(y, cy), cx + sw + 64, max(y, cy) + sh, false);
+		draw_set_color(c_white);
+	}
 	
 	//IMPORTANT NOTE!!
 	//Enable this code if you wanna use shaders for color replacing instead of blend modes

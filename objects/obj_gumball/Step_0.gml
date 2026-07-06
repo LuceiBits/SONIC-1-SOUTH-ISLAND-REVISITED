@@ -21,17 +21,17 @@ if (player_collide_object(C_MAIN) && !obj_player.input_disable){
 			instance_destroy();
 		break;
 		case GUMBALL.AQUA:
-			play_sound(sfx_shieldbubble);
+			play_sound(sfx_shield_bubble);
 			obj_player.shield = S_BUBBLE;
 			instance_destroy();
 		break;
 		case GUMBALL.ELECTRIC:
-			play_sound(sfx_shieldelec);
+			play_sound(sfx_shield_electric);
 			obj_player.shield = S_ELECTRIC;
 			instance_destroy();
 		break;
 		case GUMBALL.FLAME:
-			play_sound(sfx_shieldfire)
+			play_sound(sfx_shield_fire)
 			obj_player.shield = S_FIRE;
 			instance_destroy();
 		break;
