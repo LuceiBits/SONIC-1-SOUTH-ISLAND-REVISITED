@@ -4,51 +4,63 @@
 #macro BSS_H 32
 
 // Cell values
-#macro C_NONE          0
-#macro C_BLUE          1
-#macro C_RED           2
-#macro C_BUMPER        3
-#macro C_YELLOW        4
-#macro C_GREEN         5
-#macro C_PINK          6
-#macro C_RING          7
-#macro C_SPAWN_UP      8
-#macro C_SPAWN_RIGHT   9
-#macro C_SPAWN_DOWN    10
-#macro C_SPAWN_LEFT    11
-#macro C_SPARKLE       15
-#macro C_EMERALD_CHAOS 16
-#macro C_EMERALD_SUPER 17
-#macro C_MEDAL_SILVER  18
-#macro C_MEDAL_GOLD    19
-#macro C_GREEN_STOOD   0x81
-#macro C_BLUE_STOOD    0x82
-#macro C_PINK_STOOD    0x86
+enum BSS_CELL
+{
+	NONE          = 0,
+	BLUE          = 1,
+	RED           = 2,
+	BUMPER        = 3,
+	YELLOW        = 4,
+	GREEN         = 5,
+	PINK          = 6,
+	RING          = 7,
+	SPAWN_UP      = 8,
+	SPAWN_RIGHT   = 9,
+	SPAWN_DOWN    = 10,
+	SPAWN_LEFT    = 11,
+	SPARKLE       = 15,
+	EMERALD_CHAOS = 16,
+	EMERALD_SUPER = 17,
+	MEDAL_SILVER  = 18,
+	MEDAL_GOLD    = 19,
+	GREEN_STOOD   = 0x81,
+	BLUE_STOOD    = 0x82,
+	PINK_STOOD    = 0x86,
+}
 
 // Setup states
-#macro BS_MOVE     0
-#macro BS_TURNL    1
-#macro BS_TURNR    2
-#macro BS_TELE_IN  3
-#macro BS_TELE_OUT 4
-#macro BS_JETTISON 5
-#macro BS_EMERALD  6
-#macro BS_EXIT     7
+enum BSS_STATE
+{
+	MOVE     = 0,
+	TURNL    = 1,
+	TURNR    = 2,
+	TELE_IN  = 3,
+	TELE_OUT = 4,
+	JETTISON = 5,
+	EMERALD  = 6,
+	EXIT     = 7,
+}
 
 // Collected-event types
-#macro CE_RING        0
-#macro CE_BLUE        1
-#macro CE_BLUE_STOOD  2
-#macro CE_GREEN       3
-#macro CE_GREEN_STOOD 4
-#macro CE_PINK        5
+enum BSS_COLLECT
+{
+	RING        = 0,
+	BLUE        = 1,
+	BLUE_STOOD  = 2,
+	GREEN       = 3,
+	GREEN_STOOD = 4,
+	PINK        = 5,
+}
 
 // Player anims
-#macro ANIM_BSS_STAND  0
-#macro ANIM_BSS_WALK   1
-#macro ANIM_BSS_JUMP   2
-#macro ANIM_BSS_SPRING 3
-#macro ANIM_BSS_TAIL   4
+enum BSS_ANIM
+{
+	STAND  = 0,
+	WALK   = 1,
+	JUMP   = 2,
+	SPRING = 3,
+	TAIL   = 4,
+}
 
 function bss_idx(_x, _y) 
 {
@@ -77,10 +89,10 @@ function draw_bss_number(_value, _right_x, _y)
 }
 
 // Build global.bss.pf_stage from the room's "Playfield" tilemap (mirrors Mania's BSS_Setup_StageLoad,
-// which reads the playfield from a tile layer). Tile index == cell value; index 0 = C_NONE.
+// which reads the playfield from a tile layer). Tile index == cell value; index 0 = BSS_CELL.NONE.
 function bss_load_playfield() 
 {
-	global.bss.pf_stage = array_create(1024, C_NONE);
+	global.bss.pf_stage = array_create(1024, BSS_CELL.NONE);
 
 	var lay = layer_get_id("Playfield");
 	if (lay == -1) return;
@@ -92,9 +104,9 @@ function bss_load_playfield()
 		for (var gy = 0; gy < BSS_H; gy++)
 		{
 			var t = tile_get_index(tilemap_get(tm, gx, gy)); //== Mania's tile & 0x3FF
-			if (t > 24) t = C_NONE;
+			if (t > 24) t = BSS_CELL.NONE;
 			global.bss.pf_stage[gx * 32 + gy] = t;
-			if (t >= C_SPAWN_UP && t <= C_SPAWN_LEFT) spawns++;
+			if (t >= BSS_CELL.SPAWN_UP && t <= BSS_CELL.SPAWN_LEFT) spawns++;
 		}
 	}
 
@@ -105,14 +117,16 @@ function bss_load_playfield()
 		show_debug_message("BSS Playfield: expected exactly 1 spawn tile, found " + string(spawns));
 }
 
-// Arithmetic (floor) right shift, matching C's signed >> on negatives
-function ashr(_v, _n) 
+// One-time setup at game start: the namespace and its static tables never change per stage
+function bss_init()
 {
-	return floor(_v / (1 << _n));
+	global.bss = {};
+	bss_build_tables();
+	bss_load_data();
 }
 
 // Lookup tables copied verbatim from Mania's BSS_Setup.h / BSS_Collectable.h
-function bss_build_tables() 
+function bss_build_tables()
 {
 	global.bss.screenYTable = [
 		280, 270, 260, 251, 243, 235, 228, 221, 215, 208, 202, 197, 191, 185, 180, 175, 170, 165, 160, 155, 151, 147, 143,
@@ -179,10 +193,10 @@ function bss_check_sphere_valid(_x, _y)
 	var x2 = 32 * ((_x + 1) & 31);
 	var y2 = (_y + 1) & 31;
 
-	if ((pf[x1 + y1] & 0x7F) == C_BLUE) return true;
-	if ((pf[x2 + y1] & 0x7F) == C_BLUE || (pf[x1 + _y] & 0x7F) == C_BLUE || (pf[x2 + _y] & 0x7F) == C_BLUE) return true;
-	if ((pf[x1 + y2] & 0x7F) != C_BLUE && (pf[x2 + y2] & 0x7F) != C_BLUE
-		&& (pf[(32 * _x) + y1] & 0x7F) != C_BLUE && (pf[(32 * _x) + y2] & 0x7F) != C_BLUE) return false;
+	if ((pf[x1 + y1] & 0x7F) == BSS_CELL.BLUE) return true;
+	if ((pf[x2 + y1] & 0x7F) == BSS_CELL.BLUE || (pf[x1 + _y] & 0x7F) == BSS_CELL.BLUE || (pf[x2 + _y] & 0x7F) == BSS_CELL.BLUE) return true;
+	if ((pf[x1 + y2] & 0x7F) != BSS_CELL.BLUE && (pf[x2 + y2] & 0x7F) != BSS_CELL.BLUE
+		&& (pf[(32 * _x) + y1] & 0x7F) != BSS_CELL.BLUE && (pf[(32 * _x) + y2] & 0x7F) != BSS_CELL.BLUE) return false;
 	return true;
 }
 
@@ -195,19 +209,19 @@ function bss_scan_up(_x, _y)
 	while (true)
 	{
 		_y = (_y - 1) & 31;
-		if ((pf[px + _y] & 0x7F) != C_RED) break;
-		if ((global.bss.chain[px + _y] & 0x7F) == C_BLUE) break;
+		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
+		if ((global.bss.chain[px + _y] & 0x7F) == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
-		global.bss.chain[_y + px] = C_BLUE;
-		global.bss.coll[_y + px] = C_BLUE;
+		global.bss.chain[_y + px] = BSS_CELL.BLUE;
+		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[_y + (32 * ((_x + 1) & 31))] & 0x7F) == C_RED) found = bss_scan_right(_x, _y) || found;
-		if ((pf[_y + (32 * ((_x - 1) & 31))] & 0x7F) == C_RED) found = bss_scan_left(_x, _y) || found;
+		if ((pf[_y + (32 * ((_x + 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_right(_x, _y) || found;
+		if ((pf[_y + (32 * ((_x - 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_left(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _y = (_y + 1) & 31; global.bss.coll[px + _y] = C_NONE; }
+	for (var i = cid; i > 0; i--) { _y = (_y + 1) & 31; global.bss.coll[px + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -220,19 +234,19 @@ function bss_scan_down(_x, _y)
 	while (true)
 	{
 		_y = (_y + 1) & 31;
-		if ((pf[px + _y] & 0x7F) != C_RED) break;
-		if (global.bss.chain[px + _y] == C_BLUE) break;
+		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
+		if (global.bss.chain[px + _y] == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
-		global.bss.chain[_y + px] = C_BLUE;
-		global.bss.coll[_y + px] = C_BLUE;
+		global.bss.chain[_y + px] = BSS_CELL.BLUE;
+		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[_y + (32 * ((_x - 1) & 31))] & 0x7F) == C_RED) found = bss_scan_left(_x, _y) || found;
-		if ((pf[_y + (32 * ((_x + 1) & 31))] & 0x7F) == C_RED) found = bss_scan_right(_x, _y) || found;
+		if ((pf[_y + (32 * ((_x - 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_left(_x, _y) || found;
+		if ((pf[_y + (32 * ((_x + 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_right(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _y = (_y - 1) & 31; global.bss.coll[px + _y] = C_NONE; }
+	for (var i = cid; i > 0; i--) { _y = (_y - 1) & 31; global.bss.coll[px + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -245,19 +259,19 @@ function bss_scan_left(_x, _y)
 	{
 		_x = (_x - 1) & 31;
 		var px = 32 * _x;
-		if ((pf[px + _y] & 0x7F) != C_RED) break;
-		if ((global.bss.chain[px + _y] & 0x7F) == C_BLUE) break;
+		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
+		if ((global.bss.chain[px + _y] & 0x7F) == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
-		global.bss.chain[_y + px] = C_BLUE;
-		global.bss.coll[_y + px] = C_BLUE;
+		global.bss.chain[_y + px] = BSS_CELL.BLUE;
+		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[(32 * _x) + ((_y - 1) & 31)] & 0x7F) == C_RED) found = bss_scan_up(_x, _y) || found;
-		if ((pf[(32 * _x) + ((_y + 1) & 31)] & 0x7F) == C_RED) found = bss_scan_down(_x, _y) || found;
+		if ((pf[(32 * _x) + ((_y - 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_up(_x, _y) || found;
+		if ((pf[(32 * _x) + ((_y + 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_down(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _x = (_x + 1) & 31; global.bss.coll[(32 * _x) + _y] = C_NONE; }
+	for (var i = cid; i > 0; i--) { _x = (_x + 1) & 31; global.bss.coll[(32 * _x) + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -270,19 +284,19 @@ function bss_scan_right(_x, _y)
 	{
 		_x = (_x + 1) & 31;
 		var px = 32 * _x;
-		if ((pf[px + _y] & 0x7F) != C_RED) break;
-		if ((global.bss.chain[px + _y] & 0x7F) == C_BLUE) break;
+		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
+		if ((global.bss.chain[px + _y] & 0x7F) == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
-		global.bss.chain[_y + px] = C_BLUE;
-		global.bss.coll[_y + px] = C_BLUE;
+		global.bss.chain[_y + px] = BSS_CELL.BLUE;
+		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[(32 * _x) + ((_y + 1) & 31)] & 0x7F) == C_RED) found = bss_scan_down(_x, _y) || found;
-		if ((pf[(32 * _x) + ((_y - 1) & 31)] & 0x7F) == C_RED) found = bss_scan_up(_x, _y) || found;
+		if ((pf[(32 * _x) + ((_y + 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_down(_x, _y) || found;
+		if ((pf[(32 * _x) + ((_y - 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_up(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _x = (_x - 1) & 31; global.bss.coll[(32 * _x) + _y] = C_NONE; }
+	for (var i = cid; i > 0; i--) { _x = (_x - 1) & 31; global.bss.coll[(32 * _x) + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -294,37 +308,37 @@ function bss_chained_count(_x, _y)
 	var y1 = (_y - 1) & 31;
 	for (var i = 0; i < BSS_H; i++)
 	{
-		if (global.bss.coll[px + y1] == C_BLUE) break;
+		if (global.bss.coll[px + y1] == BSS_CELL.BLUE) break;
 		var t = pf[px + y1] & 0x7F;
-		if (t == C_NONE || t == C_RED) return false;
+		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
 		y1 = (y1 - 1) & 31;
 	}
 	y1 = (_y + 1) & 31;
 	for (var i = 0; i < BSS_H; i++)
 	{
-		if (global.bss.coll[px + y1] == C_BLUE) break;
+		if (global.bss.coll[px + y1] == BSS_CELL.BLUE) break;
 		var t = pf[px + y1] & 0x7F;
-		if (t == C_NONE || t == C_RED) return false;
+		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
 		y1 = (y1 + 1) & 31;
 	}
 	var x1 = (_x - 1) & 31;
 	for (var i = 0; i < BSS_W; i++)
 	{
-		if (global.bss.coll[_y + (32 * x1)] == C_BLUE) break;
+		if (global.bss.coll[_y + (32 * x1)] == BSS_CELL.BLUE) break;
 		var t = pf[_y + (32 * x1)] & 0x7F;
-		if (t == C_NONE || t == C_RED) return false;
+		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
 		x1 = (x1 - 1) & 31;
 	}
 	x1 = (_x + 1) & 31;
 	for (var i = 0; i < BSS_W; i++)
 	{
-		if (global.bss.coll[_y + (32 * x1)] == C_BLUE) break;
+		if (global.bss.coll[_y + (32 * x1)] == BSS_CELL.BLUE) break;
 		var t = pf[_y + (32 * x1)] & 0x7F;
-		if (t == C_NONE || t == C_RED) return false;
+		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
 		x1 = (x1 + 1) & 31;
 	}
 
-	global.bss.coll[px + _y] = C_BLUE;
+	global.bss.coll[px + _y] = BSS_CELL.BLUE;
 	return true;
 }
 
@@ -332,11 +346,11 @@ function bss_chained_count(_x, _y)
 // Returns spheres converted (caller subtracts from sphere count)
 function bss_process_chain() 
 {
-	for (var i = 0; i < 1024; i++) { global.bss.chain[i] = C_NONE; global.bss.coll[i] = C_NONE; }
+	for (var i = 0; i < 1024; i++) { global.bss.chain[i] = BSS_CELL.NONE; global.bss.coll[i] = BSS_CELL.NONE; }
 
 	var lp = bss_idx(global.bss.lastSX, global.bss.lastSY);
-	global.bss.pf[lp] = C_RED;
-	global.bss.coll[lp] = C_BLUE;
+	global.bss.pf[lp] = BSS_CELL.RED;
+	global.bss.coll[lp] = BSS_CELL.BLUE;
 
 	global.bss.loop = false;
 	bss_scan_up(global.bss.lastSX, global.bss.lastSY);
@@ -344,7 +358,7 @@ function bss_process_chain()
 	bss_scan_left(global.bss.lastSX, global.bss.lastSY);
 	bss_scan_right(global.bss.lastSX, global.bss.lastSY);
 
-	global.bss.pf[lp] = C_BLUE;
+	global.bss.pf[lp] = BSS_CELL.BLUE;
 
 	if (!global.bss.loop) return 0;
 
@@ -352,7 +366,7 @@ function bss_process_chain()
 	for (var gy = 0; gy < BSS_H; gy++)
 	{
 		for (var gx = 0; gx < BSS_W; gx++) {
-			if ((global.bss.pf[(gx * 32) + gy] & 0x7F) == C_BLUE) collected += bss_chained_count(gx, gy) ? 1 : 0;
+			if ((global.bss.pf[(gx * 32) + gy] & 0x7F) == BSS_CELL.BLUE) collected += bss_chained_count(gx, gy) ? 1 : 0;
 		}
 	}
 	if (collected <= 0) { global.bss.loop = false; return 0; }
@@ -367,13 +381,13 @@ function bss_process_chain()
 			var y2 = (gy + 1) & 31;
 			var x1 = 32 * ((gx - 1) & 31);
 			var x2 = 32 * ((gx + 1) & 31);
-			if (global.bss.coll[p + gy] == C_BLUE)
+			if (global.bss.coll[p + gy] == BSS_CELL.BLUE)
 			{
-				if ((global.bss.pf[p + y1] & 0x7F) != C_BLUE && (global.bss.pf[p + y2] & 0x7F) != C_BLUE && (global.bss.pf[x1 + gy] & 0x7F) != C_BLUE)
+				if ((global.bss.pf[p + y1] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[p + y2] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[x1 + gy] & 0x7F) != BSS_CELL.BLUE)
 				{
-					if ((global.bss.pf[x2 + gy] & 0x7F) != C_BLUE && (global.bss.pf[x1 + y1] & 0x7F) != C_BLUE
-						&& (global.bss.pf[x2 + y1] & 0x7F) != C_BLUE && (global.bss.pf[x1 + y2] & 0x7F) != C_BLUE) {
-						if ((global.bss.pf[x2 + y2] & 0x7F) != C_BLUE) global.bss.coll[(gx * 32) + gy] = C_NONE;
+					if ((global.bss.pf[x2 + gy] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[x1 + y1] & 0x7F) != BSS_CELL.BLUE
+						&& (global.bss.pf[x2 + y1] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[x1 + y2] & 0x7F) != BSS_CELL.BLUE) {
+						if ((global.bss.pf[x2 + y2] & 0x7F) != BSS_CELL.BLUE) global.bss.coll[(gx * 32) + gy] = BSS_CELL.NONE;
 					}
 				}
 			}
@@ -383,7 +397,7 @@ function bss_process_chain()
 	for (var gy = 0; gy < BSS_H; gy++)
 	{
 		for (var gx = 0; gx < BSS_W; gx++) {
-			if (global.bss.coll[(gx * 32) + gy] != C_NONE) global.bss.pf[(gx * 32) + gy] = C_RING;
+			if (global.bss.coll[(gx * 32) + gy] != BSS_CELL.NONE) global.bss.pf[(gx * 32) + gy] = BSS_CELL.RING;
 		}
 	}
 
@@ -398,33 +412,478 @@ function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark)
 {
 	switch (_t)
 	{
-		case C_BLUE:   draw_sprite(spr_bss_sphere_blue,   _f div 2, _x, _y); break;
-		case C_RED:    draw_sprite(spr_bss_sphere_red,    _f div 2, _x, _y); break;
-		case C_BUMPER: draw_sprite(spr_bss_bumper,        _f div 2, _x, _y); break;
-		case C_YELLOW: draw_sprite(spr_bss_sphere_yellow, _f div 2, _x, _y); break;
-		case C_GREEN:  draw_sprite(spr_bss_sphere_green,  _f div 2, _x, _y); break;
-		case C_PINK:   draw_sprite(spr_bss_sphere_pink,   _f div 2, _x, _y); break;
+		case BSS_CELL.BLUE:   draw_sprite(spr_bss_sphere_blue,   _f div 2, _x, _y); break;
+		case BSS_CELL.RED:    draw_sprite(spr_bss_sphere_red,    _f div 2, _x, _y); break;
+		case BSS_CELL.BUMPER: draw_sprite(spr_bss_bumper,        _f div 2, _x, _y); break;
+		case BSS_CELL.YELLOW: draw_sprite(spr_bss_sphere_yellow, _f div 2, _x, _y); break;
+		case BSS_CELL.GREEN:  draw_sprite(spr_bss_sphere_green,  _f div 2, _x, _y); break;
+		case BSS_CELL.PINK:   draw_sprite(spr_bss_sphere_pink,   _f div 2, _x, _y); break;
 
-		case C_RING:
+		case BSS_CELL.RING:
 			var spin = floor(_spin) mod sprite_get_number(spr_bss_ring);
 			draw_sprite_ext(spr_bss_ring, spin,
 				_x, _y - (global.bss.ringScreenY[_f] / 65536),
 				global.bss.ringScaleX[_f] / 512, global.bss.ringScaleY[_f] / 512, 0, c_white, 1);
 			break;
 
-		case C_MEDAL_SILVER:
-		case C_MEDAL_GOLD:
+		case BSS_CELL.MEDAL_SILVER:
+		case BSS_CELL.MEDAL_GOLD:
 			var ms = global.bss.medalScale[_f] / 512;
-			var mspr = (_t == C_MEDAL_GOLD) ? spr_bss_medal_gold : spr_bss_medal_silver;
+			var mspr = (_t == BSS_CELL.MEDAL_GOLD) ? spr_bss_medal_gold : spr_bss_medal_silver;
 			draw_sprite_ext(mspr, _medal mod sprite_get_number(mspr),
 				_x, _y - (global.bss.ringScreenY[_f] / 65536), ms, ms, 0, c_white, 1);
 			break;
 
-		case C_BLUE_STOOD:  draw_sprite_ext(spr_bss_sphere_blue,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
-		case C_GREEN_STOOD: draw_sprite_ext(spr_bss_sphere_green, _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
-		case C_PINK_STOOD:  draw_sprite_ext(spr_bss_sphere_pink,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
+		case BSS_CELL.BLUE_STOOD:  draw_sprite_ext(spr_bss_sphere_blue,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
+		case BSS_CELL.GREEN_STOOD: draw_sprite_ext(spr_bss_sphere_green, _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
+		case BSS_CELL.PINK_STOOD:  draw_sprite_ext(spr_bss_sphere_pink,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
 
-		case C_SPARKLE: draw_sprite(spr_bss_ring_sparkle, _spark, _x, _y); break;
+		case BSS_CELL.SPARKLE: draw_sprite(spr_bss_ring_sparkle, _spark, _x, _y); break;
 		default: break;
 	}
+}
+
+// obj_bss controller logic
+//---- BSS_Setup_GetStartupInfo port ----
+function bss_setup_start_info()
+{
+	sphere_count = 0;
+	pink_count   = 0;
+	for (var gy = 0; gy < BSS_H; gy++)
+	{
+		for (var gx = 0; gx < BSS_W; gx++)
+		{
+			var p = (gx * 32) + gy;
+			switch (global.bss.pf[p])
+			{
+				case BSS_CELL.BLUE:
+				case BSS_CELL.GREEN: sphere_count++; break;
+				case BSS_CELL.PINK:  pink_count++; break;
+				case BSS_CELL.SPAWN_UP:    angle = 0x00; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+				case BSS_CELL.SPAWN_RIGHT: angle = 0x40; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+				case BSS_CELL.SPAWN_DOWN:  angle = 0x80; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+				case BSS_CELL.SPAWN_LEFT:  angle = 0xC0; player_x = gx; player_y = gy; global.bss.pf[p] = BSS_CELL.NONE; break;
+			}
+		}
+	}
+}
+
+//---- BSS_Setup_CollectRing port ----
+function bss_collect_ring()
+{
+	rings_collected++;
+	play_sound(sfx_ring);
+	if (ring_count > 0)
+	{
+		ring_count--;
+		if (ring_count == 0)
+		{
+			//BSS_Message PERFECT
+			perfect_active = true;
+			perfect_phase  = 0;
+			perfect_offset = 320;
+			perfect_wait   = 0;
+			play_sound(sfx_event);
+		}
+	}
+}
+
+//---- BSS_Setup_SetupFinishSequence port ----
+function bss_setup_finish()
+{
+	for (var gy = 0; gy < BSS_H; gy++)
+		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * 32) + gy] = BSS_CELL.NONE;
+
+	var fx = ashr(sin256(angle), 5) + player_x;
+	var fy = (player_y - ashr(cos256(angle), 5)) & 31;
+	var fp = fy + (32 * (fx & 31));
+
+	global.bss.pf[fp] = (ring_count > 0) ? BSS_CELL.MEDAL_SILVER : BSS_CELL.MEDAL_GOLD;
+}
+
+//---- BSS_Setup_HandleSteppedObjects port (runs every grounded frame) ----
+function bss_stepped_objects()
+{
+	if (globe_timer < 32)  disable_bumpers = false;
+	if (globe_timer > 224) disable_bumpers = false;
+
+	//current cell
+	var fp = player_y + (32 * player_x);
+	switch (global.bss.pf[fp])
+	{
+		case BSS_CELL.BLUE:
+			if (globe_timer < 128)
+			{
+				global.bss.lastSX = player_x;
+				global.bss.lastSY = player_y;
+				sphere_count -= bss_process_chain();
+				sphere_count--;
+				if (!global.bss.loop)
+				{
+					array_push(collected, { ce : BSS_COLLECT.BLUE, cx : player_x, cy : player_y, t : 0 });
+					global.bss.pf[fp] = BSS_CELL.BLUE_STOOD;
+				}
+				if (sphere_count <= 0)
+				{
+					sphere_count = 0;
+					state = BSS_STATE.JETTISON;
+					spin_timer = 0;
+					play_sound(sfx_jettison);
+					music_fade_channel(BGM, FADE_OUT, 1);
+				} else {
+					play_sound(sfx_blue_sphere);
+				}
+			}
+			break;
+
+		case BSS_CELL.RED:
+			if (state != BSS_STATE.EXIT && globe_timer < 32)
+			{
+				state = BSS_STATE.EXIT;
+				spin_timer = 0;
+				globe_timer = 0;
+				exit_result = "fail";
+				play_sound(sfx_warp_exit);
+				music_fade_channel(BGM, FADE_OUT, 1);
+			}
+			break;
+
+		case BSS_CELL.BUMPER:
+			if (!disable_bumpers && globe_timer < 112)
+			{
+				if (globe_timer > 16)
+				{
+					if (globe_speed < 0)
+					{
+						disable_bumpers = true;
+						globe_speed = -globe_speed;
+						player_was_bumped = false;
+						play_sound(sfx_bumper);
+					}
+				}
+				else if (spin_state == 0)
+				{
+					if (globe_speed < 0)
+					{
+						globe_timer = 16;
+						disable_bumpers = true;
+						globe_speed = -globe_speed;
+						player_was_bumped = false;
+						play_sound(sfx_bumper);
+					}
+				}
+			}
+			break;
+
+		case BSS_CELL.YELLOW:
+			if (globe_timer < 128)
+			{
+				velocity_y = -1572864; //-TO_FIXED(24)
+				on_ground = false;
+				animation_play(animator, BSS_ANIM.SPRING);
+				globe_speed *= 2;
+				spin_state = 0;
+				globe_speed_inc = 4;
+				play_sound(sfx_spring);
+			}
+			break;
+
+		case BSS_CELL.GREEN:
+			if (globe_timer > 128)
+			{
+				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : player_x, cy : player_y, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
+				play_sound(sfx_blue_sphere);
+			}
+			break;
+
+		case BSS_CELL.PINK:
+			if (state != BSS_STATE.TELE_IN && globe_timer < 64)
+			{
+				state = BSS_STATE.TELE_IN;
+				spin_timer = 0;
+				globe_timer = 0;
+				tele_timer = 0;
+				play_sound(sfx_teleport);
+				fade_change(FADE_OUT, 6, FADE_WHITE); //Mania FXFade white flash, via the project fade system
+			}
+			break;
+
+		case BSS_CELL.RING:
+			if (globe_timer < 128)
+			{
+				array_push(collected, { ce : BSS_COLLECT.RING, cx : player_x, cy : player_y, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.SPARKLE;
+				global.bss.spark[fp] = 0;
+				bss_collect_ring();
+			}
+			break;
+	}
+
+	//cell ahead
+	var posX = (player_x + ashr(sin256(angle), 8)) & 31;
+	var posY = (player_y - ashr(cos256(angle), 8)) & 31;
+	fp = posY + (32 * posX);
+
+	switch (global.bss.pf[fp])
+	{
+		case BSS_CELL.BLUE:
+			if (globe_timer > 128)
+			{
+				global.bss.lastSX = posX;
+				global.bss.lastSY = posY;
+				sphere_count -= bss_process_chain();
+				sphere_count--;
+				if (!global.bss.loop)
+				{
+					array_push(collected, { ce : BSS_COLLECT.BLUE, cx : posX, cy : posY, t : 0 });
+					global.bss.pf[fp] = BSS_CELL.BLUE_STOOD;
+				}
+				if (sphere_count <= 0)
+				{
+					sphere_count = 0;
+					state = BSS_STATE.JETTISON;
+					spin_timer = 0;
+					play_sound(sfx_jettison);
+					music_fade_channel(BGM, FADE_OUT, 1);
+				} else {
+					play_sound(sfx_blue_sphere);
+				}
+			}
+			break;
+
+		case BSS_CELL.RED:
+			if (state != BSS_STATE.EXIT && globe_timer > 224)
+			{
+				palette_page ^= 1;
+				state = BSS_STATE.EXIT;
+				spin_timer = 0;
+				globe_timer = 0;
+				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+				exit_result = "fail";
+				play_sound(sfx_warp_exit);
+				music_fade_channel(BGM, FADE_OUT, 1);
+			}
+			break;
+
+		case BSS_CELL.BUMPER:
+			if (!disable_bumpers && globe_timer > 144)
+			{
+				if (globe_timer >= 240)
+				{
+					if (spin_state == 0)
+					{
+						if (globe_speed > 0)
+						{
+							globe_timer = 240;
+							disable_bumpers = true;
+							globe_speed = -globe_speed;
+							player_was_bumped = true;
+							play_sound(sfx_bumper);
+						}
+					}
+				}
+				else
+				{
+					if (globe_speed > 0)
+					{
+						disable_bumpers = true;
+						globe_speed = -globe_speed;
+						player_was_bumped = true;
+						play_sound(sfx_bumper);
+					}
+				}
+			}
+			break;
+
+		case BSS_CELL.YELLOW:
+			if (globe_timer > 128)
+			{
+				velocity_y = -1572864;
+				on_ground = false;
+				animation_play(animator, BSS_ANIM.SPRING);
+				globe_speed *= 2;
+				spin_state = 0;
+				globe_speed_inc = 4;
+				play_sound(sfx_spring);
+			}
+			break;
+
+		case BSS_CELL.GREEN:
+			if (globe_timer > 128)
+			{
+				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : posX, cy : posY, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
+				play_sound(sfx_blue_sphere);
+			}
+			break;
+
+		case BSS_CELL.RING:
+			if (globe_timer > 128)
+			{
+				array_push(collected, { ce : BSS_COLLECT.RING, cx : posX, cy : posY, t : 0 });
+				global.bss.pf[fp] = BSS_CELL.SPARKLE;
+				global.bss.spark[fp] = 0;
+				bss_collect_ring();
+			}
+			break;
+
+		case BSS_CELL.EMERALD_CHAOS:
+		case BSS_CELL.EMERALD_SUPER:
+		case BSS_CELL.MEDAL_SILVER:
+		case BSS_CELL.MEDAL_GOLD:
+			if (globe_timer > 240)
+			{
+				exit_result = (global.bss.pf[fp] == BSS_CELL.MEDAL_GOLD) ? "gold" : "silver";
+				palette_page ^= 1;
+				state = BSS_STATE.EXIT;
+				spin_timer = 0;
+				globe_timer = 0;
+				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
+				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+				play_sound(sfx_warp_exit);
+			}
+			break;
+	}
+}
+
+//---- BSS_Collected_Update port ----
+function bss_update_collected()
+{
+	for (var i = array_length(collected) - 1; i >= 0; i--)
+	{
+		var e = collected[i];
+		var fp = e.cy + (32 * e.cx);
+		var remove = false;
+
+		switch (e.ce)
+		{
+			case BSS_COLLECT.RING:
+				e.t++;
+				global.bss.spark[fp] = e.t;
+				if (e.t >= 16 && state == BSS_STATE.MOVE)
+				{
+					global.bss.pf[fp] = BSS_CELL.NONE;
+					remove = true;
+				}
+				break;
+
+			case BSS_COLLECT.BLUE:
+				if (sphere_count <= 0)
+				{
+					if (global.bss.pf[fp] == BSS_CELL.BLUE_STOOD) global.bss.pf[fp] = BSS_CELL.RED;
+					remove = true;
+				}
+				else if (globe_timer < 32 || globe_timer > 224) {
+					e.ce = BSS_COLLECT.BLUE_STOOD;
+				}
+				break;
+
+			case BSS_COLLECT.BLUE_STOOD:
+				if (state == BSS_STATE.MOVE && globe_timer > 32 && globe_timer < 224)
+				{
+					if (global.bss.pf[fp] == BSS_CELL.BLUE_STOOD) global.bss.pf[fp] = BSS_CELL.RED;
+					remove = true;
+				}
+				break;
+
+			case BSS_COLLECT.GREEN:
+				if (globe_timer < 32 || globe_timer > 224)
+				{
+					e.t = 10;
+					e.ce = BSS_COLLECT.GREEN_STOOD;
+				}
+				break;
+
+			case BSS_COLLECT.GREEN_STOOD:
+				if (state == BSS_STATE.MOVE)
+				{
+					e.t--;
+					if (e.t <= 0)
+					{
+						if (global.bss.pf[fp] == BSS_CELL.GREEN_STOOD) global.bss.pf[fp] = BSS_CELL.BLUE;
+						remove = true;
+					}
+				}
+				break;
+
+			case BSS_COLLECT.PINK:
+				if (state == BSS_STATE.MOVE)
+				{
+					if (player_x != e.cx || player_y != e.cy)
+					{
+						if (global.bss.pf[fp] == BSS_CELL.PINK_STOOD) global.bss.pf[fp] = BSS_CELL.PINK;
+						remove = true;
+					}
+				}
+				break;
+		}
+
+		if (remove) array_delete(collected, i, 1);
+	}
+}
+
+function bss_bonus_stage_start()
+{
+	global.bss.pf = [];
+	array_copy(global.bss.pf, 0, global.bss.pf_stage, 0, 1024);
+
+	angle    = 0;
+	player_x = 0;
+	player_y = 0;
+	bss_setup_start_info();
+
+	ring_count      = ring_target;
+	rings_collected = 0;
+
+	state             = BSS_STATE.MOVE;
+	globe_timer       = 0;
+	globe_speed       = 0;
+	globe_speed_inc   = 0;
+	speedup_level     = 0;
+	speedup_timer     = 0;
+	speedup_interval  = 30 * 60;
+	spin_state        = 0;
+	spin_timer        = 0;
+	palette_page      = 0;
+	palette_line      = 0;
+	player_was_bumped = false;
+	disable_bumpers   = false;
+	timer_100         = 0;
+	tele_timer        = 0;
+	globe_hidden      = false;
+	turn_frame        = 0;
+	turn_flip         = 0;
+	exit_timer        = 0;
+	medal_spin        = 0;
+	bg_scroll_x       = 0;
+	bg_scroll_y       = 0;
+
+	for (var si = 0; si < 1024; si++) global.bss.spark[si] = 0;
+
+	//player (BSS_Player entity)
+	on_ground        = true;
+	velocity_y       = 0;
+	gravity_strength = 0;
+	walk_timer       = 0;
+	roll_timer       = 0;
+	input_active     = true;
+	animation_play(animator, BSS_ANIM.STAND);
+
+	collected = [];
+
+	//intro (BSS_Message GETSPHERES)
+	msg_phase      = 0;   //0 = fade-in, 1 = wait, 2 = sliding out, 3 = gone
+	msg_fade_timer = 512;
+	msg_wait_timer = 0;
+	intro_offset   = 0;   //slide-out offset once the globe starts
+
+	//PERFECT message (BSS_Message)
+	perfect_active = false;
+	perfect_phase  = 0;
+	perfect_offset = 320;
+	perfect_wait   = 0;
+
+	ring_spin = 0;
 }
