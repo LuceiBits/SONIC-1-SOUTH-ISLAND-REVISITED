@@ -4,14 +4,14 @@
 	event_inherited();
 	
 	//Add backgrounds, ID starting out from 0, increments by 1 with each background added
-	add_background(spr_bg_aaz_bottom, 5, 1, 1, 0, 0, 0, 0, false); //ID 0
+	background_add(spr_bg_aaz_bottom, 5, 1, 1, 0, 0, 0, 0, false); //ID 0
 	
 	// You may use fractions as parallax factors too!
-	add_background(spr_bg_aaz_ruins, 0, 2/3, 2/3, 0, 0, 0, 354, false); //ID 1
-	add_background(spr_bg_aaz_ruins, 1, 2/3, 2/3, 0, 0, 0, 930, false); //ID 2
+	background_add(spr_bg_aaz_ruins, 0, 2/3, 2/3, 0, 0, 0, 354, false); //ID 1
+	background_add(spr_bg_aaz_ruins, 1, 2/3, 2/3, 0, 0, 0, 930, false); //ID 2
 	
 	// HCZ-like 3d water parallax
-	add_background_line(spr_bg_aaz_water, 1, 2/3, 2/3, 0, 0, 0, 930, 1, (2/3)/96); //ID 3 - this will be accessed later in Draw
+	background_add_line(spr_bg_aaz_water, 1, 2/3, 2/3, 0, 0, 0, 930, 1, (2/3)/96); //ID 3 - this will be accessed later in Draw
 	
 	/* In the above example, 2/3 is the X factor of the top part of the water, and 96 is the height.
 	This allows for the top of the water parallax to be the same speed as the horizon and the bottom
