@@ -23,7 +23,7 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 			exit;
 		
 		// Hurt the player if not invincible
-		if(invincible_timer == 0 && !invincible)
+		if(invincible_timer == 0 && insta_shield_invincible == 0 && !invincible)
 		{
 			//hurt_position = hazard_x;
 			knockout_type = hurt_type;
@@ -266,6 +266,20 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 	if(p.hitbox_allow)
 		return col;
 	
+}
+
+function player_insta_shield_collide(this_hitbox = -1, player_id = 0)
+{
+	// Get the player
+	var player = player_find(player_id);
+	
+	// No insta shield
+	if(!instance_exists(player.insta_shield_ptr))
+		exit;
+		
+	// Otherwise, collision
+	if(player.hitbox_allow)
+		return instance_collide(player, [-INSTA_SHIELD_BOX_SIZE, -INSTA_SHIELD_BOX_SIZE, INSTA_SHIELD_BOX_SIZE, INSTA_SHIELD_BOX_SIZE], id, this_hitbox);	
 }
 
 // Player internals

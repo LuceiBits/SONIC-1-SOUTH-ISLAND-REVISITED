@@ -35,6 +35,10 @@ function player_state_conditions()
 		skid_timer = 0;
 	}
 	
+	// Reset the flag
+	if(ground)
+		insta_shield_used = false;
+	
 	//Reset the timer
 	if(state != player_state_jump || state == player_state_dropdash || shield != S_NONE && shield != S_NORMAL && !invincible)
 	{

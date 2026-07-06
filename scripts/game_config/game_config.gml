@@ -16,3 +16,6 @@
 	
 	// This macro is used to divide player's movement for step collision variable, the lower the number the more precise collision is along with execution time
 	#macro PLAYER_STEPS_AMOUNT 14
+	
+	// Configuration for insta shield's hitbox size for all four sides
+	#macro INSTA_SHIELD_BOX_SIZE 24

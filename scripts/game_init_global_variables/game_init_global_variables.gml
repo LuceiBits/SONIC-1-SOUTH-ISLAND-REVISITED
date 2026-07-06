@@ -60,7 +60,8 @@ function game_init_global_variables()
 	global.use_peelout = true;				// Flag that allows peel-out ability
 	global.use_dropdash = true;				// Flag that allows dropdash ability
 	global.use_airroll = false;				// Flag that allows rolling while air-borne
-	global.use_spindash = true;				// Flag taht allows player to use the spindash
+	global.use_spindash = true;				// Flag that allows player to use the spindash
+	global.use_insta_shield = false;		// Flag that allows player to use the insta shield
 	global.camera_pan_type = 0;				// Variable that changes how camera panning works. 0 = No panning, 1 = Sonic CD panning[currently inaccurate], 2 = S1D/XG styled camera panning 
 	global.chaotix_dust_effect = false;		// Flag that disables classic spindash/skid dust effect
 	global.chaotix_monitors = false;		// Changes monitor icons to be like chaotix, monitor icon spins and it turns into dust

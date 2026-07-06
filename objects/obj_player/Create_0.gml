@@ -52,6 +52,9 @@
 	spindash_dust_frames = 0;			// Used to animate spindash dust frame
 	ledge = 0;							// Used for checking on which ledge the player is
 	pushing = 0;						// Used for checking which wall the player is pushing
+	insta_shield_used = false;			// Insta shield usage flag
+	insta_shield_invincible = 0;		// Invincibility timer for the insta shield
+	insta_shield_ptr = noone;			// Pointer to the insta shield object
 	
 	//Check variables:
 	ground = true;						// Check used to check if player is on ground or not

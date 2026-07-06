@@ -65,7 +65,7 @@
 		}
 		
 		//Destroy the monitor
-		if(player_collide_object())
+		if(player_collide_object() || player_insta_shield_collide())
 		{
 
 			destroyed = true;
