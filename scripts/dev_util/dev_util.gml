@@ -1,3 +1,10 @@
+// General dev related functions
+function dev_diagnostic_add_category()
+{
+	
+}
+
+// Dev menu related
 function dev_menu_add_character(character_name)
 {
 	char_name[character_id] = character_name;

@@ -55,7 +55,7 @@ function draw_self_floor()
 function draw_state_push()
 {
 	
-	var _state = 
+	global.draw_state_holder = 
 	{
 		col : draw_get_colour(),
 		alpha : draw_get_alpha(),
@@ -77,7 +77,7 @@ function draw_state_push()
         mp : matrix_get(matrix_projection)
     };
 	
-	ds_stack_push(global.draw_state, _state);
+	ds_stack_push(global.draw_state, global.draw_state_holder);
 }
 
 function draw_state_pop()

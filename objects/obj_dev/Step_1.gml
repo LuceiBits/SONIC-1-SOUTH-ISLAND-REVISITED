@@ -8,9 +8,7 @@
 	
 	//Destroy just in case
 	if(!global.dev_mode) 
-	{
 		instance_destroy();
-	}
 	
 	//Go to level select
 	if(keyboard_check_pressed(ord("M")) && !obj_shell.isOpen)

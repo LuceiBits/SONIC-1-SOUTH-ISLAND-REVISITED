@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"dev_menu_util",
+  "%Name":"dev_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"dev_menu_util",
+  "name":"dev_util",
   "parent":{
     "name":"Utility Scripts",
     "path":"folders/Scripts/Utility Scripts.yy",
