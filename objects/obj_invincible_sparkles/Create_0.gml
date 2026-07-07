@@ -1,20 +1,8 @@
 /// @description Startup
-	angle0 = 0;
-	angle1 = 0;
+	angle_offset = 0;
+	player = 0;
 	
-	xa = 0
-	ya = 0
-	
-	xb = 0
-	yb = 0
-	
-	xc = 0
-	yc = 0
-	
-	xd = 0
-	yd = 0
-	
-	
+	// Frame order
 	frame_table =
 	[
 		[7, 4, 6, 4, 4, 6, 4, 7, 4, 6, 6, 4],

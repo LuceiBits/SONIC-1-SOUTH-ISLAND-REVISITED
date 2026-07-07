@@ -31,9 +31,10 @@ function player_inv_speed(){
 		//Invincible sparkles
 		if(invincible)
 		{
-			if(!instance_number(obj_invinciblespark))
+			if(!instance_number(obj_invincible_sparkles))
 			{
-				instance_create_depth(x, y, depth-10, obj_invinciblespark);
+				var a = instance_create_depth(x, y, depth-10, obj_invincible_sparkles);
+				a.player = id;
 			}
 		}
 		
@@ -55,10 +56,8 @@ function player_inv_speed(){
 			music_play(MUSIC.SUPER, Jingle);	
 		}
 		
-		if(instance_exists(obj_invinciblespark))
-		{
-			instance_destroy(obj_invinciblespark)
-		}	
+		if(instance_exists(obj_invincible_sparkles))
+			instance_destroy(obj_invincible_sparkles)
 		
 		//palette cycle
 		if (super_color > 0){
