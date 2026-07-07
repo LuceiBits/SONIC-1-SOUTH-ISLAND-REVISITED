@@ -215,9 +215,9 @@ function instance_register_culling(culling_region = noone, on_culling = noone, f
 	ds_list_add(obj_level.instance_list, culling_struct);	
 }
 
-function instance_flash(interval, offset = 0)
+function instance_flash(interval, offset = 0, timer = FRAME_TIMER)
 {
-	if((FRAME_TIMER + offset) mod (interval * 2) < interval)
+	if((timer + offset) mod (interval * 2) < interval)
 		return true;
 }
 
