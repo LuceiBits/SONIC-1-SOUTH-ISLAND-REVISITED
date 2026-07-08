@@ -1,8 +1,38 @@
 /// @description Script
 	//Code written by joshyflip
 	bouncing = false
-
-	with(child_right)
+	
+	// Make them semi solid
+	var boxLeft = instance_position_hitbox(left_platform_x, left_platform_y, [-8, 0, 8, 4]);
+	var platformLeft = player_act_semi_solid(boxLeft);
+	
+	var boxRight = instance_position_hitbox(right_platform_x, right_platform_y, [-8, 0, 8, 4]);
+	var platformRight = player_act_semi_solid(boxRight);
+	
+	var oldYL = left_platform_y;
+	var oldYR = right_platform_y;
+	
+	// Position the weights
+	left_platform_y = floor(y + 64 + weight);
+	right_platform_y = floor(y + 64 - weight);
+	
+	// temp
+	weight = 16 * dsin(FRAME_TIMER * 32)
+	
+	var player = player_find(0);
+	
+	// Position the player
+	if(platformLeft)
+	{
+		player.y += floor(left_platform_y - oldYL);
+	}
+	
+	if(platformRight)
+	{
+		player.y += floor(right_platform_y - oldYR);
+	}
+	
+	/*with(child_right)
 	{
 		y = other.y+64+other.weight;
 		

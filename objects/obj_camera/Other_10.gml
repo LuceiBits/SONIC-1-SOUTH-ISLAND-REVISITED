@@ -100,8 +100,12 @@
 					//Ease down the camera offset
 					ground_offset = ground_offset - ground_offset / 8;
 					
+					// Minor fix
+					if(ground_offset < 0.1)
+						ground_offset = 0;
+					
 					//Scroll camera upwards
-					if(target.y < target_y - ground_offset+roll_offset) 
+					if(target.y < target_y - ground_offset + roll_offset) 
 					{
 						target_y = max(target_y - y_speed, target.y + ground_offset - roll_offset);
 					}
