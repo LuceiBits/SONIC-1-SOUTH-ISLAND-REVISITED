@@ -184,6 +184,29 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 		return true;
 }
 
+function instance_position_hitbox(px, py, hitbox = noone, this = id)
+{
+	// Do not do anything if the object doesn't exist
+	if(!instance_exists(this))
+		return noone;
+	
+	// Make a hitbox
+	var b = _instance_evaluate_hitbox(this, hitbox);
+	
+	// Get the difference between the current position and a new position
+	var diffX = px - this.x;
+	var diffY = py - this.y;
+	
+	// Offset the hitbox by the difference
+	b[BBOX.LEFT] += diffX;
+	b[BBOX.RIGHT] += diffX;
+	b[BBOX.TOP] += diffY;
+	b[BBOX.BOTTOM] += diffY;
+	
+	// All done
+	return b;
+}
+
 function instance_register_culling(culling_region = noone, on_culling = noone, flags = CULL_FLAG.CHECK_ENTITY_POS)
 {
 	var c = {left : -32, right : 32, top : -32, bottom : 32}
