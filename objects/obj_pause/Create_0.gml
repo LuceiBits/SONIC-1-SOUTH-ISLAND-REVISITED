@@ -1,5 +1,4 @@
-	/// @description Insert description here
-	// You can write your code in this editor
+	/// @description Values
 	delay = 0
 	timer = 0
 
@@ -24,11 +23,25 @@
 	
 	pause_alpha = 0;
 	
-	global.process_objects = false;
+	
 	
 	audio_pause_all();
 	
-
+	play_sound(sfx_menu_select);
+	
+	// Create the animator
+	animator = new animator_create();
+	
+	// Add the selector animations
+	animation_add(CHAR_SONIC, spr_hud_pause_mini_sonic, [60, 16], 1, true, true);
+	animation_add(CHAR_TAILS, spr_hud_pause_mini_tails, [60, 16], 1, true, true);
+	animation_add(CHAR_KNUX, spr_hud_pause_mini_knux, [60, 16], 1, true, true);
+	
+	// Play the correct animation
+	animation_play(animator, player_find(0).character);
+	
+	global.process_objects = false;
+	
 	enum PAUSE_STATE
 	{
 		TRANSITION_IN,	

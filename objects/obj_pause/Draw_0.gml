@@ -1,5 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
+	/// @description Draw the pause
 
 	draw_set_follow_camera();
 	
@@ -52,7 +51,7 @@
 		else
 			highlight_x = sprites_final_x;
 	}
-	
+		
 	// Draw the highlight
 	draw_sprite(spr_hud_pause_highlight_option, 0, highlight_x, 48 * (selection + 1));
 	
@@ -60,8 +59,13 @@
 	if(state >= PAUSE_STATE.CONFIRM)
 		draw_set_alpha(1);
 		
+	// Draw the player
+	draw_animator(animator, pause_elements_x + 46, 48 * (selection + 1));
+	
+	// Draw the pause text
 	draw_sprite(spr_hud_pause_text, 0, pause_text_x, CAMERA_VIEW_H - 38 + black_bar_y);
 	
+	// Fully reset the fade
 	draw_set_alpha(1);
 	
 	if(state == PAUSE_STATE.CONFIRM && instance_flash(3, 0, timer) || state == PAUSE_STATE.TRANSITION_UPDATE)

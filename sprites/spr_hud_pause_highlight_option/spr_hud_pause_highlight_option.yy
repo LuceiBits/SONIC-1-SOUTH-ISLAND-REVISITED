@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":9,
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Pause",
+    "path":"folders/Sprites/GUI/Pause.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

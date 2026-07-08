@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"sfx_beep",
+  "%Name":"sfx_menu_select",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":0.834263,
   "exportDir":"",
-  "name":"sfx_beep",
+  "name":"sfx_menu_select",
   "parent":{
-    "name":"Objects",
-    "path":"folders/Sounds/Sound Effects/Objects.yy",
+    "name":"Menus",
+    "path":"folders/Sounds/Sound Effects/Menus.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"sfx_beep.wav",
+  "soundFile":"sfx_menu_select.wav",
   "volume":1.0,
 }

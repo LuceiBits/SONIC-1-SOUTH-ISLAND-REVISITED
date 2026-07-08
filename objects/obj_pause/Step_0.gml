@@ -1,6 +1,8 @@
 /// @description Script	
 	timer++;
 	
+	animator_update(animator);
+	
 	switch(state)
 	{
 		case PAUSE_STATE.TRANSITION_IN:
@@ -32,11 +34,15 @@
 		{
 			selection = math_wrap(selection + i, 0, array_length(options_array) - 1)
 			highlight_x = CAMERA_VIEW_W;
+			
+			animator_reset(animator);
+			play_sound(sfx_beep);
 		}
 		
 		// Confirm the selection
 		if(input_press(INPUT.A) || input_press(INPUT.START))
 		{
+			play_sound(sfx_menu_select);
 			state = PAUSE_STATE.CONFIRM;
 		}
 		break;
@@ -71,10 +77,8 @@
 				
 				background_rect_alpha = math_approach(background_rect_alpha, 0, 8 / 255);
 				
-				if(pause_bar_x < -64)
-				{
+				if(background_rect_alpha == 0)
 					instance_destroy();	
-				}
 			}
 			else
 			{
@@ -87,6 +91,7 @@
 					global.process_objects = true;
 					if(selection == PAUSE_TRANS.RESTART)	
 					{
+						level_reset_data();
 						room_restart();
 					}
 					else
