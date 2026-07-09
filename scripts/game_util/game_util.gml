@@ -2,19 +2,21 @@ function game_os_get_string()
 {
 	switch(os_type)
 	{
-		case os_windows: return "Windows"		break; 
-		case os_gxgames: return "GX Games"		break; 
-		case os_linux: return "Linux"		break; 
-		case os_macosx: return "MacOS"		break; 
-		case os_ios: return "IOS"		break; 
-		case os_tvos: return "tvOS"		break; 
-		case os_android: return "Android"		break; 
-		case os_ps4: return "PlayStaion 4"		break; 
-		case os_ps5: return "PlayStaion 5"		break; 
-		case os_gdk: return "GDK"		break; 
-		case os_xboxseriesxs: return "Xbox"		break; 
-		case os_switch: return "Switch"		break; 
-		case os_unknown: return "Unknown"		break; 
+		case os_windows: return "Windows"; 
+		case os_gxgames: return "GX Games"; 
+		case os_operagx: return "Opera GX"; 
+		case os_linux: return "Linux"; 
+		case os_macosx: return "MacOS"; 
+		case os_ios: return "iOS"; 
+		case os_tvos: return "tvOS"; 
+		case os_android: return "Android"; 
+		case os_ps4: return "PlayStation 4"; 
+		case os_ps5: return "PlayStation 5"; 
+		case os_gdk: return "GDK"; 
+		case os_xboxseriesxs: return "XBOX"; 
+		case os_switch: return "Switch"; 
+		case os_switch2: return "Switch 2"; 
+		case os_unknown: return "Unknown"; 
 		default: return "Unknown"
 	}
 }
