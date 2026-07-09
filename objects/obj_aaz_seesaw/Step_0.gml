@@ -9,123 +9,93 @@
 	var boxRight = instance_position_hitbox(right_platform_x, right_platform_y, [-8, 0, 8, 4]);
 	var platformRight = player_act_semi_solid(boxRight);
 	
+	var boxWeight = instance_position_hitbox(weight_x, weight_y, [-8, -26, 8, 0]);
+	var weightCollision = player_act_solid(boxWeight);
+	
+	// Get old position
 	var oldYL = left_platform_y;
 	var oldYR = right_platform_y;
+	var oldY = weight_y;
 	
 	// Position the weights
 	left_platform_y = floor(y + 64 + weight);
 	right_platform_y = floor(y + 64 - weight);
 	
-	// temp
-	weight = 16 * dsin(FRAME_TIMER * 32)
+	// Weight adjusting
+	weight = math_approach(weight, -16 * stepping_side, 6);
 	
+	// Weight behaviour
+	if(weight_ground)
+	{
+		weight_y = right_platform_y
+		weight_grav = 0;
+	}
+	else
+	{
+		weight_y += weight_grav;
+		weight_grav += 0.22;
+		
+		if(weight_y > right_platform_y)
+		{
+			weight_y = right_platform_y;
+			weight_ground = true;
+			weight_landed = true;
+		}
+	}
+	
+	// Get the first player object
 	var player = player_find(0);
 	
+	// Move the player
+	if(weightCollision == C_BOTTOM || weightCollision == C_TOP)
+		player.y += floor(weight_y - oldY);
+		
 	// Position the player
 	if(platformLeft)
 	{
+		stepping_side = weight_landed ? 1 : -1;
 		player.y += floor(left_platform_y - oldYL);
+		
+		// Launch the weight
+		if(weight == 16 && weight_ground && !weight_landed)
+		{
+			weight_ground = false;
+			weight_grav = -8;
+			
+			play_sound(sfx_spring);
+		}
+		
+		// Launch the player when the weight lands
+		if(weight == -16 && weight_landed)
+		{
+			with(player)
+			{
+				animation_play(animator, ANIM.SPRING);
+				state = player_state_spring;
+				y_speed = -10;
+				ground = false;
+			}	
+			
+			play_sound(sfx_spring);
+			weight_landed = false;
+		}
+	}
+	else
+	{
+		weight_landed = false;
+		
+		if(weight_ground && weight == 16)
+			stepping_side = 1;
 	}
 	
+	// Standing on the right platform
 	if(platformRight)
 	{
+		// Crush the player
+		if(weightCollision == C_BOTTOM)
+			player_hurt(0, K_DIE);	
+	
+		stepping_side = 1;
 		player.y += floor(right_platform_y - oldYR);
 	}
 	
-	/*with(child_right)
-	{
-		y = other.y+64+other.weight;
-		
-		// Make the platform semi solid
-		var c = player_act_semi_solid();
-		
-		if(c && obj_player.ground)
-		{
-			other.right_override = true;
-			//obj_player.y +=6;
-			obj_player.y = y - obj_player.hitbox_h - 1;
-		}
-		
-	}
-
-	with(child_weight)
-	{
-		if(!ground) yspeed += 0.22;
-		y += yspeed;
-		if(place_meeting(x, y + yspeed, obj_player) && obj_player.ground && !ground)
-		{
-			obj_player.knockout_type = K_DIE;
-		}
-		
-		while(instance_place(x,y,other.child_right) && !ground && yspeed > 0)
-		{
-			yspeed = 0;
-			y-=1;
-			ground = true;
-			other.bouncing = true;
-		}
-		if(ground)
-		{
-			y=other.child_right.y;
-		}
-		if(ground || other.right_override)
-		{
-			other.weightoff = false;
-		}
-		if(!ground && !other.right_override)
-		{
-			other.weightoff = true;
-		}
-		if(other.right_override)
-		{
-			other.weightoff = false;
-		}
-		if(!other.weightoff) other.weight = min(other.weight+6,16);
-		if(other.weightoff) other.weight = max(other.weight-6,-16);
-		
-		
-	}
-
-	right_override = false
-
-	with(child_left)
-	{
-		// Make the platform semi solid
-		var c = player_act_semi_solid();
-		
-		if(c && other.child_weight.ground && obj_player.ground)
-		{
-			if(other.bouncing = false)
-			{
-				other.child_weight.ground = false;
-				other.child_weight.yspeed = -8;
-				if(on_screen()) play_sound(sfx_spring);
-			}
-			else
-			{
-				var player = instance_nearest(x, y, obj_player)
-				with(player)
-				{
-					animation_play(animator, ANIM.SPRING);
-					state = player_state_spring;
-					y_speed = -10;
-					ground = false;
-				}
-				if(on_screen()) play_sound(sfx_spring);
-			} 
-			obj_player.y = y - obj_player.hitbox_h - 1;
-		}
-		
-		
-		y = other.y+64-other.weight
-	}
-
-
-
-	for (var i = 0; i < 5; ++i) 
-	{
-	    with(child_bead[i])
-		{
-			y = other.y +72+(other.weight*0.25)*(i-2);
-		}
-	}
