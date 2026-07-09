@@ -7,6 +7,11 @@
 	y_speed = 0;
 	badnikframe = 0;
 	
+	animator = new animator_create();
+	
+	animation_add(0, spr_ribbot, 0.2,, false);
+	animation_play(animator, 0, true);
+	
 	on_reset = function()
 	{
 		x = xstart;

@@ -1,12 +1,13 @@
 	// Inherit the parent event's code for the badnik
 	event_inherited();
+	
+	// Gravity
+	y_speed += 0.18; 
 
 	// Change some values
 	x += x_speed;
 	y += y_speed;
 	
-	// Gravity
-	y_speed += 0.18; 
 	
 	// Check for collision on ground
 	if(y_speed > 0)
@@ -16,18 +17,20 @@
 		{
 			x_speed *= -1;
 			y_speed = -5;
-			badnikframe = 0
+			animator_reset(animator);
 			
 			// Snap it to the floor
 			y += c;
 			
-			// Play spring sound ONLY when on screen
-			if (on_screen()) 
-				play_sound(sfx_spring);
+			// Play spring sound when on screen
+			if(origin_on_screen(32, 32))
+			{
+				var jump_sound = play_sound(sfx_spring);
+				audio_sound_pitch(jump_sound, 1.5);
+			}
 		}
 	}
 
 	// Visuals etc
 	image_xscale = sign(x_speed); // Point badnik in the direction of the speed in which it's going
-	badnikframe += 0.2;
-	image_index = min(floor(badnikframe),2); //Limit until 2 for the frame
+	animator_update(animator);
