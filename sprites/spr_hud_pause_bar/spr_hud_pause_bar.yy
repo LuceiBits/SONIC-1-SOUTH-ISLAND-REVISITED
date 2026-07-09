@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_hud_pause_bar",
   "bboxMode":0,
-  "bbox_bottom":31,
+  "bbox_bottom":15,
   "bbox_left":0,
   "bbox_right":127,
   "bbox_top":0,
@@ -21,7 +21,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":32,
+  "height":16,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"6ee421dd-b4db-4c32-a4e3-2dfbba68f9a8","blendMode":0,"displayName":"default","isLocked":false,"name":"6ee421dd-b4db-4c32-a4e3-2dfbba68f9a8","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -31,7 +31,7 @@
   "origin":0,
   "parent":{
     "name":"Pause",
-    "path":"folders/Sprites/GUI/Pause.yy",
+    "path":"folders/Sprites/GUI Sprites/Pause.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

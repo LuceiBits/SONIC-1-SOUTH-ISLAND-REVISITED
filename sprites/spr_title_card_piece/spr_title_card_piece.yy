@@ -2,7 +2,7 @@
   "$GMSprite":"v2",
   "%Name":"spr_title_card_piece",
   "bboxMode":0,
-  "bbox_bottom":223,
+  "bbox_bottom":79,
   "bbox_left":0,
   "bbox_right":70,
   "bbox_top":0,
@@ -16,7 +16,7 @@
   ],
   "gridX":0,
   "gridY":0,
-  "height":224,
+  "height":80,
   "HTile":false,
   "layers":[
     {"$GMImageLayer":"","%Name":"91b9dd96-62eb-4c13-beb8-cd9b845d3f35","blendMode":0,"displayName":"default","isLocked":false,"name":"91b9dd96-62eb-4c13-beb8-cd9b845d3f35","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"GUI Sprites",
-    "path":"folders/Sprites/GUI Sprites.yy",
+    "name":"Title Card",
+    "path":"folders/Sprites/GUI Sprites/Title Card.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

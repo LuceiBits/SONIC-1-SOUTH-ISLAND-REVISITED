@@ -33,7 +33,7 @@
   "origin":9,
   "parent":{
     "name":"Pause",
-    "path":"folders/Sprites/GUI/Pause.yy",
+    "path":"folders/Sprites/GUI Sprites/Pause.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

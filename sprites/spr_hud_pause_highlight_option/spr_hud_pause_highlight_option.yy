@@ -4,7 +4,7 @@
   "bboxMode":0,
   "bbox_bottom":2,
   "bbox_left":0,
-  "bbox_right":127,
+  "bbox_right":87,
   "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
@@ -31,7 +31,7 @@
   "origin":9,
   "parent":{
     "name":"Pause",
-    "path":"folders/Sprites/GUI/Pause.yy",
+    "path":"folders/Sprites/GUI Sprites/Pause.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
@@ -91,5 +91,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":128,
+  "width":88,
 }

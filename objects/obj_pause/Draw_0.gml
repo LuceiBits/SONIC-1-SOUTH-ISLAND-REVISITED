@@ -17,7 +17,7 @@
 	// Just draw the fill
 	draw_rectangle(pause_bar_x + barWidth, 0, CAMERA_VIEW_W, CAMERA_VIEW_H, false);
 	
-	draw_rectangle(0, CAMERA_VIEW_H - 38 + black_bar_y, black_bar_x, CAMERA_VIEW_H - 25 + black_bar_y, false);
+	draw_rectangle(0, CAMERA_VIEW_H - 49 + black_bar_y, black_bar_x, CAMERA_VIEW_H - 25 + black_bar_y, false);
 	draw_set_colour(c_white);
 	
 	for (var i = 0; i < CAMERA_VIEW_H / barHeight; ++i) 

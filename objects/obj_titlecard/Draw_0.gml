@@ -34,53 +34,55 @@
 	// Make the HUD follow the camera
 	draw_set_follow_camera();
 	
-	var act_text = "Zone " + string(obj_level.act)
+	var act_text = "ZONE " + string(obj_level.act)
 	if (obj_level.act == 0) {
-		act_text = "Zone"	
+		act_text = "ZONE"	
 	}
 	
-	draw_set_font(fon_titlecard);
+	var zone_text = string_upper(string(obj_level.stage_name));
+	
+	draw_set_font(global.font_titlecard);
 	draw_set_halign(fa_left);
 	if(timer < 100) {
 		var curve = animcurve_get(curve_titlecard)
 		var c_channel_3 = animcurve_get_channel(curve,"curve3")
 		var c_channel_4 = animcurve_get_channel(curve,"curve4")
-		offset[4] = (-string_width(string(obj_level.stage_name))) - 24 + (animcurve_channel_evaluate(c_channel_3, min(timer / 100,1)) * (string_width(string(obj_level.stage_name))+ 71 + 24))
+		offset[4] = (-string_width(zone_text)) - 24 + (animcurve_channel_evaluate(c_channel_3, min(timer / 100,1)) * (string_width(zone_text)+ 71 + 24))
 		offset[6] = -string_width(act_text) - 24 + (animcurve_channel_evaluate(c_channel_4, min(timer / 100,1)) * (string_width(act_text)+ 71 + 24))
 	}
 	
-	//Draw the red part of title card
-	draw_set_color(#fc0000);
+	//Draw the top line of title card
+	draw_set_color(c_black);
 	draw_rectangle(0, 16 + offset[2], offset[0], 16+16 + +  offset[2], false);
 	
 	
 	draw_set_color(c_black);
-	draw_text(offset[4] +10, offset[2]+2, string(obj_level.stage_name));
+	draw_text(offset[4] +9, offset[2]+9, zone_text);
 	//draw_text(152 - offset[2], 96, "ACT " + string(obj_level.act));
 	draw_set_color(c_white);
-	draw_text(offset[4]+8, offset[2], string(obj_level.stage_name));
+	draw_text(offset[4]+8, offset[2]+8, zone_text);
 	
 	//Draw the left part of the sprite
 	
 	draw_set_color(c_white);
-	for (var i = 0; i < 4; ++i) {
-	   draw_sprite_part(spr_title_card_piece,0,0,0,64,224, -offset[3], (-64*i) + timer)
-	   draw_sprite_part(spr_title_card_piece,0,64,0,8,224, -offset[3] + 64, (64*i) - (timer /2))
+	for (var i = 0; i < 5; ++i) {
+	   draw_sprite_part(spr_title_card_piece,0,0,0,64,80, -offset[3], (-80*i) + timer + 128)
+	   draw_sprite_part(spr_title_card_piece,0,64,0,8,80, -offset[3] + 64, (80*i) - (timer /2))
 	}
 	
-	//Draw the red part of title card
-	draw_set_color(#fc0000);
+	//Draw the bottom line of title card
+	draw_set_color(c_black);
 	draw_rectangle(0, 16 +  offset[1], (offset[0]+ 48) / 3, 16+16 + +  offset[1], false);
 	
 	
 	//Set font numbers
 	
-	draw_set_font(fon_titlecard);
+	draw_set_font(global.font_titlecard);
 	draw_set_halign(fa_left);
 	draw_set_color(c_black);
-	draw_text(offset[6] +10, offset[1]+2, act_text);
+	draw_text(offset[6] +9, offset[1]+9, act_text);
 	//draw_text(152 - offset[2], 96, "ACT " + string(obj_level.act));
 	draw_set_color(c_white);
-	draw_text(offset[6]+8, offset[1], act_text);
+	draw_text(offset[6]+8, offset[1]+8, act_text);
 	
 	draw_set_follow_end();
