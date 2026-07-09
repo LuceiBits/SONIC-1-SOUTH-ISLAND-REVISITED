@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.124989,
+  "duration":1.1249887,
   "exportDir":"",
   "name":"sfx_dropdash",
   "parent":{
