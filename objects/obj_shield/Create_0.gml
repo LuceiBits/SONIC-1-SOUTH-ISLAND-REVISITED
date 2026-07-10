@@ -7,7 +7,7 @@
 	animator = new animator_create();
 	
 	//Add only one animations
-	animation_add(0, spr_shield, 1, 0, true, true);
+	animation_add(0, spr_shield, 0, 0, true, true);
 	
 	//Play the first animation
 	animation_play(animator, 0);
