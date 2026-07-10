@@ -59,6 +59,9 @@ function draw_state_push()
 	{
 		col : draw_get_colour(),
 		alpha : draw_get_alpha(),
+		halign : draw_get_halign(),
+		valign : draw_get_valign(),
+		font : draw_get_font(),
         blendmode : gpu_get_blendmode(),
         blendmode_ext : gpu_get_blendmode_ext(),
         colourwriteenable : gpu_get_colourwriteenable(),
@@ -86,6 +89,10 @@ function draw_state_pop()
     
 	draw_set_color(_state.col);
 	draw_set_alpha(_state.alpha);
+	
+	draw_set_halign(_state.valign);
+	draw_set_valign(_state.halign);
+	draw_set_font(_state.font);
 	
     gpu_set_blendmode(_state.blendmode);
     
