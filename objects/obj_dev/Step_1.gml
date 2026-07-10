@@ -1,9 +1,9 @@
 /// @description Dev menu
 	room_speed = 60;
 	
-	if(keyboard_check_pressed(vk_escape) && !instance_exists(obj_devmenu) && !obj_shell.isOpen)
+	if(keyboard_check_pressed(vk_escape) && !instance_exists(obj_dev_menu) && !obj_shell.isOpen)
 	{
-		instance_create_depth(0, 0, -99999, obj_devmenu)
+		instance_create_depth(0, 0, -99999, obj_dev_menu)
 	}
 	
 	//Destroy just in case

@@ -22,7 +22,7 @@
 			
 	//Change the text alingment
 	draw_set_halign(fa_left);
-	
+	draw_set_valign(fa_top);
 	
 	//Get zone array size
 	var zone_arr = array_length(zone_list);

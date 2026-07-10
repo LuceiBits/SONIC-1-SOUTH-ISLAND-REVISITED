@@ -19,25 +19,28 @@
 	
 		rect_ease_timer = math_approach(rect_ease_timer, 1, 0.02);
 		rect_x = CAMERA_VIEW_W * ease_out_sine(rect_ease_timer);
-	
-		var i = input_press(INPUT.DOWN) - input_press(INPUT.UP);
-	
-		if(i != 0)
-		{
-			select = math_wrap(select + i, 0, array_length(selections) - 1);	
 		
-			play_sound(sfx_beep);
-		}
+		if(timer > 60)
+		{
+			var i = input_press(INPUT.DOWN) - input_press(INPUT.UP);
 	
+			if(i != 0)
+			{
+				select = math_wrap(select + i, 0, array_length(selections) - 1);	
+		
+				play_sound(sfx_beep);
+			}
+	
+			if(input_press(INPUT.A) || input_press(INPUT.START))
+			{
+				selected = true;
+				selected_timer = 0;
+		
+				play_sound(sfx_menu_select);
+			}
+		}
+		
 		cursor_y = lerp(cursor_y, -48 * (select - 1), 0.3 * rect_ease_timer);
-	
-		if(input_press(INPUT.A) || input_press(INPUT.START))
-		{
-			selected = true;
-			selected_timer = 0;
-		
-			play_sound(sfx_menu_select);
-		}
 	}
 	else
 	{
@@ -46,9 +49,11 @@
 		rect_ease_timer = math_approach(rect_ease_timer, 0, 0.04);
 		rect_x = CAMERA_VIEW_W * ease_out_sine(rect_ease_timer);
 		
-		if(selected_timer == 60)
+		if(selected_timer == 40)
 		{
 			different_bg = true;	
+			
+			instance_create_depth(0, 0, depth - 10, obj_character_select);
 		}
 		
 		for (var i = 0; i < array_length(selections); ++i) 
@@ -60,17 +65,6 @@
 		
 			text_x[i] = (CAMERA_VIEW_W + 128) * ease_in_sine(text_ease_timer[i]);
 			text_y[i] = lerp(text_y[i], 0, 0.3);
-		}
-		
-		if(input_press(INPUT.B))
-		{
-			selected = false;
-			selected_timer = 0;
-			timer = 0;
-			
-			different_bg = false;
-			
-			play_sound(sfx_menu_select);
 		}
 	}
 	

@@ -34,6 +34,7 @@
 		//Set font numbers
 		draw_set_font(global.hud_number);
 		draw_set_halign(fa_right);
+		draw_set_valign(fa_top);
 	
 		//Draw number
 		draw_text(120 + offset[0], 9, string(global.score));

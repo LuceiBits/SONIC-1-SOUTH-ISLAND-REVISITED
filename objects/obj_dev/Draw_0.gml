@@ -6,6 +6,9 @@
 	cx = camera_get_view_x(c);
 	cy = camera_get_view_y(c);
 	
+	// temp
+	draw_set_valign(fa_top);
+	
 	//Draw hitboxes
 	if(show_hitbox)
 	{
@@ -86,4 +89,5 @@
 	draw_set_follow_end();
 	
 	draw_set_halign(fa_center);
+	draw_set_font(global.font_small);
 	draw_text(cursor_x + cx, cursor_y - 32 + cy, string_upper(object_get_name(object_list[object_select])));

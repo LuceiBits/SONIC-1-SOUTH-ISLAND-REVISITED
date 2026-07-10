@@ -43,6 +43,8 @@
 	
 	draw_set_font(global.font_titlecard);
 	draw_set_halign(fa_left);
+	draw_set_valign(fa_top);
+	
 	if(timer < 100) {
 		var curve = animcurve_get(curve_titlecard)
 		var c_channel_3 = animcurve_get_channel(curve,"curve3")

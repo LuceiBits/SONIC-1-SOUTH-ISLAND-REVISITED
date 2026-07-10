@@ -95,7 +95,7 @@
 						room_restart();
 					}
 					else
-						room_goto(rm_stage_select);
+						room_goto(rm_main_menu);
 				}
 			}
 			
