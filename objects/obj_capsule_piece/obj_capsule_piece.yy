@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprCapsulePiece",
-    "path":"sprites/sprCapsulePiece/sprCapsulePiece.yy",
+    "name":"spr_capsule_piece",
+    "path":"sprites/spr_capsule_piece/spr_capsule_piece.yy",
   },
   "spriteMaskId":null,
   "visible":true,

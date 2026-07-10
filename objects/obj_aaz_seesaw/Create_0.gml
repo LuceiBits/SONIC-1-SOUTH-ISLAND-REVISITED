@@ -21,7 +21,7 @@
 	var box = _instance_make_hitbox(id);
 	box = _instance_orient_hitbox(id, box);
 	
-		// Reseting events
+	// Reseting events
 	on_reset = function()
 	{
 		weight_x = x + 32;

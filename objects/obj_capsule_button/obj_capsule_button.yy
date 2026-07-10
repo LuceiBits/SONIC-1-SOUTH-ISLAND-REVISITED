@@ -31,8 +31,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"sprCapsuleButton",
-    "path":"sprites/sprCapsuleButton/sprCapsuleButton.yy",
+    "name":"spr_capsule_button",
+    "path":"sprites/spr_capsule_button/spr_capsule_button.yy",
   },
   "spriteMaskId":null,
   "visible":true,

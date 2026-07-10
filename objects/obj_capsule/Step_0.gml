@@ -1,24 +1,23 @@
 /// @description Capsule script
 	
+	// Make the capsule solid
 	player_act_solid();
 	
-	//Button code
-	with(button){
-		var c = player_act_solid();
+	var buttonBox = instance_position_hitbox(x, button_y, [-16, -16, 16, 0]);
+	var buttonSolid = player_act_solid(buttonBox);
+	var player = player_find(0);
+	
+	var oldY = floor(button_y);
+	
+	if(buttonSolid == C_TOP)
+	{
+		// Move the button down
+		button_y = math_approach(button_y, y + 8, 2);
 		
-		//When player is on the button
-		if(c == C_TOP && !pressed)
+		// If button is fully pressed, activate the capsule
+		if(button_y == y + 8 && !active)
 		{
-			obj_player.y = round(bbox_top - obj_player.hitbox_h);
-			
-			//Stop the timer
-			input_disable = true;
-			
-			//Create flickies
-			for(var i = 0; i < 10; i++){
-				var animal = instance_create_depth(other.x + random_range(-24, 24), other.y+32, depth, obj_flicky);
-				animal.delay = 16+(4 * i);
-			}
+			active = true;
 			
 			//Create pieces
 			var piece = instance_create_depth(x-20, y+32, depth-200, obj_capsule_piece)
@@ -35,25 +34,29 @@
 			piece.x_speed = 2;
 			piece.y_speed = -4;
 			
-			//play_sound(sfx_beep);
-			pressed = true;
-			other.active = true;
+			//Create flickies
+			for(var i = 0; i < 10; i++)
+			{
+				var animal = instance_create_depth(other.x + random_range(-24, 24), other.y+32, depth, obj_flicky);
+				animal.delay = 16+(4 * i);
+			}
 		}
 		
-		//Move the button
-		if(pressed) 
-		{
-			y = lerp(y, ystart+8, 0.2)
-		}
-		else
-		{
-			y = lerp(y, ystart, 0.2); 
-		}
+		// Carry the player
+		player.y -= floor(oldY - button_y);	
 	}
-	
-	if(active){
+	else
+	{
+		if(!active)
+			button_y = math_approach(button_y, y, 2);	
+		else
+			button_y = y + 8;
+	}
+
+	if(active)
+	{
 		//Add the timer
-		timer += 1;
+		timer++;
 		
 		//Change capsule sprite to destroyed
 		image_index = 1;
@@ -64,12 +67,13 @@
 		
 		//Exploder
 		if(timer < 32 && timer mod 4 = 1){
-			create_effect(x+random_range(-32, 32), y+32+random_range(-32, 32), spr_effect_explosion02, 0.3);
+			create_effect(x+random_range(-32, 32), y + 32 + random_range(-32, 32), spr_effect_explosion02, 0.3);
 			play_sound(sfx_destroy);
 		}
 		
 		//Act clear
-		if(!instance_exists(obj_act_clear) && timer = 100){
+		if(!instance_exists(obj_act_clear) && timer = 100)
+		{
 			obj_level.disable_timer = true;
 			obj_level.act_transition = false;
 			instance_create_depth(0, 0, obj_hud.depth, obj_act_clear);
