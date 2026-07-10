@@ -268,6 +268,25 @@ function instance_recorder_get_value(recorder, value_id, offset)
 	return recorder.update_list[value_id][(max(recorder.timer - offset, 0) mod recorder.record_size)];
 }
 
+function instance_create_bullet(sprite, animation_speed, x, y, obj_depth, x_speed, y_speed, grav = 0.2)
+{
+	//Create bullet object
+	var bullet = instance_create_depth(x, y, obj_depth, obj_bullet);
+	
+	//Change its properties
+	bullet.sprite_index = sprite;
+	bullet.x_speed = x_speed;
+	bullet.y_speed = y_speed;
+	bullet.grav = grav;
+	
+	//Play animation
+	with(bullet)
+		animation_play_no_list(animator, sprite, animation_speed);
+	
+	//Return the bullet's ID
+	return bullet;
+}
+
 // ===========================================================================================================
 // Utilities internal functions
 // ===========================================================================================================

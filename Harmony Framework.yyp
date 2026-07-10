@@ -179,6 +179,7 @@
     {"id":{"name":"obj_bubble_patch","path":"objects/obj_bubble_patch/obj_bubble_patch.yy",},},
     {"id":{"name":"obj_bubble_shield","path":"objects/obj_bubble_shield/obj_bubble_shield.yy",},},
     {"id":{"name":"obj_bubble","path":"objects/obj_bubble/obj_bubble.yy",},},
+    {"id":{"name":"obj_bullet","path":"objects/obj_bullet/obj_bullet.yy",},},
     {"id":{"name":"obj_bumper","path":"objects/obj_bumper/obj_bumper.yy",},},
     {"id":{"name":"obj_camera_boundary","path":"objects/obj_camera_boundary/obj_camera_boundary.yy",},},
     {"id":{"name":"obj_camera","path":"objects/obj_camera/obj_camera.yy",},},
