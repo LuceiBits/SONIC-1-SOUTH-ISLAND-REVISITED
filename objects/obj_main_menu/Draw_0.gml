@@ -3,6 +3,7 @@
 	draw_state_push();
 	
 	draw_sprite(spr_menu_bg, 0, 0, 0);
+	draw_sprite_ext(spr_menu_bg, 1, 0, 0, 1, 1, 0, c_white, different_bg_fade);
 	
 	draw_set_color(#ff7700)
 	draw_triangle(0, 0, 256, 0, 0, CAMERA_VIEW_H, false);

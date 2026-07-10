@@ -17,3 +17,9 @@
 	bg_rect_timer = 1;
 	
 	cursor_y = 48;
+	
+	selected = false;
+	selected_timer = 0;
+	
+	different_bg = false;
+	different_bg_fade = 0;
