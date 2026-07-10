@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"bgm_test_stage",
+  "%Name":"bgm_main_menu",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,9 +10,9 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.0,
+  "duration":52.326008,
   "exportDir":"",
-  "name":"bgm_test_stage",
+  "name":"bgm_main_menu",
   "parent":{
     "name":"Stage Music",
     "path":"folders/Sounds/Music/Stage Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"bgm_test_stage.ogg",
+  "soundFile":"bgm_main_menu.ogg",
   "volume":1.0,
 }

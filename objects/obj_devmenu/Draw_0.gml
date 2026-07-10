@@ -23,6 +23,7 @@
 	
 	//Change text alingment to the center
 	draw_set_halign(fa_center);
+	draw_set_valign(fa_top);
 	
 	//Draw the game header
 	draw_text(center_x, center_y - 64, "HARMONY FRAMEWORK DEV MENU");
