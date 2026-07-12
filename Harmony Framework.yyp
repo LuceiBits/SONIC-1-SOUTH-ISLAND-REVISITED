@@ -391,6 +391,7 @@
     {"id":{"name":"sfx_jump","path":"sounds/sfx_jump/sfx_jump.yy",},},
     {"id":{"name":"sfx_land","path":"sounds/sfx_land/sfx_land.yy",},},
     {"id":{"name":"sfx_menu_select","path":"sounds/sfx_menu_select/sfx_menu_select.yy",},},
+    {"id":{"name":"sfx_opendoor","path":"sounds/sfx_opendoor/sfx_opendoor.yy",},},
     {"id":{"name":"sfx_peelout_charge","path":"sounds/sfx_peelout_charge/sfx_peelout_charge.yy",},},
     {"id":{"name":"sfx_peelout_release","path":"sounds/sfx_peelout_release/sfx_peelout_release.yy",},},
     {"id":{"name":"sfx_radar_ding","path":"sounds/sfx_radar_ding/sfx_radar_ding.yy",},},
