@@ -19,7 +19,6 @@
 		}
 	}
 	
-	var force_visible_for_new_keys = (global.bonus_stage_state == BONUSSTAGE.GOING_TO || array_length(variable_struct_get_names(global.store_background_visibility)) == 0);
 
 	for (var i = 0; i < instance_number(par_background); ++i)
 	{

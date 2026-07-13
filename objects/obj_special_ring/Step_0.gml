@@ -18,6 +18,8 @@
 		}
 		
 		visible = false;
+		
+		create_effect(x, y, spr_special_ring_effect, 0.3);
 	}
 	
 	// Enter events

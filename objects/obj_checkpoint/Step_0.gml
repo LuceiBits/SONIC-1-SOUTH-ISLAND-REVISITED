@@ -70,8 +70,5 @@
 			
 			global.process_objects = false;
 			bonus_stage_trigger = true;
-			
-			//global.bonus_room = (global.rings >= MIN_BLUE_SPHERES) ? rm_blue_spheres : rm_bonus
-			//global.bonus_stage_state = BONUSSTAGE.GOING_TO
 		}
 	}
