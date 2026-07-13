@@ -51,9 +51,28 @@
 		
 		if(selected_timer == 40)
 		{
-			different_bg = true;	
-			
-			instance_create_depth(0, 0, depth - 10, obj_character_select);
+			switch(select)
+			{
+				case 0:
+				different_bg = true;	
+				instance_create_depth(0, 0, depth - 10, obj_character_select);
+				break;
+				
+				case 1:
+				different_bg = true;	
+				instance_create_depth(0, 0, depth - 10, obj_options);
+				break;
+			}
+		}
+		
+		// Exit the game
+		if(select == 2)
+		{
+			fade_change(FADE_OUT, 2);
+			music_set_fade(FADE_OUT, 2);
+				
+			if(obj_global.fade.timer == 0)
+				game_end();	
 		}
 		
 		for (var i = 0; i < array_length(selections); ++i) 

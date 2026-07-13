@@ -4,7 +4,7 @@ function game_init_music_list()
 	
 	//Menu background music:
 	music_add(MUSIC.MENU, bgm_menu, 0.565);
-	music_add(MUSIC.MAIN_MENU, bgm_main_menu, 0.565);
+	music_add(MUSIC.MAIN_MENU, bgm_main_menu);
 	
 	//Stage background music:
 	music_add(MUSIC.TECHDEMO_TOWER, bgm_test_stage, 0.000);
