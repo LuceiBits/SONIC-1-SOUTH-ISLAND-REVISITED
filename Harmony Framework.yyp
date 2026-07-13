@@ -415,6 +415,7 @@
     {"id":{"name":"sfx_signpost","path":"sounds/sfx_signpost/sfx_signpost.yy",},},
     {"id":{"name":"sfx_skid","path":"sounds/sfx_skid/sfx_skid.yy",},},
     {"id":{"name":"sfx_slide","path":"sounds/sfx_slide/sfx_slide.yy",},},
+    {"id":{"name":"sfx_special_ring","path":"sounds/sfx_special_ring/sfx_special_ring.yy",},},
     {"id":{"name":"sfx_spike","path":"sounds/sfx_spike/sfx_spike.yy",},},
     {"id":{"name":"sfx_spindash","path":"sounds/sfx_spindash/sfx_spindash.yy",},},
     {"id":{"name":"sfx_spring","path":"sounds/sfx_spring/sfx_spring.yy",},},

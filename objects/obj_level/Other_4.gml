@@ -6,7 +6,7 @@
 	global.stage_timer = 0;
 	
 	//Position player to the checkpoint
-	if(global.checkpoint_id != noone && instance_exists(global.checkpoint_id))
+	if(global.checkpoint_id != noone && instance_exists(global.checkpoint_id) && global.checkpoint_type = CHECKPOINT.NORMAL)
 	{
 		obj_player.x = global.checkpoint_id.x;
 		obj_player.y = global.checkpoint_id.bbox_bottom - obj_player.hitbox_h;
@@ -17,6 +17,17 @@
 		{
 			obj_player.facing = -1	
 		}
+	}
+	
+	if(global.checkpoint_type = CHECKPOINT.SPECIAL_RING)
+	{
+		obj_player.x = global.special_ring_x;
+		obj_player.y = global.special_ring_y;
+		
+		obj_camera.target_x = obj_player.x;
+		obj_camera.target_y = obj_player.y - 16;
+		
+		global.stage_timer = global.time_store;
 	}
 	
 	if(level_state == LEVEL_STATE.BONUS)

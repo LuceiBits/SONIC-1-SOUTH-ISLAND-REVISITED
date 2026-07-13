@@ -42,3 +42,10 @@
 		NORMAL,
 		BONUS,
 	}
+	
+	// Checkpoint types
+	enum CHECKPOINT
+	{
+		NORMAL,
+		SPECIAL_RING
+	}

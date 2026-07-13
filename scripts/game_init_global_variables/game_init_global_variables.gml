@@ -22,6 +22,10 @@ function game_init_global_variables()
 	global.checkpoint = ds_list_create();	//The list of active checkpoints
 	global.checkpoint_id = noone;			//Checkpoint that is currently active
 	global.time_store = 0;					//Store value for timer when checkpoint gets active
+	global.checkpoint_type = CHECKPOINT.NORMAL;
+	global.special_ring_x = 0;
+	global.special_ring_y = 0;
+	global.special_ring_store = ds_list_create();
 	
 	global.bonus_room = rm_bonus				//Which bonus stage a checkpoint sends you to
 	global.store_object_state = ds_list_create();
