@@ -8,6 +8,13 @@ function player_state_wallclimb(){
 	//Change direction
 	image_xscale = facing;
 	
+	//Get input presses
+	var mov = hold_down - hold_up;
+	
+	//Move up and down
+	y_speed = (1 + super) * mov;
+	x_speed = 0;
+	
 	//Change animation
 	if(y_speed != 0) 
 	{
@@ -18,30 +25,15 @@ function player_state_wallclimb(){
 		animation_play(animator, ANIM.KNUXCLIMBIDLE);	
 	}
 	
-	//Get input presses
-	var mov = hold_down - hold_up;
-	
-	//Move up and down
-	y_speed = (1 + super) * mov;
-	x_speed = 0;
-	
-	while(!point_check(wall_w * facing, wall_h, false) && point_check((wall_w + 2) * facing, wall_h, false))
-	{
-		x += facing;
-	}
-	
-	while(point_check(wall_w  * facing, wall_h, false))
-	{
-		x -= facing;
-	}
-	
+	// Wall collision
+	var wallCol = collision_get_distance(x + wall_w * facing, y, facing == 1 ? CMODE_LWALL : CMODE_RWALL, plane, false);
 		
 	//Has reached the ground
-	if(ground)
+	if(ground && hold_down)
 	{
-		player_angle_detection();
 		if(ground_angle > 45 && ground_angle < 315)
 		{
+			player_mode();
 			animation_play(animator, ANIM.ROLL);
 			play_sound(sfx_roll);
 			control_lock = 4;
@@ -55,9 +47,9 @@ function player_state_wallclimb(){
 	}
 	
 	//When there's no more wall
-	if(!point_check((wall_w + 1) * facing, wall_h, false))
+	if(wallCol > 14)
 	{
-		if(!point_check((wall_w + 1) * facing, -4))
+		if(mov == -1 || mov == 0)
 		{
 			//If using smooth scroll
 			if(global.knux_camera_smooth)
@@ -73,12 +65,14 @@ function player_state_wallclimb(){
 			exit;
 		}
 		
-		if(!point_check((wall_w + 1) * facing, 4))
+		if(mov == 1)
 		{
 			state = player_state_knuxfall;
 			exit;
 		}
 	}
+	
+	x += wallCol * facing;
 	
 	//Jump off the wall
 	if(press_action && control_lock = 0)

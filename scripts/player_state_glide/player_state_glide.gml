@@ -61,9 +61,11 @@ function player_state_glide(){
 	knuckles_angle = math_approach(knuckles_angle, 90 * facing, 2.8125);
 	
 	if (animation_is_playing(animator, ANIM.KNUXGLIDETURN)) {
-		if (facing == 1){
+		if (facing == 1)
+		{
 			animation_set_frame(animator, 2 + (knuckles_angle/ 45));
-		} else {
+		} else 
+		{
 			animation_set_frame(animator, 5 - (2 + (knuckles_angle/ 45)));
 		}
 	}
@@ -75,7 +77,8 @@ function player_state_glide(){
 	}
 	
 	//Attach to the wall
-	if(point_check((wall_w + 1) * facing, 0, false) && !line_check(wall_w * facing, hitbox_h + 6))
+	var wallCol = collision_get_distance(x + wall_w * facing, y, facing == 1 ? CMODE_LWALL : CMODE_RWALL, plane, false);
+	if(wallCol < 1)
 	{
 		//Change direction
 		play_sound(sfx_grab);
