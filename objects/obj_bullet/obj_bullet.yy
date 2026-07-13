@@ -1,18 +1,21 @@
 {
   "$GMObject":"",
-  "%Name":"obj_aaz_button",
+  "%Name":"obj_bullet",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_aaz_button",
+  "name":"obj_bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"Arboreal Agate",
-    "path":"folders/Objects/Stage Objects/Arboreal Agate.yy",
+    "name":"Misc",
+    "path":"folders/Objects/Stage Objects/Common Objects/Misc.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_bullet",
+    "path":"objects/par_bullet/par_bullet.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -26,17 +29,11 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v2","%Name":"collision_flag","filters":[],"listItems":[],"multiselect":false,"name":"collision_flag","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
-    {"$GMObjectProperty":"v2","%Name":"button_id","filters":[],"listItems":[],"multiselect":false,"name":"button_id","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"0","varType":1,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_aaz_button",
-    "path":"sprites/spr_aaz_button/spr_aaz_button.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

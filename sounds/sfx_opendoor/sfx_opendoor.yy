@@ -1,0 +1,31 @@
+{
+  "$GMSound":"v2",
+  "%Name":"sfx_opendoor",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":1,
+  "compressionQuality":4,
+  "ConfigValues":{
+    "Dev":{
+      "audioGroupId":"{ \"name\":\"audiogroup_default\", \"path\":\"audiogroups/audiogroup_default\" }",
+    },
+  },
+  "conversionMode":0,
+  "duration":0.81814057,
+  "exportDir":"",
+  "name":"sfx_opendoor",
+  "parent":{
+    "name":"Objects",
+    "path":"folders/Sounds/Sound Effects/Objects.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"sfx_opendoor.wav",
+  "volume":1.0,
+}
