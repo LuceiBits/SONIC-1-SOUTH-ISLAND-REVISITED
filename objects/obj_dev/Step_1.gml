@@ -51,8 +51,9 @@
 			{
 				player_animation_list();
 				animator_reset(animator);
-				
+
 			}
+			with(obj_bss_controller) bss_setup_character();
 		}
 		
 		if(keyboard_check(vk_f6)) room_speed = 5;

@@ -44,13 +44,21 @@ function game_call_window_resize()
 
 function game_has_all_emeralds()
 {
-	for (var i = 0; i < array_length(global.emeralds); ++i) 
+	for (var i = 0; i < array_length(global.emeralds); ++i)
 	{
-	    if (!global.emeralds[i]) 
+	    if (!global.emeralds[i])
 		{
 			return false;
 		}
 	}
-	
+
 	return true;
+}
+
+function game_emerald_count()
+{
+	var n = 0;
+	for (var i = 0; i < array_length(global.emeralds); ++i)
+		if (global.emeralds[i]) n++;
+	return n;
 }

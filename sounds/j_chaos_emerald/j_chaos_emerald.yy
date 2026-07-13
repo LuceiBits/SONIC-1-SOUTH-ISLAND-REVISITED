@@ -1,18 +1,18 @@
 {
   "$GMSound":"v2",
-  "%Name":"j_invincible",
+  "%Name":"j_chaos_emerald",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
-  "channelFormat":0,
+  "channelFormat":1,
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":21.923174,
+  "duration":4.6382084,
   "exportDir":"",
-  "name":"j_invincible",
+  "name":"j_chaos_emerald",
   "parent":{
     "name":"Jingle Music",
     "path":"folders/Sounds/Music/Jingle Music.yy",
@@ -21,6 +21,6 @@
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
   "sampleRate":44100,
-  "soundFile":"j_invincible.ogg",
+  "soundFile":"j_chaos_emerald.mp3",
   "volume":1.0,
 }
