@@ -107,7 +107,26 @@ function player_state_normal(){
 				
 			play_sound(sfx_skid);
 		}
-
+		
+		var ledgeSensor = collision_get_distance(x, y + hitbox_h, mode, plane, true);
+		
+		if(ledgeSensor > 14 && ground_speed == 0)
+		{
+			var left = collision_get_distance(x - hitbox_w, y + hitbox_h, mode, plane, true);
+			var right = collision_get_distance(x + hitbox_w, y + hitbox_h, mode, plane, true);
+			
+			show_debug_message(on_terrain)
+			
+			if(left > 14 && on_terrain || ledge == -1)
+			{
+				anim = facing = 1 ? ANIM.LEDGE1 : ANIM.LEDGE2;
+			}
+			
+			if(right > 14 && on_terrain || ledge == 1)
+			{
+				anim = facing = 1 ? ANIM.LEDGE2 : ANIM.LEDGE1;
+			}
+		}
 		/*
 		//Ledge animation
 		if(!line_check(0, hitbox_h + 16, true) && ground && ground_speed == 0)

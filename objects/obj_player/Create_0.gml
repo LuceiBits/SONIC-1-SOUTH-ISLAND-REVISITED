@@ -76,6 +76,7 @@
 	disable_death = false;				// If true, disables the ability to die via pits or other means 
 	water_run = false;					// Flag used of player is water running
 	semi_solid_condition = false		// A condition flag used to see if semi solids can be collided with or not
+	speed_allow = true;
 	
 	//Hitbox values:					   
 	hitbox_w = 9;						// Hitbox width variable

@@ -412,9 +412,10 @@ switch (state)
 		//Fade to black while spinning
 		fade_change(FADE_OUT, 3, FADE_BLACK);
 		exit_timer++;
-		if (exit_timer >= 90 && obj_fade.fade_timer == 0 && global.bonus_stage_state == BONUSSTAGE.INSIDE) {
+		
+		/*if (exit_timer >= 90 && obj_fade.fade_timer == 0 && global.bonus_stage_state == BONUSSTAGE.INSIDE) {
 			global.bonus_stage_state = BONUSSTAGE.LEAVING;
-		}
+		}*/
 		break;
 }
 

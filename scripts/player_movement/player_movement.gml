@@ -20,8 +20,11 @@ function player_movement(){
 	}
 	
 	//Update position with speed:
-	x += x_speed/steps;
-	y += y_speed/steps;
+	if(speed_allow)
+	{
+		x += x_speed / steps;
+		y += y_speed / steps;
+	}
 	
 	//Get the speed
 	var spd = ground ? ground_speed : x_speed;

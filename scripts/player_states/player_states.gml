@@ -11,6 +11,7 @@ function player_states(){
 		attacking = false;
 		gravity_allow = true;
 		hitbox_allow = true;
+		speed_allow = true;
 	}
 	
 	//State allowing flags:

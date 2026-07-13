@@ -14,7 +14,7 @@
 	
 	//Handle player states
 	player_states();
-	
+		
 	//Player facing direction
 	player_direction();
 	
