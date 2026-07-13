@@ -30,7 +30,8 @@ function player_misc(){
 	if(y > obj_camera.target_bottom && y > obj_camera.limit_bottom)
 		_player_kill();
 	
-	//
+	// Reset the flags
 	ledge = 0;
 	pushing = 0;
+	on_object = false;
 }

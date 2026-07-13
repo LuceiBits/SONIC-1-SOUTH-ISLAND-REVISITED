@@ -20,6 +20,7 @@
 			player.ground_speed = -spring_power * sign(image_xscale) * player.y_dir;
 			player.facing = -sign(image_xscale) * player.y_dir;
 			player.control_lock = 20;
+			player.skid_timer = 0;
 		}
 		else
 		{

@@ -98,7 +98,7 @@ function player_state_normal(){
 		
 		
 		// Trigger the skidding
-		if(abs(ground_speed) > 4 && mode == CMODE_FLOOR && (hold_right - hold_left) == -sign(ground_speed) && ground)
+		if(abs(ground_speed) > 4 && mode == CMODE_FLOOR && (hold_right - hold_left) == -sign(ground_speed) && control_lock == 0 && ground)
 		{
 			skid_timer = 24;
 			
@@ -109,56 +109,37 @@ function player_state_normal(){
 		}
 		
 		var ledgeSensor = collision_get_distance(x, y + hitbox_h, mode, plane, true);
-		
-		if(ledgeSensor > 14 && ground_speed == 0)
+
+		if(ledgeSensor > 14 && ground_speed == 0 && ground)
 		{
 			var left = collision_get_distance(x - hitbox_w, y + hitbox_h, mode, plane, true);
 			var right = collision_get_distance(x + hitbox_w, y + hitbox_h, mode, plane, true);
 			
-			show_debug_message(on_terrain)
-			
-			if(left > 14 && on_terrain || ledge == -1)
-			{
+			if(left > 14 && !on_object || on_object && ledge == -1)
 				anim = facing = 1 ? ANIM.LEDGE1 : ANIM.LEDGE2;
-			}
 			
-			if(right > 14 && on_terrain || ledge == 1)
-			{
+			if(right > 14 && !on_object || on_object && ledge == 1)
 				anim = facing = 1 ? ANIM.LEDGE2 : ANIM.LEDGE1;
-			}
 		}
-		/*
-		//Ledge animation
-		if(!line_check(0, hitbox_h + 16, true) && ground && ground_speed == 0)
-		{
-			//Change animation
-			if(!line_check(hitbox_w, hitbox_h + 16, true) && !on_object || ledge == 1)
-			{
-				anim = facing = 1 ? ANIM.LEDGE2 : ANIM.LEDGE1;
-			}
-			if(!line_check(-hitbox_w, hitbox_h + 16, true) && !on_object || ledge == -1)
-			{
-				anim = facing = -1 ? ANIM.LEDGE2 : ANIM.LEDGE1;
-			}
-		}
+
+		// Wall sensors
+		var wall = collision_get_distance(x + (wall_w * facing), y + wall_h, facing == 1 ? CMODE_LWALL : CMODE_RWALL, plane);
 		
 		//Get input presses
-		mov = hold_right - hold_left;
+		var mov = hold_right - hold_left;
 		
 		//Pushing animation
-		if(mov = facing && ground && abs(ground_speed) <= x_accel + 0.5)
+		if(mov = facing && ground && abs(ground_speed) <= x_accel + 0.5 && mode == CMODE_FLOOR)
 		{
-			if(point_check((wall_w + 1) * facing, wall_h) || (pushing == C_LEFT && hold_right) || (pushing == C_RIGHT && hold_left))
+			if(wall < 1 || (pushing == C_LEFT && hold_right) || (pushing == C_RIGHT && hold_left))
 			{
 				anim = ANIM.PUSH;
 			}
-		}*/
-		
-			//Play the animations
-		if(!animation_is_playing(animator, ANIM.BREATHE) || animation_has_finished(animator) && animation_is_playing(animator, ANIM.BREATHE))
-		{
-			animation_play(animator, anim);
 		}
+		
+		// Play the animations
+		if(!animation_is_playing(animator, ANIM.BREATHE) || animation_has_finished(animator) && animation_is_playing(animator, ANIM.BREATHE))
+			animation_play(animator, anim);
 	}
 	else
 	{
