@@ -35,3 +35,10 @@
 		RIGHT,
 		BOTTOM
 	}
+	
+	// Stage state
+	enum LEVEL_STATE
+	{
+		NORMAL,
+		BONUS,
+	}

@@ -4,6 +4,7 @@
 	disable_timer = false;
 	badnik_chain = 0;
 	platform_oscillate_timer = 0;
+	level_state = LEVEL_STATE.NORMAL;
 	
 	//====================================================//
 	//				 **DEFAULT STAGE SETUP**			  //
