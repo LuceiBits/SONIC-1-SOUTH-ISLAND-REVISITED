@@ -41,7 +41,7 @@ if (player_collide_object(C_MAIN) && !obj_player.input_disable){
 			instance_destroy();
 		break;
 		case GUMBALL.ONEUP:
-			SOUND_EXTRA_LIFE;
+			music_play_jingle();
 			global.life += 1;
 			instance_destroy();
 		break;

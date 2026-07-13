@@ -17,7 +17,7 @@
 	// Make the HUD follow the camera
 	draw_set_follow_camera();
 	
-	if (!instance_exists(obj_bonus_level)) 
+	if (!instance_exists(obj_bonus_cont)) 
 	{
 		//Draw normal text
 		draw_sprite(spr_hudtext, 0, 16 + offset[0], 8);

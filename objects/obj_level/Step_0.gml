@@ -21,7 +21,7 @@
 	{
 		global.ring_extralife += 100;
 		global.life += 1;
-		SOUND_EXTRA_LIFE;
+		music_play_jingle();
 	}
 	if(global.rings <= global.ring_extralife-200)
 	{
@@ -34,7 +34,7 @@
 	{
 		global.score_extralife += 50000;
 		global.life += 1;
-		SOUND_EXTRA_LIFE;
+		music_play_jingle();
 	}
 	if(global.score <= global.score_extralife-100000)
 	{

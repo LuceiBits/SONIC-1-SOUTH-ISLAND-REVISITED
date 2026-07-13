@@ -213,6 +213,18 @@ function music_set_pitch(channel = 0, pitch = 1)
 	with(obj_global) if (music.playing[channel] != noone) audio_sound_pitch(music.playing[channel], pitch);
 }
 
+function music_play_jingle()
+{
+	if (global.extra_life_jingle)
+	{ 
+		play_sound(j_extra_life)
+	} 
+	else
+	{
+		play_sound(sfx_extralife)
+	}	
+}
+
 function stop_jingle(fade_music_in, fade_speed = 1)
 {
 	with(obj_global)

@@ -286,7 +286,7 @@ function player_insta_shield_collide(this_hitbox = -1, player_id = 0)
 function _player_kill()
 {
 	// No need to kill again
-	if(state == player_state_death || state == player_state_drown)
+	if(state == player_state_death || state == player_state_drown || disable_death)
 		exit;
 		
 	//Set player to the knockout state

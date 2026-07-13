@@ -12,6 +12,8 @@
 	
 	star_ydiff = 72; 
 	
+	bonus_stage_trigger = false;
+	
 	#macro MIN_BONUS_STAGE 30
 	#macro MIN_BLUE_SPHERES 50
 	

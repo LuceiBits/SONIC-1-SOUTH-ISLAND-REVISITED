@@ -75,7 +75,7 @@
 			create_effect(x, y, spr_effect_explosion01, 0.3);
 			play_sound(sfx_destroy);
 			
-			if(!instance_exists(obj_bonus_level)) 
+			if(!instance_exists(obj_bonus_cont)) 
 			{
 				global.store_object_state[| id] = true
 			}

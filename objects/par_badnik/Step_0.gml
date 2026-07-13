@@ -25,7 +25,7 @@
 			play_sound(sfx_destroy);
 		
 			//Destroy badnik
-			if (!instance_exists(obj_bonus_level)) {
+			if (!instance_exists(obj_bonus_cont)) {
 				global.store_object_state[| id] = true
 			}
 			instance_destroy();	

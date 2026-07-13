@@ -27,7 +27,7 @@ function player_misc(){
 	}
 
 	//Bottomless pit death event
-	if(y > obj_camera.target_bottom && y > obj_camera.limit_bottom)
+	if(y > obj_camera.target_bottom && y > obj_camera.limit_bottom && !disable_death)
 		_player_kill();
 	
 	// Reset the flags

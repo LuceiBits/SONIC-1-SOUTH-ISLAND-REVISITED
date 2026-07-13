@@ -37,6 +37,8 @@ function fade_update()
 		fade.buffer--
 		fade.buffer = clamp(fade.buffer, 0, 512);	
 	}
+	
+	show_debug_message(fade.buffer)
 }
 
 function fade_draw()

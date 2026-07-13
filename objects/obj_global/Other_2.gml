@@ -31,20 +31,6 @@
 	input_add_action(INPUT.C, "D", gp_face3);
 	input_add_action(INPUT.START, vk_enter, gp_start);
 	
-	#region // Bullshit to clean up
-	#macro SOUND_EXTRA_LIFE if (global.extra_life_jingle){ play_sound(j_extra_life)} else {play_sound(sfx_extralife)}
-	
-	enum BONUSSTAGE 
-	{
-		OUTSIDE,
-		GOING_TO,
-		INSIDE,
-		LEAVING,
-	}
-	
-	bonus_stage_trigger = false
-	#endregion
-	
 	//Controlers for dev mode
 	if(global.dev_mode) 
 	{

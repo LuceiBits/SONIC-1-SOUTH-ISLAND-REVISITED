@@ -1,18 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_checkpoint",
+  "%Name":"obj_bonus_cont",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":5,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_checkpoint",
+  "name":"obj_bonus_cont",
   "overriddenProperties":[],
   "parent":{
-    "name":"Checkpoint",
-    "path":"folders/Objects/Stage Objects/Common Objects/Checkpoint.yy",
+    "name":"Important",
+    "path":"folders/Objects/Stage Objects/Common Objects/Important.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,16 +26,11 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v2","%Name":"face_left","filters":[],"listItems":[],"multiselect":false,"name":"face_left","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_checkpoint_editor",
-    "path":"sprites/spr_checkpoint_editor/spr_checkpoint_editor.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

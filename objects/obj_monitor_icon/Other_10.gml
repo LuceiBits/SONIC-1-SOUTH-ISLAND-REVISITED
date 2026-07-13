@@ -44,7 +44,7 @@
 		break;
 		
 		case MONITOR.EXTRA_LIFE:
-			SOUND_EXTRA_LIFE;
+			music_play_jingle();
 			global.life += 1;
 		break;
 		

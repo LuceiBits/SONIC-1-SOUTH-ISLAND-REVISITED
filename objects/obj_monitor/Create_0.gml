@@ -8,7 +8,7 @@
 	
 	instance_register_culling();
 
-	if (!instance_exists(obj_bonus_level)) 
+	if (!instance_exists(obj_bonus_cont)) 
 	{
 		if (global.store_object_state[| id]) 
 		{

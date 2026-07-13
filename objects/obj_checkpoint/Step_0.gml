@@ -53,11 +53,25 @@
 		}
 		
 		var xoffset = ((star_radius >> 1)/2)+obj_player.hitbox_w
-		var yoffset = 4+obj_player.hitbox_h
+		var yoffset = 4 + obj_player.hitbox_h
 		
-		if (star_timer > 60 && obj_player.x > x-xoffset && obj_player.x < x+xoffset && obj_player.y > y-yoffset-star_ydiff+6 && obj_player.y < y+yoffset-star_ydiff+6)
+		if (star_timer > 60 && obj_player.x > x - xoffset && obj_player.x < x + xoffset && obj_player.y > y - yoffset - star_ydiff + 6 && obj_player.y < y + yoffset - star_ydiff + 6)
 		{
-			global.bonus_room = (global.rings >= MIN_BLUE_SPHERES) ? rm_blue_spheres : rm_bonus
-			global.bonus_stage_state = BONUSSTAGE.GOING_TO
+			obj_player.input_disable = true;
+			
+			play_sound(sfx_warp_into);
+			fade_to_room(rm_bonus, 2, FADE_WHITE, 30);
+			music_fade_channel(BGM, FADE_OUT, 3);
+			
+			global.store_player_state.combinering = obj_player.combinering;
+			global.store_player_state.shield = obj_player.shield;
+			global.store_player_state.rings = global.rings;
+			global.previous_room = room;
+			
+			global.process_objects = false;
+			bonus_stage_trigger = true;
+			
+			//global.bonus_room = (global.rings >= MIN_BLUE_SPHERES) ? rm_blue_spheres : rm_bonus
+			//global.bonus_stage_state = BONUSSTAGE.GOING_TO
 		}
 	}

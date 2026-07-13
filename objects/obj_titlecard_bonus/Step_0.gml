@@ -16,13 +16,11 @@
 		
 		obj_player.input_disable = false;
 		obj_level.disable_timer = false;	
-		obj_hud.slide_in = true;
+		obj_bonus_hud.slide_in = true;
 	}
 	
 	//Add title card timer
 	timer++;
-	
-	
 	
 	if(timer < 90)
 	{
@@ -37,6 +35,7 @@
 		offset[2] = (animcurve_channel_evaluate(c_channel_3, min(timer / 80,1)) * ((WINDOW_HEIGHT / 2) + 16)) - 16
 		offset[5] = animcurve_channel_evaluate(c_channel_1, min(timer / 80,1)) * 512
 	}
+	
 	if(timer > 90)
 	{
 		var curve = animcurve_get(curve_titlecard_leave)
@@ -53,9 +52,12 @@
 	if(timer <= 130)
 	{
 		obj_player.visible = false
-		if (instance_exists(par_shield)) {
+		
+		if (instance_exists(par_shield)) 
+		{
 			par_shield.visible = false
 		}
+		
 		obj_player.x_speed = 0
 		obj_player.y_speed = 0
 		obj_player.y = obj_player.ystart
@@ -81,7 +83,7 @@
 		
 		obj_player.input_disable = false;
 		obj_level.disable_timer = false;	
-		obj_hud.slide_in = true;
+		obj_bonus_hud.slide_in = true;
 		
 		//End card
 		if(timer = 200) {
