@@ -1,5 +1,5 @@
 	// You can edit these values for your own blue spheres level!
-	with(obj_bss)
+	with(obj_bss_controller)
 	{
 		stage_music = MUSIC.BLUE_SPHERES;	//Background music
 		ring_target = 64;					//Rings needed for PERFECT bonus

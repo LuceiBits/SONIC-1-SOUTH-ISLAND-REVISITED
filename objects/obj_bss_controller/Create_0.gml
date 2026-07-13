@@ -55,4 +55,4 @@ if (has_tail)
 	animation_play(tail_animator, BSS_ANIM.TAIL);
 }
 
-bss_bonus_stage_start();
+bss_special_stage_start();

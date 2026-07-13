@@ -368,7 +368,15 @@ switch (state)
 	case BSS_STATE.EMERALD: //BSS_Setup_State_GlobeEmerald
 		globe_timer += globe_speed;
 		spin_timer++;
-		if (spin_timer == 120) play_sound(sfx_shard_collect);
+		if (spin_timer == 120)
+		{
+			if (reward_is_emerald)
+			{
+				global.emeralds[emerald_index] = true; //award the emerald you just cleared for
+				play_sound(j_chaos_emerald);
+			}
+			else play_sound(sfx_shard_collect);
+		}
 		bss_stepped_objects();
 
 		if (globe_speed <= 0 && globe_timer < 0)

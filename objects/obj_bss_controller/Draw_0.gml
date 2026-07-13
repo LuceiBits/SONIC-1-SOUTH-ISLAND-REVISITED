@@ -83,7 +83,7 @@ for (var i = 0; i < fcount; i++)
 
 	var spark_n = sprite_get_number(spr_bss_ring_sparkle);
 	var spark_f = (tile == BSS_CELL.SPARKLE) ? min(global.bss.spark[idx] * spark_n div 16, spark_n - 1) : 0;
-	draw_bss_cell(tile, dx, dy, f, ring_spin, floor(medal_spin), spark_f);
+	draw_bss_cell(tile, dx, dy, f, ring_spin, floor(medal_spin), spark_f, emerald_index);
 }
 
 //Draw player

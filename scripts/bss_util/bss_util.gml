@@ -408,7 +408,7 @@ function bss_process_chain()
 
 // Draw one projected cell at screen (_x,_y), scale frame _f (0..31, 31 = closest).
 // Sphere/bumper subimages are pre-scaled, rings/medals scale a full-size sprite
-function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark) 
+function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark, _epal)
 {
 	switch (_t)
 	{
@@ -432,6 +432,12 @@ function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark)
 			var mspr = (_t == BSS_CELL.MEDAL_GOLD) ? spr_bss_medal_gold : spr_bss_medal_silver;
 			draw_sprite_ext(mspr, _medal mod sprite_get_number(mspr),
 				_x, _y - (global.bss.ringScreenY[_f] / 65536), ms, ms, 0, c_white, 1);
+			break;
+
+		case BSS_CELL.EMERALD_CHAOS:
+			palette_swap(tex_pal_bss_chaos_emeralds, _epal); //recolor to the awarded emerald's row
+			draw_sprite(spr_bss_chaos_emerald, _f div 2, _x, _y);
+			shader_reset();
 			break;
 
 		case BSS_CELL.BLUE_STOOD:  draw_sprite_ext(spr_bss_sphere_blue,  _f div 2, _x, _y, 1, 1, 0, c_white, 0.5); break;
@@ -498,7 +504,14 @@ function bss_setup_finish()
 	var fy = (player_y - ashr(cos256(angle), 5)) & 31;
 	var fp = fy + (32 * (fx & 31));
 
-	global.bss.pf[fp] = (ring_count > 0) ? BSS_CELL.MEDAL_SILVER : BSS_CELL.MEDAL_GOLD;
+	// Grant the next Chaos Emerald. Fall back to medals if all emeralds already collected.
+	emerald_index     = game_emerald_count();
+	reward_is_emerald = (emerald_index < array_length(global.emeralds));
+
+	if (reward_is_emerald)
+		global.bss.pf[fp] = BSS_CELL.EMERALD_CHAOS;
+	else
+		global.bss.pf[fp] = (ring_count > 0) ? BSS_CELL.MEDAL_SILVER : BSS_CELL.MEDAL_GOLD;
 }
 
 //---- BSS_Setup_HandleSteppedObjects port (runs every grounded frame) ----
@@ -824,7 +837,7 @@ function bss_update_collected()
 	}
 }
 
-function bss_bonus_stage_start()
+function bss_special_stage_start()
 {
 	global.bss.pf = [];
 	array_copy(global.bss.pf, 0, global.bss.pf_stage, 0, 1024);
@@ -857,6 +870,8 @@ function bss_bonus_stage_start()
 	turn_flip         = 0;
 	exit_timer        = 0;
 	medal_spin        = 0;
+	reward_is_emerald = false;
+	emerald_index     = 0;
 	bg_scroll_x       = 0;
 	bg_scroll_y       = 0;
 

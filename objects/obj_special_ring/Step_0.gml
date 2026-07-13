@@ -5,8 +5,18 @@
 	// Enter the ring
 	if(player_collide_object() && !entered)
 	{
+		if(game_has_all_emeralds())
+		{
+			global.rings += 50;
+			play_sound(sfx_special_ring);
+			create_effect(x, y, spr_special_ring_effect, 0.5);
+			global.special_ring_store[| id] = true;
+			instance_destroy();
+			exit;
+		}
+
 		entered = true;
-		
+
 		with(player)
 		{
 			visible = false;
@@ -42,8 +52,22 @@
 			global.special_ring_y = y;
 			
 			global.special_ring_store[| id] = true
-			
-			fade_to_room(rm_blue_spheres, 2, FADE_WHITE, 30);
+
+			// This project ships only one Blue Spheres room, so every special ring leads here.
+			var _bss_room = rm_blue_spheres;
+
+			/*
+				To set up seven separate special stages: first create your rooms
+				(example: rm_special_stage1 .. rm_special_stage1), uncomment the block below and
+				delete the single-room line above. You'll then be sent to the stage that
+				matches how many emeralds you have (0 emeralds -> stage 1, 1 -> stage 2, ...).
+
+				var _stages = [rm_special_stage1, rm_special_stage2, rm_special_stage3, rm_special_stage4,
+				               rm_special_stage5, rm_special_stage6, rm_special_stage7];
+				_bss_room = _stages[game_emerald_count()];
+			*/
+
+			fade_to_room(_bss_room, 2, FADE_WHITE, 30);
 			music_set_fade(FADE_OUT, 2);
 			
 			play_sound(sfx_warp_into);
