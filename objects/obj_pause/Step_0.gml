@@ -42,8 +42,15 @@
 		// Confirm the selection
 		if(input_press(INPUT.A) || input_press(INPUT.START))
 		{
-			sound_play(sfx_menu_select);
-			state = PAUSE_STATE.CONFIRM;
+			if(!allow_restart && selection == array_get_index(options_array, "RESTART"))
+			{
+				sound_play(sfx_menu_decline);
+			}
+			else
+			{
+				sound_play(sfx_menu_select);
+				state = PAUSE_STATE.CONFIRM;
+			}
 		}
 		break;
 		

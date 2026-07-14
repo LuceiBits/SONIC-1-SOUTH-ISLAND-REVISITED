@@ -3,6 +3,7 @@
 	timer = 0
 
 	options_array = ["CONTINUE", "RESTART", "EXIT"];
+	allow_restart = true;
 
 	background_rect_y = 0;
 	background_rect_alpha = 0.5;
@@ -38,7 +39,10 @@
 	animation_add(CHAR_KNUX, spr_hud_pause_mini_knux, [60, 16], 1, true, true);
 	
 	// Play the correct animation
-	animation_play(animator, player_find(0).character);
+	var char = global.character;
+	
+	if(instance_exists(obj_player)) char = player_find(0).character;
+	animation_play(animator, char);
 	
 	global.process_objects = false;
 	

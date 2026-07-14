@@ -6,13 +6,6 @@ if (view_camera[0] >= 0) {
 	camera_set_view_size(view_camera[0], WINDOW_WIDTH, WINDOW_HEIGHT);
 	camera_set_view_pos(view_camera[0], 0, 0);
 }
-
-//Pause
-if (input_active && input_press(INPUT.START) && !instance_exists(obj_pause) && !instance_exists(obj_game_over))
-{
-	global.process_objects = false;
-	instance_create_depth(0, 0, -100, obj_pause);
-}
 if (!global.process_objects) exit;
 
 //Input
@@ -53,7 +46,7 @@ else
 var cur_anim = animation_get_current_animation(animator);
 if (cur_anim == BSS_ANIM.WALK)
 {
-	walk_timer += abs(globe_speed div 2);
+	walk_timer += abs(globe_speed);
 	if (walk_timer > 31)
 	{
 		walk_timer &= 31;
@@ -70,7 +63,7 @@ if (cur_anim == BSS_ANIM.WALK)
 }
 else if (cur_anim >= BSS_ANIM.JUMP)
 {
-	roll_timer += max(abs(speedup_level), 16);
+	roll_timer += max(abs(speedup_level) / 2, 16);
 	if (roll_timer >= 16)
 	{
 		roll_timer -= 16;
@@ -82,7 +75,7 @@ else if (cur_anim >= BSS_ANIM.JUMP)
 //Tails' tail
 if (has_tail)
 {
-	animation_set_speed(tail_animator, (abs(speedup_level) + 40) / 96);
+	animation_set_speed(tail_animator, (abs(speedup_level) + 30) / 192);
 	animator_update(tail_animator);
 }
 

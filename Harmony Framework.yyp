@@ -396,6 +396,8 @@
     {"id":{"name":"sfx_jettison","path":"sounds/sfx_jettison/sfx_jettison.yy",},},
     {"id":{"name":"sfx_jump","path":"sounds/sfx_jump/sfx_jump.yy",},},
     {"id":{"name":"sfx_land","path":"sounds/sfx_land/sfx_land.yy",},},
+    {"id":{"name":"sfx_menu_back","path":"sounds/sfx_menu_back/sfx_menu_back.yy",},},
+    {"id":{"name":"sfx_menu_decline","path":"sounds/sfx_menu_decline/sfx_menu_decline.yy",},},
     {"id":{"name":"sfx_menu_select","path":"sounds/sfx_menu_select/sfx_menu_select.yy",},},
     {"id":{"name":"sfx_opendoor","path":"sounds/sfx_opendoor/sfx_opendoor.yy",},},
     {"id":{"name":"sfx_peelout_charge","path":"sounds/sfx_peelout_charge/sfx_peelout_charge.yy",},},
