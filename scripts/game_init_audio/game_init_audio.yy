@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"play_sound",
+  "%Name":"game_init_audio",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"play_sound",
+  "name":"game_init_audio",
   "parent":{
-    "name":"Misc. Scripts",
-    "path":"folders/Scripts/Engine Scripts/Misc. Scripts.yy",
+    "name":"Game Scripts",
+    "path":"folders/Scripts/Game Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

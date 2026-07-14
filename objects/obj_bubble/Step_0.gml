@@ -34,7 +34,7 @@
 			ground_speed = 0;
 			state = player_state_normal;
 			animation_play(animator, ANIM.BREATHE);
-			play_sound(sfx_breathe);
+			sound_play(sfx_breathe);
 		}
 		
 		instance_destroy();	

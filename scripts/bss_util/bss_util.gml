@@ -402,7 +402,7 @@ function bss_process_chain()
 	}
 
 	// Play ringloss sound
-	play_sound(sfx_ringloss);
+	sound_play(sfx_ringloss);
 	return collected;
 }
 
@@ -478,7 +478,7 @@ function bss_setup_start_info()
 function bss_collect_ring()
 {
 	rings_collected++;
-	play_sound(sfx_ring);
+	sound_play(sfx_ring);
 	if (ring_count > 0)
 	{
 		ring_count--;
@@ -489,7 +489,7 @@ function bss_collect_ring()
 			perfect_phase  = 0;
 			perfect_offset = 320;
 			perfect_wait   = 0;
-			play_sound(sfx_event);
+			sound_play(sfx_event);
 		}
 	}
 }
@@ -541,10 +541,10 @@ function bss_stepped_objects()
 					sphere_count = 0;
 					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
-					play_sound(sfx_jettison);
+					sound_play(sfx_jettison);
 					music_set_fade(FADE_OUT, 1);
 				} else {
-					play_sound(sfx_blue_sphere);
+					sound_play(sfx_blue_sphere);
 				}
 			}
 			break;
@@ -556,7 +556,7 @@ function bss_stepped_objects()
 				spin_timer = 0;
 				globe_timer = 0;
 				exit_result = "fail";
-				play_sound(sfx_warp_exit);
+				sound_play(sfx_warp_exit);
 				music_set_fade(FADE_OUT, 1);
 			}
 			break;
@@ -571,7 +571,7 @@ function bss_stepped_objects()
 						disable_bumpers = true;
 						globe_speed = -globe_speed;
 						player_was_bumped = false;
-						play_sound(sfx_bumper);
+						sound_play(sfx_bumper);
 					}
 				}
 				else if (spin_state == 0)
@@ -582,7 +582,7 @@ function bss_stepped_objects()
 						disable_bumpers = true;
 						globe_speed = -globe_speed;
 						player_was_bumped = false;
-						play_sound(sfx_bumper);
+						sound_play(sfx_bumper);
 					}
 				}
 			}
@@ -597,7 +597,7 @@ function bss_stepped_objects()
 				globe_speed *= 2;
 				spin_state = 0;
 				globe_speed_inc = 4;
-				play_sound(sfx_spring);
+				sound_play(sfx_spring);
 			}
 			break;
 
@@ -606,7 +606,7 @@ function bss_stepped_objects()
 			{
 				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : player_x, cy : player_y, t : 0 });
 				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
-				play_sound(sfx_blue_sphere);
+				sound_play(sfx_blue_sphere);
 			}
 			break;
 
@@ -617,7 +617,7 @@ function bss_stepped_objects()
 				spin_timer = 0;
 				globe_timer = 0;
 				tele_timer = 0;
-				play_sound(sfx_teleport);
+				sound_play(sfx_teleport);
 				fade_change(FADE_OUT, 6, FADE_WHITE); //Mania FXFade white flash, via the project fade system
 			}
 			break;
@@ -657,10 +657,10 @@ function bss_stepped_objects()
 					sphere_count = 0;
 					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
-					play_sound(sfx_jettison);
+					sound_play(sfx_jettison);
 					music_set_fade(FADE_OUT, 1);
 				} else {
-					play_sound(sfx_blue_sphere);
+					sound_play(sfx_blue_sphere);
 				}
 			}
 			break;
@@ -675,7 +675,7 @@ function bss_stepped_objects()
 				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
 				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 				exit_result = "fail";
-				play_sound(sfx_warp_exit);
+				sound_play(sfx_warp_exit);
 				music_set_fade(FADE_OUT, 1);
 			}
 			break;
@@ -693,7 +693,7 @@ function bss_stepped_objects()
 							disable_bumpers = true;
 							globe_speed = -globe_speed;
 							player_was_bumped = true;
-							play_sound(sfx_bumper);
+							sound_play(sfx_bumper);
 						}
 					}
 				}
@@ -704,7 +704,7 @@ function bss_stepped_objects()
 						disable_bumpers = true;
 						globe_speed = -globe_speed;
 						player_was_bumped = true;
-						play_sound(sfx_bumper);
+						sound_play(sfx_bumper);
 					}
 				}
 			}
@@ -719,7 +719,7 @@ function bss_stepped_objects()
 				globe_speed *= 2;
 				spin_state = 0;
 				globe_speed_inc = 4;
-				play_sound(sfx_spring);
+				sound_play(sfx_spring);
 			}
 			break;
 
@@ -728,7 +728,7 @@ function bss_stepped_objects()
 			{
 				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : posX, cy : posY, t : 0 });
 				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
-				play_sound(sfx_blue_sphere);
+				sound_play(sfx_blue_sphere);
 			}
 			break;
 
@@ -755,7 +755,7 @@ function bss_stepped_objects()
 				globe_timer = 0;
 				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
 				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
-				play_sound(sfx_warp_exit);
+				sound_play(sfx_warp_exit);
 			}
 			break;
 	}

@@ -31,7 +31,7 @@
 		shield_state = 1;
 		
 		//Play sound
-		play_sound(sfx_bubble_jump)
+		sound_play(sfx_bubble_jump)
 		
 		//Change animation
 		animation_play(animator, 1);	

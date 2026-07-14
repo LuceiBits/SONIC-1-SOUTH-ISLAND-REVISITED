@@ -71,7 +71,7 @@ function player_state_glide(){
 	if(wallCol < 1)
 	{
 		//Change direction
-		play_sound(sfx_grab);
+		sound_play(sfx_grab);
 		state = player_state_wallclimb;
 		exit;
 	}

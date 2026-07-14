@@ -217,11 +217,11 @@ function music_play_jingle()
 {
 	if (global.extra_life_jingle)
 	{ 
-		play_sound(j_extra_life)
+		sound_play(j_extra_life)
 	} 
 	else
 	{
-		play_sound(sfx_extralife)
+		sound_play(sfx_extralife)
 	}	
 }
 

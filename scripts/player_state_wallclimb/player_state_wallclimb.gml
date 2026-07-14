@@ -32,6 +32,7 @@ function player_state_wallclimb()
 	
 	// Wall collision
 	var wallCol = collision_get_distance(x + wall_w * facing, y, facing == 1 ? CMODE_LWALL : CMODE_RWALL, plane, false);
+	var wallColUpper = collision_get_distance(x + wall_w * facing, y - 4, facing == 1 ? CMODE_LWALL : CMODE_RWALL, plane, false);
 		
 	//Has reached the ground
 	if(ground && hold_down)
@@ -41,7 +42,7 @@ function player_state_wallclimb()
 			x += (wall_w - hitbox_h) * x_dir;
 			player_mode();
 			animation_play(animator, ANIM.ROLL);
-			play_sound(sfx_roll);
+			sound_play(sfx_roll);
 			control_lock = 4;
 			ground_speed = -2.5 * dsin(ground_angle);
 			state = player_state_roll;
@@ -55,7 +56,7 @@ function player_state_wallclimb()
 	//When there's no more wall
 	if(wallCol > 14)
 	{
-		if(mov == -1 || mov == 0)
+		if(wallColUpper > 14)
 		{
 			//If using smooth scroll
 			if(global.knux_camera_smooth)
@@ -70,8 +71,7 @@ function player_state_wallclimb()
 			state = player_state_ledgeclimb;
 			exit;
 		}
-		
-		if(mov == 1)
+		else
 		{
 			state = player_state_knuxfall;
 			exit;
@@ -88,7 +88,7 @@ function player_state_wallclimb()
 		y_speed = -4;
 		state = player_state_jump;
 		animation_play(animator, ANIM.ROLL);
-		play_sound(sfx_jump);
+		sound_play(sfx_jump);
 		exit;
 	}
 }

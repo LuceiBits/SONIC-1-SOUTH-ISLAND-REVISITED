@@ -47,7 +47,7 @@ if point_in_rectangle(player.x, player.y, x - 20, (y + 28) - 20,x + 20, (y + 28)
 		if (handle_dir == 0) {
 			handle_dir = 1;	
 		}
-		play_sound(sfx_handle_pull);
+		sound_play(sfx_handle_pull);
 		turns++;
 	} 
 }

@@ -31,7 +31,7 @@ if (on_ground)
 		on_ground = false;
 		animation_play(animator, BSS_ANIM.JUMP);
 		roll_timer = 0;
-		play_sound(sfx_jump);
+		sound_play(sfx_jump);
 	}
 }
 else
@@ -374,7 +374,7 @@ switch (state)
 		globe_timer += globe_speed;
 		spin_timer++;
 		if (spin_timer == 120)
-			play_sound(reward_is_emerald ? j_chaos_emerald : sfx_shard_collect);
+			sound_play(reward_is_emerald ? j_chaos_emerald : sfx_shard_collect);
 		bss_stepped_objects();
 
 		if (globe_speed <= 0 && globe_timer < 0)

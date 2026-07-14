@@ -13,7 +13,7 @@ function player_state_ledgeclimb(){
 	
 	//Values for ofsets during animation
 	positionarrayx = [0, 0, 11, 22, 22];
-	positionarrayy = [0,-16, -25, -20, -19];
+	positionarrayy = [0, -16, -25, -20, -19];
 	
 	//Get array length
 	length = array_length(positionarrayx) - 1;

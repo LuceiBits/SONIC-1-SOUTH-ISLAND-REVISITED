@@ -29,7 +29,7 @@ function player_state_spindash(){
 	if(press_action)
 	{
 		//Play spindash sound
-		play_sound(sfx_spindash);
+		sound_play(sfx_spindash);
 		
 		//Reset the spindash frame
 		if(animation_is_playing(animator, ANIM.SPINDASH))
@@ -55,7 +55,7 @@ function player_state_spindash(){
 		audio_stop_sound(sfx_spindash);
 		
 		//Play the release sound
-		play_sound(sfx_release);
+		sound_play(sfx_release);
 		
 		//Lag the camera
 		camera_set_lag(20 - spindash_rev);

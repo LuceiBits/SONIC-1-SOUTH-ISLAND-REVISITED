@@ -22,7 +22,7 @@
 			instance_create_particle(x, y, spr_effect_explosion01, 0.3);
 		
 			//Play destroying sound
-			play_sound(sfx_destroy);
+			sound_play(sfx_destroy);
 		
 			//Destroy badnik
 			if (!instance_exists(obj_bonus_cont)) {

@@ -12,7 +12,7 @@
     if(player_collide_object(C_MAIN) && obj_player.state != player_state_knockout)
     {
 		//Play the sound
-		play_sound(sfx_ring);
+		sound_play(sfx_ring);
 		
         //Add rings!
         global.rings += 1;    

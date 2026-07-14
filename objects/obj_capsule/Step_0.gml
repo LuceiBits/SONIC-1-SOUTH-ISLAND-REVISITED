@@ -68,7 +68,7 @@
 		//Exploder
 		if(timer < 32 && timer mod 4 = 1){
 			instance_create_particle(x+random_range(-32, 32), y + 32 + random_range(-32, 32), spr_effect_explosion02, 0.3);
-			play_sound(sfx_destroy);
+			sound_play(sfx_destroy);
 		}
 		
 		//Act clear

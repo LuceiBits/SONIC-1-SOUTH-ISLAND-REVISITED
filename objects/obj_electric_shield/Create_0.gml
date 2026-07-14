@@ -20,7 +20,7 @@
 		shield_state = 1;
 		
 		//Play sound
-		play_sound(sfx_electric_shield_jump)
+		sound_play(sfx_electric_shield_jump)
 		
 		//Make shield sparkles
 		for (var i = 0; i < 4; ++i) 

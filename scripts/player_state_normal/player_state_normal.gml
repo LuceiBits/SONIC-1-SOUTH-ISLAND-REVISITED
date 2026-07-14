@@ -105,7 +105,7 @@ function player_state_normal(){
 			if(sign(ground_speed) != 0)
 				facing = sign(ground_speed);
 				
-			play_sound(sfx_skid);
+			sound_play(sfx_skid);
 		}
 		
 		var ledgeSensor = collision_get_distance(x, y + hitbox_h, mode, plane, true);

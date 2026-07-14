@@ -55,12 +55,12 @@
 		}
 
 		if (FRAME_TIMER mod 4 == 0 && (ring_bonus > 0 || perfect_bonus > 0))
-			play_sound(sfx_scoreadd);
+			sound_play(sfx_scoreadd);
 
 		//No more count down, switch to ending events
 		if (ring_bonus == 0 && perfect_bonus == 0)
 		{
-			play_sound(sfx_scoretally);
+			sound_play(sfx_scoretally);
 			timer = 0;
 			if (heading == "gotall") super_shown = true;
 			state = 1;
@@ -83,7 +83,7 @@
 	//GOT THEM ALL!: scroll the heading out, slide the super message in
 	if (state == 2)
 	{
-		if (timer == 1) play_sound(sfx_event);
+		if (timer == 1) sound_play(sfx_event);
 		heading_off -= 16;
 		if (timer > 16) super_off = max(super_off - 16, 0);
 		if (timer > 8 && !audio_is_playing(sfx_event)) end_wait++;

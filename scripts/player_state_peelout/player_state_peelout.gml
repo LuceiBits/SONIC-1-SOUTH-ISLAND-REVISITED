@@ -41,7 +41,7 @@ function player_state_peelout(){
 		audio_stop_sound(sfx_peelout_charge);
 		
 		//Play the release sound
-		play_sound(sfx_peelout_release);
+		sound_play(sfx_peelout_release);
 		
 		//Set player's speed and back to normal state
 		ground_speed = (2+(spindash_rev / 2.9)) * facing;

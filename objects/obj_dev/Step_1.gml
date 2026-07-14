@@ -71,7 +71,7 @@
 		if(keyboard_check(ord("1")))
 		{
 			global.rings++;
-			play_sound(sfx_ring);
+			sound_play(sfx_ring);
 		}
 		
 		//Give the player extra life
@@ -110,7 +110,7 @@
 		if(keyboard_check_pressed(ord("6")))
 		{
 			obj_player.combinering = 1;
-			play_sound(sfx_combinering);
+			sound_play(sfx_combinering);
 		}
 		
 		//Hurt the player

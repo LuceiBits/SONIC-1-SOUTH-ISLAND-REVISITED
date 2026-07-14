@@ -33,5 +33,7 @@ function player_misc(){
 	// Reset the flags
 	ledge = 0;
 	pushing = 0;
+	
+	last_on_object = on_object;
 	on_object = false;
 }

@@ -48,7 +48,7 @@ function player_state_jump(){
 			insta_shield_ptr = instance_create_depth(x, y, depth - 10, obj_insta_shield);
 			insta_shield_ptr.player = id;
 		
-			play_sound(sfx_insta_shield);
+			sound_play(sfx_insta_shield);
 		}
 	}
 	
@@ -78,7 +78,7 @@ function player_state_jump(){
 		//Trigger the dropdash state
 		if(dropdash_timer >= 8 && state != player_state_dropdash)
 		{
-			play_sound(sfx_dropdash);
+			sound_play(sfx_dropdash);
 			state = player_state_dropdash;
 			exit;
 		}
@@ -138,7 +138,7 @@ function player_check_jump()
 		player_reposition_mode(CMODE_FLOOR);
 			
 		//Play the sound
-		play_sound(sfx_jump);
+		sound_play(sfx_jump);
 		return true;
 	}
 }

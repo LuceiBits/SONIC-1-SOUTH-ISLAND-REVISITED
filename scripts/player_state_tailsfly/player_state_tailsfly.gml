@@ -33,12 +33,12 @@ function player_state_tailsfly(){
 	{
 		if(!audio_is_playing(sfx_tailsfly) && tails_timer != 0)
 		{
-			play_sound(sfx_tailsfly, true);
+			sound_play(sfx_tailsfly, true);
 			audio_stop_sound(sfx_tailstired);
 		}
 		if(!audio_is_playing(sfx_tailstired) && tails_timer = 0)
 		{
-			play_sound(sfx_tailstired, true);
+			sound_play(sfx_tailstired, true);
 			audio_stop_sound(sfx_tailsfly);
 		}
 	}
