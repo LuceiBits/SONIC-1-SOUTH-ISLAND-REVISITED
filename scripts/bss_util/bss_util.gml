@@ -542,7 +542,7 @@ function bss_stepped_objects()
 					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
 					play_sound(sfx_jettison);
-					music_fade_channel(BGM, FADE_OUT, 1);
+					music_set_fade(FADE_OUT, 1);
 				} else {
 					play_sound(sfx_blue_sphere);
 				}
@@ -557,7 +557,7 @@ function bss_stepped_objects()
 				globe_timer = 0;
 				exit_result = "fail";
 				play_sound(sfx_warp_exit);
-				music_fade_channel(BGM, FADE_OUT, 1);
+				music_set_fade(FADE_OUT, 1);
 			}
 			break;
 
@@ -658,7 +658,7 @@ function bss_stepped_objects()
 					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
 					play_sound(sfx_jettison);
-					music_fade_channel(BGM, FADE_OUT, 1);
+					music_set_fade(FADE_OUT, 1);
 				} else {
 					play_sound(sfx_blue_sphere);
 				}
@@ -676,7 +676,7 @@ function bss_stepped_objects()
 				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 				exit_result = "fail";
 				play_sound(sfx_warp_exit);
-				music_fade_channel(BGM, FADE_OUT, 1);
+				music_set_fade(FADE_OUT, 1);
 			}
 			break;
 
@@ -920,7 +920,9 @@ function bss_special_stage_start()
 	exit_timer        = 0;
 	medal_spin        = 0;
 	reward_is_emerald = false;
+	emerald_was_new   = false;
 	emerald_index     = 0;
+	exit_result       = "";
 	bg_scroll_x       = 0;
 	bg_scroll_y       = 0;
 
