@@ -8,6 +8,8 @@
 	hitbox_bottom_offset = 0;
 	hitbox_right_offset = 0;
 	
+	shield_last = shield;
+	
 	//Player input scripts
 	player_get_input();
 	

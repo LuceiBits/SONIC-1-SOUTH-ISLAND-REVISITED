@@ -25,7 +25,6 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 		// Hurt the player if not invincible
 		if(invincible_timer == 0 && insta_shield_invincible == 0 && !invincible)
 		{
-			//hurt_position = hazard_x;
 			knockout_type = hurt_type;
 			
 			switch(hurt_type)
@@ -51,22 +50,22 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 					if(hurt_type == K_HURT)
 					{
 						//Remove the shield when player gets hurt
-						if(shield != S_NONE)
+						if(shield != SHIELD.NONE)
 						{
-							shield = S_NONE;
+							shield = SHIELD.NONE;
 							sound_play(sfx_hurt);
 							exit;
 						}
 					
 						//Commit ring loss when player gets hurt
-						if(global.rings == 0 && shield == S_NONE)
+						if(global.rings == 0 && shield == SHIELD.NONE)
 						{
 							_player_kill();
 							exit;	
 						}
 						
 						// Lose the combine ring
-						if(shield == S_NONE && combinering != 0)
+						if(shield == SHIELD.NONE && combinering != 0)
 						{
 							//Chaotix combine ring
 							var combi = instance_create_depth(x, y, depth-1, obj_combine_ring);
@@ -80,7 +79,7 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 						}
 						
 						// Lose all of your rings
-						if(shield == S_NONE && !combinering)
+						if(shield == SHIELD.NONE && !combinering)
 						{
 							instance_create_ringloss(global.rings);	
 							sound_play(sfx_ringloss);

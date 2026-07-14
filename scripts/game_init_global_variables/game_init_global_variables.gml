@@ -32,7 +32,7 @@ function game_init_global_variables()
 	global.previous_room = rm_splash
 	global.store_player_state = 
 	{
-		shield : S_NONE,
+		shield : SHIELD.NONE,
 		combinering : 0,
 		rings : 0
 	};

@@ -105,8 +105,18 @@
 	start_depth = depth;				// Starting depth when object has been created
 	
 	//Shields:
-	shield = global.store_player_state.shield;					//Shield that player is currently using
-	shield_list = [obj_shield, obj_fire_shield, obj_electric_shield, obj_bubble_shield];	//The shield list
+	shield = global.store_player_state.shield;	// Shield that player is currently using
+	shield_last = 0;
+	shield_state = 0;
+	shield_list = [								// Shield execution list
+		player_shield_normal,
+		player_shield_fire,
+		player_shield_null,
+		player_shield_null,
+	];							
+	shield_obj = noone;
+	
+	// Combine ring
 	combinering =  global.store_player_state.combinering;
 	combineloss = 0;
 	

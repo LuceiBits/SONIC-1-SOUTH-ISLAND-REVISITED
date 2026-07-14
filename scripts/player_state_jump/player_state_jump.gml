@@ -28,19 +28,8 @@ function player_state_jump(){
 	//execute shield ability
 	if(press_action && character == CHAR_SONIC)
 	{
-		if(instance_exists(par_shield)) 
-		{
-			with(par_shield) 
-			{
-				if(use_allow && shield_state == 0) 
-				{
-					script_execute(jump) 
-				}
-			}
-		}
-		
 		// Create insta shield
-		if(global.use_insta_shield && !insta_shield_used && (shield == S_NONE || shield == S_NORMAL))
+		if(global.use_insta_shield && !insta_shield_used && (shield == SHIELD.NONE || shield == SHIELD.NORMAL))
 		{
 			insta_shield_invincible = 16;
 			insta_shield_used = true;

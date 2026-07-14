@@ -53,7 +53,7 @@
 	// Shields
 	enum SHIELD
 	{
-		NONE,
+		NONE = -1,
 		NORMAL,
 		FIRE,
 		ELECTRIC,

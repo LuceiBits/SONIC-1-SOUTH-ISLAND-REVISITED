@@ -17,7 +17,30 @@ function player_states(){
 	//State allowing flags:
 	can_jump = false;
 	can_roll = false;
-
+	
+	if(shield_last != shield)
+		show_debug_message("FUCK")
+	
+	// Run the shield system
+	if(shield != -1)
+	{
+		//if(array_length(shield_list) < shield)
+		{
+			script_execute(shield_list[shield]);
+		}
+	}
+	else
+	{
+		instance_destroy(shield_obj);	
+	}
+	
+	// Create the shield graphic
+	if(!instance_exists(obj_shield_graphic) && shield != SHIELD.NONE)
+	{
+		shield_obj = instance_create_depth(x, y, depth - 10, obj_shield_graphic);	
+		shield_obj.parent = id;
+	}
+	
 	script_execute(state);	
 	player_state_conditions();
 	
@@ -41,7 +64,7 @@ function player_state_conditions()
 		insta_shield_used = false;
 	
 	//Reset the timer
-	if(state != player_state_jump || state == player_state_dropdash || shield != S_NONE && shield != S_NORMAL && !invincible)
+	if(state != player_state_jump || state == player_state_dropdash || shield != SHIELD.NONE && shield != SHIELD.NORMAL && !invincible)
 	{
 		dropdash_timer = 0;
 	}

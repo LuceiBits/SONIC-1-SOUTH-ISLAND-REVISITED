@@ -88,7 +88,7 @@ function player_water()
 	//Aquaphobia
 	if(underwater)
 	{
-		if (shield != S_BUBBLE) 
+		if (shield != SHIELD.BUBBLE) 
 		{
 			//bubbles
 			if (bubble_delay > 0 && (air % bubble_delay == 0))

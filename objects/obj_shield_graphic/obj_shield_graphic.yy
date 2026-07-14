@@ -1,24 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_fire_shield",
+  "%Name":"obj_shield_graphic",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_fire_shield",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_shield","path":"objects/par_shield/par_shield.yy",},"propertyId":{"name":"shield_id","path":"objects/par_shield/par_shield.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
-  ],
+  "name":"obj_shield_graphic",
+  "overriddenProperties":[],
   "parent":{
-    "name":"Shields",
-    "path":"folders/Objects/Player Objects/Shields.yy",
+    "name":"Harmony Framework",
+    "path":"Harmony Framework.yyp",
   },
-  "parentObjectId":{
-    "name":"par_shield",
-    "path":"objects/par_shield/par_shield.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

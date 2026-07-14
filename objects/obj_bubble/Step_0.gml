@@ -24,7 +24,7 @@
 	var player = player_find(0);
 	
 	//Suck it!
-	if(player_collide_object([-8, -8, 8, 8]) && !player.ground && player.shield != S_BUBBLE && animation_is_playing(animator, 2) && animation_has_finished(animator))
+	if(player_collide_object([-8, -8, 8, 8]) && !player.ground && player.shield != SHIELD.BUBBLE && animation_is_playing(animator, 2) && animation_has_finished(animator))
 	{
 		with(player)
 		{
