@@ -28,6 +28,8 @@
 		obj_camera.target_y = obj_player.y - 16;
 		
 		global.stage_timer = global.time_store;
+		
+		global.checkpoint_type = CHECKPOINT.NORMAL;
 	}
 	
 	if(level_state == LEVEL_STATE.BONUS)
