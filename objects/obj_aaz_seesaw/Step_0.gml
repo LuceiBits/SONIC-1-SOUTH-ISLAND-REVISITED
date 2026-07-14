@@ -57,7 +57,7 @@
 		player.y += floor(left_platform_y - oldYL);
 		
 		// Launch the weight
-		if(weight == 16 && weight_ground && !weight_landed)
+		if(weight != -16 && weight_ground && !weight_landed)
 		{
 			weight_ground = false;
 			weight_grav = -8;
