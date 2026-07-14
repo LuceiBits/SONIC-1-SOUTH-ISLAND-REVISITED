@@ -3,27 +3,27 @@
 	{
 		case MONITOR.RINGS:
 			global.rings += 10;
-			play_sound(sfx_superring);
+			sound_play(sfx_superring);
 		break;
 		
 		case MONITOR.SHIELD:
-			obj_player.shield = S_NORMAL;
-			play_sound(sfx_shield);
+			obj_player.shield = SHIELD.NORMAL;
+			sound_play(sfx_shield);
 		break;
 		
 		case MONITOR.ELECTRIC_SHIELD:
-			obj_player.shield = S_ELECTRIC;
-			play_sound(sfx_shield_electric);
+			obj_player.shield = SHIELD.ELECTRIC;
+			sound_play(sfx_shield_electric);
 		break;
 		
 		case MONITOR.FIRE_SHIELD:
-			obj_player.shield = S_FIRE;
-			play_sound(sfx_shield_fire);
+			obj_player.shield = SHIELD.FIRE;
+			sound_play(sfx_shield_fire);
 		break;
 		
 		case MONITOR.BUBBLE_SHIELD:
-			obj_player.shield = S_BUBBLE;
-			play_sound(sfx_shield_bubble);
+			obj_player.shield = SHIELD.BUBBLE;
+			sound_play(sfx_shield_bubble);
 		break;
 		
 		case MONITOR.INVINCIBLE:
@@ -50,7 +50,7 @@
 		
 		case MONITOR.COMBINE_RING:
 			obj_player.combinering = 1;
-			play_sound(sfx_combinering);
+			sound_play(sfx_combinering);
 		break;
 		
 	}

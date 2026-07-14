@@ -9,7 +9,7 @@
 	size_y = sprite_height / 16;
 	
 	//Play sound
-	play_sound(sfx_break1);
+	sound_play(sfx_break1);
 
 	//Collapsing platform's bounding box in 16x16 size
 	min_x = floor(x / 16.0);

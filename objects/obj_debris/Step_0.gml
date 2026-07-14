@@ -11,4 +11,4 @@
 	image_angle += angle_speed;
 	
 	//Destroy off screen
-	if(!on_screen(64, 64)) instance_destroy();
+	if(!instance_on_screen(64, 64)) instance_destroy();

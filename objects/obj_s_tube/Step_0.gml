@@ -6,7 +6,7 @@
 			//Play the sound
 			if(obj_player.state != player_state_roll)
 			{
-				play_sound(sfx_roll);	
+				sound_play(sfx_roll);	
 			}
 			
 			obj_player.force_roll = true;
@@ -25,7 +25,7 @@
 			//Play the sound
 			if(obj_player.state != player_state_roll)
 			{
-				play_sound(sfx_roll);	
+				sound_play(sfx_roll);	
 			}
 			
 			obj_player.force_roll = true;

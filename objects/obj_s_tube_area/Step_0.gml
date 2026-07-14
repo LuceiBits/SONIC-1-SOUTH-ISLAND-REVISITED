@@ -14,7 +14,7 @@
 			{
 				state = player_state_roll;
 				animation_play(animator, ANIM.ROLL);
-				play_sound(sfx_roll);
+				sound_play(sfx_roll);
 			}
 		}
 	}

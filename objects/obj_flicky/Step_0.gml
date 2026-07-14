@@ -49,7 +49,7 @@
 	{
 		with(obj_capsule)
 		{
-			if(on_screen())	
+			if(instance_on_screen())	
 			{
 				if(other.delay = 0)
 				{
@@ -60,5 +60,5 @@
 	}
 	
 	//Destroy offscreen
-	if(!on_screen(32, 32)) 
+	if(!instance_on_screen(32, 32)) 
 		instance_destroy();

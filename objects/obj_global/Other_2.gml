@@ -12,7 +12,7 @@
 	game_init_global_variables();
 	game_init_font();
 	game_init_collision();	
-	game_init_music_list();
+	game_init_audio();
 	
 	// Controllers init
 	input_init();

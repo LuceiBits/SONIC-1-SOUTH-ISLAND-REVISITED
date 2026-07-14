@@ -27,7 +27,7 @@
 		ds_list_add(global.checkpoint, id);
 		
 		//Play sound
-		play_sound(sfx_checkpoint);
+		sound_play(sfx_checkpoint);
 	}
 	
 	//Spin the checkpoint
@@ -41,11 +41,15 @@
 		star_angle_x = (star_angle_x + 18) mod 512;
 		star_angle_y = (star_angle_y + 4) mod 512;
 		
-		if star_timer < 128 {star_radius++}
-		if star_timer > 384 {star_radius--} //472 in Mania 
+		if (star_timer < 128) 
+			star_radius++;
+		
+		if (star_timer > (MAX_STAR_TIMER-128)) //The maximum star timer minus 128, to change it, change the value in `MAX_STAR_TIMER`
+			star_radius--;
+		
 		star_timer++
 		
-		if (star_timer == 512) //600 in Mania (You can add "|| !on_screen()" but it sucks)
+		if (star_timer == MAX_STAR_TIMER) //(You can add "|| !on_screen()" but it sucks)
 		{
 			showing_stars = false;
 			star_timer = 0;
@@ -59,7 +63,7 @@
 		{
 			obj_player.input_disable = true;
 			
-			play_sound(sfx_warp_into);
+			sound_play(sfx_warp_into);
 			fade_to_room(rm_bonus, 2, FADE_WHITE, 30);
 			music_fade_channel(BGM, FADE_OUT, 3);
 			

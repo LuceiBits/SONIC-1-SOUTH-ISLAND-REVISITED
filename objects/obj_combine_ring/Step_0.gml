@@ -11,9 +11,9 @@
 	//Shatter the big ring
 	if(timer > 256)
 	{
-		create_ringloss(rings);
-		play_sound(sfx_dust);
-		play_sound(sfx_ringloss);
+		instance_create_ringloss(rings);
+		sound_play(sfx_dust);
+		sound_play(sfx_ringloss);
 		obj_player.combineloss = 0;
 		instance_destroy();	
 	}
@@ -23,18 +23,18 @@
 	{
 		global.rings += rings;	
 		instance_destroy();
-		play_sound(sfx_ring);
+		sound_play(sfx_ring);
 		obj_player.combineloss = 0;
 		for (var i = 0; i < 4; ++i) {
-		    create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
+		    instance_create_particle(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 		}
 	}
 	
 	//Create effects
 	if(FRAME_TIMER mod 8 == 0)
 	{
-		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
-		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
+		instance_create_particle(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
+		instance_create_particle(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 	}
 	
 	//Add speeds to position

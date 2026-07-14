@@ -17,7 +17,7 @@
 	dir = sign(obj_player.ground_speed);
 	
 	//Play sound
-	play_sound(sfx_break1);
+	sound_play(sfx_break1);
 
 	//Get positions
 	var startX	= dir == 1 ? bbox_right : x;

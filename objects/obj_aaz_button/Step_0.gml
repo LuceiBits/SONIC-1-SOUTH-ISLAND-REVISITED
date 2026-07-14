@@ -8,7 +8,7 @@
 	{
 		if(image_index == 0 && triggered)
 		{
-			play_sound(sfx_beep);
+			sound_play(sfx_beep);
 		}
 		
 		image_index = 1;
@@ -24,7 +24,7 @@
 	                if (move_once && moved) 
 						continue;
 	                state = DOOR.MOVING;
-					play_sound(sfx_opendoor);
+					sound_play(sfx_opendoor);
 	            }
 	        }
 		}

@@ -25,7 +25,6 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 		// Hurt the player if not invincible
 		if(invincible_timer == 0 && insta_shield_invincible == 0 && !invincible)
 		{
-			//hurt_position = hazard_x;
 			knockout_type = hurt_type;
 			
 			switch(hurt_type)
@@ -51,28 +50,28 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 					if(hurt_type == K_HURT)
 					{
 						//Remove the shield when player gets hurt
-						if(shield != S_NONE)
+						if(shield != SHIELD.NONE)
 						{
-							shield = S_NONE;
-							play_sound(sfx_hurt);
+							shield = SHIELD.NONE;
+							sound_play(sfx_hurt);
 							exit;
 						}
 					
 						//Commit ring loss when player gets hurt
-						if(global.rings == 0 && shield == S_NONE)
+						if(global.rings == 0 && shield == SHIELD.NONE)
 						{
 							_player_kill();
 							exit;	
 						}
 						
 						// Lose the combine ring
-						if(shield == S_NONE && combinering != 0)
+						if(shield == SHIELD.NONE && combinering != 0)
 						{
 							//Chaotix combine ring
 							var combi = instance_create_depth(x, y, depth-1, obj_combine_ring);
 							combi.rings = global.rings;
 							combi.x_speed = 1 * facing;
-							play_sound(sfx_hurt);
+							sound_play(sfx_hurt);
 							global.rings = 0;
 							combineloss = 1;
 							combinering = 0;
@@ -80,17 +79,17 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 						}
 						
 						// Lose all of your rings
-						if(shield == S_NONE && !combinering)
+						if(shield == SHIELD.NONE && !combinering)
 						{
-							create_ringloss(global.rings);	
-							play_sound(sfx_ringloss);
+							instance_create_ringloss(global.rings);	
+							sound_play(sfx_ringloss);
 							global.rings = 0;
 							exit;
 						}
 					}
 					else
 					{
-						play_sound(sfx_hurt);
+						sound_play(sfx_hurt);
 					}
 					
 				break;
@@ -205,7 +204,8 @@ function player_react_solid(result)
 	{
 		// Position the object
 		o.x = colX;	
-			
+		clamp_storex = colX;
+		
 		// Stop the object from moving
 		var spdVal = o.ground ? "ground_speed" : "x_speed";
 		var spd = variable_instance_get(o, spdVal);
@@ -301,7 +301,7 @@ function _player_kill()
 	camera_set_mode(CAM_NULL);
 			
 	//Play the hurt sound
-	play_sound(sfx_hurt);
+	sound_play(sfx_hurt);
 }
 
 function _player_draw_after_images()

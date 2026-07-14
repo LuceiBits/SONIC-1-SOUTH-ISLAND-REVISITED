@@ -59,17 +59,7 @@ function player_state_glide(){
 	
 	//Adjust angle
 	knuckles_angle = math_approach(knuckles_angle, 90 * facing, 2.8125);
-	
-	if (animation_is_playing(animator, ANIM.KNUXGLIDETURN)) {
-		if (facing == 1)
-		{
-			animation_set_frame(animator, 2 + (knuckles_angle/ 45));
-		} else 
-		{
-			animation_set_frame(animator, 5 - (2 + (knuckles_angle/ 45)));
-		}
-	}
-	
+
 	if(animation_has_finished(animator) && animation_is_playing(animator, ANIM.KNUXGLIDETURN))
 	{
 		
@@ -81,7 +71,7 @@ function player_state_glide(){
 	if(wallCol < 1)
 	{
 		//Change direction
-		play_sound(sfx_grab);
+		sound_play(sfx_grab);
 		state = player_state_wallclimb;
 		exit;
 	}

@@ -49,3 +49,14 @@
 		NORMAL,
 		SPECIAL_RING
 	}
+	
+	// Shields
+	enum SHIELD
+	{
+		NONE = -1,
+		NORMAL,
+		FIRE,
+		ELECTRIC,
+		BUBBLE,
+		END,
+	}

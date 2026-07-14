@@ -26,7 +26,7 @@
 			break;
 		}
 		
-		play_sound(sfx_spring);
+		sound_play(sfx_spring);
 	}
 	
 	if(c == C_BOTTOM && sign(image_yscale) == -1)
@@ -49,7 +49,7 @@
 			break;
 		}
 		
-		play_sound(sfx_spring);
+		sound_play(sfx_spring);
 	}
 	
 	//Stop the animation

@@ -26,8 +26,8 @@ function player_water()
 			if(FRAME_TIMER mod 4 == 0 && global.water_running_effect == 1)
 			{
 				//Create effects
-				create_effect(obj_player.x, obj_water.y, spr_water_splash, 0.35, obj_player.depth - 1);
-				play_sound(sfx_water_splash);	
+				instance_create_particle(obj_player.x, obj_water.y, spr_water_splash, 0.35, obj_player.depth - 1);
+				sound_play(sfx_water_splash);	
 			}
 		}
 		
@@ -36,7 +36,7 @@ function player_water()
 		
 		// Play the water run sound
 		if(global.water_running_effect == 0 && !audio_is_playing(sfx_water_run))
-			play_sound(sfx_water_run, true);
+			sound_play(sfx_water_run, true);
 	}
 	
 	// Stop the water run sound
@@ -55,10 +55,10 @@ function player_water()
 			y_speed *= 0.25;
 			
 			//Create effects
-			create_effect(x, obj_water.y, spr_water_splash, 0.35);
+			instance_create_particle(x, obj_water.y, spr_water_splash, 0.35);
 			
 			//Play sound
-			play_sound(sfx_water_splash);
+			sound_play(sfx_water_splash);
 		}
 		
 		//Trigger the flag
@@ -75,10 +75,10 @@ function player_water()
 			y_speed *= 1.25;
 			
 			//Create effects
-			create_effect(x, obj_water.y, spr_water_splash, 0.35);
+			instance_create_particle(x, obj_water.y, spr_water_splash, 0.35);
 			
 			//Play sound
-			play_sound(sfx_water_splash);
+			sound_play(sfx_water_splash);
 		}
 		
 		//Trigger the flag
@@ -88,7 +88,7 @@ function player_water()
 	//Aquaphobia
 	if(underwater)
 	{
-		if (shield != S_BUBBLE) 
+		if (shield != SHIELD.BUBBLE) 
 		{
 			//bubbles
 			if (bubble_delay > 0 && (air % bubble_delay == 0))
@@ -134,7 +134,7 @@ function player_water()
 		case 6 * 60:
 		case 12 * 60:
 		case 18 * 60:
-			play_sound(sfx_air_warning);
+			sound_play(sfx_air_warning);
 		break;
 		
 		// Play the drowning theme
@@ -156,7 +156,7 @@ function player_water()
 		break;
 		// The end, drown the player
 		case 32 * 60:
-			play_sound(sfx_drown);
+			sound_play(sfx_drown);
 			camera_set_mode(CAM_NULL);
 			state = player_state_drown;
 			x_speed = 0;

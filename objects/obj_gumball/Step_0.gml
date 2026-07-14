@@ -12,32 +12,32 @@ image_speed = 0;
 if (player_collide_object(C_MAIN) && !obj_player.input_disable){
 	switch (reward){
 		case GUMBALL.BUBBLE:
-			play_sound(sfx_burst);
+			sound_play(sfx_burst);
 			instance_destroy();
 		break;
 		case GUMBALL.NORMAL:
-			play_sound(sfx_shield);
+			sound_play(sfx_shield);
 			obj_player.shield = S_NORMAL;
 			instance_destroy();
 		break;
 		case GUMBALL.AQUA:
-			play_sound(sfx_shield_bubble);
+			sound_play(sfx_shield_bubble);
 			obj_player.shield = S_BUBBLE;
 			instance_destroy();
 		break;
 		case GUMBALL.ELECTRIC:
-			play_sound(sfx_shield_electric);
+			sound_play(sfx_shield_electric);
 			obj_player.shield = S_ELECTRIC;
 			instance_destroy();
 		break;
 		case GUMBALL.FLAME:
-			play_sound(sfx_shield_fire)
+			sound_play(sfx_shield_fire)
 			obj_player.shield = S_FIRE;
 			instance_destroy();
 		break;
 		case GUMBALL.RINGS:
 			global.rings += 10;
-			play_sound(sfx_ring);
+			sound_play(sfx_ring);
 			instance_destroy();
 		break;
 		case GUMBALL.ONEUP:
@@ -46,7 +46,7 @@ if (player_collide_object(C_MAIN) && !obj_player.input_disable){
 			instance_destroy();
 		break;
 		case GUMBALL.REPOSITION:
-			play_sound(sfx_burst);
+			sound_play(sfx_burst);
 			var spring = obj_crumple_spring;
 			spring.y = spring.ystart;
 			spring.crumple = false;
@@ -57,7 +57,7 @@ if (player_collide_object(C_MAIN) && !obj_player.input_disable){
 			instance_destroy();
 		break;
 		case GUMBALL.BUMPER:
-			play_sound(sfx_rubber);
+			sound_play(sfx_rubber);
 			var player = instance_nearest(x,y,obj_player);
 			var angle = point_direction(x,y,player.x,player.y);
 			player.x_speed = BUMPER_FACTOR * dcos(angle);

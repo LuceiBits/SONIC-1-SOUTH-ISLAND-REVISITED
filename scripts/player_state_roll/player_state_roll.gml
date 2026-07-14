@@ -78,7 +78,7 @@ function player_check_roll()
 		idle_timer = 0;
 			
 		//Play the sound
-		play_sound(sfx_roll);
+		sound_play(sfx_roll);
 		return true;				// Needed for exit
 	}
 }

@@ -31,4 +31,4 @@
 	skipped = false;
 	
 	fade_in_room(3);
-	play_sound(j_harmony_splash);
+	sound_play(j_harmony_splash);

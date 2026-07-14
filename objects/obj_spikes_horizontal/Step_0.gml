@@ -9,7 +9,7 @@
 	{
 		var player = player_find(0)
 		if(player.invincible_timer == 0 && player.insta_shield_invincible == 0)
-			play_sound(sfx_spike);
+			sound_play(sfx_spike);
 			
 		player_hurt(center_x);
 	}

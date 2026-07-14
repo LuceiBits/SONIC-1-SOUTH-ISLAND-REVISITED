@@ -57,12 +57,12 @@
 		player.y += floor(left_platform_y - oldYL);
 		
 		// Launch the weight
-		if(weight == 16 && weight_ground && !weight_landed)
+		if(weight != -16 && weight_ground && !weight_landed)
 		{
 			weight_ground = false;
 			weight_grav = -8;
 			
-			play_sound(sfx_spring);
+			sound_play(sfx_spring);
 		}
 		
 		// Launch the player when the weight lands
@@ -76,7 +76,7 @@
 				ground = false;
 			}	
 			
-			play_sound(sfx_spring);
+			sound_play(sfx_spring);
 			weight_landed = false;
 		}
 	}
@@ -91,11 +91,11 @@
 	// Standing on the right platform
 	if(platformRight)
 	{
-		// Crush the player
-		if(weightCollision == C_BOTTOM)
-			player_hurt(0, K_DIE);	
-	
 		stepping_side = 1;
 		player.y += floor(right_platform_y - oldYR);
 	}
+	
+	// Crush the player
+	if(weightCollision == C_BOTTOM && player.ground)
+		player_hurt(0, K_DIE);	
 	

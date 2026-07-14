@@ -65,7 +65,7 @@
 		
 		//Play sound
 		if(FRAME_TIMER mod 4 = 0 && time_bonus > 0 || FRAME_TIMER mod 4 = 0 && ring_bonus > 0)
-			play_sound(sfx_scoreadd);
+			sound_play(sfx_scoreadd);
 		
 		//Skip the count down
 		if(actionPress && time_bonus > 0)
@@ -86,7 +86,7 @@
 		
 		//No more count down, switch to ending events
 		if(time_bonus = 0 && ring_bonus = 0){
-			play_sound(sfx_scoretally);
+			sound_play(sfx_scoretally);
 			timer = 0;
 			state = 1;
 		}

@@ -14,7 +14,7 @@
 		if(v != 0)
 		{
 			select = math_wrap(select + v, 0, array_length(option_name));
-			play_sound(sfx_beep);	
+			sound_play(sfx_beep);	
 		}
 		
 		if(select < array_length(option_name))
@@ -27,7 +27,7 @@
 			
 			if(input_press(INPUT.A) || input_press(INPUT.START))
 			{
-				play_sound(sfx_menu_select);
+				sound_play(sfx_menu_select);
 				returning = true;	
 			}
 		}
@@ -35,7 +35,7 @@
 		// Change the options
 		if(h != 0)
 		{
-			play_sound(sfx_beep);
+			sound_play(sfx_beep);
 			
 			switch(select)
 			{
@@ -56,7 +56,7 @@
 		
 		if(input_press(INPUT.B))
 		{
-			play_sound(sfx_menu_select);
+			sound_play(sfx_menu_select);
 			returning = true;		
 		}
 		

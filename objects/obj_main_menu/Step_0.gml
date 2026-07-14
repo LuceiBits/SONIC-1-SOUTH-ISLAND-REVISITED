@@ -28,7 +28,7 @@
 			{
 				select = math_wrap(select + i, 0, array_length(selections) - 1);	
 		
-				play_sound(sfx_beep);
+				sound_play(sfx_beep);
 			}
 	
 			if(input_press(INPUT.A) || input_press(INPUT.START))
@@ -36,7 +36,7 @@
 				selected = true;
 				selected_timer = 0;
 		
-				play_sound(sfx_menu_select);
+				sound_play(sfx_menu_select);
 			}
 		}
 		

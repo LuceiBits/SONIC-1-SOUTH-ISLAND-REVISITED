@@ -25,6 +25,6 @@
 	//Turn into dust
 	if(timer = 36)
 	{
-		play_sound(sfx_dust);
+		sound_play(sfx_dust);
 		dust_effect(0);
 	}

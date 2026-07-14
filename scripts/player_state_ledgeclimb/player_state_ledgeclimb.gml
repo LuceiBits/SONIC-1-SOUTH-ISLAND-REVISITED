@@ -4,7 +4,6 @@ function player_state_ledgeclimb(){
 	movement_allow = false;
 	direction_allow = false;
 	gravity_allow = false;
-	collision_allow = false;
 	
 	//Change animation
 	animation_play(animator, ANIM.KNUXLEDGE);
@@ -14,7 +13,7 @@ function player_state_ledgeclimb(){
 	
 	//Values for ofsets during animation
 	positionarrayx = [0, 0, 11, 22, 22];
-	positionarrayy = [0,-16, -25, -20, -19];
+	positionarrayy = [0, -16, -25, -20, -19];
 	
 	//Get array length
 	length = array_length(positionarrayx) - 1;
@@ -24,7 +23,7 @@ function player_state_ledgeclimb(){
 	x = clamp_storex + positionarrayx[min(frame, length)] * facing;
 	y = clamp_storey + positionarrayy[min(frame, length)];
 	x_speed = 0;
-	y_speed = 0
+	y_speed = 0;
 	
 	//Set camera target
 	obj_camera.knux_offset_x = clamp_storex + (positionarrayx[length] * facing);

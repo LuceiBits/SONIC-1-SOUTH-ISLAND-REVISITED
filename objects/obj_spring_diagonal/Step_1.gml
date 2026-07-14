@@ -9,7 +9,7 @@
 		animator.animation_finished = false;
 		inside_trigger = true;
 		triggered = true;
-		play_sound(sfx_spring);
+		sound_play(sfx_spring);
 			
 		//Player stuff
 		var player = instance_nearest(x, y, obj_player)

@@ -60,6 +60,7 @@
 	ground = true;						// Check used to check if player is on ground or not
 	debug = false;						// Check if player is in debug mode or not
 	on_object = false;					// Check for if player is on object
+	last_on_object = on_object;
 	on_terrain = false;
 	touching_ceiling = false;			// Check if player is inside of a ceiling
 	underwater = false;					// Check if player is underwater or not
@@ -104,8 +105,18 @@
 	start_depth = depth;				// Starting depth when object has been created
 	
 	//Shields:
-	shield = global.store_player_state.shield;					//Shield that player is currently using
-	shield_list = [obj_shield, obj_fire_shield, obj_electric_shield, obj_bubble_shield];	//The shield list
+	shield = global.store_player_state.shield;	// Shield that player is currently using
+	shield_last = 0;
+	shield_state = 0;
+	shield_list = [								// Shield execution list
+		player_shield_normal,
+		player_shield_fire,
+		player_shield_null,
+		player_shield_null,
+	];							
+	shield_obj = noone;
+	
+	// Combine ring
 	combinering =  global.store_player_state.combinering;
 	combineloss = 0;
 	

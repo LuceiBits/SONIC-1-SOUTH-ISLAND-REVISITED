@@ -13,7 +13,7 @@
 	if(player.x > x - player.ground_speed && !triggered)
 	{
 		//Play sound
-		play_sound(sfx_signpost);
+		sound_play(sfx_signpost);
 		
 		//Lock the camera
 		obj_camera.target_left = x - obj_camera.center_x;
@@ -49,8 +49,8 @@
 	//Bump the sign
 	if(triggered && y_speed > 0 && player_collide_object(C_TOP) && player.y_speed < 0 && !player.ground)
 	{
-		play_sound(sfx_twinkle);
-		create_score(0, -48);
+		sound_play(sfx_twinkle);
+		instance_create_score(0, -48);
 		global.score += 100;
 		obj_level.badnik_chain = 1;
 		
@@ -74,7 +74,7 @@
 		ground = true;
 		x_speed = 0;
 		y_speed = 0;
-		play_sound(sfx_slide);
+		sound_play(sfx_slide);
 	}
 	
 	//Wall detection
@@ -89,8 +89,8 @@
 	//Sparkle effects
 	if(angle != 180 && triggered && FRAME_TIMER mod 12 == 0)
 	{
-		create_effect(x + random_range(-24, 24), (y - 32) + random_range(-16, 16), spr_ring_sparkle, 0.2);
-		create_effect(x + random_range(-24, 24), (y - 32) + random_range(-16, 16), spr_ring_sparkle, 0.2);
+		instance_create_particle(x + random_range(-24, 24), (y - 32) + random_range(-16, 16), spr_ring_sparkle, 0.2);
+		instance_create_particle(x + random_range(-24, 24), (y - 32) + random_range(-16, 16), spr_ring_sparkle, 0.2);
 	}
 	
 	
@@ -117,7 +117,7 @@
 			
 			y_speed = -2.75;
 			instance_destroy(monitor);	
-			play_sound(sfx_bubble_jump);
+			sound_play(sfx_bubble_jump);
 			global.monitor_store[global.monitor_id] = new_monitor;
 			global.monitor_id += 1;
 			

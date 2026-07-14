@@ -14,7 +14,7 @@
 	angle = (angle + 2.8125) mod 360;
 	
 	//Destroy outside of window or above water horizon
-	if(!on_screen() || bbox_top < obj_water.y) 
+	if(!instance_on_screen() || bbox_top < obj_water.y) 
 	{
 		instance_destroy();
 		exit;
@@ -24,7 +24,7 @@
 	var player = player_find(0);
 	
 	//Suck it!
-	if(player_collide_object([-8, -8, 8, 8]) && !player.ground && player.shield != S_BUBBLE && animation_is_playing(animator, 2) && animation_has_finished(animator))
+	if(player_collide_object([-8, -8, 8, 8]) && !player.ground && player.shield != SHIELD.BUBBLE && animation_is_playing(animator, 2) && animation_has_finished(animator))
 	{
 		with(player)
 		{
@@ -34,7 +34,7 @@
 			ground_speed = 0;
 			state = player_state_normal;
 			animation_play(animator, ANIM.BREATHE);
-			play_sound(sfx_breathe);
+			sound_play(sfx_breathe);
 		}
 		
 		instance_destroy();	

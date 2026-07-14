@@ -31,7 +31,7 @@ if (on_ground)
 		on_ground = false;
 		animation_play(animator, BSS_ANIM.JUMP);
 		roll_timer = 0;
-		play_sound(sfx_jump);
+		sound_play(sfx_jump);
 	}
 }
 else
@@ -360,6 +360,11 @@ switch (state)
 			speedup_level = 8;
 			globe_speed = 8;
 			bss_setup_finish();
+			if (reward_is_emerald)
+			{
+				emerald_was_new = !global.emeralds[emerald_index]; //new, or a replay of one we own?
+				global.emeralds[emerald_index] = true;             //award it
+			}
 			input_active = false;
 			state = BSS_STATE.EMERALD;
 		}
@@ -369,14 +374,7 @@ switch (state)
 		globe_timer += globe_speed;
 		spin_timer++;
 		if (spin_timer == 120)
-		{
-			if (reward_is_emerald)
-			{
-				global.emeralds[emerald_index] = true; //award the emerald you just cleared for
-				play_sound(j_chaos_emerald);
-			}
-			else play_sound(sfx_shard_collect);
-		}
+			sound_play(reward_is_emerald ? j_chaos_emerald : sfx_shard_collect);
 		bss_stepped_objects();
 
 		if (globe_speed <= 0 && globe_timer < 0)
@@ -417,13 +415,38 @@ switch (state)
 
 		spin_timer += 2;
 
-		//Fade to black while spinning
-		fade_change(FADE_OUT, 3, FADE_BLACK);
+		//The clear plays after an emerald or a red-sphere bail-out. A medal just leaves
+		var _show_clear = reward_is_emerald || (exit_result == "fail");
+
+		//Fade out while spinning
+		fade_change(FADE_OUT, 3, _show_clear ? FADE_WHITE : FADE_BLACK);
 		exit_timer++;
-		
-		if (exit_timer >= 90 && obj_global.fade.timer == 0) 
+
+		if (exit_timer >= 90 && obj_global.fade.timer == 0)
 		{
-			room_goto(global.previous_room);
+			if (_show_clear)
+			{
+				//Create special stage clear object
+				var _clear = instance_create_depth(0, 0, 0, obj_special_stage_clear);
+				if (reward_is_emerald)
+				{
+					if (emerald_was_new && game_has_all_emeralds()) _clear.heading = "gotall";
+					else if (emerald_was_new)  _clear.heading = "gotone";
+					else _clear.heading = "chaos";
+					_clear.perfect = (ring_count <= 0);
+				}
+				else //bailed out on a red sphere
+				{
+					_clear.heading = "chaos";
+					_clear.perfect = false;
+				}
+				_clear.rings = rings_collected;
+				instance_destroy();
+			}
+			else
+			{
+				room_goto(global.previous_room);
+			}
 		}
 		break;
 }

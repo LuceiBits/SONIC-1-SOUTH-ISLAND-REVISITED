@@ -27,7 +27,7 @@
 	
 	audio_pause_all();
 	
-	play_sound(sfx_menu_select);
+	sound_play(sfx_menu_select);
 	
 	// Create the animator
 	animator = new animator_create();
