@@ -9,12 +9,12 @@
 	
 	if (!permanent) 
 	{
-		if (!on_screen(64,64) && !offscreen && triggered) 
+		if (!instance_on_screen(64,64) && !offscreen && triggered) 
 		{
 			offscreen = true	
 		}
 		//refresh all tiles when reemerging on screen
-		if (on_screen(64,64) && offscreen && triggered) 
+		if (instance_on_screen(64,64) && offscreen && triggered) 
 		{
 			offscreen = false	
 			var target_tile_layers = string_split(target_layer,",", true)
@@ -47,7 +47,7 @@
 	else 
 	{
 		//double checks to clear all tiles if the collapsing platform is permanent
-		if (!on_screen(64,64) && triggered && !offscreen) 
+		if (!instance_on_screen(64,64) && triggered && !offscreen) 
 		{
 			event_user(2)
 			offscreen = true

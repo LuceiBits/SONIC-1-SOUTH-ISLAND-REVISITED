@@ -26,7 +26,7 @@ function player_water()
 			if(FRAME_TIMER mod 4 == 0 && global.water_running_effect == 1)
 			{
 				//Create effects
-				create_effect(obj_player.x, obj_water.y, spr_water_splash, 0.35, obj_player.depth - 1);
+				instance_create_particle(obj_player.x, obj_water.y, spr_water_splash, 0.35, obj_player.depth - 1);
 				play_sound(sfx_water_splash);	
 			}
 		}
@@ -55,7 +55,7 @@ function player_water()
 			y_speed *= 0.25;
 			
 			//Create effects
-			create_effect(x, obj_water.y, spr_water_splash, 0.35);
+			instance_create_particle(x, obj_water.y, spr_water_splash, 0.35);
 			
 			//Play sound
 			play_sound(sfx_water_splash);
@@ -75,7 +75,7 @@ function player_water()
 			y_speed *= 1.25;
 			
 			//Create effects
-			create_effect(x, obj_water.y, spr_water_splash, 0.35);
+			instance_create_particle(x, obj_water.y, spr_water_splash, 0.35);
 			
 			//Play sound
 			play_sound(sfx_water_splash);

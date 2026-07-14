@@ -14,7 +14,7 @@
 	angle = (angle + 2.8125) mod 360;
 	
 	//Destroy outside of window or above water horizon
-	if(!on_screen() || bbox_top < obj_water.y) 
+	if(!instance_on_screen() || bbox_top < obj_water.y) 
 	{
 		instance_destroy();
 		exit;

@@ -25,6 +25,6 @@
 		//Make shield sparkles
 		for (var i = 0; i < 4; ++i) 
 		{
-		    create_effect(x, y, spr_electric_sparks, 1, depth + 1, 2 * dsin(45+(90*i)), 2 * dcos(45+(90*i)))
+		    instance_create_particle(x, y, spr_electric_sparks, 1, depth + 1, 2 * dsin(45+(90*i)), 2 * dcos(45+(90*i)))
 		}	
 	}

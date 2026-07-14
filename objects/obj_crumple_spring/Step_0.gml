@@ -45,7 +45,7 @@
 	}
 	
 	if (crumple) {
-		if (!on_screen()){
+		if (!instance_on_screen()){
 			collision_flag = false	
 			visible = false
 			fall_speed = 0

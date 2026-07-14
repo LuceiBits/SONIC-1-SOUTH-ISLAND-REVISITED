@@ -3,7 +3,7 @@
 	draw_sprite(spr_aaz_swing_point, 0, x, y+8);
 	
 	//Chain code
-	if(on_screen(16 * chain_amount, 16 * chain_amount))
+	if(instance_on_screen(16 * chain_amount, 16 * chain_amount))
 	{
 		for(var i = 1; i < chain_amount; i++)
 		{

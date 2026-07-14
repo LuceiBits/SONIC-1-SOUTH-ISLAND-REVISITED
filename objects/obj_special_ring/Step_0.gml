@@ -9,7 +9,7 @@
 		{
 			global.rings += 50;
 			play_sound(sfx_special_ring);
-			create_effect(x, y, spr_special_ring_effect, 0.5);
+			instance_create_particle(x, y, spr_special_ring_effect, 0.5);
 			global.special_ring_store[| id] = true;
 			instance_destroy();
 			exit;
@@ -29,7 +29,7 @@
 		
 		visible = false;
 		
-		create_effect(x, y, spr_special_ring_effect, 0.5);
+		instance_create_particle(x, y, spr_special_ring_effect, 0.5);
 		play_sound(sfx_special_ring);
 	}
 	

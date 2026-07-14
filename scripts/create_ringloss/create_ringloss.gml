@@ -1,4 +1,5 @@
-function create_ringloss(ring_counter){
+function create_ringloss(ring_counter)
+{
 	var ring_angle = 101.25;
 	var flip = false
 	var spd = 4

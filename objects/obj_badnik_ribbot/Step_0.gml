@@ -23,7 +23,7 @@
 			y += c;
 			
 			// Play spring sound when on screen
-			if(origin_on_screen(32, 32))
+			if(instance_origin_on_screen(32, 32))
 			{
 				var jump_sound = play_sound(sfx_spring);
 				audio_sound_pitch(jump_sound, 1.5);

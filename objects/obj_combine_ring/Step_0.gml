@@ -26,15 +26,15 @@
 		play_sound(sfx_ring);
 		obj_player.combineloss = 0;
 		for (var i = 0; i < 4; ++i) {
-		    create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
+		    instance_create_particle(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 		}
 	}
 	
 	//Create effects
 	if(FRAME_TIMER mod 8 == 0)
 	{
-		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
-		create_effect(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
+		instance_create_particle(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
+		instance_create_particle(x + random_range(-16, 16), y + random_range(-16, 16), spr_ring_sparkle, 0.2);	
 	}
 	
 	//Add speeds to position

@@ -8,4 +8,4 @@
 	y_speed += 0.2;
 	
 	//Destroy outside
-	if(!on_screen()) instance_destroy();
+	if(!instance_on_screen()) instance_destroy();

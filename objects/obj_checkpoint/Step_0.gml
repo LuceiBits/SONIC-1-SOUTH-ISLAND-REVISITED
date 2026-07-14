@@ -45,7 +45,7 @@
 		if star_timer > 384 {star_radius--} //472 in Mania 
 		star_timer++
 		
-		if (star_timer == 512) //600 in Mania (You can add "|| !on_screen()" but it sucks)
+		if (star_timer == 512) //600 in Mania (You can add "|| !instance_on_screen()" but it sucks)
 		{
 			showing_stars = false;
 			star_timer = 0;
