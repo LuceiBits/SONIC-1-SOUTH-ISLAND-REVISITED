@@ -24,7 +24,7 @@
 			animation_play(obj_player.animator, ANIM.ROLL);
 			
 			//Play sound
-			play_sound(sfx_bubble_jump)
+			sound_play(sfx_bubble_jump)
 		}
 		
 		//Reset shield state

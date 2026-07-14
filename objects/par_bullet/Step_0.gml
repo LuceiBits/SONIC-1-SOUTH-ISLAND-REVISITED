@@ -29,7 +29,7 @@
 		}
 	}
 	//Destroy off screen
-	if(!on_screen(64, 64)) 
+	if(!instance_on_screen(64, 64)) 
 	{
 		instance_destroy();
 	}

@@ -13,7 +13,7 @@
 	{
 		triggered = true;
 		animator.animation_finished = false;
-		play_sound(sfx_spring);
+		sound_play(sfx_spring);
 		
 		if(player.ground && !detach_sides || player.ground && player.mode == 0 && detach_sides)
 		{

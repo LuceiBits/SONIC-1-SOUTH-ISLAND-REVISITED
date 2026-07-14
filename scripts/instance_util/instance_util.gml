@@ -310,6 +310,137 @@ function instance_create_bullet(sprite, animation_speed, x, y, obj_depth, x_spee
 	return bullet;
 }
 
+function instance_on_screen(RegionW = 16, RegionH = 16) 
+{
+	var c, cx, cy, sw, sh;
+	c = view_camera[view_current]
+	cx = camera_get_view_x(c)
+	cy = camera_get_view_y(c)
+	sw = global.window_width;
+	sh = global.window_height;
+ 
+	if(bbox_right > cx-RegionW && bbox_left < cx + sw +  RegionW && bbox_bottom > cy - RegionH && (bbox_top < cy + sh+RegionH)) 
+		return true;
+}
+
+function instance_origin_on_screen(RegionW = 16, RegionH = 16, origin_x = xstart, origin_y = ystart) 
+{
+	var c, cx, cy, sw, sh;
+	c = view_camera[view_current]
+	cx = camera_get_view_x(c)
+	cy = camera_get_view_y(c)
+	sw = global.window_width;
+	sh = global.window_height;
+ 
+	if(origin_x > cx-RegionW && origin_x < cx + sw +  RegionW && origin_y > cy - RegionH && (origin_y < cy + sh+RegionH)) 
+		return true;
+}
+
+function instance_create_particle(X, Y, sprite, anim_speed, obj_depth = depth - 1, x_speed = 0, y_speed = 0, x_accel = 0, y_accel = 0)
+{
+	//Create and get the object
+	var o = instance_create_depth(X, Y, obj_depth, obj_effect);
+	
+	//Set the sprite and animation speed
+	o.sprite = sprite;
+	o.sprite_speed = anim_speed;
+	
+	// Play the animation
+	with(o)
+		animation_play_no_list(animator, sprite, anim_speed, false);
+	
+	//Physics properties
+	o.x_speed = x_speed;
+	o.y_speed = y_speed;
+	o.x_accel = x_accel;
+	o.y_accel = y_accel;
+	
+	//Return the instance
+	return o;
+}
+
+function instance_create_debris(posx, posy, sprite, anim_speed, x_speed, y_speed, anim_frame = 0, grav = 0.2, angle = 0, angle_speed = 0, obj_depth = depth-1, xscale = 1, yscale = 1)
+{
+	var debris = instance_create_depth(posx, posy, obj_depth, obj_debris);
+	debris.sprite_index = sprite;
+	debris.image_speed = anim_speed;
+	debris.image_index = anim_frame;
+	debris.image_angle = angle;
+	debris.image_xscale = xscale;
+	debris.image_yscale = yscale;
+	debris.angle_speed = angle_speed;
+	debris.x_speed = x_speed;
+	debris.y_speed = y_speed;
+	debris.grav = grav;
+}
+
+function instance_create_score(offx = 0, offy = 0)
+{
+	//Crate score object
+	var Object = instance_create_depth(x+offx, y+offy, depth-1, obj_score_effect);
+	
+	//Add score depending on the chain
+	if(obj_level.badnik_chain = 1){
+		Object.image_index = 0;
+		global.score += 100;
+	}
+	
+	if(obj_level.badnik_chain = 2){
+		Object.image_index = 1;
+		global.score += 200;
+	}
+	
+	if(obj_level.badnik_chain = 3){
+		Object.image_index = 2;
+		global.score += 500;
+	}
+	
+	if(obj_level.badnik_chain >= 4 && obj_level.badnik_chain <= 15){
+		Object.image_index = 3;
+		global.score += 1000;
+	}
+	
+	if(obj_level.badnik_chain >= 16){
+		Object.image_index = 4;
+		global.score += 10000;
+	}
+}
+
+function instance_create_ringloss(ring_counter)
+{
+	var ring_angle = 101.25;
+	var flip = false
+	var spd = 4
+	var max_ring = min(ring_counter, 32);
+	
+	//Create rings
+	for (var i = 1; i <= max_ring; ++i)
+	{
+	    //Create ring objects
+	    var ring = instance_create_depth(x, y, depth, obj_ring);
+	    ring.x_speed = dcos(ring_angle) * spd;
+	    ring.y_speed = -dsin(ring_angle) * spd;
+		ring.ringloss = true;
+		ring.culling_struct.type = CULL_TYPE.DISABLE;
+		
+	    //Make ring go in circle
+	    if(flip)
+	    {
+			ring.x_speed *= -1;
+	        ring_angle += 22.5;
+	    }
+    
+	    //Toggle flip flag
+	    flip = !flip;
+    
+	    //Inner circle
+	    if (i = 16)
+	    {
+	        spd = 2;
+			ring_angle = 101.25;
+	    }
+	}
+}
 // ===========================================================================================================
 // Utilities internal functions
 // ===========================================================================================================

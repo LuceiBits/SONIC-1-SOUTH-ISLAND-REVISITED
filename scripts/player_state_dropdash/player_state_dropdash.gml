@@ -46,9 +46,9 @@ function player_state_dropdash(){
 		dropdash_timer = 0;
 		if(audio_is_playing(sfx_dropdash)) audio_stop_sound(sfx_dropdash);
 		if (!super){
-			play_sound(sfx_release);
+			sound_play(sfx_release);
 		} else {
-			play_sound(sfx_peelout_release);	
+			sound_play(sfx_peelout_release);	
 		}
 		
 		//Camera lag
@@ -59,12 +59,12 @@ function player_state_dropdash(){
 		{
 			for (var i = 0; i < 8; ++i) 
 			{
-			     create_effect(x - hitbox_w * facing, y + hitbox_h, spr_dust_effect, 0.4, depth-1, (2.5 * facing) * dcos(random_range(180, 270)), 2.5 * dsin(random_range(180, 270)));
+			     instance_create_particle(x - hitbox_w * facing, y + hitbox_h, spr_dust_effect, 0.4, depth-1, (2.5 * facing) * dcos(random_range(180, 270)), 2.5 * dsin(random_range(180, 270)));
 			}
 		}
 		else
 		{
-			var o = create_effect(floor(x) - hitbox_w * facing, floor(y) + hitbox_h, spr_effects_dropdash_dust, 0.4, depth-1);
+			var o = instance_create_particle(floor(x) - hitbox_w * facing, floor(y) + hitbox_h, spr_effects_dropdash_dust, 0.4, depth-1);
 			o.image_xscale = facing;
 		}
 	}

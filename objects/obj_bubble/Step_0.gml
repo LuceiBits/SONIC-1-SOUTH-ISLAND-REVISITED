@@ -14,7 +14,7 @@
 	angle = (angle + 2.8125) mod 360;
 	
 	//Destroy outside of window or above water horizon
-	if(!on_screen() || bbox_top < obj_water.y) 
+	if(!instance_on_screen() || bbox_top < obj_water.y) 
 	{
 		instance_destroy();
 		exit;
@@ -34,7 +34,7 @@
 			ground_speed = 0;
 			state = player_state_normal;
 			animation_play(animator, ANIM.BREATHE);
-			play_sound(sfx_breathe);
+			sound_play(sfx_breathe);
 		}
 		
 		instance_destroy();	

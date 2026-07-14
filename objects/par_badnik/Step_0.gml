@@ -16,13 +16,13 @@
 		
 			//Create score object and add combo and badnik chain
 			obj_level.badnik_chain += 1;
-			create_score();
+			instance_create_score();
 		
 			//Create explosion effect
-			create_effect(x, y, spr_effect_explosion01, 0.3);
+			instance_create_particle(x, y, spr_effect_explosion01, 0.3);
 		
 			//Play destroying sound
-			play_sound(sfx_destroy);
+			sound_play(sfx_destroy);
 		
 			//Destroy badnik
 			if (!instance_exists(obj_bonus_cont)) {

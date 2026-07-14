@@ -402,7 +402,7 @@ function bss_process_chain()
 	}
 
 	// Play ringloss sound
-	play_sound(sfx_ringloss);
+	sound_play(sfx_ringloss);
 	return collected;
 }
 
@@ -478,7 +478,7 @@ function bss_setup_start_info()
 function bss_collect_ring()
 {
 	rings_collected++;
-	play_sound(sfx_ring);
+	sound_play(sfx_ring);
 	if (ring_count > 0)
 	{
 		ring_count--;
@@ -489,7 +489,7 @@ function bss_collect_ring()
 			perfect_phase  = 0;
 			perfect_offset = 320;
 			perfect_wait   = 0;
-			play_sound(sfx_event);
+			sound_play(sfx_event);
 		}
 	}
 }
@@ -541,10 +541,10 @@ function bss_stepped_objects()
 					sphere_count = 0;
 					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
-					play_sound(sfx_jettison);
-					music_fade_channel(BGM, FADE_OUT, 1);
+					sound_play(sfx_jettison);
+					music_set_fade(FADE_OUT, 1);
 				} else {
-					play_sound(sfx_blue_sphere);
+					sound_play(sfx_blue_sphere);
 				}
 			}
 			break;
@@ -556,8 +556,8 @@ function bss_stepped_objects()
 				spin_timer = 0;
 				globe_timer = 0;
 				exit_result = "fail";
-				play_sound(sfx_warp_exit);
-				music_fade_channel(BGM, FADE_OUT, 1);
+				sound_play(sfx_warp_exit);
+				music_set_fade(FADE_OUT, 1);
 			}
 			break;
 
@@ -571,7 +571,7 @@ function bss_stepped_objects()
 						disable_bumpers = true;
 						globe_speed = -globe_speed;
 						player_was_bumped = false;
-						play_sound(sfx_bumper);
+						sound_play(sfx_bumper);
 					}
 				}
 				else if (spin_state == 0)
@@ -582,7 +582,7 @@ function bss_stepped_objects()
 						disable_bumpers = true;
 						globe_speed = -globe_speed;
 						player_was_bumped = false;
-						play_sound(sfx_bumper);
+						sound_play(sfx_bumper);
 					}
 				}
 			}
@@ -597,7 +597,7 @@ function bss_stepped_objects()
 				globe_speed *= 2;
 				spin_state = 0;
 				globe_speed_inc = 4;
-				play_sound(sfx_spring);
+				sound_play(sfx_spring);
 			}
 			break;
 
@@ -606,7 +606,7 @@ function bss_stepped_objects()
 			{
 				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : player_x, cy : player_y, t : 0 });
 				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
-				play_sound(sfx_blue_sphere);
+				sound_play(sfx_blue_sphere);
 			}
 			break;
 
@@ -617,7 +617,7 @@ function bss_stepped_objects()
 				spin_timer = 0;
 				globe_timer = 0;
 				tele_timer = 0;
-				play_sound(sfx_teleport);
+				sound_play(sfx_teleport);
 				fade_change(FADE_OUT, 6, FADE_WHITE); //Mania FXFade white flash, via the project fade system
 			}
 			break;
@@ -657,10 +657,10 @@ function bss_stepped_objects()
 					sphere_count = 0;
 					state = BSS_STATE.JETTISON;
 					spin_timer = 0;
-					play_sound(sfx_jettison);
-					music_fade_channel(BGM, FADE_OUT, 1);
+					sound_play(sfx_jettison);
+					music_set_fade(FADE_OUT, 1);
 				} else {
-					play_sound(sfx_blue_sphere);
+					sound_play(sfx_blue_sphere);
 				}
 			}
 			break;
@@ -675,8 +675,8 @@ function bss_stepped_objects()
 				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
 				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
 				exit_result = "fail";
-				play_sound(sfx_warp_exit);
-				music_fade_channel(BGM, FADE_OUT, 1);
+				sound_play(sfx_warp_exit);
+				music_set_fade(FADE_OUT, 1);
 			}
 			break;
 
@@ -693,7 +693,7 @@ function bss_stepped_objects()
 							disable_bumpers = true;
 							globe_speed = -globe_speed;
 							player_was_bumped = true;
-							play_sound(sfx_bumper);
+							sound_play(sfx_bumper);
 						}
 					}
 				}
@@ -704,7 +704,7 @@ function bss_stepped_objects()
 						disable_bumpers = true;
 						globe_speed = -globe_speed;
 						player_was_bumped = true;
-						play_sound(sfx_bumper);
+						sound_play(sfx_bumper);
 					}
 				}
 			}
@@ -719,7 +719,7 @@ function bss_stepped_objects()
 				globe_speed *= 2;
 				spin_state = 0;
 				globe_speed_inc = 4;
-				play_sound(sfx_spring);
+				sound_play(sfx_spring);
 			}
 			break;
 
@@ -728,7 +728,7 @@ function bss_stepped_objects()
 			{
 				array_push(collected, { ce : BSS_COLLECT.GREEN, cx : posX, cy : posY, t : 0 });
 				global.bss.pf[fp] = BSS_CELL.GREEN_STOOD;
-				play_sound(sfx_blue_sphere);
+				sound_play(sfx_blue_sphere);
 			}
 			break;
 
@@ -755,7 +755,7 @@ function bss_stepped_objects()
 				globe_timer = 0;
 				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
 				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
-				play_sound(sfx_warp_exit);
+				sound_play(sfx_warp_exit);
 			}
 			break;
 	}
@@ -920,7 +920,9 @@ function bss_special_stage_start()
 	exit_timer        = 0;
 	medal_spin        = 0;
 	reward_is_emerald = false;
+	emerald_was_new   = false;
 	emerald_index     = 0;
+	exit_result       = "";
 	bg_scroll_x       = 0;
 	bg_scroll_y       = 0;
 
@@ -950,4 +952,25 @@ function bss_special_stage_start()
 	perfect_wait   = 0;
 
 	ring_spin = 0;
+}
+
+function bss_load_data() {
+	global.bss.frustum1X = [
+	-5,5,-4,4,-5,5,-3,3,-4,4,-2,2,-1,1,0,-3,3,-4,4,-2,2,-1,1,0,-3,3,-4,4,-2,2,
+	-3,3,-1,1,0,-2,2,-3,3,-1,1,-3,3,0,-2,2,-1,1,-2,2,0,-2,2,-1,1,0,-1,1,0
+];
+	global.bss.frustum1Y = [
+	-6,-6,-6,-6,-5,-5,-6,-6,-5,-5,-6,-6,-6,-6,-6,-5,-5,-4,-4,-5,-5,-5,-5,-5,-4,-4,-3,-3,-4,-4,
+	-3,-3,-4,-4,-4,-3,-3,-2,-2,-3,-3,-1,-1,-3,-2,-2,-2,-2,-1,-1,-2,0,0,-1,-1,-1,0,0,0
+];
+	global.bss.frustum2X = [
+	-4,4,-4,4,-3,3,-4,4,-4,4,-3,3,-2,2,-4,4,-4,4,-2,2,-3,3,-3,3,-1,1,-4,4,-4,4,
+	-1,1,0,-4,4,0,-2,2,-3,3,-3,3,-2,2,-1,1,-3,3,-3,3,-1,1,0,-3,3,0,-2,2,-2,2,
+	-1,1,-2,2,-2,2,-1,1,0,-2,2,0,-1,1,-1,1,0,-1,1,0,0
+];
+	global.bss.frustum2Y = [
+	-4,-4,4,4,-4,-4,-3,-3,3,3,4,4,-4,-4,-2,-2,2,2,4,4,-3,-3,3,3,-4,-4,-1,-1,1,1,
+	4,4,-4,0,0,4,-3,-3,-2,-2,2,2,3,3,-3,-3,-1,-1,1,1,3,3,-3,0,0,3,-2,-2,2,2,
+	-2,-2,-1,-1,1,1,2,2,-2,0,0,2,-1,-1,1,1,-1,0,0,1,0
+];
 }

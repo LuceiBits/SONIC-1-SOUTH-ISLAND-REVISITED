@@ -3,6 +3,10 @@ function player_state_knuxslide(){
 	direction_allow = false;
 	movement_allow = false;
 	
+	// Change the direction depending on ground speed
+	if(sign(ground_speed) != 0)
+		facing = sign(ground_speed);
+	
 	//Change animation
 	if(ground_speed != 0)
 	{
@@ -26,8 +30,16 @@ function player_state_knuxslide(){
 		//Create dust effect
 		if(FRAME_TIMER mod 8 == 0 && ground_speed != 0)
 		{
-			play_sound(sfx_slide);
-			create_effect(x+random_range(-8, 8), y + hitbox_h, spr_dust_effect, 0.4, depth-1, random_range(0.8, 1.2) * facing, -2, 0, 0.15);
+			sound_play(sfx_slide);
+			
+			if(global.chaotix_dust_effect)
+			{
+				instance_create_particle(x - hitbox_w * -facing, y + hitbox_h, spr_dust_effect, 0.4, depth-1, irandom_range(0.4, 1.2) * facing, -2, 0, 0.15);
+			}
+			else
+			{
+				instance_create_particle(x - hitbox_w * -facing, y + hitbox_h, spr_effects_dust, 0.2, depth-1, 0, 0, 0, 0);	
+			}
 		}
 	}
 	
@@ -47,6 +59,7 @@ function player_state_knuxslide(){
 	//Reset the state
 	if(animation_is_playing(animator, ANIM.KNUXGETUP) && animation_has_finished(animator)) 
 	{
+		animation_play(animator, ANIM.STAND);
 		state = player_state_normal;
 		exit;
 	}

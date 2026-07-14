@@ -7,7 +7,7 @@
 		if(in != 0)
 		{
 			select = math_wrap(select + in, 0, 2);	
-			play_sound(sfx_beep);
+			sound_play(sfx_beep);
 		}
 	
 		// Update the Y offset
@@ -30,14 +30,14 @@
 				fade_to_room(rm_arboreal_agate1, 2);
 				music_set_fade(FADE_OUT, 2);
 			
-				play_sound(sfx_menu_select);
+				sound_play(sfx_menu_select);
 			}
 		
 	
 			// Leave the character select
 			if(input_press(INPUT.B))
 			{
-				play_sound(sfx_menu_select);	
+				sound_play(sfx_menu_select);	
 				returning = true;
 			}
 		}

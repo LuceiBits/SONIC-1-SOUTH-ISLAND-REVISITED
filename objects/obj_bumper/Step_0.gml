@@ -7,7 +7,7 @@ if player_collide_object(C_MAIN){
 	player.y_speed = -BUMPER_FACTOR * dsin(angle);
 	player.ground = false;
 	
-	play_sound(sfx_bumper)
+	sound_play(sfx_bumper)
 	score_life--;
 	if (score_life > 0) {
 		var obj = instance_create_depth(x, y, depth-1, obj_score_effect);

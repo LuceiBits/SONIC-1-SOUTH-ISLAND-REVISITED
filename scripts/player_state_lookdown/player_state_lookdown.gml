@@ -39,7 +39,7 @@ function player_state_lookdown(){
 		
 		//Update the state
 		state = player_state_spindash;
-		play_sound(sfx_spindash);
+		sound_play(sfx_spindash);
 		exit;
 	}
 	

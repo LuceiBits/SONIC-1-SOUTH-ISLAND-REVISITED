@@ -156,7 +156,12 @@ function player_collision()
 		var angleDiff = abs(math_uangle(newAngle) - math_uangle(oldAngle));
 		
 		// If there's nothing below sonic, detach
-		if(c.height > (angleDiff > PLAYER_SLOPE_TOLERANCE ? 1 : PLAYER_DETACH_DIST) && !water_run && !on_object)
+		var detachDist = (angleDiff > PLAYER_SLOPE_TOLERANCE ? 1 : PLAYER_DETACH_DIST)
+		
+		if(last_on_object)
+			detachDist = 1;
+
+		if(c.height > detachDist && !water_run && !on_object)
 		{
 			ground = false;
 			exit;
@@ -166,7 +171,7 @@ function player_collision()
 		var canSnap = true;
 		
 		// Halt ground snapping and new angle if the difference is above the tolerance
-		if(angleDiff > PLAYER_SLOPE_TOLERANCE || water_run && c.height > 0 && !on_terrain)
+		if((angleDiff > PLAYER_SLOPE_TOLERANCE || water_run && c.height > 0 && !on_terrain) || c.height > detachDist)
 			canSnap = false;
 		
 		// Snap player to the floor

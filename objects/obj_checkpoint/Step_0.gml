@@ -27,7 +27,7 @@
 		ds_list_add(global.checkpoint, id);
 		
 		//Play sound
-		play_sound(sfx_checkpoint);
+		sound_play(sfx_checkpoint);
 	}
 	
 	//Spin the checkpoint
@@ -63,7 +63,7 @@
 		{
 			obj_player.input_disable = true;
 			
-			play_sound(sfx_warp_into);
+			sound_play(sfx_warp_into);
 			fade_to_room(rm_bonus, 2, FADE_WHITE, 30);
 			music_fade_channel(BGM, FADE_OUT, 3);
 			

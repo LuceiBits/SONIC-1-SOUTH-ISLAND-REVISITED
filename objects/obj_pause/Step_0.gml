@@ -36,13 +36,13 @@
 			highlight_x = CAMERA_VIEW_W;
 			
 			animator_reset(animator);
-			play_sound(sfx_beep);
+			sound_play(sfx_beep);
 		}
 		
 		// Confirm the selection
 		if(input_press(INPUT.A) || input_press(INPUT.START))
 		{
-			play_sound(sfx_menu_select);
+			sound_play(sfx_menu_select);
 			state = PAUSE_STATE.CONFIRM;
 		}
 		break;

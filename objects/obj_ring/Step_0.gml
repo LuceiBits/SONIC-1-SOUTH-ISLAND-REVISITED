@@ -12,13 +12,13 @@
     if(player_collide_object(C_MAIN) && obj_player.state != player_state_knockout)
     {
 		//Play the sound
-		play_sound(sfx_ring);
+		sound_play(sfx_ring);
 		
         //Add rings!
         global.rings += 1;    
         
         //Create the effect
-        create_effect(x, y, spr_ring_sparkle, 0.2);
+        instance_create_particle(x, y, spr_ring_sparkle, 0.2);
         
         //Destroy the ring
 		global.store_object_state[| id] = true

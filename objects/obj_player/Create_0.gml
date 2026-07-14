@@ -60,6 +60,7 @@
 	ground = true;						// Check used to check if player is on ground or not
 	debug = false;						// Check if player is in debug mode or not
 	on_object = false;					// Check for if player is on object
+	last_on_object = on_object;
 	on_terrain = false;
 	touching_ceiling = false;			// Check if player is inside of a ceiling
 	underwater = false;					// Check if player is underwater or not

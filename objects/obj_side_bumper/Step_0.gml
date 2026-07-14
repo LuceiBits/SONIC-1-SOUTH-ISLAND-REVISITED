@@ -4,7 +4,7 @@
 		if(player_collide_object(C_LEFT) && triggered == 0 && obj_player.x_speed < 3)
 		{
 			triggered = -1;
-			play_sound(sfx_spring);
+			sound_play(sfx_spring);
 			
 			//Player stuff
 			var player = instance_nearest(x, y, obj_player)
@@ -26,7 +26,7 @@
 		if(player_collide_object(C_RIGHT) && triggered == 0 && obj_player.x_speed > -3)
 		{
 			triggered = 1;
-			play_sound(sfx_spring);
+			sound_play(sfx_spring);
 			
 			//Player stuff
 			var player = instance_nearest(x, y, obj_player)

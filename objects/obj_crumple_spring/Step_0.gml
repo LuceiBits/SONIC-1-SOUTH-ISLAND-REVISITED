@@ -16,7 +16,7 @@
 			//Spring code
 			animator.animation_finished = false;
 			triggered = true;
-			play_sound(sfx_spring);
+			sound_play(sfx_spring);
 			
 			//Player stuff
 			var player = instance_nearest(x, y, obj_player)
@@ -40,12 +40,12 @@
 		{
 			triggered = false;
 			crumple = true
-			play_sound(sfx_break1)
+			sound_play(sfx_break1)
 		}
 	}
 	
 	if (crumple) {
-		if (!on_screen()){
+		if (!instance_on_screen()){
 			collision_flag = false	
 			visible = false
 			fall_speed = 0

@@ -1,4 +1,5 @@
-function get_application_surface(px = 0.0, py = 0.0, w = WINDOW_WIDTH, h = WINDOW_HEIGHT){
+function get_application_surface(px = 0.0, py = 0.0, w = WINDOW_WIDTH, h = WINDOW_HEIGHT)
+{
 	//Create temp surface
 	static temp_surface = noone;
 	

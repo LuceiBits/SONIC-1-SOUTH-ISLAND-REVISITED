@@ -13,7 +13,7 @@
 	angle_point = (bbox_right - bbox_left) / 2;
 	
 	//Play sound
-	play_sound(sfx_break1);
+	sound_play(sfx_break1);
 	
 	//Create pieces
 	for (var i = 0; i < size_x; ++i) 
