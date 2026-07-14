@@ -75,7 +75,10 @@
 	
 	//Add the presentation category
 	dev_menu_add_category("PRESENTATION");
-	dev_menu_add_entry("STAGE SELECT", rm_splash);
+	dev_menu_add_entry("SPLASH", rm_splash);
+	dev_menu_add_entry("TITLE SCREEN", rm_title_screen);
+	dev_menu_add_entry("MAIN MENU", rm_main_menu);
+	dev_menu_add_entry("STAGE SELECT", rm_stage_select);
 	
 	//Add the presentation category
 	dev_menu_add_category("REGULAR STAGES");
