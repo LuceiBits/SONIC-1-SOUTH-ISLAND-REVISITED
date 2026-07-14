@@ -14,8 +14,9 @@
 	
 	bonus_stage_trigger = false;
 	
+	//Move this somewhere else
 	#macro MIN_BONUS_STAGE 30
-	#macro MIN_BLUE_SPHERES 50
+	#macro MAX_STAR_TIMER 512 //for Mania-like behavior, set it to 600.
 	
 	//Set all checkpoints to be triggered
 	if(ds_list_find_index(global.checkpoint, id) != -1)
