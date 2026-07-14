@@ -56,7 +56,7 @@
 		
 		if(input_press(INPUT.B))
 		{
-			sound_play(sfx_menu_select);
+			sound_play(sfx_menu_back);
 			returning = true;		
 		}
 		

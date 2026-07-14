@@ -2,9 +2,34 @@
 	// Affecting fonts lol
 	draw_state_push();
 	
-	draw_sprite(spr_menu_bg, 0, 0, 0);
-	draw_sprite_ext(spr_menu_bg, 1, 0, 0, 1, 1, 0, c_white, different_bg_fade);
+	// Draw rotating gradient using vertices!
+	draw_primitive_begin(pr_trianglestrip);
+	var xs = dcos(timer);
+	var ys = dsin(timer);
 	
+	var xo = WINDOW_WIDTH div 2;
+	var yo = WINDOW_HEIGHT div 2;
+	var ybuffer = WINDOW_WIDTH - yo + 128;
+	
+	var xtarget = [(-xo - 128), -xo, 0, xo, xo + 128];
+	var ytarget = [-ybuffer, ybuffer];
+	
+	for (var i = 0; i < 10; ++i) {
+		var xoff = xtarget[i div 2];
+		var yoff = ytarget[i mod 2];
+		
+		var r, g, b;
+		r = lerp(colour_get_red(colors_light[i div 2]), colour_get_red(colors_dark[i div 2]), different_bg_fade);
+		g = lerp(colour_get_green(colors_light[i div 2]), colour_get_green(colors_dark[i div 2]), different_bg_fade);
+		b = lerp(colour_get_blue(colors_light[i div 2]), colour_get_blue(colors_dark[i div 2]), different_bg_fade);
+		var color_current = make_colour_rgb(r, g, b);
+		
+	    draw_vertex_colour(floor((ys * xoff) - (xs * yoff) + xo), floor((xs * xoff) + (ys * yoff) + xo), color_current, 1);
+	}
+	
+	draw_primitive_end();
+	
+	// Draw the rest of the owl
 	draw_set_color(#ff7700)
 	draw_triangle(0, 0, 256, 0, 0, CAMERA_VIEW_H, false);
 	draw_set_color(c_black)

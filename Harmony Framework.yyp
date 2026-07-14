@@ -636,7 +636,6 @@
     {"id":{"name":"spr_machine_handle","path":"sprites/spr_machine_handle/spr_machine_handle.yy",},},
     {"id":{"name":"spr_machine_lid","path":"sprites/spr_machine_lid/spr_machine_lid.yy",},},
     {"id":{"name":"spr_mark","path":"sprites/spr_mark/spr_mark.yy",},},
-    {"id":{"name":"spr_menu_bg","path":"sprites/spr_menu_bg/spr_menu_bg.yy",},},
     {"id":{"name":"spr_monitor_broken","path":"sprites/spr_monitor_broken/spr_monitor_broken.yy",},},
     {"id":{"name":"spr_monitor_icon_10ring","path":"sprites/spr_monitor_icon_10ring/spr_monitor_icon_10ring.yy",},},
     {"id":{"name":"spr_monitor_icon_bubble_shield","path":"sprites/spr_monitor_icon_bubble_shield/spr_monitor_icon_bubble_shield.yy",},},
