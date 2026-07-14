@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.149002,
+  "duration":0.14900227,
   "exportDir":"",
   "name":"sfx_scoreadd",
   "parent":{
