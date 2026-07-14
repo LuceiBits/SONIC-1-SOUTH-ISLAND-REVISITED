@@ -3,7 +3,6 @@
 	timer = 0
 
 	options_array = ["CONTINUE", "RESTART", "EXIT"];
-	allow_restart = true;
 
 	background_rect_y = 0;
 	background_rect_alpha = 0.5;

@@ -37,6 +37,7 @@ function game_init_global_variables()
 		rings : 0
 	};
 	global.store_background_visibility = {};
+	global.allow_stage_restart = true;			//Allow the player to restart the stage during pause?
 	
 	//Stage values
 	global.object_timer = 0;				//Object pre frame timer, every 60 frames in a 1 second

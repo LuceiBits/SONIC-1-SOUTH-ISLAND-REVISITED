@@ -42,7 +42,7 @@
 		// Confirm the selection
 		if(input_press(INPUT.A) || input_press(INPUT.START))
 		{
-			if(!allow_restart && selection == array_get_index(options_array, "RESTART"))
+			if(!global.allow_stage_restart && selection == array_get_index(options_array, "RESTART"))
 			{
 				sound_play(sfx_menu_decline);
 			}

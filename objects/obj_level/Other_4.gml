@@ -4,6 +4,7 @@
 	
 	//Reset stage data
 	global.stage_timer = 0;
+	global.allow_stage_restart = true;
 	
 	//Position player to the checkpoint
 	if(global.checkpoint_id != noone && instance_exists(global.checkpoint_id) && global.checkpoint_type = CHECKPOINT.NORMAL)
