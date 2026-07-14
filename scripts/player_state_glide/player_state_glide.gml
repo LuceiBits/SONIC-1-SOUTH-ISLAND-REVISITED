@@ -59,7 +59,7 @@ function player_state_glide(){
 	
 	//Adjust angle
 	knuckles_angle = math_approach(knuckles_angle, 90 * facing, 2.8125);
-	
+	/*
 	if (animation_is_playing(animator, ANIM.KNUXGLIDETURN)) {
 		if (facing == 1)
 		{
@@ -69,7 +69,7 @@ function player_state_glide(){
 			animation_set_frame(animator, 5 - (2 + (knuckles_angle/ 45)));
 		}
 	}
-	
+	*/
 	if(animation_has_finished(animator) && animation_is_playing(animator, ANIM.KNUXGLIDETURN))
 	{
 		

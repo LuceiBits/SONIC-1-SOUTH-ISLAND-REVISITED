@@ -205,7 +205,8 @@ function player_react_solid(result)
 	{
 		// Position the object
 		o.x = colX;	
-			
+		clamp_storex = colX;
+		
 		// Stop the object from moving
 		var spdVal = o.ground ? "ground_speed" : "x_speed";
 		var spd = variable_instance_get(o, spdVal);

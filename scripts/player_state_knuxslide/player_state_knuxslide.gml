@@ -47,6 +47,7 @@ function player_state_knuxslide(){
 	//Reset the state
 	if(animation_is_playing(animator, ANIM.KNUXGETUP) && animation_has_finished(animator)) 
 	{
+		animation_play(animator, ANIM.STAND);
 		state = player_state_normal;
 		exit;
 	}

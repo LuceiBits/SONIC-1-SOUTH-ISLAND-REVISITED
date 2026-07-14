@@ -1,9 +1,10 @@
-function player_state_wallclimb(){
-	
+function player_state_wallclimb()
+{
 	//Change flags
 	movement_allow = false;
 	direction_allow = false;
 	gravity_allow = false;
+	
 	
 	//Change direction
 	image_xscale = facing;
@@ -14,6 +15,10 @@ function player_state_wallclimb(){
 	//Move up and down
 	y_speed = (1 + super) * mov;
 	x_speed = 0;
+
+	// Grounded flag fix
+	if(y_speed <= 0)
+		ground = false;
 	
 	//Change animation
 	if(y_speed != 0) 
@@ -33,6 +38,7 @@ function player_state_wallclimb(){
 	{
 		if(ground_angle > 45 && ground_angle < 315)
 		{
+			x += (wall_w - hitbox_h) * x_dir;
 			player_mode();
 			animation_play(animator, ANIM.ROLL);
 			play_sound(sfx_roll);
