@@ -6,7 +6,6 @@ function level_reset_data()
 	global.stage_timer = 0;
 	ds_list_clear(global.checkpoint);
 	ds_list_clear(global.store_object_state);
-	ds_list_clear(global.special_ring_store);
 	global.store_player_state.rings = 0;
 	global.store_player_state.combinering = 0;
 	//you may optionally want to clear the shield in store_player_state
@@ -51,4 +50,9 @@ function level_store_bg_visibility()
 function level_reset_bg_visibility()
 {
 	global.store_background_visibility = {};
+}
+
+function level_reset_special_rings()
+{
+	ds_list_clear(global.special_ring_store);
 }
