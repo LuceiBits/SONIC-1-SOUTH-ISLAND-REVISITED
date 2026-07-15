@@ -21,7 +21,7 @@
 	colors_dark = [0x5a2c2e, 0x5a2c2e, 0x5c311f, 0x922e1c, 0x922e1c];
 	
 	current_char = 0;
-	char_bounce = 0;
+	char_bounce = 1; // not 0 just so that it bounces in the start
 	
 	cursor_y = 48;
 	
