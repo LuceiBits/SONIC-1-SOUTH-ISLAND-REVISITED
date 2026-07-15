@@ -7,9 +7,9 @@
 	var xs = dcos(timer);
 	var ys = dsin(timer);
 	
-	var xo = WINDOW_WIDTH div 2;
-	var yo = WINDOW_HEIGHT div 2;
-	var ybuffer = WINDOW_WIDTH - yo + 128;
+	var xo = CAMERA_VIEW_W div 2;
+	var yo = CAMERA_VIEW_H div 2;
+	var ybuffer = CAMERA_VIEW_W - yo + 128;
 	
 	var xtarget = [(-xo - 128), -xo, 0, xo, xo + 128];
 	var ytarget = [-ybuffer, ybuffer];
@@ -28,6 +28,11 @@
 	}
 	
 	draw_primitive_end();
+	
+	// Characters (this one is complex)
+	gpu_set_blendmode(bm_subtract);
+	draw_sprite(spr_menu_chars, current_char, (CAMERA_VIEW_W * 0.66), CAMERA_VIEW_H - (20 * ease_in_elastic(char_bounce)));
+	gpu_set_blendmode(bm_normal);
 	
 	// Draw the rest of the owl
 	draw_set_color(#ff7700)

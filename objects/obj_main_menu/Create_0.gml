@@ -20,6 +20,9 @@
 	colors_light = [0x9ee8ff, 0x9ee8ff, 0xa2ffac, 0xfff49e, 0xfff49e];
 	colors_dark = [0x5a2c2e, 0x5a2c2e, 0x5c311f, 0x922e1c, 0x922e1c];
 	
+	current_char = 0;
+	char_bounce = 0;
+	
 	cursor_y = 48;
 	
 	selected = false;

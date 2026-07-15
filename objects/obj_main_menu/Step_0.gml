@@ -89,3 +89,17 @@
 	
 	// The alternative background
 	different_bg_fade = math_approach(different_bg_fade, different_bg, 0.05);
+	
+	// Character sprite
+	var charsprite = select;
+	if(instance_exists(obj_character_select))
+		charsprite += obj_character_select.select;
+	if(select == 2) charsprite = 3;
+	
+	if(current_char != charsprite)
+	{
+		current_char = charsprite;
+		char_bounce = 1;
+	}
+	
+	char_bounce = math_approach(char_bounce, 0, 0.025);
