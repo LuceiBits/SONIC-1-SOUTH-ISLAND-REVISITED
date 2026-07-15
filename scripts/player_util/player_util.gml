@@ -282,6 +282,24 @@ function player_insta_shield_collide(this_hitbox = -1, player_id = 0)
 		return instance_collide(player, [-INSTA_SHIELD_BOX_SIZE, -INSTA_SHIELD_BOX_SIZE, INSTA_SHIELD_BOX_SIZE, INSTA_SHIELD_BOX_SIZE], id, this_hitbox);	
 }
 
+function player_set_shield(shield_id, player_id = 0)
+{
+	// Mandatory shield state reset
+	with(player_find(player_id))
+	{
+		with(shield_obj)
+		{
+			image_angle = 0;
+			image_xscale = 1;
+			image_yscale = 1;
+			
+			animator_reset(animator);
+		}
+		
+		shield = shield_id;
+	}
+}
+
 // Player internals
 function _player_kill()
 {

@@ -88,6 +88,16 @@ function player_water()
 	//Aquaphobia
 	if(underwater)
 	{
+		if(shield == SHIELD.ELECTRIC || shield == SHIELD.FIRE)
+		{
+			shield = SHIELD.NONE;
+			if(shield == SHIELD.ELECTRIC)
+			{
+				sound_play(sfx_electric_shield_lose);
+				obj_water.flash_hold_timer = 4;
+			}
+		}
+		
 		if (shield != SHIELD.BUBBLE) 
 		{
 			//bubbles

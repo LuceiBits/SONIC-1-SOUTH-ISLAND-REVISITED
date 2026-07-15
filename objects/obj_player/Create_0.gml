@@ -106,14 +106,14 @@
 	
 	//Shields:
 	shield = global.store_player_state.shield;	// Shield that player is currently using
-	shield_last = 0;
 	shield_state = 0;
 	shield_list = [								// Shield execution list
 		player_shield_normal,
 		player_shield_fire,
-		player_shield_null,
-		player_shield_null,
-	];							
+		player_shield_electric,
+		player_shield_bubble,
+	];					
+	
 	shield_obj = noone;
 	
 	// Combine ring

@@ -7,22 +7,22 @@
 		break;
 		
 		case MONITOR.SHIELD:
-			obj_player.shield = SHIELD.NORMAL;
+			player_set_shield(SHIELD.NORMAL);
 			sound_play(sfx_shield);
 		break;
 		
 		case MONITOR.ELECTRIC_SHIELD:
-			obj_player.shield = SHIELD.ELECTRIC;
+			player_set_shield(SHIELD.ELECTRIC);
 			sound_play(sfx_shield_electric);
 		break;
 		
 		case MONITOR.FIRE_SHIELD:
-			obj_player.shield = SHIELD.FIRE;
+			player_set_shield(SHIELD.FIRE);
 			sound_play(sfx_shield_fire);
 		break;
 		
 		case MONITOR.BUBBLE_SHIELD:
-			obj_player.shield = SHIELD.BUBBLE;
+			player_set_shield(SHIELD.BUBBLE);
 			sound_play(sfx_shield_bubble);
 		break;
 		

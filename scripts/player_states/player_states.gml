@@ -18,13 +18,17 @@ function player_states(){
 	can_jump = false;
 	can_roll = false;
 	
-	if(shield_last != shield)
-		show_debug_message("FUCK")
+	// Update the shiled animator here
+	with(shield_obj)
+	{
+		// Update the animation system
+		animator_update(animator);
+	}
 	
 	// Run the shield system
 	if(shield != -1)
 	{
-		//if(array_length(shield_list) < shield)
+		if(shield < array_length(shield_list))
 		{
 			script_execute(shield_list[shield]);
 		}
@@ -32,6 +36,7 @@ function player_states(){
 	else
 	{
 		instance_destroy(shield_obj);	
+		shield_state = 0;
 	}
 	
 	// Create the shield graphic

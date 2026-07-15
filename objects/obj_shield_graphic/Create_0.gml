@@ -24,15 +24,15 @@
 	animation_add(SHIELD_ANIM.FIRE_DASH, spr_fire_shield_dash, 1, 0, true, true);
 	
 	// Electric shield
-	animation_add(SHIELD_ANIM.ELECTRIC_IDLE, spr_electric_shield, 1, 0, true, true);
+	animation_add(SHIELD_ANIM.ELECTRIC_IDLE, spr_electric_shield, 2, 0, true, true);
 	
 	// Bubble shield
-	animation_add(SHIELD_ANIM.BUBBLE_IDLE, spr_bubble_shield, 1, 0, true, true);
-	animation_add(SHIELD_ANIM.BUBBLE_BOUNCE_IN, spr_bubble_shield_bounce, 1, 0, true, true);
-	animation_add(SHIELD_ANIM.BUBBLE_BOUNCE_OUT, spr_bubble_shield_bounce_reverse, 1, 0, true, true);
+	animation_add(SHIELD_ANIM.BUBBLE_IDLE, spr_bubble_shield, 3, 0, true, true);
+	animation_add(SHIELD_ANIM.BUBBLE_BOUNCE_IN, spr_bubble_shield_bounce, 2, 0, false, true);
+	animation_add(SHIELD_ANIM.BUBBLE_BOUNCE_OUT, spr_bubble_shield_bounce_reverse, 2, 0, false, true);
 	
 	// Setup the animator
 	animator = new animator_create();
-	animation_play(animator, SHIELD_ANIM.NORMAL_IDLE);
+	//animation_play(animator, SHIELD_ANIM.NORMAL_IDLE);
 	
 	parent = noone;

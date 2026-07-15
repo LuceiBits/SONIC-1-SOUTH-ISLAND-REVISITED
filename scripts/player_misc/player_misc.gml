@@ -1,4 +1,13 @@
-function player_misc(){
+function player_misc()
+{
+	
+	with(shield_obj)
+	{
+		// Position the shield to the player object
+		x = floor(parent.x);
+		y = floor(parent.y);	
+	}
+	
 	//Subtract timers
 	control_lock = max(control_lock-1, 0);
 	ceiling_lock = max(ceiling_lock-1, 0);

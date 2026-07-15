@@ -38,7 +38,7 @@ function player_state_death()
 	death_timer++;
 			
 	//Remove effects
-	shield = S_NONE;
+	shield = SHIELD.NONE;
 	invincible_timer = 0;
 	speed_shoes = 0;
 	invincible = false;
@@ -61,7 +61,7 @@ function player_state_death()
 		{
 			// Clear stuff
 			global.store_player_state.combinering = 0;
-			global.store_player_state.shield = S_NONE;
+			global.store_player_state.shield = SHIELD.NONE;
 			global.store_player_state.rings = 0;
 			ds_list_clear(global.store_object_state);
 			
@@ -78,7 +78,7 @@ function player_state_death()
 	if(death_timer == 180 && global.life != 0 && !is_time_over)
 	{
 		global.store_player_state.combinering = 0;
-		global.store_player_state.shield = S_NONE;
+		global.store_player_state.shield = SHIELD.NONE;
 		global.store_player_state.rings = 0;
 		ds_list_clear(global.store_object_state);
 		room_restart();
@@ -129,7 +129,7 @@ function player_state_drown()
 		{
 			// Clear stuff
 			global.store_player_state.combinering = 0;
-			global.store_player_state.shield = S_NONE;
+			global.store_player_state.shield = SHIELD.NONE;
 			global.store_player_state.rings = 0;
 			ds_list_clear(global.store_object_state);
 			
@@ -146,7 +146,7 @@ function player_state_drown()
 	if(death_timer == 180 && global.life != 0 && !is_time_over)
 	{
 		global.store_player_state.combinering = 0;
-		global.store_player_state.shield = S_NONE;
+		global.store_player_state.shield = SHIELD.NONE;
 		global.store_player_state.rings = 0;
 		ds_list_clear(global.store_object_state);
 		room_restart();
