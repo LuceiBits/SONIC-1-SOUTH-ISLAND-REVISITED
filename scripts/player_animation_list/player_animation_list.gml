@@ -20,6 +20,8 @@ function player_animation_list(){
 		LEDGE1,
 		LEDGE2,
 		VICTORY,
+		TRANSFORM,
+		CORKSCREW,
 		DROPDASH,
 		TAILSFLY,
 		TAILSTIRED,
@@ -35,7 +37,6 @@ function player_animation_list(){
 		KNUXLAND, 
 		KNUXSLIDE, 
 		KNUXGETUP, 
-		TRANSFORM,
 		
 		// Tails' tails animations
 		TAILS_NORMAL,
@@ -80,8 +81,9 @@ function player_animation_list(){
 		animation_add(ANIM.LEDGE1, spr_sonic_ledge1, 0.1, 0, true, false);
 		animation_add(ANIM.LEDGE2, spr_sonic_ledge2, 0.1, 0, true, false);
 		animation_add(ANIM.VICTORY, spr_sonic_victory, 0.1, 1, true, false);
-		animation_add(ANIM.DROPDASH, spr_sonic_dropdash, 0.5, 1, true, false);
 		animation_add(ANIM.TRANSFORM, spr_sonic_transform, 0.4, 3, true, false);
+		animation_add(ANIM.CORKSCREW, spr_sonic_corkscrew, 0.2, 0, true, false);
+		animation_add(ANIM.DROPDASH, spr_sonic_dropdash, 0.5, 1, true, false);
 		break;
 		
 		case CHAR_TAILS:
@@ -110,6 +112,7 @@ function player_animation_list(){
 		animation_add(ANIM.LEDGE2, spr_tails_ledge2, 0.1, 0, true, false);
 		animation_add(ANIM.VICTORY, spr_tails_victory, 0.1, 0, false, false);
 		animation_add(ANIM.TRANSFORM, spr_tails_transform, 0.4, 0, false, false);
+		animation_add(ANIM.CORKSCREW, spr_tails_corkscrew, 0.2, 0, true, false);
 		
 		// Tails' tails animations
 		animation_add(ANIM.TAILS_NORMAL, spr_tails_tail1, 0.15, 0, true, false);
@@ -148,6 +151,7 @@ function player_animation_list(){
 		animation_add(ANIM.LEDGE2, spr_knuckles_ledge2, 0.1, 0, true, false);
 		animation_add(ANIM.VICTORY, spr_knuckles_victory, 0.1, 0, false, false);
 		animation_add(ANIM.TRANSFORM, spr_knuckles_transform, 0.4, 0, false, false);
+		animation_add(ANIM.CORKSCREW, spr_knuckles_corkscrew, 0.2, 0, true, false);
 		break;
 	}
 }
