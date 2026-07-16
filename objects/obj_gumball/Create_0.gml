@@ -1,14 +1,14 @@
 enum GUMBALL {
-	BUBBLE,
+	EMPTY,
 	NORMAL,
-	AQUA,
+	BUBBLE,
 	ELECTRIC,
-	FLAME,
+	FIRE,
 	RINGS,
 	ONEUP,
 	REPOSITION,
 	BUMPER
 }
-reward = GUMBALL.BUBBLE;
+reward = GUMBALL.EMPTY;
 y_speed = 0;
 y_accel = 0.21875 * 0.75;

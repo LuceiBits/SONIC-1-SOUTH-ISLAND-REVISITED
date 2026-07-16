@@ -11,28 +11,28 @@ image_speed = 0;
 
 if (player_collide_object(C_MAIN) && !obj_player.input_disable){
 	switch (reward){
-		case GUMBALL.BUBBLE:
+		case GUMBALL.EMPTY:
 			sound_play(sfx_burst);
 			instance_destroy();
 		break;
 		case GUMBALL.NORMAL:
 			sound_play(sfx_shield);
-			obj_player.shield = S_NORMAL;
+			player_set_shield(SHIELD.NORMAL);
 			instance_destroy();
 		break;
-		case GUMBALL.AQUA:
+		case GUMBALL.BUBBLE:
 			sound_play(sfx_shield_bubble);
-			obj_player.shield = S_BUBBLE;
+			player_set_shield(SHIELD.BUBBLE);
 			instance_destroy();
 		break;
 		case GUMBALL.ELECTRIC:
 			sound_play(sfx_shield_electric);
-			obj_player.shield = S_ELECTRIC;
+			player_set_shield(SHIELD.ELECTRIC);
 			instance_destroy();
 		break;
-		case GUMBALL.FLAME:
+		case GUMBALL.FIRE:
 			sound_play(sfx_shield_fire)
-			obj_player.shield = S_FIRE;
+			player_set_shield(SHIELD.FIRE);
 			instance_destroy();
 		break;
 		case GUMBALL.RINGS:
