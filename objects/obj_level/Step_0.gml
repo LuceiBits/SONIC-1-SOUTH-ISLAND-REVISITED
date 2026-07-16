@@ -23,7 +23,7 @@
 		global.life += 1;
 		music_play_jingle();
 	}
-	if(global.rings <= global.ring_extralife-200)
+	if(global.rings <= global.ring_extralife-200 && !instance_exists(obj_combine_ring))
 	{
 		global.ring_extralife -= 100;
 
