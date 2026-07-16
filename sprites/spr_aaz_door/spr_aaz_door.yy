@@ -24,7 +24,7 @@
   "name":"spr_aaz_door",
   "nineSlice":{
     "$GMNineSliceData":"",
-    "bottom":26,
+    "bottom":6,
     "enabled":true,
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
@@ -35,12 +35,12 @@
     "right":0,
     "tileMode":[
       0,
-      0,
-      0,
+      1,
       0,
       1,
+      1,
     ],
-    "top":22,
+    "top":42,
   },
   "origin":1,
   "parent":{

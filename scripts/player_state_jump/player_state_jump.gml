@@ -2,7 +2,7 @@ function player_state_jump(){
 	//Reset when grounded
 	if(ground) 
 	{
-		state = player_state_normal;
+		state = force_roll ? player_state_roll : player_state_normal;
 		exit;
 	}
 	

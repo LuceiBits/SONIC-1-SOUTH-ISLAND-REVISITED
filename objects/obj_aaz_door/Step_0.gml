@@ -13,6 +13,6 @@
     }
     else 
 	{
-        reach_x = x + sprite_height * ((moved)? -1 : 1) * ((reverse)? 1 : -1) * (move_horizontal);
-        reach_y = y + sprite_height * ((moved)? -1 : 1) * ((reverse)? 1 : -1) * (!move_horizontal);
+        reach_x = x + ((move_horizontal)? sprite_width : sprite_height) * ((moved)? -1 : 1) * ((reverse)? 1 : -1) * (move_horizontal);
+        reach_y = y + ((move_horizontal)? sprite_width : sprite_height) * ((moved)? -1 : 1) * ((reverse)? 1 : -1) * (!move_horizontal);
     }

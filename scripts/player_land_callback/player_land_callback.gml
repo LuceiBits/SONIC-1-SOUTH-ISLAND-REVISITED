@@ -5,7 +5,7 @@ function player_land_callback()
 	obj_level.badnik_chain = 0;
 	
 	// Stop rolling when landing
-	if(state == player_state_roll)
+	if(state == player_state_roll && !force_roll)
 	{
 		state = player_state_normal;	
 	}

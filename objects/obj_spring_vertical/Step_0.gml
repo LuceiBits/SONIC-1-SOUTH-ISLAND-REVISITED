@@ -39,7 +39,7 @@
 			case 0:
 			player.ground = false;
 			player.y_speed = spring_power;
-			player.state = player_state_normal;
+			player.state = player.force_roll ? player_state_roll : player_state_normal;
 			break;
 			
 			case 1:

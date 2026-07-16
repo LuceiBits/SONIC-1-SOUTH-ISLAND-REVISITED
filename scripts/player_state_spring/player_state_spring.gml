@@ -6,6 +6,6 @@ function player_state_spring(){
 	//Change state when falling
 	if(y_speed >= 0 || ground) 
 	{
-		state = player_state_normal;
+		state = force_roll ? player_state_roll : player_state_normal;
 	}
 }

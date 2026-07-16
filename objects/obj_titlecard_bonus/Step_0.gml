@@ -53,9 +53,9 @@
 	{
 		obj_player.visible = false
 		
-		if (instance_exists(par_shield)) 
+		if (instance_exists(obj_shield)) 
 		{
-			par_shield.visible = false
+			obj_shield.visible = false
 		}
 		
 		obj_player.x_speed = 0
@@ -66,8 +66,8 @@
 	//launch player up
 	if (timer = 130) {
 		obj_player.visible = true
-		if (instance_exists(par_shield)) {
-			par_shield.visible = true
+		if (instance_exists(obj_shield)) {
+			obj_shield.visible = true
 		}
 		obj_player.x_speed = 0
 		obj_player.y_speed = -10
