@@ -1,16 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_shield_graphic",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_corkscrew",
+  "eventList":[],
   "managed":true,
-  "name":"obj_shield_graphic",
+  "name":"obj_corkscrew",
   "overriddenProperties":[],
   "parent":{
-    "name":"Shields",
-    "path":"folders/Objects/Player Objects/Shields.yy",
+    "name":"Harmony Framework",
+    "path":"Harmony Framework.yyp",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -30,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_corkscrew_trigger",
+    "path":"sprites/spr_corkscrew_trigger/spr_corkscrew_trigger.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

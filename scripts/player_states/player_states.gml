@@ -40,9 +40,9 @@ function player_states(){
 	}
 	
 	// Create the shield graphic
-	if(!instance_exists(obj_shield_graphic) && shield != SHIELD.NONE)
+	if(!instance_exists(obj_shield) && shield != SHIELD.NONE)
 	{
-		shield_obj = instance_create_depth(x, y, depth - 10, obj_shield_graphic);	
+		shield_obj = instance_create_depth(x, y, depth - 10, obj_shield);	
 		shield_obj.parent = id;
 	}
 	

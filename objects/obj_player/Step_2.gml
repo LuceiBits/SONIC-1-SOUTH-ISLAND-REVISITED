@@ -5,3 +5,11 @@
 	{
 		exit;	
 	}
+	
+	// Position the shield
+	with(shield_obj)
+	{
+		// Position the shield to the player object
+		x = floor(parent.x);
+		y = floor(parent.y);	
+	}

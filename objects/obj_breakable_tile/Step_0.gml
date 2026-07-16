@@ -19,14 +19,10 @@
 			}
 		}	
 	
-		//Check if fire shield exists
-		if(instance_exists(obj_fire_shield))
+		//If so disable collision when player hits the wall
+		if(obj_player.shield == SHIELD.FIRE && obj_player.shield_state == 1) 
 		{
-			//If so disable collision when player hits the wall
-			if(obj_player.shield == S_FIRE && obj_fire_shield.shield_state == 1) 
-			{
-				collision_flag = false;
-			}
+			collision_flag = false;
 		}
 		break;
 		

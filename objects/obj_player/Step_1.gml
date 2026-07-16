@@ -22,7 +22,7 @@
 	
 	//check if player should be able to turn super
 	allow_super = true
-	if (input_disable || obj_level.disable_timer || instance_exists(obj_bonus_cont) || instance_exists(par_shield))
+	if (input_disable || obj_level.disable_timer || instance_exists(obj_bonus_cont) || instance_exists(obj_shield))
 	{
 		allow_super = false	
 	}
