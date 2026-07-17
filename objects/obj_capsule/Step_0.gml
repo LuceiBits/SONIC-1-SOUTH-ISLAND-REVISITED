@@ -34,10 +34,10 @@
 			piece.x_speed = 2;
 			piece.y_speed = -4;
 			
-			//Create flickies
+			//Create animal buddies
 			for(var i = 0; i < 10; i++)
 			{
-				var animal = instance_create_depth(other.x + random_range(-24, 24), other.y+32, depth, obj_flicky);
+				var animal = instance_create_depth(other.x + random_range(-24, 24), other.y+32, depth, obj_animal);
 				animal.delay = 16+(4 * i);
 			}
 		}

@@ -8,8 +8,8 @@
 		
 		if(obj_player.attacking || obj_player.invincible || fly_cond)
 		{
-			//Create flickies instead
-			instance_create_depth(x, y, depth, obj_flicky);
+			//Create animal buddies instead
+			instance_create_depth(x, y, depth, obj_animal);
 		
 			//Player bounce
 			obj_player.y_speed = -abs(obj_player.y_speed);
