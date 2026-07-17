@@ -16,6 +16,9 @@
 		}
 
 		entered = true;
+		
+		//Store backgrounds for next respawn
+		level_store_bg_visibility();
 
 		with(player)
 		{
@@ -24,8 +27,10 @@
 			speed_allow = false;
 			hitbox_allow = false;
 			state = player_state_null;
-			
 		}
+		
+		if(instance_exists(obj_shield))
+			obj_shield.visible = false;
 		
 		visible = false;
 		

@@ -463,7 +463,6 @@
     {"id":{"name":"spr_bg_aaz_water","path":"sprites/spr_bg_aaz_water/spr_bg_aaz_water.yy",},},
     {"id":{"name":"spr_bg_base","path":"sprites/spr_bg_base/spr_bg_base.yy",},},
     {"id":{"name":"spr_bg_bonus","path":"sprites/spr_bg_bonus/spr_bg_bonus.yy",},},
-    {"id":{"name":"spr_big_ring","path":"sprites/spr_big_ring/spr_big_ring.yy",},},
     {"id":{"name":"spr_bounds_marker","path":"sprites/spr_bounds_marker/spr_bounds_marker.yy",},},
     {"id":{"name":"spr_bridge","path":"sprites/spr_bridge/spr_bridge.yy",},},
     {"id":{"name":"spr_bss_bg","path":"sprites/spr_bss_bg/spr_bss_bg.yy",},},
