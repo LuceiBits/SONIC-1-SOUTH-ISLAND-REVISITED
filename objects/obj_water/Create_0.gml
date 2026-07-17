@@ -7,3 +7,5 @@
 	anim_speed = 0.15;
 	
 	flash_hold_timer = 0;
+	level_target = ystart;
+	rise_speed = 2;

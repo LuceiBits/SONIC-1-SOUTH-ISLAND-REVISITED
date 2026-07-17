@@ -32,8 +32,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Rings",
+    "path":"folders/Sprites/Stage Sprites/Common Objects/Rings.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -1,13 +1,15 @@
 {
   "$GMObject":"",
-  "%Name":"obj_big_ring",
-  "eventList":[],
+  "%Name":"obj_aaz_boss_block",
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
-  "name":"obj_big_ring",
+  "name":"obj_aaz_boss_block",
   "overriddenProperties":[],
   "parent":{
-    "name":"Rings",
-    "path":"folders/Objects/Stage Objects/Common Objects/Rings.yy",
+    "name":"Boss",
+    "path":"folders/Objects/Stage Objects/Arboreal Agate/Boss.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_big_ring",
-    "path":"sprites/spr_big_ring/spr_big_ring.yy",
+    "name":"spr_aaz_boss_block",
+    "path":"sprites/spr_aaz_boss_block/spr_aaz_boss_block.yy",
   },
   "spriteMaskId":null,
   "visible":true,

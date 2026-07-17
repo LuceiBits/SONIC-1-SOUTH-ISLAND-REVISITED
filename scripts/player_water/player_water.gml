@@ -26,7 +26,8 @@ function player_water()
 			if(FRAME_TIMER mod 4 == 0 && global.water_running_effect == 1)
 			{
 				//Create effects
-				instance_create_particle(obj_player.x, obj_water.y, spr_water_splash, 0.35, obj_player.depth - 1);
+				var splash = instance_create_depth(obj_player.x, obj_water.y, obj_player.depth - 1, obj_water_splash);
+				splash.par = obj_water; //add pool support later
 				sound_play(sfx_water_splash);	
 			}
 		}
@@ -55,7 +56,8 @@ function player_water()
 			y_speed *= 0.25;
 			
 			//Create effects
-			instance_create_particle(x, obj_water.y, spr_water_splash, 0.35);
+			var splash = instance_create_depth(obj_player.x, obj_water.y, obj_player.depth - 1, obj_water_splash);
+			splash.par = obj_water; //add pool support later
 			
 			//Play sound
 			sound_play(sfx_water_splash);
@@ -75,7 +77,8 @@ function player_water()
 			y_speed *= 1.25;
 			
 			//Create effects
-			instance_create_particle(x, obj_water.y, spr_water_splash, 0.35);
+			var splash = instance_create_depth(obj_player.x, obj_water.y, obj_water.depth + 1, obj_water_splash);
+			splash.par = obj_water; //add pool support later
 			
 			//Play sound
 			sound_play(sfx_water_splash);
