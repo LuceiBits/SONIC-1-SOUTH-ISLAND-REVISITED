@@ -126,10 +126,14 @@ function player_water()
 					bubble.angle = facing == -1 ? 180 : 0;
 				}
 			}
-		}
 		
-		//Add air timer
-		air++;
+			//Add air timer
+			air++;
+		}
+		else
+		{
+			air = 0;
+		}
 			
 		//Uh oh drowning music
 		if(!audio_is_playing(j_drowning) && air == 20 * 60)
