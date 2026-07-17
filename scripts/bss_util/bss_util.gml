@@ -1,7 +1,8 @@
 // Blue Spheres engine, accurate port of Sonic Mania's BSS_Setup / BSS_Player / BSS_Collectable / BSS_Collected.
 
-#macro BSS_W 32
-#macro BSS_H 32
+#macro BSS_W global.bss.w
+#macro BSS_H global.bss.h
+#macro BSS_MIN_SIZE 16
 
 // Cell values
 enum BSS_CELL
@@ -64,7 +65,20 @@ enum BSS_ANIM
 
 function bss_idx(_x, _y) 
 {
-	return (((_x & 31) << 5) + (_y & 31));
+	return (bss_wrap_x(_x) * BSS_H) + bss_wrap_y(_y);
+}
+
+// Torus wrap helpers
+function bss_wrap_x(_v)
+{
+	var w = BSS_W;
+	return ((_v mod w) + w) mod w;
+}
+
+function bss_wrap_y(_v)
+{
+	var h = BSS_H;
+	return ((_v mod h) + h) mod h;
 }
 
 // BSS_Message two-part message
@@ -92,20 +106,39 @@ function draw_bss_number(_value, _right_x, _y)
 // which reads the playfield from a tile layer). Tile index == cell value; index 0 = BSS_CELL.NONE.
 function bss_load_playfield() 
 {
-	global.bss.pf_stage = array_create(1024, BSS_CELL.NONE);
+	//Board size comes from the room's tilemap (example: 512x512 of 16x16 tiles -> 32x32 cells)
+	global.bss.w = 32;
+	global.bss.h = 32;
 
 	var lay = layer_get_id("Playfield");
-	if (lay == -1) return;
+	if (lay == -1)
+	{
+		global.bss.size = global.bss.w * global.bss.h;
+		global.bss.pf_stage = array_create(global.bss.size, BSS_CELL.NONE);
+		return;
+	}
 
 	var tm = layer_tilemap_get_id(lay);
+	var tm_w = tilemap_get_width(tm);
+	var tm_h = tilemap_get_height(tm);
+
+	//Is the playfield size below the minimum?
+	if (tm_w < BSS_MIN_SIZE || tm_h < BSS_MIN_SIZE)
+		show_debug_message("BSS Playfield: " + string(tm_w) + "x" + string(tm_h) + " is below the " + string(BSS_MIN_SIZE) + "x" + string(BSS_MIN_SIZE) + " minimum, padding with empty cells");
+	
+	//Clamp playfield size
+	global.bss.w = max(tm_w, BSS_MIN_SIZE);
+	global.bss.h = max(tm_h, BSS_MIN_SIZE);
+	global.bss.size = global.bss.w * global.bss.h;
+	global.bss.pf_stage = array_create(global.bss.size, BSS_CELL.NONE);
 	var spawns = 0;
-	for (var gx = 0; gx < BSS_W; gx++)
+	for (var gx = 0; gx < tm_w; gx++)
 	{
-		for (var gy = 0; gy < BSS_H; gy++)
+		for (var gy = 0; gy < tm_h; gy++)
 		{
 			var t = tile_get_index(tilemap_get(tm, gx, gy)); //== Mania's tile & 0x3FF
 			if (t > 24) t = BSS_CELL.NONE;
-			global.bss.pf_stage[gx * 32 + gy] = t;
+			global.bss.pf_stage[gx * BSS_H + gy] = t;
 			if (t >= BSS_CELL.SPAWN_UP && t <= BSS_CELL.SPAWN_LEFT) spawns++;
 		}
 	}
@@ -122,7 +155,7 @@ function bss_init()
 {
 	global.bss = {};
 	bss_build_tables();
-	bss_load_data();
+	bss_frustum_tables();
 }
 
 // Lookup tables copied verbatim from Mania's BSS_Setup.h / BSS_Collectable.h
@@ -188,15 +221,15 @@ function bss_build_tables()
 function bss_check_sphere_valid(_x, _y) 
 {
 	var pf = global.bss.pf;
-	var x1 = 32 * ((_x - 1) & 31);
-	var y1 = (_y - 1) & 31;
-	var x2 = 32 * ((_x + 1) & 31);
-	var y2 = (_y + 1) & 31;
+	var x1 = BSS_H * bss_wrap_x(_x - 1);
+	var y1 = bss_wrap_y(_y - 1);
+	var x2 = BSS_H * bss_wrap_x(_x + 1);
+	var y2 = bss_wrap_y(_y + 1);
 
 	if ((pf[x1 + y1] & 0x7F) == BSS_CELL.BLUE) return true;
 	if ((pf[x2 + y1] & 0x7F) == BSS_CELL.BLUE || (pf[x1 + _y] & 0x7F) == BSS_CELL.BLUE || (pf[x2 + _y] & 0x7F) == BSS_CELL.BLUE) return true;
 	if ((pf[x1 + y2] & 0x7F) != BSS_CELL.BLUE && (pf[x2 + y2] & 0x7F) != BSS_CELL.BLUE
-		&& (pf[(32 * _x) + y1] & 0x7F) != BSS_CELL.BLUE && (pf[(32 * _x) + y2] & 0x7F) != BSS_CELL.BLUE) return false;
+		&& (pf[(BSS_H * _x) + y1] & 0x7F) != BSS_CELL.BLUE && (pf[(BSS_H * _x) + y2] & 0x7F) != BSS_CELL.BLUE) return false;
 	return true;
 }
 
@@ -204,11 +237,11 @@ function bss_scan_up(_x, _y)
 {
 	if (global.bss.loop) return true;
 	var pf = global.bss.pf;
-	var px = 32 * _x;
+	var px = BSS_H * _x;
 	var cid = 0;
 	while (true)
 	{
-		_y = (_y - 1) & 31;
+		_y = bss_wrap_y(_y - 1);
 		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
 		if ((global.bss.chain[px + _y] & 0x7F) == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
@@ -216,12 +249,12 @@ function bss_scan_up(_x, _y)
 		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[_y + (32 * ((_x + 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_right(_x, _y) || found;
-		if ((pf[_y + (32 * ((_x - 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_left(_x, _y) || found;
+		if ((pf[_y + (BSS_H * bss_wrap_x(_x + 1))] & 0x7F) == BSS_CELL.RED) found = bss_scan_right(_x, _y) || found;
+		if ((pf[_y + (BSS_H * bss_wrap_x(_x - 1))] & 0x7F) == BSS_CELL.RED) found = bss_scan_left(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _y = (_y + 1) & 31; global.bss.coll[px + _y] = BSS_CELL.NONE; }
+	for (var i = cid; i > 0; i--) { _y = bss_wrap_y(_y + 1); global.bss.coll[px + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -229,11 +262,11 @@ function bss_scan_down(_x, _y)
 {
 	if (global.bss.loop) return true;
 	var pf = global.bss.pf;
-	var px = 32 * _x;
+	var px = BSS_H * _x;
 	var cid = 0;
 	while (true)
 	{
-		_y = (_y + 1) & 31;
+		_y = bss_wrap_y(_y + 1);
 		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
 		if (global.bss.chain[px + _y] == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
@@ -241,12 +274,12 @@ function bss_scan_down(_x, _y)
 		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[_y + (32 * ((_x - 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_left(_x, _y) || found;
-		if ((pf[_y + (32 * ((_x + 1) & 31))] & 0x7F) == BSS_CELL.RED) found = bss_scan_right(_x, _y) || found;
+		if ((pf[_y + (BSS_H * bss_wrap_x(_x - 1))] & 0x7F) == BSS_CELL.RED) found = bss_scan_left(_x, _y) || found;
+		if ((pf[_y + (BSS_H * bss_wrap_x(_x + 1))] & 0x7F) == BSS_CELL.RED) found = bss_scan_right(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _y = (_y - 1) & 31; global.bss.coll[px + _y] = BSS_CELL.NONE; }
+	for (var i = cid; i > 0; i--) { _y = bss_wrap_y(_y - 1); global.bss.coll[px + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -257,8 +290,8 @@ function bss_scan_left(_x, _y)
 	var cid = 0;
 	while (true)
 	{
-		_x = (_x - 1) & 31;
-		var px = 32 * _x;
+		_x = bss_wrap_x(_x - 1);
+		var px = BSS_H * _x;
 		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
 		if ((global.bss.chain[px + _y] & 0x7F) == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
@@ -266,12 +299,12 @@ function bss_scan_left(_x, _y)
 		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[(32 * _x) + ((_y - 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_up(_x, _y) || found;
-		if ((pf[(32 * _x) + ((_y + 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_down(_x, _y) || found;
+		if ((pf[(BSS_H * _x) + bss_wrap_y(_y - 1)] & 0x7F) == BSS_CELL.RED) found = bss_scan_up(_x, _y) || found;
+		if ((pf[(BSS_H * _x) + bss_wrap_y(_y + 1)] & 0x7F) == BSS_CELL.RED) found = bss_scan_down(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _x = (_x + 1) & 31; global.bss.coll[(32 * _x) + _y] = BSS_CELL.NONE; }
+	for (var i = cid; i > 0; i--) { _x = bss_wrap_x(_x + 1); global.bss.coll[(BSS_H * _x) + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
@@ -282,8 +315,8 @@ function bss_scan_right(_x, _y)
 	var cid = 0;
 	while (true)
 	{
-		_x = (_x + 1) & 31;
-		var px = 32 * _x;
+		_x = bss_wrap_x(_x + 1);
+		var px = BSS_H * _x;
 		if ((pf[px + _y] & 0x7F) != BSS_CELL.RED) break;
 		if ((global.bss.chain[px + _y] & 0x7F) == BSS_CELL.BLUE) break;
 		if (!bss_check_sphere_valid(_x, _y)) break;
@@ -291,51 +324,51 @@ function bss_scan_right(_x, _y)
 		global.bss.coll[_y + px] = BSS_CELL.BLUE;
 		if (_x == global.bss.lastSX && _y == global.bss.lastSY) { global.bss.loop = true; return true; }
 		var found = false;
-		if ((pf[(32 * _x) + ((_y + 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_down(_x, _y) || found;
-		if ((pf[(32 * _x) + ((_y - 1) & 31)] & 0x7F) == BSS_CELL.RED) found = bss_scan_up(_x, _y) || found;
+		if ((pf[(BSS_H * _x) + bss_wrap_y(_y + 1)] & 0x7F) == BSS_CELL.RED) found = bss_scan_down(_x, _y) || found;
+		if ((pf[(BSS_H * _x) + bss_wrap_y(_y - 1)] & 0x7F) == BSS_CELL.RED) found = bss_scan_up(_x, _y) || found;
 		if (!found) cid++; else cid = 0;
 		if (global.bss.loop) return true;
 	}
-	for (var i = cid; i > 0; i--) { _x = (_x - 1) & 31; global.bss.coll[(32 * _x) + _y] = BSS_CELL.NONE; }
+	for (var i = cid; i > 0; i--) { _x = bss_wrap_x(_x - 1); global.bss.coll[(BSS_H * _x) + _y] = BSS_CELL.NONE; }
 	return false;
 }
 
 function bss_chained_count(_x, _y) 
 {
 	var pf = global.bss.pf;
-	var px = 32 * _x;
+	var px = BSS_H * _x;
 
-	var y1 = (_y - 1) & 31;
+	var y1 = bss_wrap_y(_y - 1);
 	for (var i = 0; i < BSS_H; i++)
 	{
 		if (global.bss.coll[px + y1] == BSS_CELL.BLUE) break;
 		var t = pf[px + y1] & 0x7F;
 		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
-		y1 = (y1 - 1) & 31;
+		y1 = bss_wrap_y(y1 - 1);
 	}
-	y1 = (_y + 1) & 31;
+	y1 = bss_wrap_y(_y + 1);
 	for (var i = 0; i < BSS_H; i++)
 	{
 		if (global.bss.coll[px + y1] == BSS_CELL.BLUE) break;
 		var t = pf[px + y1] & 0x7F;
 		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
-		y1 = (y1 + 1) & 31;
+		y1 = bss_wrap_y(y1 + 1);
 	}
-	var x1 = (_x - 1) & 31;
+	var x1 = bss_wrap_x(_x - 1);
 	for (var i = 0; i < BSS_W; i++)
 	{
-		if (global.bss.coll[_y + (32 * x1)] == BSS_CELL.BLUE) break;
-		var t = pf[_y + (32 * x1)] & 0x7F;
+		if (global.bss.coll[_y + (BSS_H * x1)] == BSS_CELL.BLUE) break;
+		var t = pf[_y + (BSS_H * x1)] & 0x7F;
 		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
-		x1 = (x1 - 1) & 31;
+		x1 = bss_wrap_x(x1 - 1);
 	}
-	x1 = (_x + 1) & 31;
+	x1 = bss_wrap_x(_x + 1);
 	for (var i = 0; i < BSS_W; i++)
 	{
-		if (global.bss.coll[_y + (32 * x1)] == BSS_CELL.BLUE) break;
-		var t = pf[_y + (32 * x1)] & 0x7F;
+		if (global.bss.coll[_y + (BSS_H * x1)] == BSS_CELL.BLUE) break;
+		var t = pf[_y + (BSS_H * x1)] & 0x7F;
 		if (t == BSS_CELL.NONE || t == BSS_CELL.RED) return false;
-		x1 = (x1 + 1) & 31;
+		x1 = bss_wrap_x(x1 + 1);
 	}
 
 	global.bss.coll[px + _y] = BSS_CELL.BLUE;
@@ -346,7 +379,7 @@ function bss_chained_count(_x, _y)
 // Returns spheres converted (caller subtracts from sphere count)
 function bss_process_chain() 
 {
-	for (var i = 0; i < 1024; i++) { global.bss.chain[i] = BSS_CELL.NONE; global.bss.coll[i] = BSS_CELL.NONE; }
+	for (var i = 0; i < global.bss.size; i++) { global.bss.chain[i] = BSS_CELL.NONE; global.bss.coll[i] = BSS_CELL.NONE; }
 
 	var lp = bss_idx(global.bss.lastSX, global.bss.lastSY);
 	global.bss.pf[lp] = BSS_CELL.RED;
@@ -366,7 +399,7 @@ function bss_process_chain()
 	for (var gy = 0; gy < BSS_H; gy++)
 	{
 		for (var gx = 0; gx < BSS_W; gx++) {
-			if ((global.bss.pf[(gx * 32) + gy] & 0x7F) == BSS_CELL.BLUE) collected += bss_chained_count(gx, gy) ? 1 : 0;
+			if ((global.bss.pf[(gx * BSS_H) + gy] & 0x7F) == BSS_CELL.BLUE) collected += bss_chained_count(gx, gy) ? 1 : 0;
 		}
 	}
 	if (collected <= 0) { global.bss.loop = false; return 0; }
@@ -376,18 +409,18 @@ function bss_process_chain()
 	{
 		for (var gx = 0; gx < BSS_W; gx++)
 		{
-			var p = gx * 32;
-			var y1 = (gy - 1) & 31;
-			var y2 = (gy + 1) & 31;
-			var x1 = 32 * ((gx - 1) & 31);
-			var x2 = 32 * ((gx + 1) & 31);
+			var p = gx * BSS_H;
+			var y1 = bss_wrap_y(gy - 1);
+			var y2 = bss_wrap_y(gy + 1);
+			var x1 = BSS_H * bss_wrap_x(gx - 1);
+			var x2 = BSS_H * bss_wrap_x(gx + 1);
 			if (global.bss.coll[p + gy] == BSS_CELL.BLUE)
 			{
 				if ((global.bss.pf[p + y1] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[p + y2] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[x1 + gy] & 0x7F) != BSS_CELL.BLUE)
 				{
 					if ((global.bss.pf[x2 + gy] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[x1 + y1] & 0x7F) != BSS_CELL.BLUE
 						&& (global.bss.pf[x2 + y1] & 0x7F) != BSS_CELL.BLUE && (global.bss.pf[x1 + y2] & 0x7F) != BSS_CELL.BLUE) {
-						if ((global.bss.pf[x2 + y2] & 0x7F) != BSS_CELL.BLUE) global.bss.coll[(gx * 32) + gy] = BSS_CELL.NONE;
+						if ((global.bss.pf[x2 + y2] & 0x7F) != BSS_CELL.BLUE) global.bss.coll[(gx * BSS_H) + gy] = BSS_CELL.NONE;
 					}
 				}
 			}
@@ -397,7 +430,7 @@ function bss_process_chain()
 	for (var gy = 0; gy < BSS_H; gy++)
 	{
 		for (var gx = 0; gx < BSS_W; gx++) {
-			if (global.bss.coll[(gx * 32) + gy] != BSS_CELL.NONE) global.bss.pf[(gx * 32) + gy] = BSS_CELL.RING;
+			if (global.bss.coll[(gx * BSS_H) + gy] != BSS_CELL.NONE) global.bss.pf[(gx * BSS_H) + gy] = BSS_CELL.RING;
 		}
 	}
 
@@ -407,7 +440,7 @@ function bss_process_chain()
 }
 
 // Draw one projected cell at screen (_x,_y), scale frame _f (0..31, 31 = closest).
-// Sphere/bumper subimages are pre-scaled, rings/medals scale a full-size sprite
+// Sphere/bumper/emerald subimages are pre-scaled, rings/medals scale a full-size sprite
 function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark, _epal)
 {
 	switch (_t)
@@ -449,8 +482,7 @@ function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark, _epal)
 	}
 }
 
-// obj_bss controller logic
-//---- BSS_Setup_GetStartupInfo port ----
+// BSS_Setup_GetStartupInfo
 function bss_setup_start_info()
 {
 	sphere_count = 0;
@@ -459,7 +491,7 @@ function bss_setup_start_info()
 	{
 		for (var gx = 0; gx < BSS_W; gx++)
 		{
-			var p = (gx * 32) + gy;
+			var p = (gx * BSS_H) + gy;
 			switch (global.bss.pf[p])
 			{
 				case BSS_CELL.BLUE:
@@ -474,7 +506,7 @@ function bss_setup_start_info()
 	}
 }
 
-//---- BSS_Setup_CollectRing port ----
+// BSS_Setup_CollectRing
 function bss_collect_ring()
 {
 	rings_collected++;
@@ -494,15 +526,15 @@ function bss_collect_ring()
 	}
 }
 
-//---- BSS_Setup_SetupFinishSequence port ----
+// BSS_Setup_SetupFinishSequence
 function bss_setup_finish()
 {
 	for (var gy = 0; gy < BSS_H; gy++)
-		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * 32) + gy] = BSS_CELL.NONE;
+		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * BSS_H) + gy] = BSS_CELL.NONE;
 
 	var fx = ashr(sin256(angle), 5) + player_x;
-	var fy = (player_y - ashr(cos256(angle), 5)) & 31;
-	var fp = fy + (32 * (fx & 31));
+	var fy = bss_wrap_y(player_y - ashr(cos256(angle), 5));
+	var fp = fy + (BSS_H * bss_wrap_x(fx));
 
 	// Grant the next Chaos Emerald. Fall back to medals if all emeralds already collected.
 	emerald_index     = game_emerald_count();
@@ -514,14 +546,14 @@ function bss_setup_finish()
 		global.bss.pf[fp] = (ring_count > 0) ? BSS_CELL.MEDAL_SILVER : BSS_CELL.MEDAL_GOLD;
 }
 
-//---- BSS_Setup_HandleSteppedObjects port (runs every grounded frame) ----
+// BSS_Setup_HandleSteppedObjects (runs every grounded frame)
 function bss_stepped_objects()
 {
 	if (globe_timer < 32)  disable_bumpers = false;
 	if (globe_timer > 224) disable_bumpers = false;
 
 	//current cell
-	var fp = player_y + (32 * player_x);
+	var fp = player_y + (BSS_H * player_x);
 	switch (global.bss.pf[fp])
 	{
 		case BSS_CELL.BLUE:
@@ -634,9 +666,9 @@ function bss_stepped_objects()
 	}
 
 	//cell ahead
-	var posX = (player_x + ashr(sin256(angle), 8)) & 31;
-	var posY = (player_y - ashr(cos256(angle), 8)) & 31;
-	fp = posY + (32 * posX);
+	var posX = bss_wrap_x(player_x + ashr(sin256(angle), 8));
+	var posY = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+	fp = posY + (BSS_H * posX);
 
 	switch (global.bss.pf[fp])
 	{
@@ -672,8 +704,8 @@ function bss_stepped_objects()
 				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
-				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
-				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+				player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
+				player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
 				exit_result = "fail";
 				sound_play(sfx_warp_exit);
 				music_set_fade(FADE_OUT, 1);
@@ -753,21 +785,21 @@ function bss_stepped_objects()
 				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
-				player_x = (player_x + ashr(sin256(angle), 8)) & 31;
-				player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+				player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
+				player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
 				sound_play(sfx_warp_exit);
 			}
 			break;
 	}
 }
 
-//---- BSS_Collected_Update port ----
+// BSS_Collected_Update
 function bss_update_collected()
 {
 	for (var i = array_length(collected) - 1; i >= 0; i--)
 	{
 		var e = collected[i];
-		var fp = e.cy + (32 * e.cx);
+		var fp = e.cy + (BSS_H * e.cx);
 		var remove = false;
 
 		switch (e.ce)
@@ -855,6 +887,7 @@ function bss_setup_character()
 			_roll  = spr_bss_knuckles_roll;
 			_tail  = noone;
 			break;
+		case CHAR_SONIC:
 		default:
 			_stand = spr_bss_sonic_stand;
 			_walk  = spr_bss_sonic_walk;
@@ -889,7 +922,7 @@ function bss_setup_character()
 function bss_special_stage_start()
 {
 	global.bss.pf = [];
-	array_copy(global.bss.pf, 0, global.bss.pf_stage, 0, 1024);
+	array_copy(global.bss.pf, 0, global.bss.pf_stage, 0, global.bss.size);
 
 	angle    = 0;
 	player_x = 0;
@@ -926,7 +959,7 @@ function bss_special_stage_start()
 	bg_scroll_x       = 0;
 	bg_scroll_y       = 0;
 
-	for (var si = 0; si < 1024; si++) global.bss.spark[si] = 0;
+	for (var si = 0; si < global.bss.size; si++) global.bss.spark[si] = 0;
 
 	//player (BSS_Player entity)
 	on_ground        = true;
@@ -954,7 +987,8 @@ function bss_special_stage_start()
 	ring_spin = 0;
 }
 
-function bss_load_data() {
+// Taken from the "Frustum 1" and "Frustum 2" tile layers of Sonic Mania Data.rsdk : Stages/SpecialBS/Scene1.bin. Do not hand edit.
+function bss_frustum_tables() {
 	global.bss.frustum1X = [
 	-5,5,-4,4,-5,5,-3,3,-4,4,-2,2,-1,1,0,-3,3,-4,4,-2,2,-1,1,0,-3,3,-4,4,-2,2,
 	-3,3,-1,1,0,-2,2,-3,3,-1,1,-3,3,0,-2,2,-1,1,-2,2,0,-2,2,-1,1,0,-1,1,0

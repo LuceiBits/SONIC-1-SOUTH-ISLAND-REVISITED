@@ -57,7 +57,7 @@ for (var i = 0; i < fcount; i++)
 		case 3: ox =  fys[i]; oy =  fxs[i]; break; //FLIP_XY
 	}
 
-	var idx = ((oy + player_y) & 31) + (32 * ((ox + player_x) & 31));
+	var idx = bss_wrap_y(oy + player_y) + (BSS_H * bss_wrap_x(ox + player_x));
 	var tile = global.bss.pf[idx];
 	if (tile == BSS_CELL.NONE) continue;
 
