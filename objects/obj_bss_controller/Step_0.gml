@@ -15,7 +15,7 @@ var kR = input_active && input_hold(INPUT.RIGHT);
 var kJump = input_active && input_press(INPUT.A);
 if (kL && kR) { kL = false; kR = false; }
 
-//---- BSS_Player_Update port ----
+// BSS_Player_Update
 if (on_ground)
 {
 	if (kJump)
@@ -79,7 +79,7 @@ if (has_tail)
 	animator_update(tail_animator);
 }
 
-//---- BSS_Message GETSPHERES port ----
+// BSS_Message GETSPHERES
 if (msg_phase == 0)
 {
 	msg_fade_timer -= 16;
@@ -114,7 +114,7 @@ else if (msg_phase == 1)
 	}
 }
 
-//---- BSS_Setup state machine ----
+// BSS_Setup state machine
 switch (state)
 {
 	case BSS_STATE.MOVE: //BSS_Setup_State_GlobeMoveZ
@@ -444,7 +444,7 @@ switch (state)
 		break;
 }
 
-//---- BSS_Collected updates ----
+// BSS_Collected updates
 bss_update_collected();
 
 //cosmetic
@@ -454,7 +454,8 @@ medal_spin += 0.5;
 if (medal_spin >= sprite_get_number(spr_bss_medal_gold)) medal_spin -= sprite_get_number(spr_bss_medal_gold);
 
 //background scroll
-if (state != BSS_STATE.TURNL && state != BSS_STATE.TURNR) bg_scroll_y -= globe_speed / 4;
+if (state == BSS_STATE.MOVE || state == BSS_STATE.JETTISON || state == BSS_STATE.EMERALD)
+	bg_scroll_y -= globe_speed / 4;
 if (state == BSS_STATE.EXIT) bg_scroll_x -= 32;
 else bg_scroll_x = (angle & 255) * 4;
 

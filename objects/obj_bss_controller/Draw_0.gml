@@ -35,7 +35,7 @@ gpu_set_blendmode(bm_normal);
 //Player shadow
 draw_sprite_ext(spr_bss_player_shadow, 0, center_x, 170, 1, 1, 0, c_white, 1);
 
-//BSS_Setup_HandleCollectableMovement port
+//BSS_Setup_HandleCollectableMovement
 var aa = angle & 255;
 var cs = cos256(aa);
 var sn = sin256(aa);
