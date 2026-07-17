@@ -105,7 +105,7 @@ function player_state_drown()
 	death_timer++;
 			
 	//Remove effects
-	shield = S_NONE;
+	shield = SHIELD.NONE;
 	invincible_timer = 0;
 	speed_shoes = 0;
 	invincible = false;

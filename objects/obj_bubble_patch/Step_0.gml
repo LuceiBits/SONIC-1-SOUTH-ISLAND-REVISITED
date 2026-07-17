@@ -1,3 +1,13 @@
+	// Hide above water horizon
+	if(bbox_top < obj_water.y) // Add pool support with instance place later
+	{
+		visible = false;
+		exit;
+	}
+	else
+	{
+		visible = true;
+	}
 
 	if(--timer <= 0)
 	{
