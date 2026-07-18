@@ -35,7 +35,7 @@ gpu_set_blendmode(bm_normal);
 //Player shadow
 draw_sprite_ext(spr_bss_player_shadow, 0, center_x, 170, 1, 1, 0, c_white, 1);
 
-//BSS_Setup_HandleCollectableMovement port
+//BSS_Setup_HandleCollectableMovement
 var aa = angle & 255;
 var cs = cos256(aa);
 var sn = sin256(aa);
@@ -57,7 +57,7 @@ for (var i = 0; i < fcount; i++)
 		case 3: ox =  fys[i]; oy =  fxs[i]; break; //FLIP_XY
 	}
 
-	var idx = ((oy + player_y) & 31) + (32 * ((ox + player_x) & 31));
+	var idx = bss_wrap_y(oy + player_y) + (BSS_H * bss_wrap_x(ox + player_x));
 	var tile = global.bss.pf[idx];
 	if (tile == BSS_CELL.NONE) continue;
 

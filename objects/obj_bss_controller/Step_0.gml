@@ -1,6 +1,6 @@
 /// @description BSS update
 
-//Keep the bonus stage view fixed to the window
+//Keep the special stage view fixed to the window
 if (view_camera[0] >= 0) {
 	view_enabled = true;
 	camera_set_view_size(view_camera[0], WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -12,10 +12,10 @@ if (!global.process_objects) exit;
 var kU = input_active && input_hold(INPUT.UP);
 var kL = input_active && input_hold(INPUT.LEFT);
 var kR = input_active && input_hold(INPUT.RIGHT);
-var kJump = input_active && input_press(INPUT.A);
+var kJump = input_active && (input_press(INPUT.A) || input_press(INPUT.B) || input_press(INPUT.C));
 if (kL && kR) { kL = false; kR = false; }
 
-//---- BSS_Player_Update port ----
+// BSS_Player_Update
 if (on_ground)
 {
 	if (kJump)
@@ -79,7 +79,7 @@ if (has_tail)
 	animator_update(tail_animator);
 }
 
-//---- BSS_Message GETSPHERES port ----
+// BSS_Message GETSPHERES
 if (msg_phase == 0)
 {
 	msg_fade_timer -= 16;
@@ -114,7 +114,7 @@ else if (msg_phase == 1)
 	}
 }
 
-//---- BSS_Setup state machine ----
+// BSS_Setup state machine
 switch (state)
 {
 	case BSS_STATE.MOVE: //BSS_Setup_State_GlobeMoveZ
@@ -163,8 +163,8 @@ switch (state)
 					}
 					palette_page ^= 1;
 					spin_state = 0;
-					player_x = (player_x + ashr(sin256(angle), 8)) & 31;
-					player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+					player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
+					player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
 				}
 			}
 			else if (globe_timer < 0)
@@ -174,8 +174,8 @@ switch (state)
 					case 0:
 						globe_timer += 256;
 						palette_page ^= 1;
-						player_x = (player_x - ashr(sin256(angle), 8)) & 31;
-						player_y = (player_y + ashr(cos256(angle), 8)) & 31;
+						player_x = bss_wrap_x(player_x - ashr(sin256(angle), 8));
+						player_y = bss_wrap_y(player_y + ashr(cos256(angle), 8));
 						break;
 					case 1: state = BSS_STATE.TURNL; globe_timer = 0; spin_timer = 0; break;
 					case 2: state = BSS_STATE.TURNR; globe_timer = 0; spin_timer = 0; break;
@@ -251,7 +251,7 @@ switch (state)
 				{
 					for (var gx = 0; gx < BSS_W; gx++)
 					{
-						if ((global.bss.pf[gy + (32 * gx)] & 0x7F) == BSS_CELL.PINK && (gx != player_x || gy != player_y))
+						if ((global.bss.pf[gy + (BSS_H * gx)] & 0x7F) == BSS_CELL.PINK && (gx != player_x || gy != player_y))
 							array_push(picks, [gx, gy]);
 					}
 				}
@@ -271,12 +271,12 @@ switch (state)
 				var tx = player_x;
 				var ty = player_y;
 				switch (dir) {
-					case 0: ty = (ty - 1) & 31; break;
-					case 1: tx = (tx + 1) & 31; break;
-					case 2: ty = (ty + 1) & 31; break;
-					case 3: tx = (tx - 1) & 31; break;
+					case 0: ty = bss_wrap_y(ty - 1); break;
+					case 1: tx = bss_wrap_x(tx + 1); break;
+					case 2: ty = bss_wrap_y(ty + 1); break;
+					case 3: tx = bss_wrap_x(tx - 1); break;
 				}
-				var tile = global.bss.pf[ty + (32 * tx)];
+				var tile = global.bss.pf[ty + (BSS_H * tx)];
 				if (tile < BSS_CELL.RED || (tile > BSS_CELL.BUMPER && tile != BSS_CELL.PINK)) { found_dir = true; break; }
 				dir = (dir + 1) & 3;
 			}
@@ -287,12 +287,12 @@ switch (state)
 					var tx = player_x;
 					var ty = player_y;
 					switch (dir) {
-						case 0: ty = (ty - 2) & 31; break;
-						case 1: tx = (tx + 2) & 31; break;
-						case 2: ty = (ty + 2) & 31; break;
-						case 3: tx = (tx - 2) & 31; break;
+						case 0: ty = bss_wrap_y(ty - 2); break;
+						case 1: tx = bss_wrap_x(tx + 2); break;
+						case 2: ty = bss_wrap_y(ty + 2); break;
+						case 3: tx = bss_wrap_x(tx - 2); break;
 					}
-					var tile = global.bss.pf[ty + (32 * tx)];
+					var tile = global.bss.pf[ty + (BSS_H * tx)];
 					if (tile < BSS_CELL.RED || (tile > BSS_CELL.BUMPER && tile != BSS_CELL.PINK)) { found_dir = true; break; }
 					dir = (dir + 1) & 3;
 				}
@@ -301,7 +301,7 @@ switch (state)
 			angle = (dir << 6) & 255;
 
 			array_push(collected, { ce : BSS_COLLECT.PINK, cx : player_x, cy : player_y, t : 0 });
-			global.bss.pf[player_y + (32 * player_x)] = BSS_CELL.PINK_STOOD;
+			global.bss.pf[player_y + (BSS_H * player_x)] = BSS_CELL.PINK_STOOD;
 
 			timer_100 = 100;
 			state = BSS_STATE.TELE_OUT;
@@ -335,15 +335,15 @@ switch (state)
 		{
 			palette_page ^= 1;
 			globe_timer += 256;
-			player_x = (player_x - ashr(sin256(angle), 8)) & 31;
-			player_y = (player_y + ashr(cos256(angle), 8)) & 31;
+			player_x = bss_wrap_x(player_x - ashr(sin256(angle), 8));
+			player_y = bss_wrap_y(player_y + ashr(cos256(angle), 8));
 		}
 		else if (globe_timer >= 256)
 		{
 			palette_page ^= 1;
 			globe_timer -= 256;
-			player_x = (player_x + ashr(sin256(angle), 8)) & 31;
-			player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+			player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
+			player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
 		}
 		palette_line = ashr(globe_timer, 4) & 15;
 
@@ -374,15 +374,15 @@ switch (state)
 		{
 			palette_page ^= 1;
 			globe_timer += 256;
-			player_x = (player_x - ashr(sin256(angle), 8)) & 31;
-			player_y = (player_y + ashr(cos256(angle), 8)) & 31;
+			player_x = bss_wrap_x(player_x - ashr(sin256(angle), 8));
+			player_y = bss_wrap_y(player_y + ashr(cos256(angle), 8));
 		}
 		else if (globe_timer >= 256)
 		{
 			palette_page ^= 1;
 			globe_timer -= 256;
-			player_x = (player_x + ashr(sin256(angle), 8)) & 31;
-			player_y = (player_y - ashr(cos256(angle), 8)) & 31;
+			player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
+			player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
 		}
 		palette_line = ashr(globe_timer, 4) & 15;
 		break;
@@ -444,17 +444,27 @@ switch (state)
 		break;
 }
 
-//---- BSS_Collected updates ----
+// BSS_Collected updates
 bss_update_collected();
 
-//cosmetic
+//Uncomment this for Mania's ring animation!
+/*
 ring_spin += 0.25;
-if (ring_spin >= sprite_get_number(spr_bss_ring)) ring_spin -= sprite_get_number(spr_bss_ring);
+if (ring_spin >= sprite_get_number(spr_bss_ring_mania)) ring_spin -= sprite_get_number(spr_bss_ring_mania);
+*/
+if (++ring_spin_timer >= 8)
+{
+	ring_spin_timer = 0;
+	global.bss.ring_phase = (global.bss.ring_phase + 1) mod 3;
+}
+
+//medal spinning
 medal_spin += 0.5;
 if (medal_spin >= sprite_get_number(spr_bss_medal_gold)) medal_spin -= sprite_get_number(spr_bss_medal_gold);
 
 //background scroll
-if (state != BSS_STATE.TURNL && state != BSS_STATE.TURNR) bg_scroll_y -= globe_speed / 4;
+if (state == BSS_STATE.MOVE || state == BSS_STATE.JETTISON || state == BSS_STATE.EMERALD)
+	bg_scroll_y -= globe_speed / 4;
 if (state == BSS_STATE.EXIT) bg_scroll_x -= 32;
 else bg_scroll_x = (angle & 255) * 4;
 

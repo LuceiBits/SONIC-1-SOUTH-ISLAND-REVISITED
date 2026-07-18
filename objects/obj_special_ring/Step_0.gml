@@ -63,7 +63,7 @@
 
 			/*
 				To set up seven separate special stages: first create your rooms
-				(example: rm_special_stage1 .. rm_special_stage1), uncomment the block below and
+				(example: rm_special_stage1 .. rm_special_stage7), uncomment the block below and
 				delete the single-room line above. You'll then be sent to the stage that
 				matches how many emeralds you have (0 emeralds -> stage 1, 1 -> stage 2, ...).
 
