@@ -17,7 +17,7 @@ function player_shield_electric()
 	}
 	
 	// Double jump
-	if(shield_state == 0 && press_action && !invincible && state == player_state_jump)
+	if(character == CHAR_SONIC && shield_state == 0 && press_action && !invincible && state == player_state_jump)
 	{
 		//Player double jump
 		y_speed = -5.5;

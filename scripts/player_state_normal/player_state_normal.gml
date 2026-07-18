@@ -98,7 +98,7 @@ function player_state_normal(){
 		
 		
 		// Trigger the skidding
-		if(abs(ground_speed) > 4 && mode == CMODE_FLOOR && (hold_right - hold_left) == -sign(ground_speed) && control_lock == 0 && ground)
+		if(abs(ground_speed) > 4 && mode == CMODE_FLOOR && (hold_right - hold_left) == -sign(ground_speed) && control_lock == 0 && ground && !water_run)
 		{
 			skid_timer = 24;
 			

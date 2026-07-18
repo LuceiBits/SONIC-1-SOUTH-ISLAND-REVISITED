@@ -10,7 +10,7 @@ function player_water()
 	// Constants 
 	var waterY = obj_water.y;
 	var waterRange = 8;
-	var waterSpd = 4;
+	var waterSpd = 6;
 	
 	// Is player's bottom side in the water's range?
 	if(y + hitbox_h > waterY - waterRange && y + hitbox_h < waterY + waterRange && ground
@@ -93,12 +93,13 @@ function player_water()
 	{
 		if(shield == SHIELD.ELECTRIC || shield == SHIELD.FIRE)
 		{
-			shield = SHIELD.NONE;
 			if(shield == SHIELD.ELECTRIC)
 			{
 				sound_play(sfx_electric_shield_lose);
 				obj_water.flash_hold_timer = 4;
 			}
+			
+			shield = SHIELD.NONE;
 		}
 		
 		if (shield != SHIELD.BUBBLE) 

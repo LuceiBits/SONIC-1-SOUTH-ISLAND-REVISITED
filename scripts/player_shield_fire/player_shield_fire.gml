@@ -17,7 +17,7 @@ function player_shield_fire()
 			image_xscale = 1;
 		}
 		
-		if(press_action && state == player_state_jump && !ground && !invincible)
+		if(character == CHAR_SONIC && press_action && state == player_state_jump && !ground && !invincible)
 		{
 			//Dash the player
 			x_speed = 8 * facing;

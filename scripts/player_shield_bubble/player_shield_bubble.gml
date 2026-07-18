@@ -15,7 +15,7 @@ function player_shield_bubble()
 		}
 	
 		// Shield action
-		if(press_action && !invincible && state == player_state_jump)
+		if(character == CHAR_SONIC && press_action && !invincible && state == player_state_jump)
 		{
 			//Player go down
 			x_speed = 0;
