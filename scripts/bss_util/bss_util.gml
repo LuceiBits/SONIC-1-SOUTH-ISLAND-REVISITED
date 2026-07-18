@@ -453,10 +453,14 @@ function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark, _epal)
 		case BSS_CELL.PINK:   draw_sprite(spr_bss_sphere_pink,   _f div 2, _x, _y); break;
 
 		case BSS_CELL.RING:
-			var spin = floor(_spin) mod sprite_get_number(spr_bss_ring);
-			draw_sprite_ext(spr_bss_ring, spin,
+			//Uncomment this for Mania's method of drawing rings!
+			/*
+			var spin = floor(_spin) mod sprite_get_number(spr_bss_ring_mania);
+			draw_sprite_ext(spr_bss_ring_mania, spin,
 				_x, _y - (global.bss.ringScreenY[_f] / 65536),
 				global.bss.ringScaleX[_f] / 512, global.bss.ringScaleY[_f] / 512, 0, c_white, 1);
+			*/
+			draw_sprite(spr_bss_ring, (global.bss.ring_phase * 16) + (_f div 2), _x, _y);
 			break;
 
 		case BSS_CELL.MEDAL_SILVER:
@@ -984,7 +988,9 @@ function bss_special_stage_start()
 	perfect_offset = 320;
 	perfect_wait   = 0;
 
-	ring_spin = 0;
+	ring_spin       = 0;
+	ring_spin_timer = 0;
+	global.bss.ring_phase = 0;
 }
 
 // Taken from the "Frustum 1" and "Frustum 2" tile layers of Sonic Mania Data.rsdk : Stages/SpecialBS/Scene1.bin. Do not hand edit.

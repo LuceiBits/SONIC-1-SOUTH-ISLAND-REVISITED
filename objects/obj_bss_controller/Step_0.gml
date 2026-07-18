@@ -447,9 +447,18 @@ switch (state)
 // BSS_Collected updates
 bss_update_collected();
 
-//cosmetic
+//Uncomment this for Mania's ring animation!
+/*
 ring_spin += 0.25;
-if (ring_spin >= sprite_get_number(spr_bss_ring)) ring_spin -= sprite_get_number(spr_bss_ring);
+if (ring_spin >= sprite_get_number(spr_bss_ring_mania)) ring_spin -= sprite_get_number(spr_bss_ring_mania);
+*/
+if (++ring_spin_timer >= 8)
+{
+	ring_spin_timer = 0;
+	global.bss.ring_phase = (global.bss.ring_phase + 1) mod 3;
+}
+
+//medal spinning
 medal_spin += 0.5;
 if (medal_spin >= sprite_get_number(spr_bss_medal_gold)) medal_spin -= sprite_get_number(spr_bss_medal_gold);
 

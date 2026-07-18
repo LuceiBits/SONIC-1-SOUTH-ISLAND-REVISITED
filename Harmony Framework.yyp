@@ -486,6 +486,7 @@
     {"id":{"name":"spr_bss_medal_silver","path":"sprites/spr_bss_medal_silver/spr_bss_medal_silver.yy",},},
     {"id":{"name":"spr_bss_player_shadow","path":"sprites/spr_bss_player_shadow/spr_bss_player_shadow.yy",},},
     {"id":{"name":"spr_bss_rimlight","path":"sprites/spr_bss_rimlight/spr_bss_rimlight.yy",},},
+    {"id":{"name":"spr_bss_ring_mania","path":"sprites/spr_bss_ring_mania/spr_bss_ring_mania.yy",},},
     {"id":{"name":"spr_bss_ring_sparkle","path":"sprites/spr_bss_ring_sparkle/spr_bss_ring_sparkle.yy",},},
     {"id":{"name":"spr_bss_ring","path":"sprites/spr_bss_ring/spr_bss_ring.yy",},},
     {"id":{"name":"spr_bss_sonic_roll","path":"sprites/spr_bss_sonic_roll/spr_bss_sonic_roll.yy",},},
