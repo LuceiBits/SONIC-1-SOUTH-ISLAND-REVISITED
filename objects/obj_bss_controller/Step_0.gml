@@ -12,7 +12,7 @@ if (!global.process_objects) exit;
 var kU = input_active && input_hold(INPUT.UP);
 var kL = input_active && input_hold(INPUT.LEFT);
 var kR = input_active && input_hold(INPUT.RIGHT);
-var kJump = input_active && input_press(INPUT.A);
+var kJump = input_active && (input_press(INPUT.A) || input_press(INPUT.B) || input_press(INPUT.C));
 if (kL && kR) { kL = false; kR = false; }
 
 // BSS_Player_Update
