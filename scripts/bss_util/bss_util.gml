@@ -211,7 +211,7 @@ function bss_build_tables()
 
 		var sc  = i * (global.bss.ringScaleY[i] - global.bss.ringScaleX[i]);
 		var scX = global.bss.ringScaleX[i];
-		global.bss.ringScaleY[i] = scX + ashr(sc, 5);
+		global.bss.ringScaleY[i] = scX + (sc >> 5);
 
 		did--;
 	}
@@ -536,8 +536,8 @@ function bss_setup_finish()
 	for (var gy = 0; gy < BSS_H; gy++)
 		for (var gx = 0; gx < BSS_W; gx++) global.bss.pf[(gx * BSS_H) + gy] = BSS_CELL.NONE;
 
-	var fx = ashr(sin256(angle), 5) + player_x;
-	var fy = bss_wrap_y(player_y - ashr(cos256(angle), 5));
+	var fx = (sin256(angle) >> 5) + player_x;
+	var fy = bss_wrap_y(player_y - (cos256(angle) >> 5));
 	var fp = fy + (BSS_H * bss_wrap_x(fx));
 
 	// Grant the next Chaos Emerald. Fall back to medals if all emeralds already collected.
@@ -670,8 +670,8 @@ function bss_stepped_objects()
 	}
 
 	//cell ahead
-	var posX = bss_wrap_x(player_x + ashr(sin256(angle), 8));
-	var posY = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+	var posX = bss_wrap_x(player_x + (sin256(angle) >> 8));
+	var posY = bss_wrap_y(player_y - (cos256(angle) >> 8));
 	fp = posY + (BSS_H * posX);
 
 	switch (global.bss.pf[fp])
@@ -708,8 +708,8 @@ function bss_stepped_objects()
 				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
-				player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
-				player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+				player_x = bss_wrap_x(player_x + (sin256(angle) >> 8));
+				player_y = bss_wrap_y(player_y - (cos256(angle) >> 8));
 				exit_result = "fail";
 				sound_play(sfx_warp_exit);
 				music_set_fade(FADE_OUT, 1);
@@ -789,8 +789,8 @@ function bss_stepped_objects()
 				state = BSS_STATE.EXIT;
 				spin_timer = 0;
 				globe_timer = 0;
-				player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
-				player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+				player_x = bss_wrap_x(player_x + (sin256(angle) >> 8));
+				player_y = bss_wrap_y(player_y - (cos256(angle) >> 8));
 				sound_play(sfx_warp_exit);
 			}
 			break;

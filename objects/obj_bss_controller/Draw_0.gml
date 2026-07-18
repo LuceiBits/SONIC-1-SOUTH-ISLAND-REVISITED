@@ -61,8 +61,8 @@ for (var i = 0; i < fcount; i++)
 	var tile = global.bss.pf[idx];
 	if (tile == BSS_CELL.NONE) continue;
 
-	var sx = ashr(ox * cs + oy * sn, 4);
-	var sy = ashr(oy * cs - ox * sn, 4);
+	var sx = ((ox * cs + oy * sn) >> 4);
+	var sy = ((oy * cs - ox * sn) >> 4);
 	var dep = -(sy + palette_line - 16);
 	if (dep < 0 || dep >= 112) continue;
 
@@ -71,7 +71,7 @@ for (var i = 0; i < fcount; i++)
 
 	var fxv  = global.bss.xMultiplierTable[dep] * sx;
 	var dist = (fxv * fxv) div 65536;
-	var worldX = ashr((fxv <= 0) ? fxv + dist : fxv - dist, 4);
+	var worldX = (((fxv <= 0) ? fxv + dist : fxv - dist) >> 4);
 
 	var dx = worldX + center_x;
 	var dy = global.bss.screenYTable[dep] + (worldX * worldX) div global.bss.divisorTable[dep];
@@ -79,7 +79,7 @@ for (var i = 0; i < fcount; i++)
 	//Jettisonning
 	if (state == BSS_STATE.JETTISON)
 	{
-		dx = ashr((256 + spin_timer) * (dx - center_x), 8) + center_x;
+		dx = (((256 + spin_timer) * (dx - center_x)) >> 8) + center_x;
 		dy -= spin_timer * 2;
 	}
 
@@ -89,7 +89,7 @@ for (var i = 0; i < fcount; i++)
 }
 
 //Draw player
-var py = 170 + (ashr(gravity_strength, 1) - ashr(gravity_strength, 4)) / 65536;
+var py = 170 + ((gravity_strength >> 1) - (gravity_strength >> 4)) / 65536;
 draw_animator(animator, center_x, py, 1, 1, 0, c_white, 1);
 if (has_tail) draw_animator(tail_animator, center_x, py, 1, 1, 0, c_white, 1);
 

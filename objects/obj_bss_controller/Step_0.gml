@@ -36,7 +36,7 @@ else
 	{
 		gravity_strength = 0;
 		on_ground = true;
-		if (animation_get_current_animation(animator) == BSS_ANIM.SPRING) globe_speed = ashr(globe_speed, 1);
+		if (animation_get_current_animation(animator) == BSS_ANIM.SPRING) globe_speed = (globe_speed >> 1);
 		globe_speed_inc = 2;
 		animation_play(animator, (speedup_level != 0) ? BSS_ANIM.WALK : BSS_ANIM.STAND);
 	}
@@ -163,8 +163,8 @@ switch (state)
 					}
 					palette_page ^= 1;
 					spin_state = 0;
-					player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
-					player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+					player_x = bss_wrap_x(player_x + (sin256(angle) >> 8));
+					player_y = bss_wrap_y(player_y - (cos256(angle) >> 8));
 				}
 			}
 			else if (globe_timer < 0)
@@ -174,8 +174,8 @@ switch (state)
 					case 0:
 						globe_timer += 256;
 						palette_page ^= 1;
-						player_x = bss_wrap_x(player_x - ashr(sin256(angle), 8));
-						player_y = bss_wrap_y(player_y + ashr(cos256(angle), 8));
+						player_x = bss_wrap_x(player_x - (sin256(angle) >> 8));
+						player_y = bss_wrap_y(player_y + (cos256(angle) >> 8));
 						break;
 					case 1: state = BSS_STATE.TURNL; globe_timer = 0; spin_timer = 0; break;
 					case 2: state = BSS_STATE.TURNR; globe_timer = 0; spin_timer = 0; break;
@@ -184,7 +184,7 @@ switch (state)
 			}
 		}
 
-		palette_line = ashr(globe_timer, 4) & 15;
+		palette_line = (globe_timer >> 4) & 15;
 		break;
 
 	case BSS_STATE.TURNL: //BSS_Setup_State_GlobeTurnLeft
@@ -335,17 +335,17 @@ switch (state)
 		{
 			palette_page ^= 1;
 			globe_timer += 256;
-			player_x = bss_wrap_x(player_x - ashr(sin256(angle), 8));
-			player_y = bss_wrap_y(player_y + ashr(cos256(angle), 8));
+			player_x = bss_wrap_x(player_x - (sin256(angle) >> 8));
+			player_y = bss_wrap_y(player_y + (cos256(angle) >> 8));
 		}
 		else if (globe_timer >= 256)
 		{
 			palette_page ^= 1;
 			globe_timer -= 256;
-			player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
-			player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+			player_x = bss_wrap_x(player_x + (sin256(angle) >> 8));
+			player_y = bss_wrap_y(player_y - (cos256(angle) >> 8));
 		}
-		palette_line = ashr(globe_timer, 4) & 15;
+		palette_line = (globe_timer >> 4) & 15;
 
 		if (++spin_timer == 128)
 		{
@@ -374,17 +374,17 @@ switch (state)
 		{
 			palette_page ^= 1;
 			globe_timer += 256;
-			player_x = bss_wrap_x(player_x - ashr(sin256(angle), 8));
-			player_y = bss_wrap_y(player_y + ashr(cos256(angle), 8));
+			player_x = bss_wrap_x(player_x - (sin256(angle) >> 8));
+			player_y = bss_wrap_y(player_y + (cos256(angle) >> 8));
 		}
 		else if (globe_timer >= 256)
 		{
 			palette_page ^= 1;
 			globe_timer -= 256;
-			player_x = bss_wrap_x(player_x + ashr(sin256(angle), 8));
-			player_y = bss_wrap_y(player_y - ashr(cos256(angle), 8));
+			player_x = bss_wrap_x(player_x + (sin256(angle) >> 8));
+			player_y = bss_wrap_y(player_y - (cos256(angle) >> 8));
 		}
-		palette_line = ashr(globe_timer, 4) & 15;
+		palette_line = (globe_timer >> 4) & 15;
 		break;
 
 	case BSS_STATE.EXIT: //BSS_Setup_State_GlobeExit

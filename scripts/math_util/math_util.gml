@@ -1,9 +1,3 @@
-// Arithmetic (floor) right shift, matching C's signed >> on negatives
-function ashr(_v, _n)
-{
-	return floor(_v / (1 << _n));
-}
-
 function math_uangle(angle)
 {
 	if(angle < 180)
