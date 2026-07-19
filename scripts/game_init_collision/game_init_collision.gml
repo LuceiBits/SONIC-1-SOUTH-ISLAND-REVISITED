@@ -1,41 +1,41 @@
 function game_init_collision()
 {
 	// Initilize tile arrays
-	global.tile_top = [[]];
-	global.tile_bottom = [[]];
-	global.tile_left = [[]];
-	global.tile_right = [[]];
+	global.tile_top = [[[]]];
+	global.tile_bottom = [[[]]];
+	global.tile_left = [[[]]];
+	global.tile_right = [[[]]];
 	
 	// Get the old sprite mask
 	var oldMask = mask_index;
-	
-	// For debugging purposes
-	var oldTime = current_time;
-	
+		
 	// For now
-	var tilemap = spr_tile_collision_new;
+	var tilemap = [spr_tile_collision_new];
 	
-	// Get the tile count
-	var tileW = floor(sprite_get_width(tilemap) / 16);
-	var tileH = floor(sprite_get_height(tilemap) / 16);
-	var tileCount = tileW * tileH;
-	
-	sprite_collision_mask(tilemap, false, bboxmode_fullimage, 0, 0, 16, 16, bboxkind_precise, 0);
-	
-	mask_index = tilemap;
-	
-	for (var i = 0; i < tileCount; ++i) 
+	for (var j = 0; j < array_length(tilemap); ++j) 
 	{
-		_game_calculate_height(i, tileW);
+		// For debugging purposes
+		var oldTime = current_time;
+	
+		// Get the tile count
+		var tileW = floor(sprite_get_width(tilemap[j]) / 16);
+		var tileH = floor(sprite_get_height(tilemap[j]) / 16);
+		var tileCount = tileW * tileH;
+	
+		mask_index = tilemap[j];
+	
+		for (var i = 0; i < tileCount; ++i) 
+		{
+			_game_calculate_height(j, i, tileW);
+		}
+	
+		show_debug_message("Collision index {1} height map baking took: {0} ms", current_time - oldTime, j);
 	}
-	
-	show_debug_message("Baking took: " + string(current_time - oldTime) + "ms");
-	
 	// Restore it
 	mask_index = oldMask;
 }
 
-function _game_calculate_height(tile_index, tile_width)
+function _game_calculate_height(collision_index, tile_index, tile_width)
 {
 	var tileX = 16 * (tile_index % tile_width);
 	var tileY = 16 * floor(tile_index / tile_width);
@@ -48,7 +48,7 @@ function _game_calculate_height(tile_index, tile_width)
 			pY--;
 		}
 		
-		global.tile_top[tile_index][w] = pY;
+		global.tile_top[collision_index][tile_index][w] = pY;
 		
 		pY = 16;
 		while(!position_meeting(x + tileX + w, y + tileY + pY - 1, self) && pY > 0)
@@ -56,7 +56,7 @@ function _game_calculate_height(tile_index, tile_width)
 			pY--;
 		}
 		
-		global.tile_bottom[tile_index][w] = pY;
+		global.tile_bottom[collision_index][tile_index][w] = pY;
 		
 		var pX = 16;
 		while(!position_meeting(x + tileX + 16 - pX, y + tileY + w, self) && pX > 0)
@@ -64,7 +64,7 @@ function _game_calculate_height(tile_index, tile_width)
 			pX--;
 		}
 		
-		global.tile_left[tile_index][w] = pX;
+		global.tile_left[collision_index][tile_index][w] = pX;
 		
 		// Right side of the collision
 		pX = 16;
@@ -73,7 +73,7 @@ function _game_calculate_height(tile_index, tile_width)
 			pX--;
 		}
 		
-		global.tile_right[tile_index][w] = pX;
+		global.tile_right[collision_index][tile_index][w] = pX;
 		
 	}
 

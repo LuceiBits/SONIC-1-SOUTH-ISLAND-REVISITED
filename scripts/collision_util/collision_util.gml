@@ -327,7 +327,7 @@ function _tiledata_get_height(tile_id, xpos, flip = false)
 	var index = tile_get_index(tile_id);
 	
 	// Return blank height if the tile is invalid
-	if(index <= 0 || index > array_length(global.tile_top))
+	if(index <= 0 || index > array_length(global.tile_top[global.collision_index]))
 	{
 		return 0;
 	}
@@ -337,19 +337,19 @@ function _tiledata_get_height(tile_id, xpos, flip = false)
 	{
 		// Return collision height if the tile is flipped
 		if(tile_get_flip(tile_id))
-			return -global.tile_top[index][xpos];
+			return -global.tile_top[global.collision_index][index][xpos];
 		
 		// Otherwise default to the normal one
-		return -global.tile_bottom[index][xpos];
+		return -global.tile_bottom[global.collision_index][index][xpos];
 	}
 	else	// Down direction
 	{
 		// Return collision height if the tile is flipped
 		if(tile_get_flip(tile_id))
-			return global.tile_bottom[index][xpos];
+			return global.tile_bottom[global.collision_index][index][xpos];
 		
 		// Otherwise default to the normal one
-		return global.tile_top[index][xpos];
+		return global.tile_top[global.collision_index][index][xpos];
 	}
 }
 
@@ -365,7 +365,7 @@ function _tiledata_get_width(tile_id, ypos, flip = false)
 	var index = tile_get_index(tile_id);
 	
 	// Return blank height if the tile is invalid
-	if(index <= 0 || index > array_length(global.tile_top))
+	if(index <= 0 || index > array_length(global.tile_top[global.collision_index]))
 	{
 		return 0;
 	}
@@ -375,18 +375,18 @@ function _tiledata_get_width(tile_id, ypos, flip = false)
 	{
 		// Return collision height if the tile is flipped
 		if(tile_get_mirror(tile_id))
-			return -global.tile_left[index][ypos];	
+			return -global.tile_left[global.collision_index][index][ypos];	
 			
 		// Otherwise default to the normal one
-		return -global.tile_right[index][ypos];
+		return -global.tile_right[global.collision_index][index][ypos];
 	}
 	else
 	{
 		// Return collision height if the tile is flipped
 		if(tile_get_mirror(tile_id))
-			return global.tile_right[index][ypos];
+			return global.tile_right[global.collision_index][index][ypos];
 			
 		// Otherwise default to the normal one
-		return global.tile_left[index][ypos];	
+		return global.tile_left[global.collision_index][index][ypos];	
 	}
 }

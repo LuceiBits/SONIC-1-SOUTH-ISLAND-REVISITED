@@ -27,3 +27,6 @@
 		
 	//Next level
 	next_level = room;
+	
+	// Set the base collision index
+	global.collision_index = COL_INDEX.GLOBAL;

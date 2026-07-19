@@ -60,3 +60,10 @@
 		BUBBLE,
 		END,
 	}
+	
+	// Collision indexes
+	enum COL_INDEX
+	{
+		GLOBAL,
+		END,
+	}
