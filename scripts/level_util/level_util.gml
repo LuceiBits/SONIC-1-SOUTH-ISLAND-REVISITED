@@ -1,6 +1,8 @@
 function level_reset_data()
 {
 	global.checkpoint_id = noone;
+	global.checkpoint_type = CHECKPOINT.NORMAL;
+	ds_list_clear(global.special_ring_store);
 	global.time_store = 0;
 	global.rings = 0;
 	global.stage_timer = 0;
@@ -50,9 +52,4 @@ function level_store_bg_visibility()
 function level_reset_bg_visibility()
 {
 	global.store_background_visibility = {};
-}
-
-function level_reset_special_rings()
-{
-	ds_list_clear(global.special_ring_store);
 }
