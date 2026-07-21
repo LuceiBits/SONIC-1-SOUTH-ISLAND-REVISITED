@@ -21,13 +21,13 @@
 	animator = new animator_create();
 
 	// Add the animal animations
-	animation_add(A_FLICKY, spr_animal_flicky, 0, 1, true);
-	animation_add(A_POCKY, spr_animal_pocky, 0, 1, true);
-	animation_add(A_CUCKY, spr_animal_cucky, 0, 1, true);
-	animation_add(A_RICKY, spr_animal_ricky, 0, 1, true);
-	animation_add(A_PECKY, spr_animal_pecky, 0, 1, true);
-	animation_add(A_ROCKY, spr_animal_rocky, 0, 1, true);
-	animation_add(A_PICKY, spr_animal_picky, 0, 1, true);
+	animation_add(A_FLICKY, spr_animal_flicky, 0, 1);
+	animation_add(A_POCKY, spr_animal_pocky, 0, 1);
+	animation_add(A_CUCKY, spr_animal_cucky, 0, 1);
+	animation_add(A_RICKY, spr_animal_ricky, 0, 1);
+	animation_add(A_PECKY, spr_animal_pecky, 0, 1);
+	animation_add(A_ROCKY, spr_animal_rocky, 0, 1);
+	animation_add(A_PICKY, spr_animal_picky, 0, 1);
 	
 	// Play the correct animation
 	animation_play(animator, animal_type);

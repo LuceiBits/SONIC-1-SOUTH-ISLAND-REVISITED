@@ -9,6 +9,8 @@
 		visible = true;
 	}
 
+	animator_update(animator);
+
 	if(--timer <= 0)
 	{
 		if(!bubble_flag)

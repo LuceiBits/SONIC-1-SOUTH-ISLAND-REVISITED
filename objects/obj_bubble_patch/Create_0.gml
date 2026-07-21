@@ -7,5 +7,9 @@
 	bubble_flag = 0;
 	big_bubble_flag = false;
 	
+	animator = new animator_create();
+	
+	animation_play_no_list(animator, spr_water_splash, 0.3);
+	
 	instance_register_culling();
 	
