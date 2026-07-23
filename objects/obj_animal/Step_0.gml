@@ -1,9 +1,9 @@
 /// @description Scripts
-	//Change frame index
-	if(!triggered) image_index = 0; else image_index = max(image_index, 1);
-	
+	animator_update(animator);
+
 	//Change animation speed
-	image_speed = 0.4;
+	if(animation_get_speed(animator) != (!triggered ? 0 : 0.4))
+		animation_set_speed(animator, !triggered ? 0 : 0.4);
 	
 	//Subtract delay timer
 	delay = max(delay-1, 0);
