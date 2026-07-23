@@ -2,10 +2,10 @@ function level_reset_data()
 {
 	global.checkpoint_id = noone;
 	global.checkpoint_type = CHECKPOINT.NORMAL;
-	ds_list_clear(global.special_ring_store);
 	global.time_store = 0;
 	global.rings = 0;
 	global.stage_timer = 0;
+	ds_list_clear(global.special_ring_store);
 	ds_list_clear(global.checkpoint);
 	ds_list_clear(global.store_object_state);
 	global.store_player_state.rings = 0;

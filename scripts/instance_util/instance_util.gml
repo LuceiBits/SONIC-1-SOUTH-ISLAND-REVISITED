@@ -68,30 +68,25 @@ function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = no
 	}
 	
 	// Build the result struct
-	var r = {
-		object : o,
-		this_object : this,
-		this_box : thisHitbox,
-		col_side : side,
-		col_x : colX,
-		col_y : colY
-	}
-	
-	// Check if this is a player object
-	var isPlayer = o.object_index == obj_player;
+	global.collision_result_struct.object = o;
+	global.collision_result_struct.this_object = this;
+	global.collision_result_struct.this_box = thisHitbox;
+	global.collision_result_struct.col_side = side;
+	global.collision_result_struct.col_x = colX;
+	global.collision_result_struct.col_y = colY;
 	
 	if(side != 0)
 	{
 		// If the other object is the player, then execute player's reaction to solid object
-		if(isPlayer)
+		if(o.object_index == obj_player)
 		{
 			if(o.debug || !o.collision_allow)
 				return 0;
 		
-			player_react_solid(r);
+			_player_react_solid(global.collision_result_struct);
 		}
 		else
-			_instance_react_solid(r);
+			_instance_react_solid(global.collision_result_struct);
 	}
 	
 	return side;
@@ -128,6 +123,7 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 		{
 			// Flag player as on object
 			o.on_object = true;
+			o.on_object_count++;
 			
 			// Make sure the ground is flat
 			o.ground_angle = 0;
@@ -473,7 +469,7 @@ function _instance_react_solid(result)
 		o.x = colX;	
 			
 		// Stop object's horizontal movement if it exists
-		if(variable_instance_exists(o, "y_speed"))
+		if(variable_instance_exists(o, "x_speed"))
 		{
 			if(side == C_LEFT && o.x_speed > 0 || side == C_RIGHT && o.x_speed < 0)
 				o.x_speed = 0;

@@ -96,9 +96,11 @@
 				if(pause_bar_x < -128)
 				{
 					global.process_objects = true;
+					level_reset_bg_visibility()
+					level_reset_data();
+						
 					if(selection == PAUSE_TRANS.RESTART)	
 					{
-						level_reset_data();
 						room_restart();
 					}
 					else

@@ -123,110 +123,6 @@ function player_act_semi_solid(this_hitbox = -1, player_id = 0)
 	return instance_act_semi_solid(p, player_get_hitbox(player_id), id, this_hitbox);
 }
 
-function player_react_solid(result)
-{
-	// Get values from the struct
-	var o = result.object;
-	var this = result.this_object;
-	var side = result.col_side;
-	var colX = result.col_x;
-	var colY = result.col_y
-	
-	// Vertical collision sides
-	if(side == C_TOP || side == C_BOTTOM)
-	{
-		// Position the object
-		o.y = colY;	
-		
-		// Flag player as on object
-		if(side == C_TOP && o.mode == 0)
-		{
-			o.on_object = true;
-			
-			var isLeft = false;
-			var isRight = false;
-			
-			if(!o.on_terrain)
-				o.ground_angle = 0;
-			
-			// Ledge direction
-			if(o.ground && o.x < this.x + result.this_box[BBOX.LEFT])
-				isLeft = true;
-				
-			if(o.ground && o.x > this.x + result.this_box[BBOX.RIGHT])
-				isRight = true;
-			
-			o.ledge = isRight - isLeft;
-		}
-		
-		// Going down
-		if(o.y_speed > 0)
-		{
-			// If player is going down the falls and hits an object, stop the player
-			if(o.ground && (o.mode == 1 || o.mode == 3))
-			{
-				o.ground_speed = 0;	
-			}
-			
-			// Land the player
-			if(!o.ground && side = C_TOP)
-			{
-				// Stop falling
-				o.y_speed = 0;
-				
-				// Transfer speed
-				if(!o.ground)
-					o.ground_speed = o.x_speed;
-				
-				o.ground = true;	
-				with(o)	
-					player_land_callback();
-			}
-		}
-
-		// Going up
-		if(o.y_speed < 0)
-		{
-			if(!o.ground && side == C_BOTTOM)
-				o.y_speed = 0;
-			
-			// If player is going up the walls, then stop
-			if(o.ground && (o.mode == 1 || o.mode == 3))
-			{
-				o.ground_speed = 0;	
-			}
-		}
-
-	}
-		
-	// Horizontal collision sides
-	if(side == C_LEFT || side == C_RIGHT)
-	{
-		// Position the object
-		o.x = colX;	
-		clamp_storex = colX;
-		
-		// Stop the object from moving
-		var spdVal = o.ground ? "ground_speed" : "x_speed";
-		var spd = variable_instance_get(o, spdVal);
-			
-		if(side == C_LEFT && spd > 0 || side == C_RIGHT && spd < 0)
-		{
-			variable_instance_set(o, spdVal, 0);	
-		}
-					
-		if(o.ground)
-		{	
-			// Get the correct pushing animation
-			o.pushing = side;
-			
-			// Detach from ceiling
-			if(o.mode == 2)
-				o.ground_speed = 0;
-		}
-	}
-}
-
 function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 {	
 	//Get nearest player object:
@@ -369,4 +265,104 @@ function _player_draw_after_images()
 		
 		draw_sprite_ext(sprite, frame, floor(xpos), floor(ypos), f, 1, vangle, c_white, 1);
 	}	
+}
+
+function _player_react_solid(result)
+{
+	// Get values from the struct
+	var o = result.object;
+	var this = result.this_object;
+	var side = result.col_side;
+	var colX = result.col_x;
+	var colY = result.col_y
+	
+	// Vertical collision sides
+	if(side == C_TOP || side == C_BOTTOM)
+	{
+		// Position the object
+		o.y = colY;	
+		
+		// Flag player as on object
+		if(side == C_TOP && o.mode == 0)
+		{
+			o.on_object = true;
+			o.on_object_count++;
+			
+			if(!o.on_terrain)
+				o.ground_angle = 0;
+			
+			// Ledge direction
+			if(o.ground && o.x < this.x + result.this_box[BBOX.LEFT])
+				o.ledge = -1;
+				
+			if(o.ground && o.x > this.x + result.this_box[BBOX.RIGHT])
+				o.ledge = 1;
+		}
+		
+		// Going down
+		if(o.y_speed > 0)
+		{
+			// If player is going down the falls and hits an object, stop the player
+			if(o.ground && (o.mode == 1 || o.mode == 3))
+			{
+				o.ground_speed = 0;	
+			}
+			
+			// Land the player
+			if(!o.ground && side = C_TOP)
+			{
+				// Stop falling
+				o.y_speed = 0;
+				
+				// Transfer speed
+				if(!o.ground)
+					o.ground_speed = o.x_speed;
+				
+				o.ground = true;	
+				with(o)	
+					player_land_callback();
+			}
+		}
+
+		// Going up
+		if(o.y_speed < 0)
+		{
+			if(!o.ground && side == C_BOTTOM)
+				o.y_speed = 0;
+			
+			// If player is going up the walls, then stop
+			if(o.ground && (o.mode == 1 || o.mode == 3))
+			{
+				o.ground_speed = 0;	
+			}
+		}
+
+	}
+		
+	// Horizontal collision sides
+	if(side == C_LEFT || side == C_RIGHT)
+	{
+		// Position the object
+		o.x = colX;	
+		clamp_storex = colX;
+		
+		// Stop the object from moving
+		var spdVal = o.ground ? "ground_speed" : "x_speed";
+		var spd = variable_instance_get(o, spdVal);
+			
+		if(side == C_LEFT && spd > 0 || side == C_RIGHT && spd < 0)
+		{
+			variable_instance_set(o, spdVal, 0);	
+		}
+					
+		if(o.ground)
+		{	
+			// Get the correct pushing animation
+			o.pushing = side;
+			
+			// Detach from ceiling
+			if(o.mode == 2)
+				o.ground_speed = 0;
+		}
+	}
 }

@@ -21,4 +21,5 @@ function player_misc()
 	
 	last_on_object = on_object;
 	on_object = false;
+	on_object_count = 0;
 }

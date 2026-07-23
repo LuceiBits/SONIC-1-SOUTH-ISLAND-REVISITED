@@ -56,7 +56,7 @@ function player_state_wallclimb()
 	//When there's no more wall
 	if(wallCol > 14)
 	{
-		if(wallColUpper > 14)
+		if(wallColUpper > 14 && mov == -1)
 		{
 			//If using smooth scroll
 			if(global.knux_camera_smooth)
@@ -71,7 +71,8 @@ function player_state_wallclimb()
 			state = player_state_ledgeclimb;
 			exit;
 		}
-		else
+		
+		if(mov == 1)
 		{
 			state = player_state_knuxfall;
 			exit;

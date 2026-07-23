@@ -1,1 +1,1 @@
-player_act_solid();
+	player_act_solid();

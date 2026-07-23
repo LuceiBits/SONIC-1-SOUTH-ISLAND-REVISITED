@@ -7,6 +7,8 @@
 	
 	if(show_player)
 	{
+		// TODO IN THE NEXT UPDATE
+		/*
 		var gw = display_get_gui_width();
 		var gh = display_get_gui_height();
 		
@@ -17,7 +19,7 @@
 		draw_rectangle(gw - 256, 16, gw - 16, gh - 16, false);
 		
 		draw_state_pop();
-	/*	var hd_w, hd_h;
+		var hd_w, hd_h;
 		hd_w = WINDOW_WIDTH * 2;
 		hd_h = WINDOW_HEIGHT * 2;
 		

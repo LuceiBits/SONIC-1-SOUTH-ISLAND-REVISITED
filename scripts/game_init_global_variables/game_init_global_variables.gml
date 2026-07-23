@@ -98,6 +98,14 @@ function game_init_global_variables()
         mp : matrix_get(matrix_projection)
     };
 	
+	global.collision_result_struct = {
+		object : noone,
+		this_object : noone,
+		this_box : noone,
+		col_side : 0,
+		col_x : 0,
+		col_y : 0
+	}
 	
 	// Not in use as of now
 	//global.use_battery_rings = false;		// If this is disabled, destroying enemies will spawn flickies instead

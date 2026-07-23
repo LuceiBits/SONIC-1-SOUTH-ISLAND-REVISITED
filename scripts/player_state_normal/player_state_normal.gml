@@ -1,4 +1,5 @@
-function player_state_normal(){
+function player_state_normal()
+{
 	//Add the idle timer
 	if(ground_speed == 0 && !input_disable && ground)
 		idle_timer++;
@@ -108,9 +109,8 @@ function player_state_normal(){
 			sound_play(sfx_skid);
 		}
 		
-		var ledgeSensor = collision_get_distance(x, y + hitbox_h, mode, plane, true);
-
-		if(ledgeSensor > 14 && ground_speed == 0 && ground)
+		var ledgeSensor = collision_get_distance(x, y + hitbox_h, mode, plane, true);	
+		if(ledgeSensor > 14 && ground_speed == 0 && ground && on_object_count == 1)
 		{
 			var left = collision_get_distance(x - hitbox_w, y + hitbox_h, mode, plane, true);
 			var right = collision_get_distance(x + hitbox_w, y + hitbox_h, mode, plane, true);
