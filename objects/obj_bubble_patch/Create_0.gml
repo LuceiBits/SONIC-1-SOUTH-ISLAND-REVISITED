@@ -9,7 +9,7 @@
 	
 	animator = new animator_create();
 	
-	animation_play_no_list(animator, spr_water_splash, 0.3);
+	animation_play_no_list(animator, spr_bubble_patch, 0.3);
 	
 	instance_register_culling();
 	
