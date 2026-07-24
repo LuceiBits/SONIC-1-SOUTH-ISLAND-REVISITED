@@ -1,3 +1,10 @@
+/// @self									
+/// @description						Function used for drawing tiled sprite (Improved over gamemaker's default one)
+/// @param {Asset.GMSprite} sprite		The sprite that will be drawn
+/// @param {Real} subimg				The frame of the sprite
+/// @param {Real} x						Horizontal position of the sprite
+/// @param {Real} y						Vertical position of the sprite
+/// @param {Real} [type]				The looping direction of the sprite
 function draw_sprite_tiled_new(sprite, subimg, x, y, type = 0)
 {
 	var sprW = sprite_get_width(sprite);
@@ -46,12 +53,16 @@ function draw_sprite_tiled_new(sprite, subimg, x, y, type = 0)
 	}
 }
 
+/// @self									
+/// @description						Function used for drawing the object with positions being floored
 function draw_self_floor()
 {
 	//Only purpose of this is because of GameMaker's horrible sub - pixeling
 	draw_sprite_ext(sprite_index, image_index, floor(x) , floor(y), image_xscale, image_yscale, image_angle, draw_get_color(), draw_get_alpha());
 }
 
+/// @self									
+/// @description						Function that pushes the current rendering state to the rendering stack
 function draw_state_push()
 {
 	
@@ -83,6 +94,8 @@ function draw_state_push()
 	ds_stack_push(global.draw_state, global.draw_state_holder);
 }
 
+/// @self									
+/// @description						Function that restores the rendering state that was previously pushed to the stack
 function draw_state_pop()
 {
     var _state = ds_stack_pop(global.draw_state);
@@ -125,6 +138,8 @@ function draw_state_pop()
     matrix_set(matrix_projection, _state.mp);
 }
 
+/// @self									
+/// @description						Function that makes everything drawn follow the viewport's camera
 function draw_set_follow_camera()
 {
 	// Store because of the matrices
@@ -134,6 +149,8 @@ function draw_set_follow_camera()
 	matrix_set(matrix_view, matrix_build(-CAMERA_VIEW_W / 2, -CAMERA_VIEW_H / 2, 16000, 0, 0, 0, 1, 1, 1));
 }
 
+/// @self									
+/// @description						Function that stops following the camera during the rendering
 function draw_set_follow_end()
 {
 	// Restore the old stuff, pretty much a wrapper

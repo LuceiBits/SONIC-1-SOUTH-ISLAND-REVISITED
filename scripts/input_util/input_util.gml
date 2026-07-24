@@ -13,6 +13,8 @@ enum INPUT
 	START
 }
 
+/// @self									obj_global
+/// @description							Function used for initializing the input system
 function input_init()
 {
 	input_data_hold = [];
@@ -26,6 +28,8 @@ function input_init()
 	using_controller = false;
 }
 
+/// @self									obj_global
+/// @description							Function used for updating the input system
 function input_update()
 {
 	var size = array_length(input_data_keyboard);
@@ -64,6 +68,12 @@ function input_update()
 	}
 }
 
+/// @self									obj_global
+/// @description							Function used for adding a new input action
+/// @param {Real} input_id					The input ID that is going to get assigned to
+/// @param {String|Real} keyboard_action	The keyboard key that is going to be used for the action
+/// @param {Real} controller_action			The controller key that is going to be used for the action
+/// @param {Array} [controller_axis]		The controller's analog action (Optional) [0: Axis direction, 1: Is negative]
 function input_add_action(input_id, keyboard_action, controller_action, controller_axis = [noone, false])
 {
 	// Convert it
@@ -81,16 +91,28 @@ function input_add_action(input_id, keyboard_action, controller_action, controll
 	input_data_release[input_id] = false;
 }
 
+/// @self									
+/// @description							Function that returns if the input key is being held
+/// @param {Real} input_id					The input ID that is currently being held
+/// @returns {Bool}
 function input_hold(input_id)
 {
 	return obj_global.input_data_hold[input_id];	
 }
 
+/// @self									
+/// @description							Function that returns if the input key is being pressed
+/// @param {Real} input_id					The input ID that is currently being pressed
+/// @returns {Bool}
 function input_press(input_id)
 {
 	return obj_global.input_data_press[input_id];	
 }
 
+/// @self									
+/// @description							Function that returns if the input key is being released
+/// @param {Real} input_id					The input ID that is currently being released
+/// @returns {Bool}
 function input_release(input_id)
 {
 	return obj_global.input_data_release[input_id];	

@@ -1,3 +1,5 @@
+/// @self
+/// @description		Function used for resetting stage data
 function level_reset_data()
 {
 	global.checkpoint_id = noone;
@@ -14,7 +16,33 @@ function level_reset_data()
 	//do note this only runs when a stage is fully reset or loaded for this first time
 }
 
-function level_get_end_results()
+/// @self
+/// @description		Function used for storing the background visibility data
+function level_store_bg_visibility()
+{
+	for (var i = 0; i < instance_number(par_background); ++i)
+	{
+	    var bg = instance_find(par_background, i);
+	    var name = object_get_name(bg.object_index);
+		
+	    global.store_background_visibility[$ name] = bg.visible;
+	}
+}
+
+/// @self
+/// @description		Function used for resetting background visibility data
+function level_reset_bg_visibility()
+{
+	global.store_background_visibility = {};
+}
+
+// ===========================================================================================================
+// Internal utility functions
+// ===========================================================================================================
+
+/// @self				obj_act_clear
+/// @description		Internal function used by `obj_act_clear` for setting up the end stage results
+function _level_get_end_results()
 {
 	//Ring bonus
 	ring_bonus = global.rings * 100;
@@ -36,20 +64,4 @@ function level_get_end_results()
 	if(minute >= 3 && minute <= 9 && sec >= 30 && sec <= 59) time_bonus = 100;
 	
 	
-}
-
-function level_store_bg_visibility()
-{
-	for (var i = 0; i < instance_number(par_background); ++i)
-	{
-	    var bg = instance_find(par_background, i);
-	    var name = object_get_name(bg.object_index);
-		
-	    global.store_background_visibility[$ name] = bg.visible;
-	}
-}
-
-function level_reset_bg_visibility()
-{
-	global.store_background_visibility = {};
 }

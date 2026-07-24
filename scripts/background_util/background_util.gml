@@ -1,4 +1,16 @@
-function background_add(sprite, frame, scroll_x, scroll_y, spd_x=0, spd_y=0, off_x=0, off_y=0, vertical_loop = false)
+/// @self
+/// @description					Function used for adding a background layer (it returns a background ID)
+/// @param {Asset.GMSprite} sprite	The sprite that is going to be used for the background layer
+/// @param {Real} frame				A frame used from the background sprite
+/// @param {Real} scroll_x			The horizontal scroll factor
+/// @param {Real} scroll_y			The vertical scroll factor
+/// @param {Real} [spd_x]			A horizontal speed value used for automatically scrolling
+/// @param {Real} [spd_y]			A vertical speed value used for automatically scrolling
+/// @param {Real} [off_x]			A value used for offsetting a background layer horizontally
+/// @param {Real} [off_y]			A value used for offsetting a background layer vertically
+/// @param {Bool} [vertical_loop]	A flag used to make the background layer loop vertically
+/// @returns {Real}
+function background_add(sprite, frame, scroll_x, scroll_y, spd_x = 0, spd_y = 0, off_x = 0, off_y = 0, vertical_loop = false)
 {
 	var oldId = bg_id;
 	
@@ -19,7 +31,20 @@ function background_add(sprite, frame, scroll_x, scroll_y, spd_x=0, spd_y=0, off
 	return oldId;
 }
 
-function background_add_line(sprite, frame, scroll_x, scroll_y, spd_x, spd_y, off_x, off_y, gaps, steps, y_scale = 1)
+/// @self
+/// @description					Function used for adding a line scrolling background layer (it returns a background ID)
+/// @param {Asset.GMSprite} sprite	The sprite that is going to be used for the background layer
+/// @param {Real} frame				A frame used from the background sprite
+/// @param {Real} scroll_x			The horizontal scroll factor
+/// @param {Real} scroll_y			The vertical scroll factor
+/// @param {Real} [spd_x]			A horizontal speed value used for automatically scrolling
+/// @param {Real} [spd_y]			A vertical speed value used for automatically scrolling
+/// @param {Real} [off_x]			A value used for offsetting a background layer horizontally
+/// @param {Real} [off_y]			A value used for offsetting a background layer vertically
+/// @param {Real} [gaps]			Value for setting gaps between the scrolling lines (The default is 1)
+/// @param {Real} [steps]			The power of a line's scroll factor (The default is 0)
+/// @returns {Real}
+function background_add_line(sprite, frame, scroll_x, scroll_y, spd_x = 0, spd_y = 0, off_x = 0, off_y = 0, gaps = 1, steps = 0)
 {
 	var oldId = bg_id;
 	
@@ -35,7 +60,7 @@ function background_add_line(sprite, frame, scroll_x, scroll_y, spd_x, spd_y, of
 	line_scroll[bg_id] = true;
 	line_gap[bg_id] = gaps;
 	line_steps[bg_id] = steps;
-	bg_scale[bg_id] = y_scale;
+	bg_scale[bg_id] = 1;
 	trigger[bg_id] = false;
 	visibility[bg_id] = true;
 	bg_id++;
@@ -43,6 +68,9 @@ function background_add_line(sprite, frame, scroll_x, scroll_y, spd_x, spd_y, of
 	return oldId;
 }
 
+/// @self							par_background
+/// @description					Function used for rendering the background layer
+/// @param {Real} background_layer	Background layer ID
 function background_draw_layer(background_layer)
 {
 	if(!visibility[background_layer]) 
@@ -92,6 +120,9 @@ function background_draw_layer(background_layer)
 	shader_reset();
 }
 
+/// @self							par_background
+/// @description					Function used for positioning the background layer
+/// @param {Real} background_layer	Background layer ID
 function background_position_layer(background_layer)
 {
 	//Act transition background offset adjustments

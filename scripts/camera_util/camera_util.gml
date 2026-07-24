@@ -1,3 +1,7 @@
+/// @self						
+/// @description					Function used for setting the camera scrolling delay
+/// @param {Real} horizontal		Value for horizontal camera delay
+/// @param {Real} vertical			Value for vertical camera delay
 function camera_set_lag(horizontal = -1, vertical = -1)
 {
 	//Get the camera object
@@ -16,11 +20,16 @@ function camera_set_lag(horizontal = -1, vertical = -1)
 	}
 }
 
+/// @self						
+/// @description					Function used for changing the camera's state machine
+/// @param {Real} camera_mode		Camera's state
 function camera_set_mode(camera_mode)
 {
 	obj_camera.mode = camera_mode;
 }
 
+/// @self						
+/// @description					Function used for setting the camera to the return state and resetting the camera boundaries
 function camera_return()
 {
 	obj_camera.mode = 1;
@@ -34,8 +43,12 @@ function camera_return()
 	obj_camera.limit_bottom = room_height;	
 }
 
-// Internal
+// ===========================================================================================================
+// Internal utility functions
+// ===========================================================================================================
 
+/// @self							obj_camera
+/// @description					An internal function that handles the camera boundaries
 function _camera_boundaries(){
 	//Screen values
 	var c, cx, cy, sw, sh;

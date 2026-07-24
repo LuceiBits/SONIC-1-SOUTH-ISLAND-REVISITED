@@ -141,9 +141,9 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
     return colResult;
 }
 
-// ==========================================================================================
-// Utility script's internal function, do not use them outside
-// ==========================================================================================
+// ===========================================================================================================
+// Internal utility functions
+// ===========================================================================================================
 
 function _tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 {

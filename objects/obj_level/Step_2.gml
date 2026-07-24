@@ -45,7 +45,7 @@
 		if(!inside && !inst.cull_flag)
 		{
 			// Trigger the culling event
-			if(inst.culled)
+			if(is_method(inst.culled))
 				inst.culled();
 			
 			inst.cull_flag = true;

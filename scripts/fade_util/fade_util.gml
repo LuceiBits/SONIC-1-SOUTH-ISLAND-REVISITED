@@ -1,3 +1,5 @@
+/// @self								obj_global
+/// @description						Function that initializes the fade system
 function fade_init()
 {
 	fade = {
@@ -11,6 +13,8 @@ function fade_init()
 	}
 }
 
+/// @self								obj_global
+/// @description						Function that updates the fade system
 function fade_update()
 {
 	//Fade to room
@@ -39,6 +43,8 @@ function fade_update()
 	}
 }
 
+/// @self								obj_global
+/// @description						Function that renders the fade system
 function fade_draw()
 {
 	//Screen values
@@ -81,6 +87,12 @@ function fade_draw()
 	gpu_set_blendmode(bm_normal);
 }
 
+/// @self						
+/// @description						Function used for transitioning to a target room after the fading is done
+/// @param {Asset.GMRoom} room_target	The room that will change to after the fade routine
+/// @param {Real} fade_speed			Value for the speed of the fade
+/// @param {Real} [fade_color]			Fade color (default is black)
+/// @param {Real} [fade_buffer]			A delay buffer that delays the transition to the target room (default is 0)
 function fade_to_room(room_target, fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
 {
 	//Get the object
@@ -100,6 +112,11 @@ function fade_to_room(room_target, fade_speed, fade_color = FADE_BLACK, fade_buf
 	fade.color_type = fade_color;
 }
 
+/// @self						
+/// @description						Function used for transitioning to the next room after the fading is done
+/// @param {Real} fade_speed			Value for the speed of the fade
+/// @param {Real} [fade_color]			Fade color (default is black)
+/// @param {Real} [fade_buffer]			A delay buffer that delays the transition to the next room (default is 0)
 function fade_to_room_next(fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
 {
 	//Get the object
@@ -119,7 +136,11 @@ function fade_to_room_next(fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
 	fade.color_type = fade_color;
 }
 
-function fade_in_room(fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
+/// @self						
+/// @description						Function used for fading into the room
+/// @param {Real} fade_speed			Value for the speed of the fade
+/// @param {Real} [fade_color]			Fade color (default is black)
+function fade_in_room(fade_speed, fade_color = FADE_BLACK)
 {
 	//Get the object
 	var fade = obj_global.fade;
@@ -132,7 +153,6 @@ function fade_in_room(fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
 	
 	//Set fade speed
 	fade.spd = fade_speed;
-	fade.buffer = fade_buffer;
 	
 	//Set to correct fade mode
 	fade.type = FADE_IN;
@@ -141,14 +161,18 @@ function fade_in_room(fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
 	fade.color_type = fade_color;
 }
 
-function fade_change(fade_mode, fade_speed, fade_color = FADE_BLACK, fade_buffer = 0)
+/// @self						
+/// @description						Function for changing the game fade
+/// @param {Real} fade_mode				Flag for setting the fade in or fade out
+/// @param {Real} fade_speed			Value for the speed of the fade
+/// @param {Real} [fade_color]			Fade color (default is black)
+function fade_change(fade_mode, fade_speed, fade_color = FADE_BLACK)
 {
 	//Get the object
 	var fade = obj_global.fade;
 	
 	//Set fade speed
 	fade.spd = fade_speed;
-	fade.buffer = fade_buffer;
 	
 	//Set to correct fade mode
 	fade.type = fade_mode;

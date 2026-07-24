@@ -1,3 +1,6 @@
+/// @self				
+/// @description		Function used for getting the currently used OS as a string
+/// @returns {String}
 function game_os_get_string()
 {
 	switch(os_type)
@@ -21,6 +24,8 @@ function game_os_get_string()
 	}
 }
 
+/// @self				
+/// @description		Function used for calling the window resize routine
 function game_call_window_resize()
 {
 	//Fullscreen
@@ -42,6 +47,9 @@ function game_call_window_resize()
 	window_center();		
 }
 
+/// @self		
+/// @description		Function used for checking if all of the emeralds have been collected
+/// @returns {Bool}
 function game_has_all_emeralds()
 {
 	for (var i = 0; i < array_length(global.emeralds); ++i)
@@ -55,6 +63,9 @@ function game_has_all_emeralds()
 	return true;
 }
 
+/// @self		
+/// @description		Function used for checking how many emeralds are collected
+/// @returns {Real}
 function game_emerald_count()
 {
 	var n = 0;
