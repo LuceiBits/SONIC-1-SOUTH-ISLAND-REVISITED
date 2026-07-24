@@ -23,21 +23,18 @@
 		return
 	}
 	
-	
-	
-		for (var i = min_x; i < max_x; i++) 
-		{
-	        for (var j = min_y; j < max_y; j++) 
-			{	
-				//Remove tiles from the area
-				for (var p = 0; p < layers_size; ++p) {
-					tilemap_set_at_pixel(layer_tilemap_get_id(target_tile_layers[p]), 0, (i * 16.0), (i * 16.0));
-				}
-				for (var z = 0; z <= 1; ++z) 
-				{		
-					var tilelayer_c = layer_tilemap_get_id(global.col_tile[z]);
-					tilemap_set_at_pixel(tilelayer_c, 0, (i * 16.0), (i * 16.0));
-				}
-	        }
-	    }
-	
+    for (var i = min_x; i < max_x; i++) 
+    {
+        for (var j = min_y; j < max_y; j++) 
+        {	
+            //Remove tiles from the area
+            for (var p = 0; p < layers_size; ++p) {
+                tilemap_set_at_pixel(layer_tilemap_get_id(target_tile_layers[p]), 0, (i * 16.0), (i * 16.0));
+            }
+            for (var z = 0; z <= 1; ++z) 
+            {		
+                var tilelayer_c = layer_tilemap_get_id(global.col_tile[z]);
+                tilemap_set_at_pixel(tilelayer_c, 0, (i * 16.0), (i * 16.0));
+            }
+        }
+    }

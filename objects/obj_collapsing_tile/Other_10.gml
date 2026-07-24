@@ -10,7 +10,7 @@
 	
 	//Play sound
 	sound_play(sfx_break1);
-
+    
 	//Collapsing platform's bounding box in 16x16 size
 	min_x = floor(x / 16.0);
     max_x = min_x + size_x;
@@ -27,44 +27,44 @@
 	for (var p = 0; p < layers_size; ++p) {
 	    //Get layer tilemap
 		tilelayer = layer_tilemap_get_id(target_tile_layers[p]);
-	
+        
 		//Get the used tileset
 		tileset = tilemap_get_tileset(tilelayer);
-	
+        
 		 for (var i = min_x; i < max_x; i++) 
 		 {
 	        for (var j = min_y; j < max_y; j++) 
 			{
 				//Create piece object
 	            var piece = instance_create_depth((i * 16.0), (j * 16.0), layer_get_depth(target_tile_layers[p]) - 2, obj_tilepiece);
-			
+                
 				//Add the general delay
 				piece.delay += collapsing_delay;
-				
+                
 				piece.tileset = tileset;
 				piece.tile_id = tilemap_get_at_pixel(tilelayer, piece.x, piece.y);
 				piece.collapse = true;
 				piece.permanent = permanent
 				piece.refrence = self
-			
+                
 				//Remove tiles from the area
 				tilemap_set_at_pixel(tilelayer, 0, piece.x, piece.y);
-			
+                
 				//Different cases for collapsing delay
 				switch(collapsing_type)
 				{
 					//From right to left
-					case 0:
+					case "Right to Left":
 						piece.delay = collapsing_speed * (size_y + 2 * (max_x - 1 - i) - (j - min_y));
 					break;
-		
+                    
 					//From left to right
-					case 1:	
+					case "Left to Right":	
 						piece.delay = collapsing_speed * (size_y + 2 * (i - min_x) - (j - min_y));
 					break;
-				
+                    
 					//From the center
-					case 2:
+					case "From the Center":
 						var tx = i - min_x;
 		                if (tx < size_x / 2)
 						{
@@ -72,9 +72,9 @@
 						}
 		                piece.delay = collapsing_speed * ((size_y + 2 * (tx) - (j - min_y))) - size_x * 3;
 					break;
-				
+				    
 					//From both left and right
-					case 3:
+					case "Both Left and Right":
 						var tx = i - min_x;
 		                if (tx > size_x / 2)
 						{
@@ -86,4 +86,3 @@
 	        }
 	    }
 	}
-	
