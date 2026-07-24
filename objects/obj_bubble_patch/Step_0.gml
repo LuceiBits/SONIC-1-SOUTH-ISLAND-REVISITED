@@ -1,5 +1,8 @@
-	// Hide above water horizon
-	if(bbox_top < obj_water.y) // Add pool support with instance place later
+	var pool = instance_place(x, y, obj_water_pool);
+    var top_y = (y < obj_water.y && pool)? pool.pos_y : obj_water.y;
+    
+    // Hide above water horizon & Outside of pools
+	if(bbox_top < top_y)
 	{
 		visible = false;
 		exit;

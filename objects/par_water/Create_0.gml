@@ -1,5 +1,6 @@
 /// @description Values
 	spr_width = sprite_get_width(sprite_index);
+    spr_height = sprite_get_height(sprite_index);
 	screen_width = (global.window_width)/sprite_get_width(sprite_index);
 	surf = surface_create(global.window_width, global.window_height);
 	

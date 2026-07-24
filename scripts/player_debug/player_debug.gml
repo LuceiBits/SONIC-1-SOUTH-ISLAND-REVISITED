@@ -6,6 +6,7 @@ function player_debug(){
 	//Update flags
 	collision_allow = false;
 	hitbox_allow = false;
+    underwater = false;
 	ground = false;
 	
 	//Default movement speed

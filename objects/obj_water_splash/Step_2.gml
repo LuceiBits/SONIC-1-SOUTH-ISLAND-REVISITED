@@ -1,5 +1,5 @@
 	// Reposition splash
-	y = par.y;
+	y = (par.object_index = obj_water_pool)? par.pos_y : par.y;
 	
 	// Update the animator
 	animator_update(animator);
