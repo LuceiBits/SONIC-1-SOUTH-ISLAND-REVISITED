@@ -35,9 +35,10 @@
 	{
 		if(state != PAUSE_STATE.CONFIRM || state == PAUSE_STATE.CONFIRM && selection != i)
 		{
-			if(!global.allow_stage_restart && options_array[i] == "RESTART") draw_set_alpha(0.5);
+			if(!global.allow_stage_restart && options_array[i] == "RESTART") 
+				draw_set_alpha(0.5);
 			draw_text(pause_elements_x + 46, 48 * (i + 1) - 5, options_array[i]);
-			draw_set_alpha(1);
+			draw_set_alpha(pause_alpha);
 		}
 	}
 		
