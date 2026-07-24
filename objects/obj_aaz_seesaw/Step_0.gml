@@ -70,8 +70,12 @@
 		{
 			with(player)
 			{
-				animation_play(animator, ANIM.SPRING);
-				state = player_state_spring;
+                if(state != player_state_spindash)
+                {
+					animation_play(animator, ANIM.SPRING);
+					state = player_state_spring;
+                }
+                
 				y_speed = -10;
 				ground = false;
 			}	
