@@ -1,5 +1,8 @@
 /// @description Script
-	// Update the animator
+    var pool = instance_place(x, y, obj_water_pool);
+	var top_y = (y < obj_water.y && pool)? pool.pos_y : obj_water.y;
+    
+    // Update the animator
 	animator_update(animator);
 	animation_play(animator, type);
 	
@@ -14,7 +17,7 @@
 	angle = (angle + 2.8125) mod 360;
 	
 	//Destroy outside of window or above water horizon
-	if(!instance_on_screen() || bbox_top < obj_water.y) 
+	if(!instance_on_screen() || bbox_top < top_y) 
 	{
 		instance_destroy();
 		exit;

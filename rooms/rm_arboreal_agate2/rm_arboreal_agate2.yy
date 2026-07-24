@@ -272,6 +272,10 @@
     {"name":"inst_748AF995","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
     {"name":"inst_109C4B03","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
     {"name":"inst_45FF090C","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
+    {"name":"inst_7B97574D","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
+    {"name":"inst_497B0B2C","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
+    {"name":"inst_A570AE3","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
+    {"name":"inst_3A848300","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -2204,6 +2208,10 @@
         {"$GMRInstance":"v4","%Name":"inst_45FF090C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_45FF090C","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"propertyId":{"name":"angle_speed","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-1",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.4,"x":10368.0,"y":2728.0,},
+        {"$GMRInstance":"v4","%Name":"inst_7B97574D","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_7B97574D","objectId":{"name":"obj_bubble_patch","path":"objects/obj_bubble_patch/obj_bubble_patch.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":488.0,"y":2400.0,},
+        {"$GMRInstance":"v4","%Name":"inst_497B0B2C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_497B0B2C","objectId":{"name":"obj_bubble_patch","path":"objects/obj_bubble_patch/obj_bubble_patch.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":400.0,"y":2464.0,},
+        {"$GMRInstance":"v4","%Name":"inst_A570AE3","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_A570AE3","objectId":{"name":"obj_water_pool","path":"objects/obj_water_pool/obj_water_pool.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":3.75,"x":336.0,"y":2464.0,},
+        {"$GMRInstance":"v4","%Name":"inst_3A848300","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3A848300","objectId":{"name":"obj_water_pool","path":"objects/obj_water_pool/obj_water_pool.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":2.5,"x":464.0,"y":2400.0,},
       ],"layers":[],"name":"Objects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Assets","assets":[
         {"$GMRSpriteGraphic":"v1","%Name":"graphic_482669C0","animationSpeed":1.0,"colour":4294967295,"frozen":false,"headPosition":0.0,"ignore":false,"inheritedItemId":null,"inheritItemSettings":false,"name":"graphic_482669C0","resourceType":"GMRSpriteGraphic","resourceVersion":"2.0","rotation":0.0,"scaleX":3.0,"scaleY":12.5,"spriteId":{"name":"spr_aaz_waterfall","path":"sprites/spr_aaz_waterfall/spr_aaz_waterfall.yy",},"x":12752.0,"y":512.0,},

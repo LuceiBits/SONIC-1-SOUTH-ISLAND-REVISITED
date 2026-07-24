@@ -2,13 +2,26 @@ function player_water()
 {
 	// Reset the water run flag
 	water_run = false;
+    
+    //Get the water object the player is currently inside of
+    var water = instance_place(x, y, par_water);
+    
+    //Hard setting the water object to the main one if it's in proximity of the Player
+    with (par_water){
+        if (object_index != obj_water_pool && obj_player.y >= y-32){
+            water = self;
+            break;
+        }
+    }
+    
+    var is_pool = water && water.object_index = obj_water_pool;
 	
 	//Stop executing if theres no water
-	if(!instance_exists(obj_water) || !collision_allow) 
+	if(!water || !collision_allow) 
 		exit;
 	
 	// Constants 
-	var waterY = obj_water.y;
+	var waterY = (is_pool)? water.pos_y : water.y;
 	var waterRange = 8;
 	var waterSpd = 6;
 	
@@ -26,8 +39,8 @@ function player_water()
 			if(FRAME_TIMER mod 4 == 0 && global.water_running_effect == 1)
 			{
 				//Create effects
-				var splash = instance_create_depth(obj_player.x, obj_water.y, obj_player.depth - 1, obj_water_splash);
-				splash.par = obj_water; //add pool support later
+				var splash = instance_create_depth(obj_player.x, waterY, obj_player.depth - 1, obj_water_splash);
+				splash.par = water;
 				sound_play(sfx_water_splash);	
 			}
 		}
@@ -43,50 +56,69 @@ function player_water()
 	// Stop the water run sound
 	if(!water_run || on_terrain)
 		audio_stop_sound(sfx_water_run);
-	
-	
-	//Entering water
-	if(y >= obj_water.y)
-	{
-		//Player hitting the water
-		if(!underwater)
-		{
-			//Slow down the player
-			x_speed *= 0.5;
-			y_speed *= 0.25;
-			
-			//Create effects
-			var splash = instance_create_depth(obj_player.x, obj_water.y, obj_player.depth - 1, obj_water_splash);
-			splash.par = obj_water; //add pool support later
-			
-			//Play sound
-			sound_play(sfx_water_splash);
-		}
-		
-		//Trigger the flag
-		underwater = true;
+    
+    var pool_enter = (is_pool && ((y >= waterY && y < water.bbox_bottom-sprite_height/2) || (y <= water.bbox_bottom && y > water.bbox_bottom-sprite_height/2)));
+    
+	//Boundary check if nearest water is a pool
+    if ((is_pool && x >= water.x && x <= water.bbox_right) || !is_pool)
+    {
+        //Entering water
+    	if((!is_pool && y >= waterY) || pool_enter)
+        {
+            //Player hitting the water
+            if(!underwater)
+            {
+                //Slow down the player
+                x_speed *= 0.5;
+                y_speed *= 0.25;
+                
+                //Create effects
+                if (!is_pool || is_pool && y < water.pos_y+8)
+                {
+                    var splash = instance_create_depth(obj_player.x, waterY, obj_player.depth - 1, obj_water_splash);
+                    splash.par = water;
+                }
+                
+                //Play sound
+                sound_play(sfx_water_splash);
+            }
+		      
+            //Trigger the flag
+            underwater = true;
+        }
 	}
-	
-	//Exiting water
-	if(y < obj_water.y)
-	{
-		//Player hitting the water
-		if(underwater)
-		{
-			//Speed up the player
-			y_speed *= 1.25;
-			
-			//Create effects
-			var splash = instance_create_depth(obj_player.x, obj_water.y, obj_water.depth + 1, obj_water_splash);
-			splash.par = obj_water; //add pool support later
-			
-			//Play sound
-			sound_play(sfx_water_splash);
-		}
-		
-		//Trigger the flag
-		underwater = false;
-	}
+    
+    //Exiting water
+    var pool_leave_v = (is_pool && (((y < waterY && y < water.bbox_bottom-sprite_height/2) || (y > water.bbox_bottom && y > water.bbox_bottom-sprite_height/2))));
+    var pool_leave_h = (is_pool && (x < water.x) || (x > water.bbox_right));
+    
+    //Making sure the underwater state presists between two water pools next to each other
+        var left_pool, right_pool;
+        left_pool = instance_place(x-16, y, obj_water_pool);
+        right_pool = instance_place(x+16, y, obj_water_pool);
+        var pool_neighbours = (left_pool && right_pool && left_pool != right_pool);
+    
+    if (((!is_pool && y < waterY) || pool_leave_v || pool_leave_h) && !pool_neighbours)
+    {
+        //Player hitting the water
+        if(underwater)
+        {
+            //Speed up the player
+            y_speed *= 1.25;
+            
+            //Create effects
+            if (!pool_leave_h) {
+                var splash = instance_create_depth(obj_player.x, waterY, water.depth - 1, obj_water_splash);
+                splash.par = water;
+            }
+            
+            //Play sound
+            sound_play(sfx_water_splash);
+        }
+        
+        //Trigger the flag
+        underwater = false;
+    }
 	
 	//Aquaphobia
 	if(underwater)
@@ -96,7 +128,7 @@ function player_water()
 			if(shield == SHIELD.ELECTRIC)
 			{
 				sound_play(sfx_electric_shield_lose);
-				obj_water.flash_hold_timer = 4;
+				water.flash_hold_timer = 4;
 			}
 			
 			shield = SHIELD.NONE;
@@ -109,6 +141,7 @@ function player_water()
 			{
 				bubble_delay = 0
 				var bubble = instance_create_depth(x + 6 * facing, y, depth - 1, obj_bubble);
+                bubble.par = water;
 				bubble.type = 0;	
 				bubble.angle = facing == -1 ? 180 : 0;
 			}
@@ -123,6 +156,7 @@ function player_water()
 				if (air < 20*60) 
 				{
 					var bubble = instance_create_depth(x+6*facing, y-4, depth-1, obj_bubble);
+                    bubble.par = water;
 					bubble.type = 0;	
 					bubble.angle = facing == -1 ? 180 : 0;
 				}
