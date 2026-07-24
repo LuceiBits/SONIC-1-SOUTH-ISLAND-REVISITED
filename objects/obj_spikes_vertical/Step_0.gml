@@ -1,7 +1,7 @@
 /// @description Hurt player
 	
 	//Get the center of the hitbox
-	var center_x = bbox_left + (bbox_right - bbox_left) / 2;
+	var center_x = floor((obj_player.x + 16)/32) * 32;
 	var col = player_act_solid();
 	
 	//Hurt the player
