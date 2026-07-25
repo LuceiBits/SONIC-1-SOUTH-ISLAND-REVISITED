@@ -98,6 +98,6 @@
 	if (state == 1)
 	{
 		if (timer == 79 && super_shown) { state = 2; timer = 0; }
-		if (timer == 80) fade_change(FADE_OUT, 5, FADE_BLACK);
+		if (timer == 80) fade_change(FADE.OUT, 5, FADE_COLOR.BLACK);
 		if (timer == 110) room_goto(global.previous_room);
 	}

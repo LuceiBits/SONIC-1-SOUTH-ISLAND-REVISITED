@@ -1,5 +1,5 @@
 /// @description Flip player
-	if(player_collide_object(C_MAIN))
+	if(player_collide_object(COLLISION.MAIN))
 	{
 		if(!triggered)
 		{

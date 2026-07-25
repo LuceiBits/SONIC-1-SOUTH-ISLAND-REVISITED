@@ -29,13 +29,13 @@ function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = no
 		{
 			if(o.x + otherHitbox[BBOX.RIGHT] + 1 >= this.x + thisHitbox[BBOX.LEFT])
 			{
-				sideH = C_LEFT;
+				sideH = COLLISION.LEFT;
 				colX = this.x + (thisHitbox[BBOX.LEFT] - otherHitbox[BBOX.RIGHT]) - 1;
 			}
 		} 
 		else if(o.x + otherHitbox[BBOX.LEFT] <= this.x + thisHitbox[BBOX.RIGHT] + 1)
 		{
-			sideH = C_RIGHT;
+			sideH = COLLISION.RIGHT;
 			colX = this.x + (thisHitbox[BBOX.RIGHT] - otherHitbox[BBOX.LEFT]) + 1;
 		}
 	}
@@ -48,13 +48,13 @@ function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = no
 		{
 			if(o.y + otherHitbox[BBOX.BOTTOM] + 1 >= this.y + thisHitbox[BBOX.TOP])
 			{
-				sideV = C_TOP;	
+				sideV = COLLISION.TOP;	
 				colY = this.y + (thisHitbox[BBOX.TOP] - otherHitbox[BBOX.BOTTOM]) - 1;
 			}
 		} 
 		else if(o.y + otherHitbox[BBOX.TOP] <= this.y + thisHitbox[BBOX.BOTTOM])
 		{
-			sideV = C_BOTTOM;	
+			sideV = COLLISION.BOTTOM;	
 			colY = this.y + (thisHitbox[BBOX.BOTTOM] - otherHitbox[BBOX.TOP]);
 		}
 	}
@@ -569,7 +569,7 @@ function _instance_react_solid(result)
 	var colY = result.col_y
 	
 	// Vertical collision sides
-	if(side == C_TOP || side == C_BOTTOM)
+	if(side == COLLISION.TOP || side == COLLISION.BOTTOM)
 	{
 		// Position the object
 		o.y = colY;	
@@ -577,13 +577,13 @@ function _instance_react_solid(result)
 		// Stop object's vertical movement if it exists
 		if(variable_instance_exists(o, "y_speed"))
 		{
-			if(side == C_TOP && o.y_speed > 0 || side == C_BOTTOM && o.y_speed < 0)
+			if(side == COLLISION.TOP && o.y_speed > 0 || side == COLLISION.BOTTOM && o.y_speed < 0)
 				o.y_speed = 0;
 		}
 	}
 	
 	// Horizontal collision sides
-	if(side == C_LEFT || side == C_RIGHT)
+	if(side == COLLISION.LEFT || side == COLLISION.RIGHT)
 	{
 		// Position the object
 		o.x = colX;	
@@ -591,7 +591,7 @@ function _instance_react_solid(result)
 		// Stop object's horizontal movement if it exists
 		if(variable_instance_exists(o, "x_speed"))
 		{
-			if(side == C_LEFT && o.x_speed > 0 || side == C_RIGHT && o.x_speed < 0)
+			if(side == COLLISION.LEFT && o.x_speed > 0 || side == COLLISION.RIGHT && o.x_speed < 0)
 				o.x_speed = 0;
 		}
 	}

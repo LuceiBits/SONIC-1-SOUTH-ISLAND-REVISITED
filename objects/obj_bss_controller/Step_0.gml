@@ -305,7 +305,7 @@ switch (state)
 
 			timer_100 = 100;
 			state = BSS_STATE.TELE_OUT;
-			fade_change(FADE_IN, 6, FADE_WHITE); //fade the white flash back out
+			fade_change(FADE.IN, 6, FADE_COLOR.WHITE); //fade the white flash back out
 		}
 		break;
 
@@ -412,7 +412,7 @@ switch (state)
 		var _show_clear = reward_is_emerald || (exit_result == "fail");
 
 		//Fade out while spinning
-		fade_change(FADE_OUT, 3, _show_clear ? FADE_WHITE : FADE_BLACK);
+		fade_change(FADE.OUT, 3, _show_clear ? FADE_COLOR.WHITE : FADE_COLOR.BLACK);
 		exit_timer++;
 
 		if (exit_timer >= 90 && obj_global.fade.timer == 0)

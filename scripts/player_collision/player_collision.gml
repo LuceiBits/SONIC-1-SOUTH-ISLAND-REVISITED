@@ -18,13 +18,13 @@ function player_collision()
 		// Make sure to reset the mode in alt mode
 		if(PLAYER_ALT_COLLISION_MODE)
 		{
-			mode = CMODE_FLOOR;
+			mode = COLLISION_MODE.FLOOR;
 			player_mode();
 		}
 		
 		// Wall collision
-		var wallR = collision_get_distance(x - wall_w, y, CMODE_RWALL, plane);
-		var wallL = collision_get_distance(x + wall_w, y, CMODE_LWALL, plane);
+		var wallR = collision_get_distance(x - wall_w, y, COLLISION_MODE.RIGHT_WALL, plane);
+		var wallL = collision_get_distance(x + wall_w, y, COLLISION_MODE.LEFT_WALL, plane);
 		
 		// Snap to the wall
 		if(wallL <= 0)
@@ -40,7 +40,7 @@ function player_collision()
 			semi_solid_condition = true;
 		
 		// Get the active collision sensor
-		var c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_FLOOR, plane, semi_solid_condition);
+		var c = collision_active_sensor(hitbox_w, hitbox_h, COLLISION_MODE.FLOOR, plane, semi_solid_condition);
 		
 		// If player is colliding with floor, then ground the player
 		if(c.height < 0 && y_speed > 0)
@@ -76,7 +76,7 @@ function player_collision()
 		}
 		
 		// Ceiling collison
-		c = collision_active_sensor(hitbox_w, hitbox_h, CMODE_CEILING, plane);	
+		c = collision_active_sensor(hitbox_w, hitbox_h, COLLISION_MODE.CEILING, plane);	
 		
 		// Touching the ceiling
 		if(c.height < 0)
@@ -118,8 +118,8 @@ function player_collision()
 	else
 	{
 		// Wall collision
-		var wallR = collision_get_distance(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (CMODE_LWALL + mode) mod 4, plane);
-		var wallL = collision_get_distance(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (CMODE_RWALL + mode) mod 4, plane);
+		var wallR = collision_get_distance(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (COLLISION_MODE.LEFT_WALL + mode) mod 4, plane);
+		var wallL = collision_get_distance(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (COLLISION_MODE.RIGHT_WALL + mode) mod 4, plane);
 		
 		// Snap to the left wall with the right sensor
 		if(wallR < 0)
@@ -136,7 +136,7 @@ function player_collision()
 		}
 		
 		// If the ground collision mode isn't floor, make sure semi solids are inactive
-		if(mode != CMODE_FLOOR)
+		if(mode != COLLISION_MODE.FLOOR)
 			semi_solid_condition = false;
 		else
 			semi_solid_condition = true;
@@ -197,8 +197,8 @@ function player_collision()
 			var py = y + hitbox_w * y_dir + hitbox_h * -x_dir;
 			
 			// Get the collision distance and angle of the right sensor
-			var col = collision_get_distance(px, py, (mode + CMODE_LWALL) % 4, plane, true);
-			var a = collision_get_angle(px, py, (mode + CMODE_LWALL) % 4, plane);
+			var col = collision_get_distance(px, py, (mode + COLLISION_MODE.LEFT_WALL) % 4, plane, true);
+			var a = collision_get_angle(px, py, (mode + COLLISION_MODE.LEFT_WALL) % 4, plane);
 			
 			// Calculate the difference between old and new angle
 			angleDiff = abs(math_uangle(a) - math_uangle(oldAngle));
@@ -232,7 +232,7 @@ function player_collision()
 		// Wall stoppers
 		if(wallR < 0 || wallL < 0)
 		{
-			if(mode != CMODE_FLOOR)
+			if(mode != COLLISION_MODE.FLOOR)
 			{
 				ground_angle = 0;
 				player_mode();	

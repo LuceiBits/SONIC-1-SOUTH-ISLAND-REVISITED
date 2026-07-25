@@ -72,8 +72,8 @@
 				_bss_room = _stages[game_emerald_count()];
 			*/
 
-			fade_to_room(_bss_room, 2, FADE_WHITE, 30);
-			music_set_fade(FADE_OUT, 2);
+			fade_to_room(_bss_room, 2, FADE_COLOR.WHITE, 30);
+			music_set_fade(FADE.OUT, 2);
 			
 			sound_play(sfx_warp_into);
 		}

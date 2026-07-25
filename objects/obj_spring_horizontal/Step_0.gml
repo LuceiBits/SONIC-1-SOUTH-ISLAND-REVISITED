@@ -9,7 +9,7 @@
 	//Get player's speed
 	var player_speed = player.x_speed;
 	
-	if(c == C_LEFT && sign(image_xscale) == 1 || c == C_RIGHT && sign(image_xscale) == -1)
+	if(c == COLLISION.LEFT && sign(image_xscale) == 1 || c == COLLISION.RIGHT && sign(image_xscale) == -1)
 	{
 		triggered = true;
 		animator.animation_finished = false;

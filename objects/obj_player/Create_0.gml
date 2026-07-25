@@ -6,13 +6,13 @@
 	y_speed = 0;						// Vertical speed movement
 	ground_speed = 0;					// Speed for ground movement
 	ground_angle = 0;					// Value for floor angle
-	mode = CMODE_FLOOR;					// Floor mode value for ground movement
+	mode = COLLISION_MODE.FLOOR;					// Floor mode value for ground movement
 	x_dir = 0;							// Multiplier for horizontal ground movement
 	y_dir = 1;							// Multiplier for vertical ground movement
 	steps = 1;							// Variable used for precise collision
 	control_lock = 0;					// Timer used for locking controls when you're on steep slopes
 	ceiling_landing = 0;				// Ceiling landing state machine
-	plane = PLANE_A;					// Collision planes/layers
+	plane = PLANE.A;					// Collision planes/layers
 	floor_delay = 0;					// Delay timer for when player changes floor mode, hacky fix for jittery mode changes
 	reach_range = 16;					// Range of how much angle sensors can go below floor checks
 	ceiling_lock = 0;					// Timer used for locking ceiling landing, hacky fix for collision bugs

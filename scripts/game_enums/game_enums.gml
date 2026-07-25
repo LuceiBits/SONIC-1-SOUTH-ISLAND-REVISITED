@@ -1,3 +1,43 @@
+	// Collision plane layer
+	enum PLANE
+	{
+		A,
+		B
+	}
+	
+	// Side of a collision hitbox
+	enum COLLISION
+	{
+		MAIN,
+		BOTTOM,
+		TOP,
+		LEFT,
+		RIGHT
+	}
+	
+	// Terrain collision mode
+	enum COLLISION_MODE
+	{
+		FLOOR,
+		LEFT_WALL,
+		CEILING,
+		RIGHT_WALL,
+	}
+	
+	// Fade type
+	enum FADE
+	{
+		IN = 1,
+		OUT = -1,
+	}
+	
+	// Fade color type
+	enum FADE_COLOR
+	{
+		BLACK,
+		WHITE,
+	}
+	
 	// Enums for monitor type
 	enum MONITOR
 	{

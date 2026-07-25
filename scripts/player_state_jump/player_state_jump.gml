@@ -125,7 +125,7 @@ function player_check_jump()
 			
 		//Reset angle and floor mode
 		ground_angle = 0;
-		player_mode(CMODE_FLOOR);
+		player_mode(COLLISION_MODE.FLOOR);
 			
 		//Play the sound
 		sound_play(sfx_jump);

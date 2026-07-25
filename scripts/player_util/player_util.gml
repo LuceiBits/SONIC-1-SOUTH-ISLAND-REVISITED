@@ -153,7 +153,7 @@ function player_act_semi_solid(this_hitbox = -1, player_id = 0)
 /// @param {Real} [side]				On which side is the player colliding with (The default is the main hitbox)
 /// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
 /// @return {bool}
-function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
+function player_collide_object(this_hitbox = -1, side = COLLISION.MAIN, player_id = 0)
 {	
 	//Get nearest player object:
 	var p = player_find(player_id);
@@ -163,25 +163,25 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 	switch(side)
 	{
 		//Bottom side of the hitbox:
-		case C_BOTTOM: 
+		case COLLISION.BOTTOM: 
 		pBox[BBOX.TOP] = 0;
 		pBox[BBOX.BOTTOM]++;
 		break;
 		
 		//Top side of the hitbox:
-		case C_TOP: 
+		case COLLISION.TOP: 
 		pBox[BBOX.BOTTOM] = 0;
 		pBox[BBOX.TOP]--;
 		break;
 		
 		//Left side of the hitbox:
-		case C_LEFT: 
+		case COLLISION.LEFT: 
 		pBox[BBOX.RIGHT] = 0;
 		pBox[BBOX.LEFT]--;
 		break;
 		
 		//Right side of the hitbox:
-		case C_RIGHT:
+		case COLLISION.RIGHT:
 		pBox[BBOX.LEFT] = 0;
 		pBox[BBOX.RIGHT]++;
 		break;
@@ -326,13 +326,13 @@ function _player_react_solid(result)
 	var colY = result.col_y
 	
 	// Vertical collision sides
-	if(side == C_TOP || side == C_BOTTOM)
+	if(side == COLLISION.TOP || side == COLLISION.BOTTOM)
 	{
 		// Position the object
 		o.y = colY;	
 		
 		// Flag player as on object
-		if(side == C_TOP && o.mode == 0)
+		if(side == COLLISION.TOP && o.mode == 0)
 		{
 			o.on_object = true;
 			o.on_object_count++;
@@ -358,7 +358,7 @@ function _player_react_solid(result)
 			}
 			
 			// Land the player
-			if(!o.ground && side = C_TOP)
+			if(!o.ground && side = COLLISION.TOP)
 			{
 				// Stop falling
 				o.y_speed = 0;
@@ -376,7 +376,7 @@ function _player_react_solid(result)
 		// Going up
 		if(o.y_speed < 0)
 		{
-			if(!o.ground && side == C_BOTTOM)
+			if(!o.ground && side == COLLISION.BOTTOM)
 				o.y_speed = 0;
 			
 			// If player is going up the walls, then stop
@@ -389,7 +389,7 @@ function _player_react_solid(result)
 	}
 		
 	// Horizontal collision sides
-	if(side == C_LEFT || side == C_RIGHT)
+	if(side == COLLISION.LEFT || side == COLLISION.RIGHT)
 	{
 		// Position the object
 		o.x = colX;	
@@ -399,7 +399,7 @@ function _player_react_solid(result)
 		var spdVal = o.ground ? "ground_speed" : "x_speed";
 		var spd = variable_instance_get(o, spdVal);
 			
-		if(side == C_LEFT && spd > 0 || side == C_RIGHT && spd < 0)
+		if(side == COLLISION.LEFT && spd > 0 || side == COLLISION.RIGHT && spd < 0)
 		{
 			variable_instance_set(o, spdVal, 0);	
 		}

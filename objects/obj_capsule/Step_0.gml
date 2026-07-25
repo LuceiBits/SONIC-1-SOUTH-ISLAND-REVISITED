@@ -9,7 +9,7 @@
 	
 	var oldY = floor(button_y);
 	
-	if(buttonSolid == C_TOP)
+	if(buttonSolid == COLLISION.TOP)
 	{
 		// Move the button down
 		button_y = math_approach(button_y, y + 8, 2);

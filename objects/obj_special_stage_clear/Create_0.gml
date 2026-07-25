@@ -24,5 +24,5 @@
 
 	//Take the white screen over
 	obj_global.fade.timer = 512;
-	obj_global.fade.type  = FADE_IN;
+	obj_global.fade.type  = FADE.IN;
 	obj_global.fade.target_room = noone;

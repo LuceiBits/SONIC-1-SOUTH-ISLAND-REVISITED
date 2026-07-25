@@ -67,7 +67,7 @@ function player_state_glide(){
 	}
 	
 	//Attach to the wall
-	var wallCol = collision_get_distance(x + wall_w * facing, y, facing == 1 ? CMODE_LWALL : CMODE_RWALL, plane, false);
+	var wallCol = collision_get_distance(x + wall_w * facing, y, facing == 1 ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, plane, false);
 	if(wallCol < 1)
 	{
 		//Change direction

@@ -6,7 +6,7 @@
 /// @param {Real} [plane]					On which plane can collision get tested on (The default is "Plane A")						
 /// @param {Bool} [semi_solid]				Can it collide with semi solid tiles (By default it can't)
 /// @return {Real}
-function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
+function collision_get_distance(px, py, mode = COLLISION_MODE.FLOOR, plane = PLANE.A, semi_solid = false)
 {
     px = floor(px);
     py = floor(py);
@@ -18,7 +18,7 @@ function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, sem
         var l = global.col_tile[i];
 		
 		
-        if ((!semi_solid && l == "CollisionSemi") ||  (plane != PLANE_A && l == "CollisionA") ||  (plane != PLANE_B && l == "CollisionB"))
+        if ((!semi_solid && l == "CollisionSemi") ||  (plane != PLANE.A && l == "CollisionA") ||  (plane != PLANE.B && l == "CollisionB"))
         {
             continue;
         }
@@ -27,19 +27,19 @@ function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, sem
 
         switch (mode)
         {
-            case CMODE_FLOOR:
+            case COLLISION_MODE.FLOOR:
                 h = _tile_get_height(px, py, l);
             break;
 
-            case CMODE_LWALL:
+            case COLLISION_MODE.LEFT_WALL:
                 h = _tile_get_width(px, py, l);
             break;
 
-            case CMODE_CEILING:
+            case COLLISION_MODE.CEILING:
                 h = _tile_get_height(px, py - 1, l, true);
             break;
 
-            case CMODE_RWALL:
+            case COLLISION_MODE.RIGHT_WALL:
                 h = _tile_get_width(px - 1, py, l, true);
             break;
         }
@@ -58,7 +58,7 @@ function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, sem
 /// @param {Real} [mode]					On which orentation collision will get tested on (The default is floor)
 /// @param {Real} [plane]					On which plane can collision get tested on (The default is "Plane A")						
 /// @return {Real}
-function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
+function collision_get_angle(px, py, mode = COLLISION_MODE.FLOOR, plane = PLANE.A)
 {
 	px = floor(px);
 	py = floor(py);
@@ -68,28 +68,28 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 	
 	switch(mode)
 	{
-		case CMODE_FLOOR:
+		case COLLISION_MODE.FLOOR:
 			ax = px - px mod ANGLE_GRID_SIZE;
 			bx = px + ((ANGLE_GRID_SIZE - 1) - px mod ANGLE_GRID_SIZE);
 			ay = collision_get_distance(ax, py, mode, plane, true);	
 			by = collision_get_distance(bx, py, mode, plane, true);
 		break;
 		
-		case CMODE_LWALL:
+		case COLLISION_MODE.LEFT_WALL:
 			by = py - py mod ANGLE_GRID_SIZE;
 			ay = py + ((ANGLE_GRID_SIZE - 1) - py mod ANGLE_GRID_SIZE);
 			ax = collision_get_distance(px, ay, mode, plane, true);	
 			bx = collision_get_distance(px, by, mode, plane, true);
 		break;
 		
-		case CMODE_CEILING:
+		case COLLISION_MODE.CEILING:
 			bx = px - px mod ANGLE_GRID_SIZE;
 			ax = px + ((ANGLE_GRID_SIZE - 1) - px mod ANGLE_GRID_SIZE);
 			by = collision_get_distance(ax, py, mode, plane, true);	
 			ay = collision_get_distance(bx, py, mode, plane, true);
 		break;
 		
-		case CMODE_RWALL:
+		case COLLISION_MODE.RIGHT_WALL:
 			ay = py - py mod ANGLE_GRID_SIZE;
 			by = py + ((ANGLE_GRID_SIZE - 1) - py mod ANGLE_GRID_SIZE);
 			bx = collision_get_distance(px, ay, mode, plane, true);	
@@ -109,7 +109,7 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 /// @param {Real} [plane]					On which plane can collision get tested on (The default is "Plane A")						
 /// @param {Bool} [semi_solid]				Can it collide with semi solid tiles (By default it can't)
 /// @return {Real}
-function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
+function collision_active_sensor(radius_x, radius_y, mode = COLLISION_MODE.FLOOR, plane = PLANE.A, semi_solid = false)
 {
 	// Default struct
 	var colResult = {

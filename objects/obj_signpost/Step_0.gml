@@ -47,7 +47,7 @@
 	}
 	
 	//Bump the sign
-	if(triggered && y_speed > 0 && player_collide_object(C_TOP) && player.y_speed < 0 && !player.ground)
+	if(triggered && y_speed > 0 && player_collide_object(COLLISION.TOP) && player.y_speed < 0 && !player.ground)
 	{
 		sound_play(sfx_twinkle);
 		instance_create_score(0, -48);
@@ -67,7 +67,7 @@
 		y_speed += 0.046875;
 	
 	//Ground detection
-	var c = collision_get_distance(x, y - 1, CMODE_FLOOR, PLANE_A, true);
+	var c = collision_get_distance(x, y - 1, COLLISION_MODE.FLOOR, PLANE.A, true);
 	if(c < 0 && !ground)
 	{
 		y += c;
@@ -78,7 +78,7 @@
 	}
 	
 	//Wall detection
-	c = collision_get_distance(x + 8 * sign(x_speed), y - 8, sign(x_speed) ? CMODE_LWALL : CMODE_RWALL, PLANE_A, true);
+	c = collision_get_distance(x + 8 * sign(x_speed), y - 8, sign(x_speed) ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, PLANE.A, true);
 	if(c < 0)
 	{
 		x += c;
