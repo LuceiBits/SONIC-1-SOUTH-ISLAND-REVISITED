@@ -6,10 +6,8 @@
     
     if(col == side)
 	{
-		if(image_index == 0 && triggered)
-		{
-			sound_play(sfx_beep);
-		}
+		var beep = false;
+		if(image_index == 0) beep = true;
 		
 		image_index = 1;
 		
@@ -25,9 +23,11 @@
 						continue;
 	                state = DOOR.MOVING;
 					sound_play(sfx_opendoor);
+					beep = false;
 	            }
 	        }
 		}
+		if(beep) sound_play(sfx_beep);
     }
 	else
 	{
