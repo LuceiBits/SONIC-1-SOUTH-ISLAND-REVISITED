@@ -1,4 +1,4 @@
-function raise_water_level(level, rise_speed = 2, water_obj = obj_water){
+function change_water_level(level, rise_speed = 2, water_obj = obj_water){
     with (water_obj)
     {
         //IF it's a pool, turn the y coordinate "level" parameter into a y scale one
