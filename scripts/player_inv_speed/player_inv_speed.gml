@@ -1,7 +1,7 @@
 function player_inv_speed(){
 	if(obj_global.music.play_data[Jingle] == "j_super" && !super) 
 	{
-		stop_jingle(true, 1);	
+		music_stop_jingle(true, 1);	
 	}
 	
 	if(!super) 
@@ -20,12 +20,12 @@ function player_inv_speed(){
 		//Stop jingles
 		if(obj_global.music.play_data[Jingle] = "j_speedshoe" && speed_shoes = 0)
 		{
-			stop_jingle(true, 1);
+			music_stop_jingle(true, 1);
 		}
 	
 		if(obj_global.music.play_data[Jingle] = "j_invincible" && !invincible)
 		{
-			stop_jingle(true, 1);
+			music_stop_jingle(true, 1);
 		}
 		
 		//Invincible sparkles

@@ -1,5 +1,10 @@
+// TODO THIS SHIT
 #macro MUSIC_CHANNEL_SIZE 4
-
+#macro BGM 0
+#macro Jingle MUSIC_CHANNEL_SIZE - 1
+	
+/// @self								obj_global
+/// @description						Function that initializes the music system
 function music_init()
 {
 	music = 
@@ -25,6 +30,8 @@ function music_init()
 	music.loop_end = array_create(MUSIC_CHANNEL_SIZE, 0.00);
 }
 
+/// @self								obj_global
+/// @description						Function that updates the music system
 function music_update()
 {
 	//Fade events for general fade
@@ -108,6 +115,13 @@ function music_update()
 	}
 }
 
+/// @self								obj_global
+/// @description						Function that adds music to a list
+/// @param {Real|String} music_id		A key where the music will be registered in the map		
+/// @param {Asset.GMSound} sound_id		The music sound asset ID
+/// @param {Real} [loop_start]			Music's loop start value (in ms | the default is 0.00ms)
+/// @param {Real} [loop_end]			Music's loop end value (in ms | the default is 0.00ms, which means it's disabled)
+/// @param {Bool} [loop]				Flag for music looping (By default it's on)
 function music_add(music_id, sound_id, loop_start = 0.00, loop_end = 0.00, loop = true)
 {
 	if !ds_map_exists(global.music_map, music_id)
@@ -120,12 +134,21 @@ function music_add(music_id, sound_id, loop_start = 0.00, loop_end = 0.00, loop 
 	} 
 }
 
+/// @self								
+/// @description						Function that changes the fading mode of a music channel
+/// @param {Real} channel				Value for a music channel
+/// @param {Real} fade_type				Which fade type is it
+/// @param {Real} fade_speed			Speed of the music channel fading
 function music_fade_channel(channel, fade_type, fade_speed)
 {
 	obj_global.music.fade_speed[channel] = fade_speed;
 	obj_global.music.fade_type[channel] = fade_type;	
 }
 
+/// @self								
+/// @description						Function that fades in the target channel and fades out the rest
+/// @param {Real} target_channel		Which channel is going to fade in
+/// @param {Real} fade_speed			Speed of the music channel fading
 function music_cross_fade(target_channel, fade_speed)
 {
 	for (var i = 0; i < MUSIC_CHANNEL_SIZE; ++i) 
@@ -141,24 +164,30 @@ function music_cross_fade(target_channel, fade_speed)
 	obj_global.music.fade_type[target_channel] = FADE_IN;	
 }
 
+/// @self								
+/// @description						Function that changes the fading mode of a music master gain
+/// @param {Real} fade_type				Which fade type is it
+/// @param {Real} fade_speed			Speed of the music fading
 function music_set_fade(fade_type, fade_speed)
 {
 	obj_global.music.general_fade_speed = fade_speed;
 	obj_global.music.general_fade = fade_type;	
 }
 
+/// @self								
+/// @description						Function that resets the master fade
 function music_reset_fade()
 {
 	music_set_fade(FADE_IN, 1);
 	obj_global.music.general_fade_multiplier = 1;
 }
 
+/// @self								
+/// @description						Function that plays music on a set channel
+/// @param {Real} music_id				Key or ID of a music that will get played from the list
+/// @param {Real} [channel]				On which channel music will be played at (The default is the first channel)
 function music_play(music_id, channel = 0)
 {
-	//Music macros
-	#macro BGM 0
-	#macro Jingle MUSIC_CHANNEL_SIZE - 1
-	
 	//Get the sound object
 	with(obj_global)
 	{
@@ -184,7 +213,11 @@ function music_play(music_id, channel = 0)
 	}
 }
 
-function music_play_priority(music_id, channel)
+/// @self								
+/// @description						Function that plays music on a set channel and cancels out the other channels
+/// @param {Real} music_id				Key or ID of a music that will get played from the list
+/// @param {Real} [channel]				On which channel music will be played at (The default is the first channel)
+function music_play_priority(music_id, channel = 0)
 {
 	for (var i = 0; i < MUSIC_CHANNEL_SIZE; ++i) 
 	{
@@ -198,34 +231,49 @@ function music_play_priority(music_id, channel)
 	music_play(music_id, channel);
 }
 
+/// @self								
+/// @description						Function that pauses a music channel
+/// @param {Real} [channel]				Which channel will get paused(The default is the first channel)
 function music_pause(channel = 0)
 {
 	with(obj_global) if (music.playing[channel] != noone) audio_pause_sound(music.playing[channel]);
 }
 
+/// @self								
+/// @description						Function that resumes a music channel
+/// @param {Real} [channel]				Which channel will be resumed(The default is the first channel)
 function music_resume(channel = 0)
 {
 	with(obj_global) if (music.playing[channel] != noone) audio_resume_sound(music.playing[channel]);
 }
 
+/// @self								
+/// @description						Function that changes the pitch of a music channel
+/// @param {Real} [channel]				The channel that will get affected
 function music_set_pitch(channel = 0, pitch = 1)
 {
 	with(obj_global) if (music.playing[channel] != noone) audio_sound_pitch(music.playing[channel], pitch);
 }
 
+/// @self								
+/// @description						Function that plays the extra life jingle
 function music_play_jingle()
 {
 	if (global.extra_life_jingle)
 	{ 
-		sound_play(j_extra_life)
+		sound_play(j_extra_life);
 	} 
 	else
 	{
-		sound_play(sfx_extralife)
+		sound_play(sfx_extralife);
 	}	
 }
 
-function stop_jingle(fade_music_in, fade_speed = 1)
+/// @self								
+/// @description						Function that will stop the jingle channel and return to normal channel
+/// @param {Bool} fade_music_in			Is the music going to fade back in?
+/// @param {Real} [fade_speed]			How fast will music fade back in (The default is 1)
+function music_stop_jingle(fade_music_in, fade_speed = 1)
 {
 	with(obj_global)
 	{

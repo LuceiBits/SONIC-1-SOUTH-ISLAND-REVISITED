@@ -1,3 +1,5 @@
+/// @self						
+/// @description							DEPRECATED FUNCTION, DO NOT USE. WILL GET REMOVED LATER.		
 function player_reposition_mode(force_mode = -1)
 {
 	mode = round(ground_angle/90) % 4;
@@ -14,6 +16,11 @@ function player_reposition_mode(force_mode = -1)
 	y_dir = dcos(90 * true_mode);
 }
 
+/// @self						
+/// @description						Function that is used to either hurt or kill the player
+/// @param {Real} [hazard_x]			The location of the hazard (The default is instance's x position)
+/// @param {Real} [hurt_type]			In what kind of way is the player getting hurt (The default is normal hurt)
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
 function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 {
 	with(player_find(player_id))
@@ -98,22 +105,40 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 	}
 }
 
+/// @self						
+/// @description						Function that returns the instance ID of the player object
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
+/// @return {Id.Instance}
 function player_find(player_id)
 {
 	return instance_find(obj_player, player_id);	
 }
 
+/// @self						
+/// @description						Function that returns the player's hitbox size
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
+/// @return {Array}
 function player_get_hitbox(player_id)
 {
 	var player = instance_find(obj_player, player_id);
 	return [-player.wall_w, -player.hitbox_h, player.wall_w, player.hitbox_h];
 }
 
+/// @self						
+/// @description						Function that makes an instance solid for the player object
+/// @param {Array|Struct} [this_hitbox]	The hitbox size of the current object (The default is unset, it will get baked in)
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
+/// @return {Real}
 function player_act_solid(this_hitbox = -1, player_id = 0)
 {
 	return instance_act_solid(player_find(player_id), player_get_hitbox(player_id), id, this_hitbox);
 }
 
+/// @self						
+/// @description						Function that makes an instance semi solid for the player object
+/// @param {Array|Struct} [this_hitbox]	The hitbox size of the current object (The default is unset, it will get baked in)
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
+/// @return {bool}
 function player_act_semi_solid(this_hitbox = -1, player_id = 0)
 {
 	var p = player_find(player_id);
@@ -123,6 +148,12 @@ function player_act_semi_solid(this_hitbox = -1, player_id = 0)
 	return instance_act_semi_solid(p, player_get_hitbox(player_id), id, this_hitbox);
 }
 
+/// @self						
+/// @description						Function that checks if the player is colliding with the current instance
+/// @param {Array|Struct} [this_hitbox]	The hitbox size of the current object (The default is unset, it will get baked in)
+/// @param {Real} [side]				On which side is the player colliding with (The default is the main hitbox)
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
+/// @return {bool}
 function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 {	
 	//Get nearest player object:
@@ -164,6 +195,11 @@ function player_collide_object(this_hitbox = -1, side = C_MAIN, player_id = 0)
 	
 }
 
+/// @self						
+/// @description						Function that checks if the insta-shield is colliding with the current instance
+/// @param {Array|Struct} [this_hitbox]	The hitbox size of the current object (The default is unset, it will get baked in)
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
+/// @return {bool}
 function player_insta_shield_collide(this_hitbox = -1, player_id = 0)
 {
 	// Get the player
@@ -178,6 +214,10 @@ function player_insta_shield_collide(this_hitbox = -1, player_id = 0)
 		return instance_collide(player, [-INSTA_SHIELD_BOX_SIZE, -INSTA_SHIELD_BOX_SIZE, INSTA_SHIELD_BOX_SIZE, INSTA_SHIELD_BOX_SIZE], id, this_hitbox);	
 }
 
+/// @self						
+/// @description						Function sets a shield to the target player object, along with resetting the shield state
+/// @param {Real} shield_id				Which shield is getting set
+/// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
 function player_set_shield(shield_id, player_id = 0)
 {
 	// Mandatory shield state reset
@@ -196,7 +236,12 @@ function player_set_shield(shield_id, player_id = 0)
 	}
 }
 
-// Player internals
+// ===========================================================================================================
+// Internal utility functions
+// ===========================================================================================================
+
+/// @self								obj_player
+/// @description						An internal function for killing the player
 function _player_kill()
 {
 	// No need to kill again
@@ -218,6 +263,8 @@ function _player_kill()
 	sound_play(sfx_hurt);
 }
 
+/// @self								obj_player
+/// @description						An internal function for rendering player's after image effects, this is done to keep the draw event cleaner
 function _player_draw_after_images()
 {
 	// Render when these flags are on
@@ -267,6 +314,9 @@ function _player_draw_after_images()
 	}	
 }
 
+/// @self
+/// @description						An internal function for player's reaction to the solid object
+/// @param {Struct} result				The result struct that was made by the solid function
 function _player_react_solid(result)
 {
 	// Get values from the struct

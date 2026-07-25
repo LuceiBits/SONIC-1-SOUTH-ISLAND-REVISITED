@@ -1,3 +1,11 @@
+/// @self						
+/// @description							Function that returns the distance between the set position and a solid surface
+/// @param {Real} px						The horizontal position of the collision check
+/// @param {Real} py						The vertical position of the collision check
+/// @param {Real} [mode]					On which orentation collision will get tested on (The default is floor)
+/// @param {Real} [plane]					On which plane can collision get tested on (The default is "Plane A")						
+/// @param {Bool} [semi_solid]				Can it collide with semi solid tiles (By default it can't)
+/// @return {Real}
 function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
     px = floor(px);
@@ -43,6 +51,13 @@ function collision_get_distance(px, py, mode = CMODE_FLOOR, plane = PLANE_A, sem
     return best_h;
 }
 
+/// @self						
+/// @description							Function that takes the left side and right side of the tile surface and calculates the angle between them (In degrees)
+/// @param {Real} px						The horizontal position of the collision check
+/// @param {Real} py						The vertical position of the collision check
+/// @param {Real} [mode]					On which orentation collision will get tested on (The default is floor)
+/// @param {Real} [plane]					On which plane can collision get tested on (The default is "Plane A")						
+/// @return {Real}
 function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 {
 	px = floor(px);
@@ -86,6 +101,14 @@ function collision_get_angle(px, py, mode = CMODE_FLOOR, plane = PLANE_A)
 	return angle;
 }
 
+/// @self						
+/// @description							This functions has 3 collision checks, on the left, on the middle and on the right, and it returns the distance of a sensor that is the closest to the surface. It returns a struct that contains the distance of an active sensor and an angle of the active sensor
+/// @param {Real} radius_x					The horizontal radius offset of the collision check
+/// @param {Real} radius_y					The vertical radius offset of the collision check
+/// @param {Real} [mode]					On which orentation collision will get tested on (The default is floor)
+/// @param {Real} [plane]					On which plane can collision get tested on (The default is "Plane A")						
+/// @param {Bool} [semi_solid]				Can it collide with semi solid tiles (By default it can't)
+/// @return {Real}
 function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane = PLANE_A, semi_solid = false)
 {
 	// Default struct
@@ -144,7 +167,12 @@ function collision_active_sensor(radius_x, radius_y, mode = CMODE_FLOOR, plane =
 // ===========================================================================================================
 // Internal utility functions
 // ===========================================================================================================
-
+/// @self												
+/// @param {Real} xpos						The horizontal position of the collision check
+/// @param {Real} ypos						The vertical position of the collision check
+/// @param {String} [l]						On which collision layer are we getting the data from
+/// @param {Real} [flip]					Is the collision side flipped? (By default it is not)				
+/// @return {Real}
 function _tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 {
 
@@ -180,6 +208,13 @@ function _tile_get_height2(xpos, ypos, l = "CollisionMain", flip = false)
 	return 15 - (ypos & 15);
 }
 
+/// @self						
+/// @description							An internal function used for getting collision surface distance, Vertical axis
+/// @param {Real} xpos						The horizontal position of the collision check
+/// @param {Real} ypos						The vertical position of the collision check
+/// @param {String} [l]						On which collision layer are we getting the data from
+/// @param {Real} [flip]					Is the collision side flipped? (By default it is not)				
+/// @return {Real}
 function _tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
@@ -227,6 +262,13 @@ function _tile_get_height(xpos, ypos, l = "CollisionMain", flip = false)
 	return _tile_get_height2(xpos, ypos + a, l, flip) + 16;
 }
 
+/// @self						
+/// @description							
+/// @param {Real} xpos						The horizontal position of the collision check
+/// @param {Real} ypos						The vertical position of the collision check
+/// @param {String} [l]						On which collision layer are we getting the data from
+/// @param {Real} [flip]					Is the collision side flipped? (By default it is not)				
+/// @return {Real}
 function _tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
@@ -265,6 +307,13 @@ function _tile_get_width2(xpos, ypos, l = "CollisionMain", flip = false)
 	return 15 - (xpos & 15);
 }
 
+/// @self						
+/// @description							An internal function used for getting collision surface distance, Horizontal axis
+/// @param {Real} xpos						The horizontal position of the collision check
+/// @param {Real} ypos						The vertical position of the collision check
+/// @param {String} [l]						On which collision layer are we getting the data from
+/// @param {Real} [flip]					Is the collision side flipped? (By default it is not)				
+/// @return {Real}
 function _tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
 {
 	xpos = floor(xpos);
@@ -315,6 +364,12 @@ function _tile_get_width(xpos, ypos, l = "CollisionMain", flip = false)
 // ==========================================================================================
 // Tile data segment
 // ==========================================================================================
+/// @self						
+/// @description							An internal function used for getting a height map data.
+/// @param {Real} tile_id					Which tile data is being used
+/// @param {Real} xpos						The horizontal height map offset
+/// @param {Real} [flip]					Is the collision side flipped? (By default it is not)				
+/// @return {Real}
 function _tiledata_get_height(tile_id, xpos, flip = false)
 {
 	// Turn X position into an offset
@@ -353,6 +408,12 @@ function _tiledata_get_height(tile_id, xpos, flip = false)
 	}
 }
 
+/// @self						
+/// @description							An internal function used for getting a height map data.
+/// @param {Real} tile_id					Which tile data is being used
+/// @param {Real} ypos						The horizontal height map offset
+/// @param {Real} [flip]					Is the collision side flipped? (By default it is not)				
+/// @return {Real}
 function _tiledata_get_width(tile_id, ypos, flip = false)
 {
 	// Turn X position into an offset

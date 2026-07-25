@@ -1,3 +1,10 @@
+/// @self						
+/// @description							Function for making the instance solid to the other instance, it also returns the collision side
+/// @param {Id.Instance} o					The object that will react to the solid object
+/// @param {Array|Struct} [hitbox_other]	The hitbox size of the other object (It gets baked as the default)
+/// @param {Id.Instance} [this]				The object that will be solid to the other object (The default is the current instance ID)
+/// @param {Array|Struct} [this_hitbox]		The hitbox size of the current object (It gets baked as the default)
+/// @return {Real}
 function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = noone)
 {	
 	// Temps
@@ -92,6 +99,13 @@ function instance_act_solid(o, hitbox_other = noone, this = id, this_hitbox = no
 	return side;
 }
 
+/// @self						
+/// @description							Function for making the instance semi solid to the other instance
+/// @param {Id.Instance} o					The object that will react to the solid object
+/// @param {Array|Struct} [hitbox_other]	The hitbox size of the other object (It gets baked as the default)
+/// @param {Id.Instance} [this]				The object that will be solid to the other object (The default is the current instance ID)
+/// @param {Array|Struct} [this_hitbox]		The hitbox size of the current object (It gets baked as the default)
+/// @return {Bool}
 function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox = noone)
 {	
 	// Make hitboxes
@@ -159,6 +173,13 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 	}
 }
 
+/// @self						
+/// @description							Function for checking if two instances are colliding
+/// @param {Id.Instance} o					The other instance that will collide with the current instance
+/// @param {Array|Struct} [hitbox_other]	The hitbox size of the other object (It gets baked as the default)
+/// @param {Id.Instance} [this]				The current instance that will collide with the other instance (The default is the current instance ID)
+/// @param {Array|Struct} [this_hitbox]		The hitbox size of the current object (It gets baked as the default)
+/// @return {Bool}
 function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noone)
 {
 	// Make hitboxes
@@ -180,6 +201,13 @@ function instance_collide(o, hitbox_other = noone, this = id, this_hitbox = noon
 		return true;
 }
 
+/// @self						
+/// @description							Function used for offsetting the hitbox to a target position
+/// @param {Real} px						X position of the hitbox
+/// @param {Real} py						Y position of the hitbox
+/// @param {Array|Struct} [hitbox_other]	The hitbox size (It gets baked as the default)
+/// @param {Id.Instance} [this]				Instance used for base position (The default is the current instance ID)
+/// @return {Array}
 function instance_position_hitbox(px, py, hitbox = noone, this = id)
 {
 	// Do not do anything if the object doesn't exist
@@ -203,6 +231,11 @@ function instance_position_hitbox(px, py, hitbox = noone, this = id)
 	return b;
 }
 
+/// @self						
+/// @description							Function used for registering an instance to the level's culling system
+/// @param {Array|Struct} [culling_region]	Culling bounding box size (The default is 32 pixels on all sides)
+/// @param {Function} [on_culling]			A function that gets called every time culling is triggered (The default is unset)
+/// @param {Real} [flags]					A bitfield used by the culling system (the default only check's for instance's current position)
 function instance_register_culling(culling_region = noone, on_culling = noone, flags = CULL_FLAG.CHECK_ENTITY_POS)
 {
 	var c = {left : -32, right : 32, top : -32, bottom : 32}
@@ -234,12 +267,21 @@ function instance_register_culling(culling_region = noone, on_culling = noone, f
 	ds_list_add(obj_level.instance_list, culling_struct);	
 }
 
+/// @self						
+/// @description							Function used to check if an instance can flash or not by the set interval
+/// @param {Real} interval					A frame interval that changes the flashing state
+/// @param {Real} [offset]					An interval offset (The default is 0)
+/// @param {Real} [timer]					A timer value used for the interval (The default is the global frame timer)
+/// @return {Bool}
 function instance_flash(interval, offset = 0, timer = FRAME_TIMER)
 {
 	if((timer + offset) mod (interval * 2) < interval)
 		return true;
 }
 
+/// @self						
+/// @description							Constructor that creates the recorder system
+/// @param {Real} [size]					Size of the recorder (The default is 60 frames)
 function instance_recorder_init(size = 60) constructor
 {
 	timer = 0;
@@ -250,6 +292,12 @@ function instance_recorder_init(size = 60) constructor
 	update_list = [[]];
 }
 
+/// @self						
+/// @description							Function that registers a variable to the recorder system, after a value gets registered this function returns the ID of it
+/// @param {Struct.Recorder} recorder		The recorder constructor
+/// @param {String} variable_name			String for the variable name to use
+/// @param {Id.Instance} [inst_id]			Instance ID from where variables will get used from (The default is the current instance ID)
+/// @return {Real}
 function instance_recorder_add(recorder, variable_name, inst_id = id)
 {
 	// Store the old ID
@@ -266,6 +314,9 @@ function instance_recorder_add(recorder, variable_name, inst_id = id)
 	return oldID;
 }
 
+/// @self						
+/// @description							Function that runs the value recording system
+/// @param {Struct.Recorder} recorder		The recorder constructor
 function instance_recorder_update(recorder)
 {
 	// Get the recording list
@@ -282,12 +333,29 @@ function instance_recorder_update(recorder)
 	}
 }
 
+/// @self						
+/// @description							Function that returns a value from the value recorder
+/// @param {Struct.Recorder} recorder		The recorder constructor
+/// @param {Real} value_id					The variable ID from the recorder list
+/// @param {Real} offset					An offset in the recorder table
+/// @return {Any}
 function instance_recorder_get_value(recorder, value_id, offset)
 {
 	return recorder.update_list[value_id][(max(recorder.timer - offset, 0) mod recorder.record_size)];
 }
 
-function instance_create_bullet(sprite, animation_speed, x, y, obj_depth, x_speed, y_speed, grav = 0.2)
+/// @self						
+/// @description							Function that creates a bullet object
+/// @param {Asset.GMSprite} sprite			The sprite that is going to be used for the bullet
+/// @param {Real} animation_speed			The animation speed of the bullet
+/// @param {Real} x							The horizontal position
+/// @param {Real} y							The vertical position
+/// @param {Real} [obj_depth]				The depth value of the bullet (The default is above the parent object)
+/// @param {Real} [x_speed]					The horizontal movement speed (The default is 0)
+/// @param {Real} [y_speed]					The vertical movement speed (The default is 0)
+/// @param {Real} [grav]					The gravity of the bullet (The default is 0)
+/// @return {Id.Instance}
+function instance_create_bullet(sprite, animation_speed, x, y, obj_depth = depth - 1, x_speed = 0, y_speed = 0, grav = 0.2)
 {
 	//Create bullet object
 	var bullet = instance_create_depth(x, y, obj_depth, obj_bullet);
@@ -306,32 +374,56 @@ function instance_create_bullet(sprite, animation_speed, x, y, obj_depth, x_spee
 	return bullet;
 }
 
-function instance_on_screen(RegionW = 16, RegionH = 16) 
+/// @self						
+/// @description							Function that checks if an instance is on screen
+/// @param {Real} [region_w]				The horizontal camera offset region (The default is 16 pixels)
+/// @param {Real} [region_h]				The vertical camera offset region (The default is 16 pixels)
+/// @return {Bool}
+function instance_on_screen(region_w = 16, region_h = 16) 
 {
 	var c, cx, cy, sw, sh;
 	c = view_camera[view_current]
 	cx = camera_get_view_x(c)
 	cy = camera_get_view_y(c)
-	sw = global.window_width;
-	sh = global.window_height;
+	sw = camera_get_view_width(c);
+	sh = camera_get_view_height(c);
  
-	if(bbox_right > cx-RegionW && bbox_left < cx + sw +  RegionW && bbox_bottom > cy - RegionH && (bbox_top < cy + sh+RegionH)) 
+	if(bbox_right > cx - region_w && bbox_left < cx + sw + region_w && bbox_bottom > cy - region_h && (bbox_top < cy + sh + region_h)) 
 		return true;
 }
 
-function instance_origin_on_screen(RegionW = 16, RegionH = 16, origin_x = xstart, origin_y = ystart) 
+/// @self						
+/// @description							Function that checks if an origin point is on screen
+/// @param {Real} [region_w]				The horizontal camera offset region (The default is 16 pixels)
+/// @param {Real} [region_h]				The vertical camera offset region (The default is 16 pixels)
+/// @param {Real} [origin_x]				Origin's horizontal position (The default is instance's starting position)
+/// @param {Real} [origin_y]				Origin's vertical position (The default is instance's starting position)
+/// @return {Bool}
+function instance_origin_on_screen(region_w = 16, region_h = 16, origin_x = xstart, origin_y = ystart) 
 {
 	var c, cx, cy, sw, sh;
 	c = view_camera[view_current]
 	cx = camera_get_view_x(c)
 	cy = camera_get_view_y(c)
-	sw = global.window_width;
-	sh = global.window_height;
+	sw = camera_get_view_width(c);
+	sh = camera_get_view_height(c);
  
-	if(origin_x > cx-RegionW && origin_x < cx + sw +  RegionW && origin_y > cy - RegionH && (origin_y < cy + sh+RegionH)) 
+	if(origin_x > cx - region_w && origin_x < cx + sw + region_w && origin_y > cy - region_h && (origin_y < cy + sh + region_h)) 
 		return true;
 }
 
+/// @self						
+/// @description							Function that creates a particle object
+/// @param {Real} X							The horizontal position
+/// @param {Real} Y							The vertical position
+/// @param {Asset.GMSprite} sprite			The sprite that is going to be used for the particle
+/// @param {Real} anim_speed				The animation speed of the particle
+/// @param {Real} [obj_depth]				The depth value of the particle (The default is above the parent object)
+/// @param {Real} [x_speed]					The horizontal movement speed (The default is 0)
+/// @param {Real} [y_speed]					The vertical movement speed (The default is 0)
+/// @param {Real} [x_accel]					The horizontal acceleration speed (The default is 0)
+/// @param {Real} [y_accel]					The vertical acceleration speed (The default is 0)
+/// @return {Id.Instance}
 function instance_create_particle(X, Y, sprite, anim_speed, obj_depth = depth - 1, x_speed = 0, y_speed = 0, x_accel = 0, y_accel = 0)
 {
 	//Create and get the object
@@ -355,7 +447,23 @@ function instance_create_particle(X, Y, sprite, anim_speed, obj_depth = depth - 
 	return o;
 }
 
-function instance_create_debris(posx, posy, sprite, anim_speed, x_speed, y_speed, anim_frame = 0, grav = 0.2, angle = 0, angle_speed = 0, obj_depth = depth-1, xscale = 1, yscale = 1)
+/// @self						
+/// @description							Function that creates a debris object
+/// @param {Real} posx						The horizontal position
+/// @param {Real} posy						The vertical position
+/// @param {Asset.GMSprite} sprite			The sprite that is going to be used for the debris
+/// @param {Real} anim_speed				The animation speed of the debris
+/// @param {Real} x_speed					The horizontal movement speed
+/// @param {Real} y_speed					The vertical movement speed
+/// @param {Real} [anim_frame]				Starting animation frame (The default is 0)
+/// @param {Real} [grav]					The gravity value of the debris (The default is 0.2)
+/// @param {Real} [angle]					The starting angle value of the debris (In degrees | The default is 0)
+/// @param {Real} [angle_speed]				Debris rotating speed (The default is 0)
+/// @param {Real} [obj_depth]				The depth value of the debris (The default is above the parent object)
+/// @param {Real} [xscale]					Horizontal debris scaling (The default is 1)
+/// @param {Real} [yscale]					Vertical debris scaling (The default is 1)
+/// @return {Id.Instance}
+function instance_create_debris(posx, posy, sprite, anim_speed, x_speed, y_speed, anim_frame = 0, grav = 0.2, angle = 0, angle_speed = 0, obj_depth = depth - 1, xscale = 1, yscale = 1)
 {
 	var debris = instance_create_depth(posx, posy, obj_depth, obj_debris);
 	debris.sprite_index = sprite;
@@ -370,6 +478,10 @@ function instance_create_debris(posx, posy, sprite, anim_speed, x_speed, y_speed
 	debris.grav = grav;
 }
 
+/// @self						
+/// @description							Function that creates the score effect based on level's combo chain
+/// @param {Real} [offx]					The horizontal offset from the instance (The default is 0)
+/// @param {Real} [offy]					The vertical offset from the instance (The default is 0)
 function instance_create_score(offx = 0, offy = 0)
 {
 	//Crate score object
@@ -402,6 +514,9 @@ function instance_create_score(offx = 0, offy = 0)
 	}
 }
 
+/// @self						
+/// @description							Function that creates ring loss
+/// @param {Real} ring_counter				Amount of rings to be created
 function instance_create_ringloss(ring_counter)
 {
 	var ring_angle = 101.25;
@@ -437,9 +552,14 @@ function instance_create_ringloss(ring_counter)
 	    }
 	}
 }
+
 // ===========================================================================================================
 // Utilities internal functions
 // ===========================================================================================================
+
+/// @self						
+/// @description							An internal function that makes an instance react to the solid object
+/// @param {Struct} result					A result struct provided by `instance_act_solid`
 function _instance_react_solid(result)
 {
 	// Get values from the struct
@@ -477,6 +597,11 @@ function _instance_react_solid(result)
 	}
 }
 
+/// @self						
+/// @description							An internal function used for adjusting hitbox data by the instance's scale
+/// @param {Id.Instance} this				The current instance ID
+/// @param {Array|Struct} hitbox			The hitbox data
+/// @return {Array}
 function _instance_orient_hitbox(this, hitbox) 
 {
 	var dstBox
@@ -512,6 +637,10 @@ function _instance_orient_hitbox(this, hitbox)
 	return dstBox;
 }
 
+/// @self						
+/// @description							An internal function used for creating a new hitbox from instance's sprite bounding box
+/// @param {Id.Instance} inst				The current instance ID	
+/// @return {Array}
 function _instance_make_hitbox(inst)
 {
 	var newBox;
@@ -539,6 +668,11 @@ function _instance_make_hitbox(inst)
 	return newBox;
 }
 
+/// @self						
+/// @description							An internal function used for adjusting hitbox data and creating hitboxes
+/// @param {Id.Instance} this				The current instance ID
+/// @param {Array|Struct} hitbox			The hitbox data, if the hitbox is not an array or a struct it will create a new one based on instance's sprite bounding box		
+/// @return {Array}
 function _instance_evaluate_hitbox(this, hitbox)
 {
 	var newBox;
@@ -566,6 +700,8 @@ function _instance_evaluate_hitbox(this, hitbox)
 	return newBox;
 }
 
+/// @self						
+/// @description							An internal function used for removing an instance from a moving platform (Usually used on object's destroy event)
 function _instance_remove_attached()
 {
 	with(par_moving_platform)
