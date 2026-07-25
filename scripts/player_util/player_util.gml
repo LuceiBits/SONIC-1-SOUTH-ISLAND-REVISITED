@@ -1,19 +1,18 @@
 /// @self						
-/// @description							DEPRECATED FUNCTION, DO NOT USE. WILL GET REMOVED LATER.		
-function player_reposition_mode(force_mode = -1)
+/// @description							That changes player's collision mode
+/// @param {Real} [force_mode]				Parameter that changes the collision mode (The default is -1 which means it's going to get rotated by the ground angle)
+function player_mode(force_mode = -1)
 {
-	mode = round(ground_angle/90) % 4;
+	// Change the ground mode
+	mode = round(ground_angle / 90) % 4;
 	
-	var true_mode = mode;
-	
+	// Force the ground rotation mode if it's set
 	if(force_mode != -1)
-	{
-		true_mode = force_mode;	
-	}
+		mode = force_mode;
 	
-	//Change direction
-	x_dir = dsin(90 * true_mode);
-	y_dir = dcos(90 * true_mode);
+	// Change direction
+	x_dir = dsin(90 * mode);
+	y_dir = dcos(90 * mode);
 }
 
 /// @self						
@@ -370,7 +369,7 @@ function _player_react_solid(result)
 				
 				o.ground = true;	
 				with(o)	
-					player_land_callback();
+					_player_land_callback();
 			}
 		}
 
@@ -414,5 +413,19 @@ function _player_react_solid(result)
 			if(o.mode == 2)
 				o.ground_speed = 0;
 		}
+	}
+}
+
+/// @self					obj_player	
+/// @description			Function that gets called every time the player lands
+function _player_land_callback()
+{
+	// Reset the badnik chain
+	obj_level.badnik_chain = 0;
+	
+	// Stop rolling when landing
+	if(state == player_state_roll && !force_roll)
+	{
+		state = player_state_normal;	
 	}
 }

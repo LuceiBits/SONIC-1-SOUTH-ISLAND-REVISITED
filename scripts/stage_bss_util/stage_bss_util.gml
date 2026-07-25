@@ -472,7 +472,7 @@ function draw_bss_cell(_t, _x, _y, _f, _spin, _medal, _spark, _epal)
 			break;
 
 		case BSS_CELL.EMERALD_CHAOS:
-			palette_swap(tex_pal_bss_chaos_emeralds, _epal); //recolor to the awarded emerald's row
+			effect_set_palette(tex_pal_bss_chaos_emeralds, _epal); //recolor to the awarded emerald's row
 			draw_sprite(spr_bss_chaos_emerald, _f div 2, _x, _y);
 			shader_reset();
 			break;

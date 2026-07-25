@@ -1,4 +1,7 @@
-function player_inv_speed(){
+/// @self					obj_player	
+/// @description			Function that handles player's invincibility, speed shoes and super form
+function player_inv_speed()
+{
 	if(obj_global.music.play_data[Jingle] == "j_super" && !super) 
 	{
 		music_stop_jingle(true, 1);	
@@ -103,8 +106,10 @@ function player_inv_speed(){
 				animator_reset(animator);	
 			}
 		}
+		
 		//exit conditions
-		if (obj_level.disable_timer || knockout_type = K_DIE || knockout_type = K_DROWN) {
+		if (obj_level.disable_timer || knockout_type = K_DIE || knockout_type = K_DROWN) 
+		{
 			super = false
 			speed_shoes = 0
 			invincible_timer = 0

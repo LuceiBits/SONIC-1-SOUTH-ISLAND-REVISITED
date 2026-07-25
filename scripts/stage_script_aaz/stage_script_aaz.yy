@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"stage_script_aaz",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Stage Scripts",
+    "path":"folders/Scripts/Stage Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

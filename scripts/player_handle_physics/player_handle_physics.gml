@@ -1,4 +1,7 @@
-function player_handle_physics(){
+/// @self					obj_player	
+/// @description			Function that handles player's physics attributes
+function player_handle_physics()
+{
 	//Setup physics table for each character
 	var physics_table =
 	{

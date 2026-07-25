@@ -1,5 +1,3 @@
-function player_macros()
-{
 	//Player macro
 	#macro CHAR_SONIC 0
 	#macro CHAR_TAILS 1
@@ -15,5 +13,4 @@ function player_macros()
 	#macro PLAYER_DETACH_DIST 14
 	#macro PLAYER_SLOPE_TOLERANCE 45
 	#macro PLAYER_CEIL_LAND_SPD 3.0
-	#macro PLAYER_CEIL_RANGE 135
-}
+	#macro PLAYER_CEIL_RANGE 136

@@ -1,4 +1,7 @@
-function player_debug(){
+/// @self					obj_player	
+/// @description			Function that handles player's debug mode movement
+function player_debug()
+{
 	//Trigger debug	
 	x += x_speed;
 	y += y_speed;

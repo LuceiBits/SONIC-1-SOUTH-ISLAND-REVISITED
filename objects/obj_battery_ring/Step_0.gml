@@ -26,5 +26,5 @@
 	if(timer = 36)
 	{
 		sound_play(sfx_dust);
-		dust_effect(0);
+		effect_create_dust(0);
 	}

@@ -1,3 +1,5 @@
+/// @self					obj_player	
+/// @description			Function that handles Tails' tails animations
 function player_handle_tails()
 {
 	animator_update(tails.animator);

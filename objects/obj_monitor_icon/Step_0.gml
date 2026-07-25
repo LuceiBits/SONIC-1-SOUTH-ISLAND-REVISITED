@@ -19,7 +19,7 @@
 		event_user(0);
 		
 		if(global.chaotix_monitors) 
-			dust_effect(1);
+			effect_create_dust(1);
 		else
 			instance_destroy();
 	}

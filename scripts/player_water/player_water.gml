@@ -1,3 +1,5 @@
+/// @self					obj_player	
+/// @description			Function that handles player's interaction with the water and water pools
 function player_water()
 {
 	// Reset the water run flag
@@ -7,8 +9,10 @@ function player_water()
     var water = instance_place(x, y, par_water);
     
     //Hard setting the water object to the main one if it's in proximity of the Player
-    with (par_water){
-        if (object_index != obj_water_pool && obj_player.y >= y-32){
+    with(par_water)
+	{
+        if (object_index != obj_water_pool && obj_player.y >= y - 32)
+		{
             water = self;
             break;
         }

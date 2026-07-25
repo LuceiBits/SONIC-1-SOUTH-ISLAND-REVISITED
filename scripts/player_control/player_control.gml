@@ -1,4 +1,7 @@
-function player_control(){
+/// @self					obj_player	
+/// @description			Function that handles how the player gets controlled
+function player_control()
+{
 	if(!movement_allow) 
 		exit;
 		

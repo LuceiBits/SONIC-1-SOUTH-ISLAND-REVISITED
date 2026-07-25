@@ -1,7 +1,7 @@
 /// @description Render the playfield
 
 //Background + globe, recoloured to the chosen tex_pal_bss row
-palette_swap(tex_pal_bss, palette_index);
+effect_set_palette(tex_pal_bss, palette_index);
 
 //Scrolling parallax background
 var bgw = sprite_get_width(spr_bss_bg);

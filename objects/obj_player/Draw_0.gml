@@ -1,7 +1,7 @@
 /// @description Draw the player
 
 	//character palettes for super form
-	palette_swap(super_palettes[character],super_color);
+	effect_set_palette(super_palettes[character],super_color);
 	
 	// Default flag
 	var render = true;

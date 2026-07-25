@@ -1,3 +1,5 @@
+/// @self					obj_player	
+/// @description			Function that handles player's miscellaneous things
 function player_misc()
 {
 	//Subtract timers

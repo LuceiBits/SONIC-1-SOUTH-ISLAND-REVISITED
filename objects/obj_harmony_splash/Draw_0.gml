@@ -1,4 +1,4 @@
-	surface_deform(WINDOW_WIDTH, WINDOW_HEIGHT, deform_data, FRAME_TIMER, 1);
+	effect_surface_deform(WINDOW_WIDTH, WINDOW_HEIGHT, deform_data, FRAME_TIMER, 1);
 	draw_sprite(spr_splash_bg, 0, 0, 0);
 	shader_reset();
 	
@@ -24,7 +24,7 @@
 	
 	surface_set_target(logo_surface[1]);
 	
-	surface_deform(WINDOW_WIDTH, WINDOW_HEIGHT, distortion_y, FRAME_TIMER * 3, 1);
+	effect_surface_deform(WINDOW_WIDTH, WINDOW_HEIGHT, distortion_y, FRAME_TIMER * 3, 1);
 	surface_copy(logo_surface[1], 0, 0, logo_surface[0]);
 	shader_reset();
 	
@@ -32,12 +32,12 @@
 	
 	surface_set_target(logo_surface[2]);
 	
-	surface_deform(WINDOW_WIDTH, WINDOW_HEIGHT, distortion_x, FRAME_TIMER);
+	effect_surface_deform(WINDOW_WIDTH, WINDOW_HEIGHT, distortion_x, FRAME_TIMER);
 	surface_copy(logo_surface[2], 0, 0, logo_surface[1]);
 	shader_reset();
 	
 	surface_reset_target();
 	
-	alpha_dither(dither_timer);
+	effect_set_alpha_dither(dither_timer);
 	draw_surface(logo_surface[2], 0, 0);
 	shader_reset();

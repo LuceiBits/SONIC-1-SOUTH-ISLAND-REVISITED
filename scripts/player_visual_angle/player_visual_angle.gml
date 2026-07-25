@@ -1,3 +1,5 @@
+/// @self					obj_player	
+/// @description			Function that handles player's visual ground rotation
 function player_visual_angle()
 {
 	//Visual angle portion

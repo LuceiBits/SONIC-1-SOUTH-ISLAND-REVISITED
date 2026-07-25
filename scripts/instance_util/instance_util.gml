@@ -164,7 +164,7 @@ function instance_act_semi_solid(o, hitbox_other = noone, this = id, this_hitbox
 				
 					o.ground = true;	
 					with(o)
-						player_land_callback();
+						_player_land_callback();
 				}
 			}
 		}

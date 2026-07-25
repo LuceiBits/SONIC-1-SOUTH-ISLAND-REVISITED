@@ -119,12 +119,13 @@ function player_check_jump()
 		state = player_state_jump
 		dropdash_timer = 0;
 		idle_timer = 0;
+		
 		//Change jump animation duration
-		jump_anim_speed = floor(max(0, 4-abs(ground_speed)));
+		jump_anim_speed = floor(max(0, 4 - abs(ground_speed)));
 			
 		//Reset angle and floor mode
 		ground_angle = 0;
-		player_reposition_mode(CMODE_FLOOR);
+		player_mode(CMODE_FLOOR);
 			
 		//Play the sound
 		sound_play(sfx_jump);

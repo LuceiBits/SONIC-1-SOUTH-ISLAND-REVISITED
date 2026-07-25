@@ -1,12 +1,12 @@
 {
   "$GMScript":"v1",
-  "%Name":"player_mode",
+  "%Name":"stage_bss_util",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"player_mode",
+  "name":"stage_bss_util",
   "parent":{
-    "name":"Movement",
-    "path":"folders/Scripts/Player Scripts/Movement.yy",
+    "name":"Stage Scripts",
+    "path":"folders/Scripts/Stage Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

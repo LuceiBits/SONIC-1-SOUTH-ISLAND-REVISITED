@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"player_macros",
   "parent":{
-    "name":"Misc",
-    "path":"folders/Scripts/Player Scripts/Misc.yy",
+    "name":"Player Scripts",
+    "path":"folders/Scripts/Player Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

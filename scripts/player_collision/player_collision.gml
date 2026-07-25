@@ -1,3 +1,5 @@
+/// @self					obj_player	
+/// @description			Function that handles player's collision system
 function player_collision()
 {
 	// Reset the flag
@@ -61,7 +63,7 @@ function player_collision()
 				ground_speed = y_speed * -sign(dsin(ground_angle));
 			
 			// Trigger the landing callback and mode reposition
-			player_land_callback();
+			_player_land_callback();
 			player_mode();
 			
 			// Get new collision to prevent floor clipping
@@ -80,14 +82,14 @@ function player_collision()
 		if(c.height < 0)
 		{
 			// Check if player can ceiling land
-			if(math_uangle(c.angle) <= PLAYER_CEIL_RANGE && y_speed < -PLAYER_CEIL_LAND_SPD)
+			if(math_uangle(floor(c.angle)) <= PLAYER_CEIL_RANGE && y_speed < -PLAYER_CEIL_LAND_SPD)
 			{
 				// Set the angle and apply momentum
 				ground_angle = c.angle;
 				ground_speed = y_speed * -sign(dsin(ground_angle));
 				
 				// Trigger the landing callback and reposition the mode
-				player_land_callback();
+				_player_land_callback();
 				player_mode();
 				
 				// Snap player to the floor

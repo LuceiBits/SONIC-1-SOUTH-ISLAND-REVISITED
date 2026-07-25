@@ -38,7 +38,7 @@
 	//Draw tint surface
 	gpu_set_blendenable(false);
 	surface_copy(surf, 0, 0, application_surface);
-	set_color_grading(yourlut, 17);
+	effect_set_color_grading(yourlut, 17);
 
 	//Done
 	surface_reset_target();

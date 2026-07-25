@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"player_hitbox",
   "parent":{
-    "name":"Misc",
-    "path":"folders/Scripts/Player Scripts/Misc.yy",
+    "name":"Common",
+    "path":"folders/Scripts/Player Scripts/Common.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

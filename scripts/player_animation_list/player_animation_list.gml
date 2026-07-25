@@ -1,4 +1,7 @@
-function player_animation_list(){
+/// @self					obj_player	
+/// @description			Function that handles player's animation list
+function player_animation_list()
+{
 	enum ANIM {
 		STAND,
 		WAIT,

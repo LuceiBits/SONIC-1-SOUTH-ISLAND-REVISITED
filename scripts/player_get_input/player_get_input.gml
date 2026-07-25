@@ -1,5 +1,7 @@
-function player_get_input(){
-	
+/// @self					obj_player	
+/// @description			Function that handles player's interaction with the input system
+function player_get_input()
+{
 	//Button holds
 	hold_up = input_hold(INPUT.UP);
 	hold_down = input_hold(INPUT.DOWN);

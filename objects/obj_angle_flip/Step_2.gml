@@ -10,7 +10,7 @@
 			with(obj_player)
 			{
 				disable_mode = true
-				player_reposition_mode()
+				player_mode();
 			}
 			
 		}

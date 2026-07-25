@@ -39,7 +39,7 @@
 		for (var i = 0; i < array_length(global.emeralds); i++)
 		{
 			if (!global.emeralds[i]) continue;
-			palette_swap(tex_pal_ssclear_emeralds, i); //each emerald keeps its own colour row
+			effect_set_palette(tex_pal_ssclear_emeralds, i); //each emerald keeps its own colour row
 			draw_sprite(spr_hud_ssclear_emerald, 0, _sx + _k * _sp, 96);
 			_k++;
 		}
