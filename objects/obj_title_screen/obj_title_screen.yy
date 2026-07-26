@@ -31,10 +31,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"spr_emblem_back",
-    "path":"sprites/spr_emblem_back/spr_emblem_back.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }

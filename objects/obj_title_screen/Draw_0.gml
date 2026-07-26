@@ -1,23 +1,34 @@
-//draw backing
-draw_self_floor();
-
-//setup mask
-gpu_set_stencil_enable(true);	
-draw_clear_stencil(0); //resets to nothing
-gpu_set_stencil_func(cmpfunc_always);
-gpu_set_stencil_pass(stencilop_replace);
-gpu_set_stencil_ref(128); //setup the mask values
-draw_set_alpha(0); //make sure the mask doesnt show up
-draw_sprite(spr_emblem_mask,0,floor(x),floor(y)); //apply it
-draw_set_alpha(1); 
-
-//then draw sonic
-gpu_set_stencil_func(cmpfunc_equal); //only applies sonic sprite if it overlaps the masked area
-gpu_set_stencil_pass(stencilop_incr_wrap);
-gpu_set_stencil_ref(128);
-draw_animator(sonic_ani,x-7,y - 24 + sonic_offset); //the sonic sprite
-			
-gpu_set_stencil_enable(false);
-//end
-
-
+	draw_sprite(spr_title_background, 0, CAMERA_VIEW_W / 2, CAMERA_VIEW_H / 2);
+	
+	var animScale = scale_test;
+	
+	if(scale_test < 0)
+		animScale = scale_test + 1;
+	
+	gpu_set_blendmode(bm_add);
+	draw_sprite(spr_title_floor, animScale * 32, CAMERA_VIEW_W / 2, CAMERA_VIEW_H);
+	gpu_set_blendmode(bm_normal);
+	
+	draw_state_push();
+	
+	gpu_set_depth(0);
+	
+	var z_position = 15791.5;
+	show_debug_message(z_position)
+	
+	//matrix_set(matrix_projection, matrix_build_projection_perspective_fov(-60, -426 / 240, 1.0, 32000.0))
+	//matrix_set(matrix_world, matrix_build(CAMERA_VIEW_W / 2, (CAMERA_VIEW_H / 2) + 0, -z_position - (200 * (scale_test - 1)), 0, 0, 0, 1, 1, 1));
+	
+	var s = math_pinhole_scale((CAMERA_VIEW_W / 2) - 5, (CAMERA_VIEW_H / 2) + (44 + 12), -scale_test);
+	draw_sprite_ext(spr_title_sonic, 0, s[0], s[1], s[2], s[2], 0, c_white, 1);
+	
+	s = math_pinhole_scale(CAMERA_VIEW_W / 2, (CAMERA_VIEW_H / 2) + (-44), -scale_test * 1.1);
+	
+	effect_set_palette(spr_title_logo_palette, FRAME_TIMER / 4);
+	draw_sprite_ext(spr_title_logo, 0, s[0], s[1], s[2], s[2], 0, c_white, 1);
+	shader_reset();
+	
+	s = math_pinhole_scale(CAMERA_VIEW_W / 2, (CAMERA_VIEW_H / 2) + (-44), -scale_test * 1.3);
+	draw_sprite_ext(spr_title_logo, 1, s[0], s[1], s[2], s[2], 0, c_white, 1);
+	
+	draw_state_pop();

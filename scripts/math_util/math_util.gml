@@ -65,6 +65,29 @@ function math_lerp_angle(value, angle, amount)
 }
 
 /// @self
+/// @description				Function that calculates a pinhole camera styled projection
+/// @param {Real} px			X position
+/// @param {Real} py			Y position
+/// @param {Real} pz			Z position
+/// @returns {Array}
+function math_pinhole_scale(px, py, pz)
+{
+	var centerX = CAMERA_VIEW_X + (CAMERA_VIEW_W / 2);
+	var centerY = CAMERA_VIEW_Y + (CAMERA_VIEW_H / 2);
+	
+	var invScale = 1.0 + pz;
+	
+	if(invScale <= 0.0) 
+		return [0, 0, 0];
+	
+	var scaleFactor = 1.0 / invScale;
+	var projectedX = centerX + (px - centerX) * scaleFactor;
+	var projectedY = centerY + (py - centerY) * scaleFactor;
+	
+	return [projectedX, projectedY, scaleFactor];
+}
+
+/// @self
 /// @description				Function used for getting the sin (in 256 degrees)
 /// @param {Real} _angle		The angle to return the sine of
 /// @returns {Real}

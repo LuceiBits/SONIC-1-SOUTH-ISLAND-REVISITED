@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":92.344215,
+  "duration":0.0,
   "exportDir":"",
   "name":"bgm_bonus",
   "parent":{
