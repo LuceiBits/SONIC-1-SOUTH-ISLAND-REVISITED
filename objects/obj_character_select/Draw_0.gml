@@ -15,7 +15,7 @@
 		trueX = (CAMERA_VIEW_W / 2) + 96 * (i - 1);
 		draw_sprite(spr_character_select_border, 0, trueX, trueY - char_y[i]);
 		
-		draw_sprite(sprites[i], sprite_get_number(sprites[i]) - 1, trueX, trueY - char_y[i]);
+		draw_sprite(spr_character_select_chars, i, trueX, trueY - char_y[i]);
 		
 		draw_text(trueX, trueY - 40 - char_y[i], char_names[i]);
 	}

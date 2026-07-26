@@ -17,7 +17,7 @@
 	//Water scale
 	if(instance_exists(obj_water))
 	{
-		var a = floor(camera_get_view_y(view_camera[view_current])*factor_y[13] + offset_y[13]); //"13" is the index of the water's parallax
-		bg_scale[13] = floor(obj_water.y - a) * (1 / 96); //"96" is the water parallax sprite's height
-		bg_scale[13] = clamp(bg_scale[13], -1, 1);
+		var a = floor(camera_get_view_y(view_camera[view_current])*factor_y[17] + offset_y[17]); //"17" is the index of the water's parallax
+		bg_scale[17] = floor(obj_water.y - a) * (1 / 96); //"96" is the water parallax sprite's height
+		bg_scale[17] = clamp(bg_scale[17], -1, 1);
 	}
