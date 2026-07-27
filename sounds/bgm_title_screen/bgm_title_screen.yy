@@ -14,8 +14,8 @@
   "exportDir":"",
   "name":"bgm_title_screen",
   "parent":{
-    "name":"Stage Music",
-    "path":"folders/Sounds/Music/Stage Music.yy",
+    "name":"Menu Music",
+    "path":"folders/Sounds/Music/Menu Music.yy",
   },
   "preload":false,
   "resourceType":"GMSound",

@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"tile_bss_playfield",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"BlueSpheres\", \"path\":\"texturegroups/BlueSpheres\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":1,
     "SerialiseWidth":11,

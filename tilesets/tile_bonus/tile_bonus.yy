@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"tile_bonus",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"GumballMachine\", \"path\":\"texturegroups/GumballMachine\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

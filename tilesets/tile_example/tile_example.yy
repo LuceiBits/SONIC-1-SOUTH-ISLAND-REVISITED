@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"tile_example",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"BridgeZone\", \"path\":\"texturegroups/BridgeZone\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

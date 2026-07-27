@@ -8,6 +8,11 @@
   "bbox_top":16,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"CommonObjects\", \"path\":\"texturegroups/CommonObjects\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

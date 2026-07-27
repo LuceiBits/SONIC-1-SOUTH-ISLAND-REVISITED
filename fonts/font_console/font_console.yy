@@ -8,6 +8,11 @@
   "bold":false,
   "canGenerateBitmap":true,
   "charset":0,
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"Editor\", \"path\":\"texturegroups/Editor\" }",
+    },
+  },
   "first":0,
   "fontName":"Inconsolata",
   "glyphOperations":0,
@@ -134,7 +139,10 @@
   "sdfSpread":8,
   "size":12.0,
   "styleName":"SemiExpanded Regular",
-  "textureGroupId":null,
+  "textureGroupId":{
+    "name":"Default",
+    "path":"texturegroups/Default",
+  },
   "TTFName":"${project_dir}\\fonts\\font_console\\font_console.png",
   "usesSDF":false,
 }

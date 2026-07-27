@@ -2,6 +2,11 @@
   "$GMTileSet":"v1",
   "%Name":"tile_collision_semisolid",
   "autoTileSets":[],
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"Editor\", \"path\":\"texturegroups/Editor\" }",
+    },
+  },
   "macroPageTiles":{
     "SerialiseHeight":0,
     "SerialiseWidth":0,

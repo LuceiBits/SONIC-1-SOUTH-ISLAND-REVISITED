@@ -8,6 +8,11 @@
   "bbox_top":16,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"GumballMachine\", \"path\":\"texturegroups/GumballMachine\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,
