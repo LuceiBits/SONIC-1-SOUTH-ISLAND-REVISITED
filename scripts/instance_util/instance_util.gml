@@ -476,6 +476,7 @@ function instance_create_debris(posx, posy, sprite, anim_speed, x_speed, y_speed
 	debris.x_speed = x_speed;
 	debris.y_speed = y_speed;
 	debris.grav = grav;
+	return debris;
 }
 
 /// @self						
