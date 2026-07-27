@@ -30,13 +30,13 @@
 			obj_player.invincible = true
 			obj_player.invincible_timer = 1200;
 			if(!audio_is_playing(j_super))
-				music_play(MUSIC.J_INVINCIBLE, Jingle);
+				music_play(MUSIC.INVINCIBLE, Jingle);
 		break;
 		
 		case MONITOR.SPEED_SHOES:
 			obj_player.speed_shoes = 1200;
 			if(!audio_is_playing(j_super))
-				music_play(MUSIC.J_SPEEDSHOE, Jingle);	
+				music_play(MUSIC.SPEEDSHOES, Jingle);	
 		break;
 		
 		case MONITOR.EGGMAN:

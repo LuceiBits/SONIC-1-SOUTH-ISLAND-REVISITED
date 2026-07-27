@@ -8,7 +8,7 @@
 	if(timer == 48)
 	{
 		music_reset_fade();	
-		music_play(MUSIC.J_GAME_OVER, 0);
+		music_play(MUSIC.GAME_OVER, 0);
 	}
 	
 	//Slide in the thing

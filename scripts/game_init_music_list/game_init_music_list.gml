@@ -4,7 +4,6 @@ function game_init_music_list()
 	
 	//Menu background music:
 	music_add(MUSIC.TITLE, bgm_title_screen, 3.856);
-	music_add(MUSIC.MENU, bgm_menu, 0.565);
 	music_add(MUSIC.MAIN_MENU, bgm_main_menu);
 	
 	//Stage background music:
@@ -15,10 +14,10 @@ function game_init_music_list()
 	music_add(MUSIC.BLUE_SPHERES, bgm_blue_spheres, 6.923);
 
 	//Game jingles:
-	music_add(MUSIC.J_GAME_OVER, j_game_over, 0.00, 0.00, false);
-	music_add(MUSIC.J_INVINCIBLE, j_invincible, 0.00, 0.00, false);
-	music_add(MUSIC.J_SPEEDSHOE, j_speedshoe, 0.00, 0.00, false);
-	music_add(MUSIC.J_ACT_CLEAR, j_zone_complete, 0.00, 0.00, false);
+	music_add(MUSIC.GAME_OVER, j_game_over, 0.00, 0.00, false);
+	music_add(MUSIC.INVINCIBLE, j_invincible, 0.00, 0.00, false);
+	music_add(MUSIC.SPEEDSHOES, j_speedshoe, 0.00, 0.00, false);
+	music_add(MUSIC.ACT_CLEAR, j_zone_complete, 0.00, 0.00, false);
 	music_add(MUSIC.SUPER, j_super, 0.565);
 }
 
@@ -26,16 +25,15 @@ function game_init_music_list()
 	enum MUSIC 
 	{
 		TITLE,
-		MENU,
 		MAIN_MENU,
 		ARBOREAL_AGATE1,
 		ARBOREAL_AGATE2,
 		TECHDEMO_TOWER,
 		BONUS,
 		BLUE_SPHERES,
-		J_GAME_OVER,
-		J_INVINCIBLE,
-		J_SPEEDSHOE,
-		J_ACT_CLEAR,
+		GAME_OVER,
+		INVINCIBLE,
+		SPEEDSHOES,
+		ACT_CLEAR,
 		SUPER
 	}
