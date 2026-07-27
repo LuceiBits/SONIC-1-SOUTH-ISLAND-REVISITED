@@ -61,6 +61,7 @@ Doc Melonhead - Sonic and Tails Sprites
 # Music Sources
 These are the music tracks that we used that weren't originally made for Harmony Framework itself:
 ```
+Sean Evans ~ This Horizon for the Title Screen
 Jaakko Kaitaniemi (Reed) ~ Cherry Jam for Arboreal Agate Act 1
 Anders Åkerheden ~ -xTREMELY xECUTABLE- for Arboreal Agate Act 2
 Twilight ~ Asylum for Techdemo Tower/Template Zone
