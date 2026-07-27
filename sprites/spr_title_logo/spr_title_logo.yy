@@ -26,8 +26,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Title Screen",
+    "path":"folders/Sprites/Menus Sprites/Title Screen.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

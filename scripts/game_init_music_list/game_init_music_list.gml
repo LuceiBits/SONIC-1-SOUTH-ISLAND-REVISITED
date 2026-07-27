@@ -3,7 +3,7 @@ function game_init_music_list()
 	global.music_map = ds_map_create();
 	
 	//Menu background music:
-	music_add(MUSIC.TITLE, bgm_title_screen, 0.565);
+	music_add(MUSIC.TITLE, bgm_title_screen, 3.856);
 	music_add(MUSIC.MENU, bgm_menu, 0.565);
 	music_add(MUSIC.MAIN_MENU, bgm_main_menu);
 	
