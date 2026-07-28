@@ -1,3 +1,4 @@
+	/// @description Boss Movement
 	y = target_y + 8 * dsin(orbit_time);
 	
 	orbit_time += 2;

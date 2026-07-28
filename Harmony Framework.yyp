@@ -449,6 +449,7 @@
     {"id":{"name":"spr_aaz_swing_point","path":"sprites/spr_aaz_swing_point/spr_aaz_swing_point.yy",},},
     {"id":{"name":"spr_aaz_waterfall","path":"sprites/spr_aaz_waterfall/spr_aaz_waterfall.yy",},},
     {"id":{"name":"spr_aaz_waterfalltop","path":"sprites/spr_aaz_waterfalltop/spr_aaz_waterfalltop.yy",},},
+    {"id":{"name":"spr_aaz1_boss_dead_body","path":"sprites/spr_aaz1_boss_dead_body/spr_aaz1_boss_dead_body.yy",},},
     {"id":{"name":"spr_aaz1_boss_dead","path":"sprites/spr_aaz1_boss_dead/spr_aaz1_boss_dead.yy",},},
     {"id":{"name":"spr_aaz1_boss_debris","path":"sprites/spr_aaz1_boss_debris/spr_aaz1_boss_debris.yy",},},
     {"id":{"name":"spr_aaz1_boss_hit_pal","path":"sprites/spr_aaz1_boss_hit_pal/spr_aaz1_boss_hit_pal.yy",},},

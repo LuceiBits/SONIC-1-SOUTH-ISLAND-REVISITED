@@ -9,11 +9,17 @@
 	move_time = 0;
 	move_spd = 0;
 	
-	target_y = y - 32;
+	target_y = y - 16;
 	
-	hp = 1;
+	hp = 6;
 	inv_timer = 0;
 	death_timer = 0;
+	has_died = false;
+	post_death_timer = 0;
+	
+	y_speed = 0;
+	
+	depth = player_find(0).depth + 10;
 	
 	enum AAZ1_BSTATE
 	{

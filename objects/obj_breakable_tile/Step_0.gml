@@ -2,6 +2,12 @@
 	//Reset the flag
 	collision_flag = true;
 	
+	if(indestructable)
+	{
+		player_act_solid();
+		exit;
+	}
+	
 	switch(breakable_type)
 	{
 		case "Wall":

@@ -36,6 +36,7 @@
         "\"Ceiling\"",
       ],"multiselect":false,"name":"breakable_type","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Wall\"","varType":6,},
     {"$GMObjectProperty":"v2","%Name":"knuckles_wall","filters":[],"listItems":[],"multiselect":false,"name":"knuckles_wall","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
+    {"$GMObjectProperty":"v2","%Name":"indestructable","filters":[],"listItems":[],"multiselect":false,"name":"indestructable","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"False","varType":3,},
   ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",

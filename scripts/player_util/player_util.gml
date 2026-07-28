@@ -108,7 +108,7 @@ function player_hurt(hazard_x = x, hurt_type = K_HURT, player_id = 0)
 /// @description						Function that returns the instance ID of the player object
 /// @param {Real} [player_id]			Which player object is being used (The default is the first player instance)
 /// @return {Id.Instance}
-function player_find(player_id)
+function player_find(player_id = 0)
 {
 	return instance_find(obj_player, player_id);	
 }

@@ -8,6 +8,11 @@
   "bbox_top":8,
   "collisionKind":1,
   "collisionTolerance":0,
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"ArborealAgate\", \"path\":\"texturegroups/ArborealAgate\" }",
+    },
+  },
   "DynamicTexturePage":false,
   "edgeFiltering":false,
   "For3D":false,

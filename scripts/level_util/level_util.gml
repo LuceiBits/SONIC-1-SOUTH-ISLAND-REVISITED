@@ -36,6 +36,18 @@ function level_reset_bg_visibility()
 	global.store_background_visibility = {};
 }
 
+/// @self
+/// @description		Function that creates a falling signpost like in Sonic 3
+/// @param {Real} xpos	The horizontal position of the signpost
+function level_create_signpost(xpos = x)
+{
+	sound_play(sfx_twinkle);
+	var o = instance_create_depth(x, camera_get_view_y(view_camera[0]) - 16, depth, obj_signpost)
+	o.ground = 0;
+	o.triggered = true;
+	o.spin_speed = 24;		
+}
+
 // ===========================================================================================================
 // Internal utility functions
 // ===========================================================================================================
