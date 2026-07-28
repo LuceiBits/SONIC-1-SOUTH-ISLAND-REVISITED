@@ -13,8 +13,8 @@
   "name":"obj_aaz1_boss",
   "overriddenProperties":[],
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Boss",
+    "path":"folders/Objects/Stage Objects/Arboreal Agate/Boss.yy",
   },
   "parentObjectId":null,
   "persistent":false,

@@ -30,8 +30,8 @@
   "nineSlice":null,
   "origin":2,
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Arboreal Agate",
+    "path":"folders/Sprites/Stage Sprites/Arboreal Agate.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
