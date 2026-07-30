@@ -39,20 +39,19 @@
 				y_scroll_speed = 2 + max(abs(target.ground_speed * dsin(target.ground_angle)), 4)
 		
 				//Vertical scroll on the ground:
-				if(instance_exists(obj_bubble_shield) && obj_bubble_shield.shield_state = 0 || !instance_exists(obj_bubble_shield))
+				
+				//Scroll camera upwards:
+				if(target.y < target_y && target.ground && target.state != player_state_knuxslide) 
 				{
-					//Scroll camera upwards:
-					if(target.y < target_y && target.ground && target.state != player_state_knuxslide) 
-					{
-						target_y = max(target_y - min(y_scroll_speed, y_speed), target.y - roll_offset);
-					}
-					
-					//Scroll camera downwards:
-					if(target.y > target_y && target.ground && target.state != player_state_knuxslide) 
-					{
-						target_y = min(target_y + min(y_scroll_speed, y_speed), target.y - roll_offset);
-					}
+					target_y = max(target_y - min(y_scroll_speed, y_speed), target.y - roll_offset);
 				}
+					
+				//Scroll camera downwards:
+				if(target.y > target_y && target.ground && target.state != player_state_knuxslide) 
+				{
+					target_y = min(target_y + min(y_scroll_speed, y_speed), target.y - roll_offset);
+				}
+				
 		
 				//Scroll camera upwards:
 				if(target.y < target_y - 32)
