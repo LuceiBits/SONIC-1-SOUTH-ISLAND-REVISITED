@@ -292,7 +292,7 @@ function animation_get_loop_index(animator)
 /// @self								
 /// @description								Function that returns the animation duration from the currently playing animation
 /// @param {Struct} animator					The animation system struct that will be used
-/// @return {Real}
+/// @return {Real}								
 function animation_get_duration(animator)
 {
 	if(!animator.animation_use_duration)
@@ -304,7 +304,7 @@ function animation_get_duration(animator)
 /// @self								
 /// @description								Function that changes the animation speed
 /// @param {Struct} animator					The animation system struct that will be used
-/// @param {animation_speed}					The speed that will be set to the animation
+/// @param {real} animation_speed					The speed that will be set to the animation
 function animation_set_speed(animator, animation_speed)
 {
 	animator.animation_speed = animation_speed;	
@@ -313,7 +313,7 @@ function animation_set_speed(animator, animation_speed)
 /// @self								
 /// @description								Function that changes the animation duration
 /// @param {Struct} animator					The animation system struct that will be used
-/// @param {animation_speed}					The duration that will be set to the animation
+/// @param {real} animation_duration					The duration that will be set to the animation
 function animation_set_duration(animator, animation_duration)
 {
 	animator.animation_duration = animation_duration;	
@@ -322,7 +322,7 @@ function animation_set_duration(animator, animation_duration)
 /// @self								
 /// @description								Function that changes the looping index
 /// @param {Struct} animator					The animation system struct that will be used
-/// @param {animation_speed}					The looping frame that will be set to the animation
+/// @param {real} loop_frame					The looping frame that will be set to the animation
 function animation_set_loop_index(animator, loop_frame)
 {
 	animator.animation_loop_frame = loop_frame;
@@ -331,7 +331,7 @@ function animation_set_loop_index(animator, loop_frame)
 /// @self								
 /// @description								Function that changes the animation frame
 /// @param {Struct} animator					The animation system struct that will be used
-/// @param {frame}								The frame that will be set
+/// @param {real} frame								The frame that will be set
 function animation_set_frame(animator, frame)
 {
 	animator.animation_frame = frame;	

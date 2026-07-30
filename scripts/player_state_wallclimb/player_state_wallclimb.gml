@@ -31,8 +31,8 @@ function player_state_wallclimb()
 	}
 	
 	// Wall collision
-	var wallCol = collision_get_distance(x + wall_w * facing, y, facing == 1 ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, plane, false);
-	var wallColUpper = collision_get_distance(x + wall_w * facing, y - 4, facing == 1 ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, plane, false);
+	var wallCol = collision_get_distance(x + wall_w * facing, max(y,obj_camera.limit_top), facing == 1 ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, plane, false);
+	var wallColUpper = collision_get_distance(x + wall_w * facing,  max(y - 4,obj_camera.limit_top), facing == 1 ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, plane, false);
 		
 	//Has reached the ground
 	if(ground && hold_down)
@@ -74,6 +74,12 @@ function player_state_wallclimb()
 		
 		if(mov == 1)
 		{
+			state = player_state_knuxfall;
+			exit;
+		}
+		
+		if (wallCol >= 16) {
+			// detach anyway because josh was like "thats bad"
 			state = player_state_knuxfall;
 			exit;
 		}
