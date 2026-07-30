@@ -5,7 +5,7 @@ function player_state_tailsfly(){
 	
 	//Changing gravity depending on the action
 	if(press_action && tails_timer != 0) y_accel = -0.125;
-	if(y_speed <= -1 || touching_ceiling || tails_timer == 0) y_accel = 0.03125;
+	if(y_speed <= -1 || tails_timer == 0) y_accel = 0.03125;
 	
 	//Subtract timer
 	tails_timer--;

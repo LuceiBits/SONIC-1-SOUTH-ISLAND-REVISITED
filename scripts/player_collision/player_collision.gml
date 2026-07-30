@@ -106,6 +106,10 @@ function player_collision()
 				if(y_speed < 0)
 					y_speed = 0;	
 				
+				// Tails edge case
+				if(state == player_state_tailsfly)
+					y_accel = 0.03125;
+				
 				// Push out of the ceiling
 				y -= c.height
 			}
