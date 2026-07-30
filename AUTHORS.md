@@ -42,6 +42,11 @@ Kamsted
 the_fakeflamer12
 ```
 
+### Level Design:
+```
+Mikhael Blur
+```
+
 ### Sound Design:
 ```
 StickDisk
@@ -51,11 +56,11 @@ StickDisk
 These are the resources that were used in the development of Harmony Framework:
 ```
 Ultra Ring Community - QA
-Lapper - Sonic Physics Guide/Studio Videos and blog posts
+Lapper - Sonic Physics Guide/Sonic Studio videos and blog posts
 Mercury - The Original Sonic Physics Guide
-Retro Engine Modding Server - RSDK/Mania Decompilations
-Aurum - Hatch/OpenMania
-Doc Melonhead - Sonic and Tails Sprites
+Retro Engine Modding Server - RSDK/Sonic Mania Decompilations
+Aurum - Hatch Game Engine/OpenMania
+Doc Melonhead - Original Sonic and Tails Sprites
 ```
 
 # Music Sources
@@ -65,5 +70,7 @@ Sean Evans ~ This Horizon for the Title Screen
 Jaakko Kaitaniemi (Reed) ~ Cherry Jam for Arboreal Agate Act 1
 Anders Åkerheden ~ -xTREMELY xECUTABLE- for Arboreal Agate Act 2
 Twilight ~ Asylum for Techdemo Tower/Template Zone
+Naofumi Hataya ~ Forest Replay (Sega Rally Championship) for Bonus Stage
 Purple Motion ~ Aquaphobia for Super Sonic
+Zaril Krion ~ Space Station Aroon for Mini Boss
 ```
