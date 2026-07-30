@@ -10,7 +10,7 @@
 			
 			// Fade back to the level
 			fade_to_room(global.previous_room, 2, FADE_COLOR.BLACK, 30);
-			music_fade_channel(BGM, FADE_OUT, 2);
+			music_fade_channel(BGM, FADE.OUT, 2);
 			
 			// Set the flag
 			other.exiting = true;
