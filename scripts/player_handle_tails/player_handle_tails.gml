@@ -79,7 +79,32 @@ function player_handle_tails()
 			animation_play(tails.animator, ANIM.TAILS_ROLL);
 		break;
 			
-		// TODO: LEDGE ANIMATIONS ARE NOT IN
+		case ANIM.LEDGE1:
+			// Adjust his tails
+			tails.visual_angle = 0;
+			tails.appear = true;
+			tails.facing = facing;
+			
+			// Adjust the offset
+			tails.offset_x = -11 * -facing;
+			tails.offset_y = -3;
+			
+			// Play the normal animation
+			animation_play(tails.animator, ANIM.TAILS_NORMAL);
+		break;
+		case ANIM.LEDGE2:
+			// Adjust his tails
+			tails.visual_angle = 0;
+			tails.appear = true;
+			tails.facing = facing;
+			
+			// Adjust the offset
+			tails.offset_x = 5 * -facing;
+			tails.offset_y = -8;
+			
+			// Play the normal animation
+			animation_play(tails.animator, ANIM.TAILS_NORMAL);
+		break;
 		
 		default: 
 			animation_play(tails.animator, ANIM.TAILS_NORMAL);

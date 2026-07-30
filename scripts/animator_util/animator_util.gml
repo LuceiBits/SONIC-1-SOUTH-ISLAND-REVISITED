@@ -18,7 +18,7 @@ function animator_create() constructor
 
 /// @self								
 /// @description								Function that resets the animation system
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 function animator_reset(animator)
 {
 	animator.animator_reset_flag = true;
@@ -26,7 +26,7 @@ function animator_reset(animator)
 
 /// @self								
 /// @description								Function that runs the animation system
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 function animator_update(animator)
 {
 	if(!animator.animation_use_duration)
@@ -134,7 +134,7 @@ function animation_add(animation_id, animation_sprite, animation_speed, animatio
 
 /// @self								
 /// @description								Function that plays an animation without the usage of the animation list
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 /// @param {Asset.GMSprite} sprite				Which sprite is going to be used for the animation
 /// @param {Real|Array} spd						The speed of the animation (Array: This is for how long every frame will last, only works with durations)	
 /// @param {Bool} [loop]						A flag that makes the animation loopable or not (This is on by the default)
@@ -174,7 +174,7 @@ function animation_play_no_list(animator, sprite, spd, loop = true, loop_frame =
 
 /// @self								
 /// @description								Function that plays an animation from the animation list
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 /// @param {Real} animation_id					The animation ID that will be played from the list
 /// @param {Bool} [dont_reset_frame]			A flag that will not reset the animation system upon it being play (This is off by the default)
 function animation_play(animator, animation_id, dont_reset_frame = false)
@@ -215,7 +215,7 @@ function animation_play(animator, animation_id, dont_reset_frame = false)
 
 /// @self								
 /// @description								Function that checks if the animation has finished playing
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 function animation_has_finished(animator)
 {
 	if(animator.animation_finished)
@@ -224,7 +224,7 @@ function animation_has_finished(animator)
 
 /// @self								
 /// @description								Function that checks if the specified animation from the list is being played
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 /// @param {Real} animation_id					Which animation ID from the list are we checking
 function animation_is_playing(animator, animation_id)
 {
@@ -234,103 +234,144 @@ function animation_is_playing(animator, animation_id)
 
 /// @self								
 /// @description								Function that returns the currently playing animation from the animation system
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 /// @return {Real}
 function animation_get_current_animation(animator)
 {
 	return animator.animation_current;
 }
 
-/// @self								
-/// @description								Function that returns the sprite asset from the playing animation
-/// @param {Struct} animator					The animation system struct that will be used
-/// @return {Asset.GMSprite}
-function animation_get_sprite(animator)
+///@self
+///@description Function that returns the sprite an animation from the animator struct.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+///@returns {real} 
+function animation_get_sprite(animator, ani = animator.animation_current)
 {
-	return animator.animation_sprite;
+	return list_animation_sprite[ani];
 }
 
-/// @self								
-/// @description								Function that returns the current frame from the playing animation
-/// @param {Struct} animator					The animation system struct that will be used
-/// @return {Real}
+
+///@self								
+///@description								Function that returns the current frame from the playing animation
+///@param {Struct.animator_create} animator					The animation system struct that will be used
+///@return {Real}
 function animation_get_frame(animator)
 {
 	return animator.animation_frame;	
 }
 
-/// @self								
-/// @description								Function that returns the current animation speed
-/// @param {Struct} animator					The animation system struct that will be used
-/// @return {Real}
-function animation_get_speed(animator)
+
+
+///@self
+///@description Function that returns the speed of an animation from the animator struct. Will return 0 if the animation uses duration and not speed.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+///@returns {real} 
+function animation_get_speed(animator, ani = animator.animation_current)
 {
-	if(animator.animation_use_duration)
-		return 0;	
+	if (ani != animator.animation_current){
+		if(list_animation_duration_flag[ani])
+			return 0;	
 	
-	return animator.animation_speed;
-}
-
-/// @self								
-/// @description								Function that returns the amount of frames from the currently playing animation
-/// @param {Struct} animator					The animation system struct that will be used
-/// @return {Real}
-function animation_get_frame_count(animator)
-{
-	return sprite_get_number(animator.animation_sprite);	
-}
-
-/// @self								
-/// @description								Function that returns the loop frame value of the currently playing animation
-/// @param {Struct} animator					The animation system struct that will be used
-/// @return {Real}
-function animation_get_loop_index(animator)
-{
-	return animator.animation_loop_frame;
-}
-
-/// @self								
-/// @description								Function that returns the animation duration from the currently playing animation
-/// @param {Struct} animator					The animation system struct that will be used
-/// @return {Real}								
-function animation_get_duration(animator)
-{
-	if(!animator.animation_use_duration)
-		return 0;	
+		return list_animation_speed[ani];
+	} else {
+		if(animator.animation_use_duration)
+			return 0;	
 	
-	return animator.animation_duration;
+		return animator.animation_speed;	
+	}
 }
 
-/// @self								
-/// @description								Function that changes the animation speed
-/// @param {Struct} animator					The animation system struct that will be used
-/// @param {real} animation_speed					The speed that will be set to the animation
-function animation_set_speed(animator, animation_speed)
+///@self
+///@description Function that returns the frame count of an animation from the animator struct.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+///@returns {real} 
+function animation_get_frame_count(animator, ani = animator.animation_current)
 {
-	animator.animation_speed = animation_speed;	
+	return sprite_get_number(list_animation_sprite[ani]);	
 }
 
-/// @self								
-/// @description								Function that changes the animation duration
-/// @param {Struct} animator					The animation system struct that will be used
-/// @param {real} animation_duration					The duration that will be set to the animation
-function animation_set_duration(animator, animation_duration)
+///@self
+///@description Function that returns the loop index of an animation from the animator struct.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+///@returns {real} 
+function animation_get_loop_index(animator, ani = animator.animation_current)
 {
-	animator.animation_duration = animation_duration;	
+	if (ani != animator.animation_current){
+		return list_animation_loop_frame[ani];
+	} else {
+		return animator.animation_loop_frame	
+	}
 }
 
-/// @self								
-/// @description								Function that changes the looping index
-/// @param {Struct} animator					The animation system struct that will be used
-/// @param {real} loop_frame					The looping frame that will be set to the animation
-function animation_set_loop_index(animator, loop_frame)
+///@self
+///@description Function that returns the frame duration of an animation from the animator struct. Returns 0 if the animation uses speed instead of duration.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+///@returns {real} 							
+function animation_get_duration(animator, ani = animator.animation_current)
 {
-	animator.animation_loop_frame = loop_frame;
+	if (ani != animator.animation_current){
+		if(!list_animation_duration_flag[ani])
+			return 0;	
+	
+		return list_animation_duration[ani];
+	} else {
+		if(!animator.animation_use_duration){
+			return 0;	
+		}
+		return animator.animation_duration;
+	}
+}
+
+///@self
+///@description Function that sets the speed of an animation in the animation system struct. Note: this will do nothing if the animation uses duration and not speed.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} animation_speed The new speed for the animation
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+function animation_set_speed(animator, animation_speed, ani = animator.animation_current)
+{
+	if (ani != animator.animation_current){
+		list_animation_speed[ani] = animation_speed;
+	} else {
+		animator.animation_speed = animation_speed;
+	}
+}
+
+///@self
+///@description Function that sets the frame duration of an animation in the animation system struct. Note: this will do nothing if the animation uses speed and not duration.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} animation_duration The new frame duration for the animation
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+function animation_set_duration(animator, animation_duration, ani = animator.animation_current)
+{
+	if (ani != animator.animation_current){
+		list_animation_duration[ani] = animation_duration;	
+	} else {
+		animator.animation_duration = animation_duration;
+	}
+}
+
+///@self
+///@description Function that sets the loop index of an animation in the animation system struct.
+///@param {Struct.animator_create} animator The animation system struct that will be used.
+///@param {real} loop_frame The new frame for the animation to loop back to.
+///@param {real} [animation] Refrence to the animation from the animation system struct. Defaults to the current playing animation from the animator.
+function animation_set_loop_index(animator, loop_frame, ani = animator.animation_current)
+{
+	if (ani != animator.animation_current){
+		list_animation_loop_frame[ani] = loop_frame;
+	} else {
+		animator.animation_loop_frame = loop_frame;	
+	}
 }
 
 /// @self								
 /// @description								Function that changes the animation frame
-/// @param {Struct} animator					The animation system struct that will be used
+/// @param {Struct.animator_create} animator					The animation system struct that will be used
 /// @param {real} frame								The frame that will be set
 function animation_set_frame(animator, frame)
 {

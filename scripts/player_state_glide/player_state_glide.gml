@@ -6,6 +6,8 @@ function player_state_glide(){
 	gravity_allow = false;
 	attacking = true;
 	
+	static glide_direction = facing
+	
 	//Trigger the slide
 	if(ground)
 	{
@@ -26,14 +28,10 @@ function player_state_glide(){
 	//Force x speed to glide speed
 	x_speed = glide_speed * dsin(knuckles_angle);
 	
-	//Accelerate
 	if(knuckles_angle == 90 || knuckles_angle == -90)
 	{
-		if (!super) {
-			glide_speed += 0.015625;
-		} else {
-			glide_speed += 0.046875;
-		}
+		glide_speed += !super ? 0.015625 : 0.046875; //accelerate
+		glide_direction = sign(knuckles_angle)
 	}
 	
 	//Limit the glide speed
@@ -42,29 +40,48 @@ function player_state_glide(){
 	//Get input
 	var mov = hold_right - hold_left;
 	
-	//Glide turn animation
-	if(mov == -1 && facing == 1 || mov == 1 && facing == -1)
-	{
-		facing *= -1;
-		animation_set_frame(animator, 0);
-
-		animation_play(animator, ANIM.KNUXGLIDETURN);
-	}
 	
-	//Turn glide
-	if(mov != 0) 
+	//Turn glide and facing direction
+	if(mov != 0)
 	{
-		facing = mov;
+		glide_direction = mov
 	}
 	
 	//Adjust angle
-	knuckles_angle = math_approach(knuckles_angle, 90 * facing, 2.8125);
-
-	if(animation_has_finished(animator) && animation_is_playing(animator, ANIM.KNUXGLIDETURN))
-	{
-		
-		animation_play(animator, ANIM.KNUXGLIDE);	
+	knuckles_angle = math_approach(knuckles_angle, 90 * glide_direction, 2.8125);
+	
+	/*
+	To make a glide turn based on glide angle,
+	without bloating the turn animation to have frames where knuckles looks head on, 
+	we do some fractions to act like they are there.
+	
+	this just makes the transition between turning and gliding look nice but not a slog either.
+	This code should work as intended as long as the turn frame count is a ODD number.
+	*/
+	//Determine Glide turn frame
+	var glide_fake_frame_count = animation_get_frame_count(animator, ANIM.KNUXGLIDETURN) + 2 
+	var animation_glide_frame = abs((((90 * facing) + knuckles_angle) / 90) / 2) * (glide_fake_frame_count-1) 
+	
+	var animation_glide_percent = animation_glide_frame / (glide_fake_frame_count-1) 
+	
+	//check if you should use turn animation
+	if animation_glide_percent > (1/glide_fake_frame_count) && animation_glide_percent < ((glide_fake_frame_count-1)/glide_fake_frame_count){
+		if (!animation_is_playing(animator, ANIM.KNUXGLIDETURN)){
+			facing = sign(knuckles_angle)
+			animation_play(animator,ANIM.KNUXGLIDETURN);
+		}	
+	} else {
+		if (animation_is_playing(animator, ANIM.KNUXGLIDETURN)){
+			animation_play(animator,ANIM.KNUXGLIDE);
+			facing = sign(knuckles_angle)
+		}
 	}
+	
+	//Adjusting glide turn animation based on glide angle
+	if (animation_is_playing(animator, ANIM.KNUXGLIDETURN)){
+		animation_set_frame(animator,round(animation_glide_frame)-1)
+	}
+	
 	
 	//Attach to the wall
 	var wallCol = collision_get_distance(x + wall_w * facing, max(y,obj_camera.limit_top), facing == 1 ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, plane, false);
@@ -79,6 +96,7 @@ function player_state_glide(){
 	//Get grounded
 	if(ground && ground_angle > 45 && ground_angle < 315)
 	{
+		facing = sign(x_speed)
 		state = player_state_normal;
 		control_lock = 4;
 		exit;
@@ -88,6 +106,7 @@ function player_state_glide(){
 	if(!hold_action)
 	{
 		ceiling_lock = 4;
+		facing = sign(x_speed)
 		x_speed *= 0.25;
 		y_speed = 0;
 		state = player_state_knuxfall;

@@ -110,7 +110,7 @@ function player_state_normal()
 		}
 		
 		var ledgeSensor = collision_get_distance(x, y + hitbox_h, mode, plane, true);	
-		if(ledgeSensor > 14 && ground_speed == 0 && ground && on_object_count == 1)
+		if(ledgeSensor > 14 && ground_speed == 0 && ground)
 		{
 			var left = collision_get_distance(x - hitbox_w, y + hitbox_h, mode, plane, true);
 			var right = collision_get_distance(x + hitbox_w, y + hitbox_h, mode, plane, true);
@@ -147,7 +147,7 @@ function player_state_normal()
 		direction_allow = false;
 		
 		// No more skid
-		if(!ground)
+		if(!ground || mode != COLLISION_MODE.FLOOR)
 			skid_timer = 0;
 		
 		// Skidding
