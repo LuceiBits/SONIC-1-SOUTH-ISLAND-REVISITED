@@ -1,6 +1,5 @@
 /// @description Values
 	bridge_size = sprite_width / 16;
-	current_log_offset = 0;
 	standing = false;
 	standing_multi = 0;
 	
