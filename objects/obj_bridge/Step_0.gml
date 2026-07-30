@@ -5,36 +5,27 @@
 	
 	// Get the current log that the player is standing on
 	var currentLog = clamp(((player.x - x) / 16), 0, bridge_size - 1);
+	var clampedLog = clamp(currentLog, 1, bridge_size - 1);
+	var logOffset = abs(-1 + ((currentLog / (bridge_size + 1)) * 2.5));
 	
 	// Calculate the tension on the left side
-	var logMulti = ((currentLog - current_log_offset) / bridge_size) * 2
+	var logMulti = ((clampedLog - logOffset) / bridge_size) * 2
 	
 	// Calculate the tension for the right side
 	if(currentLog > (bridge_size / 2))
-	{
-		current_log_offset = lerp(current_log_offset, standing, 0.25);
-		logMulti = ((bridge_size - (currentLog + current_log_offset)) / bridge_size) * 2
-	}
-	else
-	{
-		current_log_offset = lerp(current_log_offset, 0, 0.25);	
-		
-		if(current_log_offset < 0.2)
-			current_log_offset = 0;
-	}
-	
+		logMulti = ((bridge_size - (clampedLog + logOffset)) / bridge_size) * 2
+
 	//Make bridge dip when you land
 	standing_multi = lerp(standing_multi, standing, 0.2);
 	
-	// Lerp quirk fix
-	if(standing_multi < 0.1)
+	// Lerp fix
+	if(!standing && standing_multi < 0.1 || currentLog > bridge_size - 1.5)
 		standing_multi = 0;
 	
 	// Logic for individual bridge logs
+	var t;
 	for (var i = 0; i < bridge_size; i++)
 	{
-		var t;
-		
 		// Calcualte the offset for the logs
 		if (i < currentLog)
 			t = i / currentLog;
