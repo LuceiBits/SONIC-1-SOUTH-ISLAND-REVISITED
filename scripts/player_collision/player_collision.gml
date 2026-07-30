@@ -23,8 +23,8 @@ function player_collision()
 		}
 		
 		// Wall collision
-		var wallR = collision_get_distance(x - wall_w, y, COLLISION_MODE.RIGHT_WALL, plane);
-		var wallL = collision_get_distance(x + wall_w, y, COLLISION_MODE.LEFT_WALL, plane);
+		var wallR = collision_get_distance(x - wall_w, max(y,obj_camera.limit_top), COLLISION_MODE.RIGHT_WALL, plane);
+		var wallL = collision_get_distance(x + wall_w, max(y,obj_camera.limit_top), COLLISION_MODE.LEFT_WALL, plane);
 		
 		// Snap to the wall
 		if(wallL <= 0)
@@ -118,8 +118,8 @@ function player_collision()
 	else
 	{
 		// Wall collision
-		var wallR = collision_get_distance(x + (wall_w * y_dir), y - (wall_w * x_dir) + wall_h, (COLLISION_MODE.LEFT_WALL + mode) mod 4, plane);
-		var wallL = collision_get_distance(x - (wall_w * y_dir), y + (wall_w * x_dir) + wall_h, (COLLISION_MODE.RIGHT_WALL + mode) mod 4, plane);
+		var wallR = collision_get_distance(x + (wall_w * y_dir), max(y - (wall_w * x_dir) + wall_h, obj_camera.limit_top), (COLLISION_MODE.LEFT_WALL + mode) mod 4, plane);
+		var wallL = collision_get_distance(x - (wall_w * y_dir), max(y + (wall_w * x_dir) + wall_h, obj_camera.limit_top), (COLLISION_MODE.RIGHT_WALL + mode) mod 4, plane);
 		
 		// Snap to the left wall with the right sensor
 		if(wallR < 0)
