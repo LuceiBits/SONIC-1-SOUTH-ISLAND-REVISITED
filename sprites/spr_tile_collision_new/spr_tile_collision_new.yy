@@ -24,7 +24,7 @@
   "height":80,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"58fba529-2d79-488c-88bd-8348de214974","blendMode":0,"displayName":"default","isLocked":false,"name":"58fba529-2d79-488c-88bd-8348de214974","opacity":50.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"58fba529-2d79-488c-88bd-8348de214974","blendMode":0,"displayName":"default","isLocked":false,"name":"58fba529-2d79-488c-88bd-8348de214974","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_tile_collision_new",
   "nineSlice":null,

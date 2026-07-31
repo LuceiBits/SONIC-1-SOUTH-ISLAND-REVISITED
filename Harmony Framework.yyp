@@ -283,6 +283,7 @@
     {"id":{"name":"rm_splash","path":"rooms/rm_splash/rm_splash.yy",},},
     {"id":{"name":"rm_stage_select","path":"rooms/rm_stage_select/rm_stage_select.yy",},},
     {"id":{"name":"rm_techdemo_tower","path":"rooms/rm_techdemo_tower/rm_techdemo_tower.yy",},},
+    {"id":{"name":"rm_template_collisions","path":"rooms/rm_template_collisions/rm_template_collisions.yy",},},
     {"id":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
     {"id":{"name":"rm_title_screen","path":"rooms/rm_title_screen/rm_title_screen.yy",},},
     {"id":{"name":"animator_util","path":"scripts/animator_util/animator_util.yy",},},
@@ -831,6 +832,7 @@
     {"roomId":{"name":"rm_greenhill_1","path":"rooms/rm_greenhill_1/rm_greenhill_1.yy",},},
     {"roomId":{"name":"rm_greenhill_2","path":"rooms/rm_greenhill_2/rm_greenhill_2.yy",},},
     {"roomId":{"name":"rm_greenhill_test","path":"rooms/rm_greenhill_test/rm_greenhill_test.yy",},},
+    {"roomId":{"name":"rm_template_collisions","path":"rooms/rm_template_collisions/rm_template_collisions.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
