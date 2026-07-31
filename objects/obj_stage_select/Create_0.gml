@@ -10,6 +10,7 @@
 	//The lists
 	zone_list = [["ARBOREAL AGATE", rm_arboreal_agate1, rm_arboreal_agate2],
 	["TEST STAGE", rm_techdemo_tower],
+	["GREEN HILL", rm_greenhill_1],
 	];
 	
 	level_reset_data();
