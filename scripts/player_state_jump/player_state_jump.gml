@@ -52,7 +52,6 @@ function player_state_jump(){
 	}
 	
 	
-	
 	if(global.use_dropdash) 
 	{
 		//Add dropdash timer

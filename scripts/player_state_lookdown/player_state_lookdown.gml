@@ -42,7 +42,7 @@ function player_state_lookdown(){
 		sound_play(sfx_spindash);
 		exit;
 	}
-	
+
 	//Trigger rolling
 	if(player_check_roll())
 		exit;
