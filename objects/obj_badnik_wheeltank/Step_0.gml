@@ -6,7 +6,7 @@
 	{
 		x += badnikdirection;
 	}
-	
+	//depth = -2000
 	// Vertical movement
 	y += y_speed;
 

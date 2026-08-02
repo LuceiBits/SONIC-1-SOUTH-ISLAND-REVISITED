@@ -1,6 +1,11 @@
 {
   "$GMWindowsOptions":"v2",
   "%Name":"Windows",
+  "ConfigValues":{
+    "Dev":{
+      "option_windows_d3dswapeffectdiscard":"true",
+    },
+  },
   "name":"Windows",
   "option_windows_allow_fullscreen_switching":false,
   "option_windows_borderless":false,
@@ -13,7 +18,7 @@
   "option_windows_display_cursor":true,
   "option_windows_display_name":"Harmony Framework",
   "option_windows_enable_steam":false,
-  "option_windows_executable_name":"${project_name}.exe",
+  "option_windows_executable_name":"Harmony Framework.exe",
   "option_windows_icon":"${options_dir}/windows/icons/icon.ico",
   "option_windows_installer_finished":"${base_options_dir}/windows/installer/finished.bmp",
   "option_windows_installer_header":"${base_options_dir}/windows/installer/header.bmp",
