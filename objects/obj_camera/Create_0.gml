@@ -6,7 +6,7 @@
 	
 	//Shift values
 	shift_x = 0;						//Horizontal offset
-	shift_y = 0;						//Vertical offset
+	shift_y = -30;						//Vertical offset
 	roll_offset = 0;					//Offset for when the player rolls
 	look_shift = 0;						//Offset for when the player looks up or down
 	ground_offset = 0;					//Margin ground offset, used for mania vertical focus
