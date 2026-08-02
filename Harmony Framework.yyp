@@ -176,6 +176,7 @@
     {"id":{"name":"obj_angle_flip","path":"objects/obj_angle_flip/obj_angle_flip.yy",},},
     {"id":{"name":"obj_animal","path":"objects/obj_animal/obj_animal.yy",},},
     {"id":{"name":"obj_antonbald","path":"objects/obj_antonbald/obj_antonbald.yy",},},
+    {"id":{"name":"obj_badnik_fish","path":"objects/obj_badnik_fish/obj_badnik_fish.yy",},},
     {"id":{"name":"obj_badnik_ribbot","path":"objects/obj_badnik_ribbot/obj_badnik_ribbot.yy",},},
     {"id":{"name":"obj_badnik_test","path":"objects/obj_badnik_test/obj_badnik_test.yy",},},
     {"id":{"name":"obj_badnik_wasp","path":"objects/obj_badnik_wasp/obj_badnik_wasp.yy",},},
