@@ -8,6 +8,9 @@
 	// Set up badnik's values
 	waittimer = 0
 	
+	madeVisible = false
+	inRange = false
+	fired = false
 	if obj_player.x > x
 	badnikdirection = 1
 	else
@@ -17,11 +20,9 @@
 	y_speed = 0;
 	animator = new animator_create();
 	
-		
-		//animation_add(0, spr_newton, 1,, true);
-	animation_add(0, spr_fish, 0.2,, true);
+	animation_add(0, spr_newton, 1,, true);
+	animation_add(1, spr_newton_1, 1,, true);
 	animation_play(animator, 0, true);
-	
 	extraDelay = 0
 	shootRange = 150
 	on_reset = function()

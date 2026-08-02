@@ -4,43 +4,64 @@
 	depth = 0
 
 	// Move the badnik when the wait timer is at 0
-	if (waittimer == 0)
-	{
-		
-		animation_play(animator, 0, true);
-		
-		if badnikdirectionPrior != badnikdirection
-		badnikdirection = badnikdirectionPrior
-		
-		x += (badnikdirection * 4);
-	}
-	
-	image_xscale = badnikdirection
-	
-	if (point_distance(x,y,obj_player.x,obj_player.y) < shootRange && waittimer = 0 && extraDelay = 0) && (y > (obj_player.y - 120) && y < (obj_player.y + 120))
-	{
-		
-	animation_play(animator, 1, true);
-		
-	var timeToFire = 60
-	waittimer = 70 + timeToFire
-	extraDelay = 200
-	alarm[0] = timeToFire
-	}
-	
-	if waittimer > 0
-	waittimer -= 1
-	
-	if extraDelay > 0 && waittimer = 0
-	extraDelay -= 1
+	//if (waittimer == 0)
+	//{
+	//	//x += (badnikdirection * 4);
+	//}
+
+if point_distance(x,y,obj_player.x,obj_player.y) < 140 && ((y > (obj_player.y - 120) && y < (obj_player.y + 120)))
+inRange = true
+
+if inRange = true && waittimer <= 0
+{
+if image_alpha < 1 && madeVisible = false
+{
+image_alpha += 0.08
+destructible = true
+hurting = true
+}
 
 
+if image_alpha > 0.9 && madeVisible = false
+{
+waittimer = 50
+alarm[0] = 50
+madeVisible = true
+
+}
+
+if fired = true
+{
+image_alpha -= 0.05
+}
+
+if fired = true && image_alpha < 0.1
+hurting = false
+destructible = false
+}
+
+	//else // Lucei Fishbone Movement
+	//{
+	//	if (waittimer != 0)
+	//	{
+	//		x += (badnikdirection * 1);
+	//	}
+	//	else
+	//	{
+	//	badnikdirection *= -1	
+	//	waittimer = 200
+	//	}
+	//}
+	
+	
+if waittimer > 0
+waittimer -= 1
 	
 	// Vertical movement
 	//y += y_speed;
 
 	// Animate the badnik
-	animator_update(animator);
+	//animator_update(animator);
 	
 	// Scale badnik in accordance to its direction
 	image_xscale = badnikdirection
@@ -73,8 +94,7 @@
 	//}
 	//else
 	//{
-	//	// Add gravity
-	//	//y_speed += 0.2;	
+
 		
 	//	// If the ground is detected, ground the badnik
 	//	if(fcheck < 0)
