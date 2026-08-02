@@ -12,9 +12,10 @@
 	
 	if point_distance(x,y,obj_player.x,obj_player.y) < shootRange && waittimer = 0 && extraDelay = 0
 	{
-	waittimer = 100
+	var timeToFire = 60
+	waittimer = 70 + timeToFire
 	extraDelay = 200
-	alarm[0] = 30
+	alarm[0] = timeToFire
 	}
 	
 	if waittimer > 0
