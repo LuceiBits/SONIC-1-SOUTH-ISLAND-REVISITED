@@ -6,11 +6,11 @@
 	// Move the badnik when the wait timer is at 0
 	if (waittimer == 0)
 	{
-		x += (badnikdirection * 10);
+		x += (badnikdirection * 4);
 	}
 	
 	
-	if point_distance(x,y,obj_player.x,obj_player.y) < shootRange && waittimer = 0 && extraDelay = 0
+	if (point_distance(x,y,obj_player.x,obj_player.y) < shootRange && waittimer = 0 && extraDelay = 0) && (y > (obj_player.y - 120) && y < (obj_player.y + 120))
 	{
 	var timeToFire = 60
 	waittimer = 70 + timeToFire

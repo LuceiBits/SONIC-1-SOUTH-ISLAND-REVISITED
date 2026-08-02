@@ -17,7 +17,7 @@
 	y_speed = 0;
 	animator = new animator_create();
 	extraDelay = 0
-	shootRange = 200
+	shootRange = 150
 	on_reset = function()
 	{
 		x = xstart;	
