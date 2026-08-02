@@ -8,8 +8,7 @@
 	//{
 	//	//x += (badnikdirection * 4);
 	//}
-	if !place_meeting(x,y,obj_water_pool) && !(y > obj_water.y) // SONIC 1 Fish Jumping
-	{
+
 		if y >= ystart && waittimer = 0 
 		{
 		y_speed = -7
@@ -20,19 +19,20 @@
 	
 		// fake ahh gravity
 		y_speed += 0.16;	
-	}
-	else // Lucei Fishbone Movement
-	{
-		if (waittimer != 0)
-		{
-			x += (badnikdirection * 1);
-		}
-		else
-		{
-		badnikdirection *= -1	
-		waittimer = 200
-		}
-	}
+
+
+	//else // Lucei Fishbone Movement
+	//{
+	//	if (waittimer != 0)
+	//	{
+	//		x += (badnikdirection * 1);
+	//	}
+	//	else
+	//	{
+	//	badnikdirection *= -1	
+	//	waittimer = 200
+	//	}
+	//}
 	
 	
 		if waittimer > 0
