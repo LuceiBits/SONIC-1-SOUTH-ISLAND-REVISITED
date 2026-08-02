@@ -6,12 +6,22 @@
 	// Move the badnik when the wait timer is at 0
 	if (waittimer == 0)
 	{
+		
+		animation_play(animator, 0, true);
+		
+		if badnikdirectionPrior != badnikdirection
+		badnikdirection = badnikdirectionPrior
+		
 		x += (badnikdirection * 4);
 	}
 	
+	image_xscale = badnikdirection
 	
 	if (point_distance(x,y,obj_player.x,obj_player.y) < shootRange && waittimer = 0 && extraDelay = 0) && (y > (obj_player.y - 120) && y < (obj_player.y + 120))
 	{
+		
+	animation_play(animator, 1, true);
+		
 	var timeToFire = 60
 	waittimer = 70 + timeToFire
 	extraDelay = 200

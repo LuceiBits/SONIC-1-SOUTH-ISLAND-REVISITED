@@ -9,17 +9,36 @@
 	//	//x += (badnikdirection * 4);
 	//}
 
-		if y >= ystart && waittimer = 0 
-		{
-		y_speed = -7
-		waittimer = 5
-		}
-	
-		y += y_speed
-	
-		// fake ahh gravity
-		y_speed += 0.16;	
+if point_distance(x,y,obj_player.x,obj_player.y) < 140 && ((y > (obj_player.y - 120) && y < (obj_player.y + 120)))
+inRange = true
 
+if inRange = true && waittimer <= 0
+{
+if image_alpha < 1 && madeVisible = false
+{
+image_alpha += 0.08
+destructible = true
+hurting = true
+}
+
+
+if image_alpha > 0.9 && madeVisible = false
+{
+waittimer = 50
+alarm[0] = 50
+madeVisible = true
+
+}
+
+if fired = true
+{
+image_alpha -= 0.05
+}
+
+if fired = true && image_alpha < 0.1
+hurting = false
+destructible = false
+}
 
 	//else // Lucei Fishbone Movement
 	//{
@@ -35,14 +54,14 @@
 	//}
 	
 	
-		if waittimer > 0
-		waittimer -= 1
+if waittimer > 0
+waittimer -= 1
 	
 	// Vertical movement
 	//y += y_speed;
 
 	// Animate the badnik
-	animator_update(animator);
+	//animator_update(animator);
 	
 	// Scale badnik in accordance to its direction
 	image_xscale = badnikdirection

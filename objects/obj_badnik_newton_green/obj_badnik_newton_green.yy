@@ -1,6 +1,6 @@
 {
   "$GMObject":"",
-  "%Name":"obj_badnik_fish",
+  "%Name":"obj_badnik_newton_green",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
@@ -10,7 +10,7 @@
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":7,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_badnik_fish",
+  "name":"obj_badnik_newton_green",
   "overriddenProperties":[],
   "parent":{
     "name":"Base Stage",
@@ -38,8 +38,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_fish",
-    "path":"sprites/spr_fish/spr_fish.yy",
+    "name":"spr_newton_why_are_you_green",
+    "path":"sprites/spr_newton_why_are_you_green/spr_newton_why_are_you_green.yy",
   },
   "spriteMaskId":null,
   "visible":true,

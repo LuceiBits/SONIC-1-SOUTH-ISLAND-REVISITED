@@ -6,21 +6,20 @@
 	// This is an example of a simple grounded badnik akin to a Motobug from Sonic 1.
 
 	// Set up badnik's values
+	madeVisible = false
+	inRange = false
+	fired = false
 	waittimer = 0
-	
+	image_alpha = 0
 	if obj_player.x > x
 	badnikdirection = 1
 	else
 	badnikdirection = -1
 
-	grounded = true;
+	//grounded = true;
 	y_speed = 0;
 	animator = new animator_create();
 	
-		
-		//animation_add(0, spr_newton, 1,, true);
-	animation_add(0, spr_fish, 0.2,, true);
-	animation_play(animator, 0, true);
 	
 	extraDelay = 0
 	shootRange = 150
@@ -28,7 +27,15 @@
 	{
 		x = xstart;	
 		y = ystart;	
-		waittimer = 0;
+	madeVisible = false
+	inRange = false
+	fired = false
+	waittimer = 0
+	image_alpha = 0
+	if obj_player.x > x
+	badnikdirection = 1
+	else
+	badnikdirection = -1
 	}
 	inView = false
 	
