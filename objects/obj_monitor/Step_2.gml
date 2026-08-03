@@ -42,7 +42,7 @@
 		//Bump the monitor
 		if(col == COLLISION.BOTTOM && sign(image_yscale) == 1)
 		{
-			touched = true
+			destroyHolder = true
 			ground = false;
 			y_speed = -2;	
 			
@@ -95,6 +95,7 @@
 		
 		//Destroyed sprite
 		sprite_index = spr_monitor_broken;
+		destroyHolder = true
 		
 		//Flip it back
 		image_yscale = 1;

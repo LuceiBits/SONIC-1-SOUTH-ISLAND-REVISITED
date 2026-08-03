@@ -1,6 +1,5 @@
 image_yscale -= 0.5
-if image_yscale < 0
-	image_yscale = 0
+
 if in_camera()
 {
 	if sound != noone
