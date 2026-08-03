@@ -1,3 +1,11 @@
+function is_shell_open()
+{
+	if !instance_exists(obj_shell)
+		return false
+	else
+		return obj_shell.isOpen
+}
+
 function sh_instance_create(args)
 {
     instance_create_depth(args[1], args[2], args[3], asset_get_index(args[4]))
@@ -58,4 +66,9 @@ function meta_music_play()
         //suggestions: [global.roomlist],
         //argumentDescriptions: ["set the target room"]
     };
+}
+
+function sh_rm_live()
+{
+	room_set_live(room, true)
 }

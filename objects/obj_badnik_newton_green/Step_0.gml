@@ -1,43 +1,49 @@
-	// Inherit the parent event's code for the badnik
-	event_inherited();
+// Inherit the parent event's code for the badnik
+event_inherited();
 	
-	depth = 0
+depth = 0
 
-	// Move the badnik when the wait timer is at 0
-	//if (waittimer == 0)
-	//{
-	//	//x += (badnikdirection * 4);
-	//}
+// Move the badnik when the wait timer is at 0
+//if (waittimer == 0)
+//{
+//	//x += (badnikdirection * 4);
+//}
 
 if point_distance(x,y,obj_player.x,obj_player.y) < 140 && ((y > (obj_player.y - 120) && y < (obj_player.y + 120)))
 inRange = true
 
 if inRange = true && waittimer <= 0
 {
-if image_alpha < 1 && madeVisible = false
-{
-image_alpha += 0.08
-destructible = true
-hurting = true
-}
+	if image_alpha = 0
+	{
+		if obj_player.x > x
+			badnikdirection = 1
+		else
+			badnikdirection = -1
+	}
+	
+	if image_alpha < 1 && madeVisible = false
+	{
+		image_alpha += 0.08
+		destructible = true
+		hurting = true
+	}
 
+	if image_alpha > 0.9 && madeVisible = false
+	{
+		waittimer = 50
+		alarm[0] = 50
+		madeVisible = true
+	}
 
-if image_alpha > 0.9 && madeVisible = false
-{
-waittimer = 50
-alarm[0] = 50
-madeVisible = true
+	if fired = true
+		image_alpha -= 0.05
 
-}
-
-if fired = true
-{
-image_alpha -= 0.05
-}
-
-if fired = true && image_alpha < 0.1
-hurting = false
-destructible = false
+	if fired = true && image_alpha < 0.1
+	{
+		hurting = false
+		destructible = false
+	}
 }
 
 	//else // Lucei Fishbone Movement

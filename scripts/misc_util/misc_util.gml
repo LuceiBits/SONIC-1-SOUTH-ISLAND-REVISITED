@@ -1,0 +1,39 @@
+// STOLEN FROM PIZZA TOWER !!!! GAAHHH!!!!
+function in_camera(_threshold = 0/*, _camera = view_camera[0]*/)
+{
+	var camx = camera_get_view_x(view_camera[0])
+	var camy = camera_get_view_y(view_camera[0])
+	var camw = camera_get_view_width(view_camera[0])
+	var camh = camera_get_view_height(view_camera[0])
+	
+	var _result = bbox_left < (camx + camw + _threshold) && bbox_right > (camx - _threshold) && bbox_top < (camy + camh + _threshold) && bbox_bottom > (camy - _threshold)
+	
+	return _result
+}
+
+function set_collision_colors()
+{
+	live_auto_call
+	// Manually set the collision colors back
+	//[RED, GREEN, BLUE, ALPHA]
+	var _redTint = fx_create("_filter_tintfilter")
+	fx_set_parameter(_redTint, "g_TintCol", [1, 0, 0, 1])
+	fx_set_single_layer(_redTint, true)
+	
+	var _blueTint = fx_create("_filter_tintfilter")
+	fx_set_parameter(_blueTint, "g_TintCol", [0, 0, 1, 1])
+	fx_set_single_layer(_blueTint, true)
+	
+	var _yellowTint = fx_create("_filter_tintfilter")
+	fx_set_parameter(_yellowTint, "g_TintCol", [1, 1, 0, 1])
+	fx_set_single_layer(_yellowTint, true)
+	
+	if layer_exists("CollisionA")
+		layer_set_fx("CollisionA", _redTint)
+	if layer_exists("CollisionB")
+		layer_set_fx("CollisionB", _blueTint)
+	if layer_exists("CollisionSemi")
+		layer_set_fx("CollisionSemi", _yellowTint)
+	
+	show_debug_message("COLLISION COLORS SET")
+}

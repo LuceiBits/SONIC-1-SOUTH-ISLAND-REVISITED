@@ -541,6 +541,7 @@
     {"name":"inst_1C9776D6","path":"rooms/rm_greenhill_test/rm_greenhill_test.yy",},
     {"name":"inst_703889B7","path":"rooms/rm_greenhill_test/rm_greenhill_test.yy",},
     {"name":"inst_47C66FF9","path":"rooms/rm_greenhill_test/rm_greenhill_test.yy",},
+    {"name":"inst_6AE303D0","path":"rooms/rm_greenhill_test/rm_greenhill_test.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -2401,6 +2402,7 @@
                 {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_breakable_tile","path":"objects/obj_breakable_tile/obj_breakable_tile.yy",},"propertyId":{"name":"target_layer","path":"objects/obj_breakable_tile/obj_breakable_tile.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"\"PlaneFront\"",},
               ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":2.0,"scaleY":4.0,"x":3904.0,"y":1104.0,},
             {"$GMRInstance":"v4","%Name":"inst_47C66FF9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_47C66FF9","objectId":{"name":"obj_badnik_newton_purple","path":"objects/obj_badnik_newton_purple/obj_badnik_newton_purple.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":3840.0,"y":1088.0,},
+            {"$GMRInstance":"v4","%Name":"inst_6AE303D0","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6AE303D0","objectId":{"name":"obj_monitor_holder","path":"objects/obj_monitor_holder/obj_monitor_holder.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":0.5,"x":1208.0,"y":384.0,},
           ],"layers":[],"name":"Objects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
       ],"name":"TileObjects","properties":[],"resourceType":"GMRLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRAssetLayer":"","%Name":"Waterfalls","assets":[

@@ -1,32 +1,31 @@
-	// Grounded badnik by joshyflip
+// Grounded badnik by joshyflip
 	
-	// Inherit the parent event's code for the badnik
-	event_inherited();
+// Inherit the parent event's code for the badnik
+event_inherited();
 	
-	// This is an example of a simple grounded badnik akin to a Motobug from Sonic 1.
+// This is an example of a simple grounded badnik akin to a Motobug from Sonic 1.
 
-	// Set up badnik's values
-	waittimer = 0
-	inView = false
-	if obj_player.x > x
+// Set up badnik's values
+waittimer = 0
+inView = false
+if obj_player.x > x
 	badnikdirection = 1
-	else
+else
 	badnikdirection = -1
-	badnikdirectionPrior = badnikdirection
+badnikdirectionPrior = badnikdirection
 
-	grounded = true;
-	y_speed = 0;
-	animator = new animator_create();
+grounded = true;
+y_speed = 0;
+animator = new animator_create();
 	
-	animation_add(0, spr_badnik_wasp, 1,, true);
-	animation_add(1, spr_badnik_wasp_shoot, 1,, true);
-	animation_play(animator, 0, true);
+animation_add(0, spr_badnik_wasp, 1,, true);
+animation_add(1, spr_badnik_wasp_shoot, 1,, true);
+animation_play(animator, 0, true);
 	
-	extraDelay = 0
-	shootRange = 150
-	on_reset = function()
-	{
-	
+extraDelay = 0
+shootRange = 96
+on_reset = function()
+{
 	x = xstart
 	y = ystart
 	
@@ -41,10 +40,10 @@
 	grounded = true;
 	y_speed = 0;
 	inView = false
-	}
+}
 
 	
-	instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
+instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
 	
-	animation_add(0, sprite_index, 0.3);
-	animation_play(animator, 0);
+animation_add(0, sprite_index, 0.3);
+animation_play(animator, 0);

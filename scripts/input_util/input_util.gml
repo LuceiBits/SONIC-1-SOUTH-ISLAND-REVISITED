@@ -97,6 +97,7 @@ function input_add_action(input_id, keyboard_action, controller_action, controll
 /// @returns {Bool}
 function input_hold(input_id)
 {
+	if is_shell_open() return false
 	return obj_global.input_data_hold[input_id];	
 }
 
@@ -106,6 +107,7 @@ function input_hold(input_id)
 /// @returns {Bool}
 function input_press(input_id)
 {
+	if is_shell_open() return false
 	return obj_global.input_data_press[input_id];	
 }
 
@@ -115,5 +117,6 @@ function input_press(input_id)
 /// @returns {Bool}
 function input_release(input_id)
 {
+	if is_shell_open() return false
 	return obj_global.input_data_release[input_id];	
 }

@@ -1,54 +1,33 @@
-	// Inherit the parent event's code for the badnik
-	event_inherited();
+// Inherit the parent event's code for the badnik
+event_inherited();
 	
-	depth = 0
+depth = 0
 
-	// Move the badnik when the wait timer is at 0
-	//if (waittimer == 0)
-	//{
-	//	//x += (badnikdirection * 4);
-	//}
-
-	
 if point_distance(x,y,obj_player.x,obj_player.y) < 180 && (y > (obj_player.y - 120) && y < (obj_player.y + 120))
 inRange = true
 
 if inRange = true && waittimer = 0 && fired = false
 {
-if image_alpha < 1 && madeVisible = false
-image_alpha += 0.08
+	if image_alpha < 1 && madeVisible = false
+	image_alpha += 0.08
 
-
-if image_alpha = 1 && madeVisible = false
-{
-waittimer = 50
-madeVisible = true
-alarm[0] = 10
-}
-}
-	
-	
-	
-	if waittimer > 0
-	waittimer -= 1
-	
-// Move the badnik when the wait timer is at 0
-
-	//depth = -2000
-	// Vertical movement
-
-
-	// Animate the badnik
-	//animator_update(animator);
-	
-	// Scale badnik in accordance to its direction
-	image_xscale = badnikdirection
-	
-	// Collision checks
-	
-	if fired = true
+	if image_alpha = 1 && madeVisible = false
 	{
-		
+		waittimer = 50
+		madeVisible = true
+		alarm[0] = 10
+	}
+}
+
+if waittimer > 0
+	waittimer -= 1
+
+image_xscale = badnikdirection
+	
+// Collision checks
+	
+if fired = true
+{
 	y += y_speed;
 		
 	
@@ -57,19 +36,12 @@ alarm[0] = 10
 	var wallcheck = collision_get_distance(x + 12 * badnikdirection, y, badnikdirection ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, PLANE.A, true);
 	
 	// Grounded state
-	
 	if(grounded)
 	{	
-		
 		animation_play(animator, 1);
 		
-	
-		
 		if (fired = true)
-	{
-		x += badnikdirection * 3;
-	}
-	
+			x += badnikdirection * 3;
 	
 		// Detach if there's no ground below
 		if(fcheck > 14)
@@ -113,7 +85,7 @@ alarm[0] = 10
 		x += wallcheck * badnikdirection;
 	}
 	
-	}
+}
 	
-	animator_update(animator);
+animator_update(animator);
 

@@ -42,6 +42,7 @@
 		//Bump the monitor
 		if(col == COLLISION.BOTTOM && sign(image_yscale) == 1)
 		{
+			touched = true
 			ground = false;
 			y_speed = -2;	
 			
