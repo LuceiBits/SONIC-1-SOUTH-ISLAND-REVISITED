@@ -1,7 +1,7 @@
 function game_macros()
 {
 	// Developer mode macro
-	#macro DEVMODE true//false
+	#macro DEVMODE false
 	#macro Dev:DEVMODE true
 	
 	// Easy to access global variable macros

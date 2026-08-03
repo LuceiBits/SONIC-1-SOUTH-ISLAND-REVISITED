@@ -73,6 +73,10 @@
 	dev_menu_add_option_flag("Dropdash Flag", "use_dropdash");
 	dev_menu_add_option_flag("Peelout Flag", "use_peelout");
 	
+	dev_menu_add_category("SONIC 1 REVISITED");
+	dev_menu_add_entry("Techdemo", rm_techdemo_tower);
+	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
+	
 	//Add the presentation category
 	dev_menu_add_category("PRESENTATION");
 	dev_menu_add_entry("SPLASH", rm_splash);
