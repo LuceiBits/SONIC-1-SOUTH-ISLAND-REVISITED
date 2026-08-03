@@ -1,12 +1,11 @@
 if !in_camera()
 	exit
 
-
 monitorID = instance_place(x,y,obj_monitor)
 
 var _monitorTouched = false
 if instance_exists(monitorID)
-	_monitorTouched = monitorID.touched
+	_monitorTouched = monitorID.destroyHolder
 
 if (
 		!instance_exists(monitorID) || 

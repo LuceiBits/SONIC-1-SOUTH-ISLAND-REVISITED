@@ -5,7 +5,7 @@
 	y_speed = 0;
 	monitor_icon = spr_monitor_icon_10ring;
 	culling = true;
-	touched = false
+	destroyHolder = false
 	
 	instance_register_culling();
 
