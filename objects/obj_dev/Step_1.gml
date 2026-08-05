@@ -31,6 +31,7 @@
 		if(keyboard_check_pressed(ord("N"))) global.bgm_volume = (global.bgm_volume + 1) mod 2;
 		if(keyboard_check_pressed(vk_f7)) show_player = !show_player;
 		if(keyboard_check_pressed(vk_f12)) show_culling = !show_culling;
+		if(keyboard_check_pressed(ord("Q"))) show_debug_overlay(!is_debug_overlay_open())
 		if(keyboard_check_pressed(vk_f4)) 
 		{
 			//Change the value and modulate it
