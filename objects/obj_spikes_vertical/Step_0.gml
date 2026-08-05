@@ -10,7 +10,10 @@
 			{
 			//jump_flag = true;
 			ground = false;
+			if other.image_yscale = 1
 			y_speed = -8
+			if other.image_yscale = -1
+			y_speed = 8
 			state = player_state_spring
 			dropdash_timer = 0;
 			idle_timer = 0;
