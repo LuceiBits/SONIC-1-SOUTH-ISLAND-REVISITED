@@ -73,12 +73,16 @@ function player_water()
             if(!underwater)
             {
                 //Slow down the player
-                x_speed *= 0.5;
-                y_speed *= 0.25;
+				if on_terrain
+                x_speed *= 0.90
+				else
+				x_speed *= 0.80
+				y_speed *= 0.50;
                 
                 //Create effects
                 if (!is_pool || is_pool && y < water.pos_y+8)
                 {
+					show_debug_message("ENTERED POOL?")
                     var splash = instance_create_depth(obj_player.x, waterY, obj_player.depth - 1, obj_water_splash);
                     splash.par = water;
                 }
@@ -108,10 +112,16 @@ function player_water()
         if(underwater)
         {
             //Speed up the player
-            y_speed *= 1.25;
-            
+			
+			// x_speed *= 0.75;
+			if state = player_state_jump
+			{
+             y_speed *= 1.6
+			}
+			
             //Create effects
             if (!pool_leave_h) {
+				show_debug_message("EXITED POOL?")
                 var splash = instance_create_depth(obj_player.x, waterY, water.depth - 1, obj_water_splash);
                 splash.par = water;
             }

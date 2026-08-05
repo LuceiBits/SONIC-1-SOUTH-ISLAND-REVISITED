@@ -7,11 +7,11 @@ function player_misc()
 	ceiling_lock = max(ceiling_lock-1, 0);
 
 	//Kill the player after time has reached the limit
-	if(global.stage_timer == 599999) 
-	{
-		_player_kill();
-		is_time_over = true;
-	}
+	//if(global.stage_timer == 599999) 
+	//{
+	//	_player_kill();
+	//	is_time_over = true;
+	//}
 
 	//Bottomless pit death event
 	if(y > obj_camera.target_bottom && y > obj_camera.limit_bottom && !disable_death)
