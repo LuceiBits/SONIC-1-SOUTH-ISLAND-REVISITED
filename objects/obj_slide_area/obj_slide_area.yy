@@ -1,13 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_monitor_holder",
+  "%Name":"obj_slide_area",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_monitor_holder",
+  "name":"obj_slide_area",
   "overriddenProperties":[],
   "parent":{
     "name":"Stage Objects",
@@ -32,9 +30,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_monitor_holder",
-    "path":"sprites/spr_monitor_holder/spr_monitor_holder.yy",
+    "name":"spr_slide_area_dev",
+    "path":"sprites/spr_slide_area_dev/spr_slide_area_dev.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }

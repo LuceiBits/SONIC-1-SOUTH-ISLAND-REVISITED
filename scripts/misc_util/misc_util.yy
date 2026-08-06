@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"misc_util",
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

@@ -8,9 +8,8 @@ function player_control()
 	//Temp value
 	var movement = hold_right - hold_left;
 	
-	
 	if press_action
-	jump_buffer = 8
+		jump_buffer = 8
 	
 	//Ground movement:
 	if(ground)
