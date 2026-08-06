@@ -19,7 +19,7 @@ function player_state_poleswing(){
 	{
 
 	with pole_id
-	swing_pole_cooldown = 25
+	swing_pole_cooldown = 10
 		if movement != 0
 		{
 		ground_speed = (abs(pole_xspd_save) + abs(y_speed/2)) * movement
@@ -39,12 +39,12 @@ function player_state_poleswing(){
 	if jump_buffer || press_action || y < pole_id.bbox_top || y > pole_id.bbox_bottom - 10
 		{
 			with pole_id
-			swing_pole_cooldown = 50
+			swing_pole_cooldown = 10
 			if movement != 0
 			x_speed = abs(pole_xspd_save) * movement
 			else
 			x_speed = abs(pole_xspd_save) * image_xscale
-			if !(y > pole_id.bbox_bottom - 10)
+			if !(y > pole_id.bbox_bottom - 10 && sign(y_speed) != -1)
 			y_speed = jump_strength * -1
 			state = player_state_jump
 			pole_id = noone
