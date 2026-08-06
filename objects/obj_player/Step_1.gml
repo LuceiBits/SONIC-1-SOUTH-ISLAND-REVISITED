@@ -8,6 +8,10 @@
 	hitbox_bottom_offset = 0;
 	hitbox_right_offset = 0;
 	
+	//jump buffer decrementer
+	if jump_buffer > 0
+	jump_buffer -= 1
+	
 	//Player input scripts
 	player_get_input();
 	
