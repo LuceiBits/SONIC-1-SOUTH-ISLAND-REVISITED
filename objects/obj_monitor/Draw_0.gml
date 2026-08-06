@@ -5,7 +5,7 @@
 	if(destroyed) 
 		exit;
 	
-	var iconOffset = 4 * sign(image_yscale);
+	var iconOffset = 6 * sign(image_yscale);
 	
 	//Draw the icon
 	draw_sprite(monitor_icon, 0, x, floor(y) - iconOffset);

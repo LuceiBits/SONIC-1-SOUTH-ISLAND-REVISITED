@@ -27,13 +27,13 @@ function player_state_normal()
 		else
 		{
 			if(!animation_is_playing(animator, ANIM.BREATHE))
-				anim = ANIM.WALK;
+				anim = animation_walk;
 		}
 		
 		//Walking animation:
 		if(abs(ground_speed) > 0 && abs(ground_speed) <= 6)
 		{
-			anim = ANIM.WALK;
+			anim = animation_walk;
 		
 			//Change animation duration when player is only on the ground:
 			if(ground)

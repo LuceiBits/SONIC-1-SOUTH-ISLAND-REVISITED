@@ -10,8 +10,9 @@
     {"name":"inst_70C336A7_1_1_1_3","path":"rooms/rm_objtest/rm_objtest.yy",},
     {"name":"inst_1AAA6524_1_1_1_3","path":"rooms/rm_objtest/rm_objtest.yy",},
     {"name":"inst_1FBCB583_3_1_1_2_3","path":"rooms/rm_objtest/rm_objtest.yy",},
-    {"name":"inst_2CDE3107","path":"rooms/rm_objtest/rm_objtest.yy",},
     {"name":"inst_234FEF8E","path":"rooms/rm_objtest/rm_objtest.yy",},
+    {"name":"inst_3E963B09","path":"rooms/rm_objtest/rm_objtest.yy",},
+    {"name":"inst_6B99D587","path":"rooms/rm_objtest/rm_objtest.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -22,7 +23,8 @@
       ],"layers":[],"name":"Utilities","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRLayer":"","%Name":"Collision","depth":100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[
         {"$GMRInstanceLayer":"","%Name":"CollisionTriggers","depth":200,"effectEnabled":true,"effectType":null,"gridX":16,"gridY":16,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
-            {"$GMRInstance":"v4","%Name":"inst_2CDE3107","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_2CDE3107","objectId":{"name":"obj_water_pool","path":"objects/obj_water_pool/obj_water_pool.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":7.75,"scaleY":11.0,"x":448.0,"y":448.0,},
+            {"$GMRInstance":"v4","%Name":"inst_3E963B09","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_3E963B09","objectId":{"name":"obj_water","path":"objects/obj_water/obj_water.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":28.5,"scaleY":1.0,"x":0.0,"y":96.0,},
+            {"$GMRInstance":"v4","%Name":"inst_6B99D587","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6B99D587","objectId":{"name":"obj_bounce_bubble","path":"objects/obj_bounce_bubble/obj_bounce_bubble.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":352.0,"y":320.0,},
           ],"layers":[],"name":"CollisionTriggers","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
         {"$GMRTileLayer":"","%Name":"CollisionB","depth":300,"effectEnabled":true,"effectType":"_filter_tintfilter","gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"CollisionB","properties":[
             {"name":"g_TintCol","type":1,"value":"#FFFF0000",},

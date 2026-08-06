@@ -1,7 +1,7 @@
 {
   "$GMSprite":"v2",
   "%Name":"spr_spikes_horizontal",
-  "bboxMode":0,
+  "bboxMode":1,
   "bbox_bottom":31,
   "bbox_left":0,
   "bbox_right":31,

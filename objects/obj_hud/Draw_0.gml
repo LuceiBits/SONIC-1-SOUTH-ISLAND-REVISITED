@@ -29,7 +29,7 @@
 		if(global.stage_timer >= 540000 && FRAME_TIMER mod 20 < 20/2) draw_sprite(spr_hudtext, 3, 16 + offset[1], 24);
 	
 		//Draw life icon
-		draw_sprite(spr_hud_life_icons, global.character, 16 + offset[3], global.window_height - 26);
+		draw_sprite(spr_hud_life_icons, global.character, 16 + 1 + offset[3], global.window_height - 26 + 3);
 	
 		//Set font numbers
 		draw_set_font(global.hud_number);
@@ -37,10 +37,10 @@
 		draw_set_valign(fa_top);
 	
 		//Draw number
-		draw_text(120 + offset[0], 9, string(global.score));
-		draw_text(120 + offset[1], 25, string(minute)+" "+(sec > 9 ? "" : "0") + string(sec)+" "+(milsec > 9 ? "" : "0") + string(milsec));
-		draw_text(96 + offset[2], 41, string(global.rings));
-		draw_text(56 + offset[3], global.window_height - 24, (global.life > 9 ? "" : "0") + string(global.life));
+		draw_text(120 - 8 + offset[0], 8, string(global.score));
+		draw_text(120 - 8 + offset[1], 24, string(minute)+" "+(sec > 9 ? "" : "0") + string(sec)+" "+(milsec > 9 ? "" : "0") + string(milsec));
+		draw_text(96 - 8 + offset[2], 40, string(global.rings));
+		draw_text(56 + offset[3], global.window_height - 24 + 4, (global.life > 9 ? "" : "0") + string(global.life));
 		
 		if (obj_player.combinering == 1){
 			draw_sprite(spr_monitor_icon_combine_ring, 0, 24 + offset[2], 64);	
@@ -50,7 +50,6 @@
 				draw_sprite(spr_monitor_icon_combine_ring, 0, 24 + offset[2], 64);	
 			}
 		}
-		
 	} 
 	else 
 	{

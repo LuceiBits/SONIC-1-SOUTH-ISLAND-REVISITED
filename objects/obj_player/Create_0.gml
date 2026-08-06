@@ -208,3 +208,5 @@ if(instance_exists(obj_titlecard))
 // To prevent crashes
 if !layer_exists("Utilities")
 	layer_create(0, "Utilities")
+
+animation_walk = ANIM.WALK

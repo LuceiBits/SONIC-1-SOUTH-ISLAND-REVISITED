@@ -1,7 +1,7 @@
 /// @description Script
-    var pool = instance_place(x, y, obj_water_pool);
-	var top_y = waterID.y	//(y < obj_water.y && pool)? pool.pos_y : obj_water.y;
-    
+	var pool = instance_place(x, y, obj_water_pool);
+	var top_y = (y < obj_water.y && pool) ? pool.pos_y : obj_water.y;
+	
     // Update the animator
 	animator_update(animator);
 	animation_play(animator, type);

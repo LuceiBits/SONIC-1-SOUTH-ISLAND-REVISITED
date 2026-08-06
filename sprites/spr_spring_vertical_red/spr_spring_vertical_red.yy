@@ -21,7 +21,7 @@
   "height":32,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"8299ba94-9721-44c3-9cb9-6f0b7358fd83","blendMode":0,"displayName":"default","isLocked":false,"name":"8299ba94-9721-44c3-9cb9-6f0b7358fd83","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"93a007af-eba4-4ef6-92d1-942ad69f43bc","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"93a007af-eba4-4ef6-92d1-942ad69f43bc","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_spring_vertical_red",
   "nineSlice":null,

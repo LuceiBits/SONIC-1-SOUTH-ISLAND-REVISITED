@@ -24,4 +24,9 @@ function player_misc()
 	last_on_object = on_object;
 	on_object = false;
 	on_object_count = 0;
+	
+	if underwater
+		animation_walk = ANIM.WALKWATER
+	else
+		animation_walk = ANIM.WALK
 }

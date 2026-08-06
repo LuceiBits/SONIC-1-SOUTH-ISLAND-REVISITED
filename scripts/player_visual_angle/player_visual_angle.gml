@@ -78,7 +78,7 @@ function player_visual_angle()
 	}
 	
 	//Force visual angle to 0 when wrong animation is playing
-	if(!animation_is_playing(animator, ANIM.WALK) && !animation_is_playing(animator, ANIM.RUN) && !animation_is_playing(animator, ANIM.MAXRUN))
+	if(!animation_is_playing(animator, animation_walk) && !animation_is_playing(animator, ANIM.RUN) && !animation_is_playing(animator, ANIM.MAXRUN))
 	{
 		visual_angle = 0;
 	}

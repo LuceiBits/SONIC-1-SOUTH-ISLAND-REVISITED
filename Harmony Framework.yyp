@@ -755,6 +755,7 @@
     {"id":{"name":"spr_sonic_victory","path":"sprites/spr_sonic_victory/spr_sonic_victory.yy",},},
     {"id":{"name":"spr_sonic_wait","path":"sprites/spr_sonic_wait/spr_sonic_wait.yy",},},
     {"id":{"name":"spr_sonic_waiting","path":"sprites/spr_sonic_waiting/spr_sonic_waiting.yy",},},
+    {"id":{"name":"spr_sonic_walk_water","path":"sprites/spr_sonic_walk_water/spr_sonic_walk_water.yy",},},
     {"id":{"name":"spr_sonic_walk","path":"sprites/spr_sonic_walk/spr_sonic_walk.yy",},},
     {"id":{"name":"spr_special_ring_effect","path":"sprites/spr_special_ring_effect/spr_special_ring_effect.yy",},},
     {"id":{"name":"spr_special_ring","path":"sprites/spr_special_ring/spr_special_ring.yy",},},

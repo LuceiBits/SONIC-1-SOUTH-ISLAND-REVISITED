@@ -12,10 +12,11 @@
 	animator = new animator_create();
 	
 	animation_play(animator, 0);
-	
+	/*
 	waterID = noone
 	
 	if place_meeting(x,y,obj_water)
 		waterID = instance_place(x,y,obj_water)
 	else if place_meeting(x,y,obj_water_pool)
 		waterID = instance_place(x,y,obj_water_pool)
+		*/

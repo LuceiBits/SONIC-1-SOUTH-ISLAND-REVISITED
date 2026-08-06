@@ -6,6 +6,7 @@ function player_animation_list()
 		STAND,
 		WAIT,
 		WALK,
+		WALKWATER,
 		RUN,
 		MAXRUN,
 		ROLL,
@@ -55,6 +56,7 @@ function player_animation_list()
 			animation_add(ANIM.STAND, spr_sonic_idle, 0.2)
 			animation_add(ANIM.WAIT, spr_sonic_wait, 6, 2, true, true);
 			animation_add(ANIM.WALK, spr_sonic_walk, 3, 0, true, true);
+			animation_add(ANIM.WALKWATER, spr_sonic_walk_water, 3, 0, true, true);
 			animation_add(ANIM.RUN, spr_sonic_run, 2, 0, true, true);
 			animation_add(ANIM.MAXRUN, spr_sonic_peelout, 0, 0, true, true);
 			animation_add(ANIM.LOOKDOWN, spr_sonic_lookdown, 0.4, 0, false, false);

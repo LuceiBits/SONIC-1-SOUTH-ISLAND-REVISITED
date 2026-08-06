@@ -18,10 +18,10 @@ function player_state_peelout(){
 	spindash_rev = min(spindash_rev, 30);
 	
 	//Temp value for animation
-	var anim = ANIM.WALK;
+	var anim = animation_walk;
 	
 	//Change animations
-	anim = ANIM.WALK;
+	anim = animation_walk;
 	if(spindash_rev >= 15) 
 	{
 		anim = ANIM.RUN;
