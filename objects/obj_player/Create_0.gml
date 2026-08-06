@@ -57,6 +57,7 @@ insta_shield_invincible = 0;		// Invincibility timer for the insta shield
 insta_shield_ptr = noone;			// Pointer to the insta shield object
 pole_xspd_save = 0					// Save XSPD when grabbing on a pole so it can be returned later
 pole_id = noone
+jump_buffer = 0 // used for buffering jump inputs
 
 //Check variables:
 ground = true;						// Check used to check if player is on ground or not

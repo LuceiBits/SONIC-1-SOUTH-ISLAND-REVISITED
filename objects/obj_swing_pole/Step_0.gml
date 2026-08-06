@@ -18,7 +18,7 @@ if instance_place(x,y,obj_player) && abs(obj_player.x_speed) > 0 && obj_player.o
 		x = other.x
 		pole_id = other.id
 		pole_xspd_save = x_speed
-		y_speed = (abs(x_speed)*0.9) * -1
+		y_speed = (abs(x_speed)*0.9) * sign(y_speed)
 		state = player_state_poleswing
 		}
 	}
