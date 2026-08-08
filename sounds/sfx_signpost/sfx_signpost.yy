@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.498073,
+  "duration":1.4980725,
   "exportDir":"",
   "name":"sfx_signpost",
   "parent":{

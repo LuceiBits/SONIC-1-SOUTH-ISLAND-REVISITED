@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.618027,
+  "duration":0.6180272,
   "exportDir":"",
   "name":"sfx_superring",
   "parent":{

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":1.709501,
+  "duration":1.7095011,
   "exportDir":"",
   "name":"sfx_scoretally",
   "parent":{
