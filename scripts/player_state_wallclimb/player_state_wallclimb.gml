@@ -96,6 +96,7 @@ function player_state_wallclimb()
 		state = player_state_jump;
 		animation_play(animator, ANIM.ROLL);
 		sound_play(sfx_jump);
+		jump_buffer = 0
 		exit;
 	}
 }

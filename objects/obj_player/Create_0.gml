@@ -106,6 +106,7 @@ glide_speed = 2.5;					// Knuckles' glide speed
 animator = new animator_create();	// Create new animator
 visual_angle = 0;					// Used for rotation of the player's sprite
 jump_anim_speed = 0;				// Animation speed variable that is set when sonic jumps
+pole_anim_speed = 0;				// Animation speed variable that is set when sonic swings on a pole
 start_depth = depth;				// Starting depth when object has been created
 	
 //Shields:

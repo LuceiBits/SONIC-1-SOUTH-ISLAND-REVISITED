@@ -10,7 +10,7 @@
 	
 	//jump buffer decrementer
 	if jump_buffer > 0
-	jump_buffer -= 1
+		jump_buffer -= 1
 	
 	//Player input scripts
 	player_get_input();

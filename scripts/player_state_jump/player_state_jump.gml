@@ -128,6 +128,7 @@ function player_check_jump()
 			
 		//Play the sound
 		sound_play(sfx_jump);
+		jump_buffer = 0
 		return true;
 	}
 }
