@@ -12,6 +12,7 @@ function game_init_music_list()
 	music_add(MUSIC.ARBOREAL_AGATE2, bgm_arboreal_agate2, 15.239);
 	music_add(MUSIC.BONUS, bgm_bonus, 16.657, 92.33, true);
 	music_add(MUSIC.BLUE_SPHERES, bgm_blue_spheres, 6.923);
+	music_add(MUSIC.TEMP, bgm_temp, 0.000);
 	
 	// General stage music:
 	music_add(MUSIC.MINI_BOSS, bgm_mini_boss, 6.923);
@@ -39,5 +40,6 @@ function game_init_music_list()
 		INVINCIBLE,
 		SPEEDSHOES,
 		ACT_CLEAR,
-		SUPER
+		SUPER,
+		TEMP,
 	}
