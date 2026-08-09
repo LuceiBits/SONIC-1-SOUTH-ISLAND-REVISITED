@@ -5,6 +5,7 @@
 		
 	angle = 0;
 	chain_amt = (sprite_height div 16) - 2;
+	parryTimer = 0
 	
 	
 	// Register the object for culling

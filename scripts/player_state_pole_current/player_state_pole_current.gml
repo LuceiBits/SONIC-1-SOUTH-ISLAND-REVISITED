@@ -3,7 +3,7 @@ function player_state_pole_current()
 	live_auto_call
 	
 		
-
+	gravity_allow = false
 	
 	with pole_id
 	{
@@ -35,6 +35,7 @@ function player_state_pole_current()
 	
 if jump_buffer || press_action
 {
+		gravity_allow = true;
 		with pole_id
 		swing_pole_cooldown = 20
 		state = player_state_normal

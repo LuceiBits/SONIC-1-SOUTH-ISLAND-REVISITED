@@ -1,0 +1,1 @@
+//var center_x = floor((obj_player.x + 16)/32) * 32;
