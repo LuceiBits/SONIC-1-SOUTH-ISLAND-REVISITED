@@ -144,6 +144,8 @@
 			obj_camera.limit_right = room_width;
 			obj_camera.limit_top = 0;
 			obj_camera.limit_bottom = room_height;
+			if obj_player.underwater = true
+			obj_player.underwater = false
 			
 			teleport_id++;
 			teleport_id %= instance_number(obj_debug_teleport);

@@ -1,5 +1,9 @@
 live_auto_call
 
+
+if obj_player.state = player_state_knockout || obj_player.state = player_state_pole_current || obj_player.state = player_state_death || !obj_player.underwater
+exit;
+
 if place_meeting(x, y, obj_player) //player_collide_object()
 {
 	var _angle = image_angle

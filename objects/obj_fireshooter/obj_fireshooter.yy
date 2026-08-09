@@ -1,11 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_slide_area",
+  "%Name":"obj_fireshooter",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_slide_area",
+  "name":"obj_fireshooter",
   "overriddenProperties":[],
   "parent":{
     "name":"Labyrinth",
@@ -30,9 +31,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_slide_area_dev",
-    "path":"sprites/spr_slide_area_dev/spr_slide_area_dev.yy",
+    "name":"spr_fire_shooter_inactive",
+    "path":"sprites/spr_fire_shooter_inactive/spr_fire_shooter_inactive.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }

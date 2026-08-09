@@ -1,11 +1,12 @@
 {
   "$GMObject":"",
-  "%Name":"obj_slide_area",
+  "%Name":"obj_labyrinth_water_switch",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_slide_area",
+  "name":"obj_labyrinth_water_switch",
   "overriddenProperties":[],
   "parent":{
     "name":"Labyrinth",
@@ -25,14 +26,16 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"rise_speed","filters":[],"listItems":[],"multiselect":false,"name":"rise_speed","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"2","varType":0,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_slide_area_dev",
-    "path":"sprites/spr_slide_area_dev/spr_slide_area_dev.yy",
+    "name":"spr_water_level_set",
+    "path":"sprites/spr_water_level_set/spr_water_level_set.yy",
   },
   "spriteMaskId":null,
-  "visible":false,
+  "visible":true,
 }
