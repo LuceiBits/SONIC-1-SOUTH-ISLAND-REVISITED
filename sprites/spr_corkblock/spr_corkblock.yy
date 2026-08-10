@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":0,
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Labyrinth",
+    "path":"folders/Sprites/Stage Sprites/Labyrinth.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

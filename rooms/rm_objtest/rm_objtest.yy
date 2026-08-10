@@ -735,8 +735,8 @@
   ],
   "name":"rm_objtest",
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Test Rooms",
+    "path":"folders/Rooms/Test Rooms.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
