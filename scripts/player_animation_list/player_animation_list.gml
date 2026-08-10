@@ -57,7 +57,7 @@ function player_animation_list()
 		if (!super) 
 		{
 			animation_add(ANIM.STAND, spr_sonic_idle, 0.2)
-			animation_add(ANIM.WAIT, spr_sonic_wait, 6, 2, true, true);
+			animation_add(ANIM.WAIT, spr_sonic_wait, 12, 3, true, true);
 			animation_add(ANIM.WALK, spr_sonic_walk, 3, 0, true, true);
 			animation_add(ANIM.WALKWATER, spr_sonic_walk_water, 3, 0, true, true);
 			animation_add(ANIM.RUN, spr_sonic_run, 2, 0, true, true);
