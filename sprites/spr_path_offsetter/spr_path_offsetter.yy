@@ -6,7 +6,7 @@
   "bbox_left":0,
   "bbox_right":15,
   "bbox_top":0,
-  "collisionKind":1,
+  "collisionKind":0,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
   "edgeFiltering":false,
@@ -19,7 +19,7 @@
   "height":16,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"fe6131a8-3fd1-4fab-bb85-e18f76457cfe","blendMode":0,"displayName":"default","isLocked":false,"name":"fe6131a8-3fd1-4fab-bb85-e18f76457cfe","opacity":50.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"fe6131a8-3fd1-4fab-bb85-e18f76457cfe","blendMode":0,"displayName":"default","isLocked":false,"name":"fe6131a8-3fd1-4fab-bb85-e18f76457cfe","opacity":20.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_path_offsetter",
   "nineSlice":null,

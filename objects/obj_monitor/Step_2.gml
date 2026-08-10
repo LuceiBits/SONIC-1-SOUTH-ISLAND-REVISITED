@@ -6,9 +6,10 @@
 	var player = player_find(0);
 	var col = noone;
 	
+	var _collision_top = sign(image_yscale) ? COLLISION.TOP : COLLISION.BOTTOM
+	var _collision_bottom = sign(image_yscale) ? COLLISION.BOTTOM : COLLISION.TOP
+	
 	//Disable flag when attacking
-
-
 	
 	//When monitor isn't destroyed
 	if(!destroyed)
@@ -24,7 +25,7 @@
 			}
 			else
 			{
-				if(player.attacking && player_collide_object(COLLISION.TOP))
+				if(player.attacking && player_collide_object(_collision_top))
 				{
 					collision_flag = false;
 				}
@@ -40,7 +41,7 @@
 			col = player_act_solid();
 		
 		//Bump the monitor
-		if(col == COLLISION.BOTTOM && sign(image_yscale) == 1)
+		if(col == _collision_bottom && sign(image_yscale) == 1)
 		{
 			destroyHolder = true
 			ground = false;

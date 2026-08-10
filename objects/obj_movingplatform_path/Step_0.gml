@@ -19,14 +19,19 @@ var old_x = x;
 var old_y = y;
 
 var _pathpercent = (((timer/1000) * spd) + offset) mod 1
-x = round(path_get_x(path, _pathpercent))
-y = round(path_get_y(path, _pathpercent)) + sink_offset
 
-/*
+if dir = "left"
+	_pathpercent = (1 - _pathpercent) // EVIL ASS MATH <:3c teehee kicks feet
+
+if path != noone
+{
+	x = round(path_get_x(path, _pathpercent))
+	y = round(path_get_y(path, _pathpercent)) + sink_offset
+}
+
 // Sink the platform
 var sinkcond = sink && col && p.ground;
 sink_offset = lerp(sink_offset, 8 * sinkcond, 0.2);
-*/
 
 // Move the player
 if(col && p.ground)

@@ -25,8 +25,8 @@
   "nineSlice":null,
   "origin":7,
   "parent":{
-    "name":"Base Stage",
-    "path":"folders/Objects/Stage Objects/Base Stage.yy",
+    "name":"Badniks",
+    "path":"folders/Sprites/Stage Sprites/Labyrinth/Badniks.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

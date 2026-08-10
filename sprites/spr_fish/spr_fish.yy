@@ -31,8 +31,8 @@
   "nineSlice":null,
   "origin":4,
   "parent":{
-    "name":"Base Stage",
-    "path":"folders/Objects/Stage Objects/Base Stage.yy",
+    "name":"Green Hill",
+    "path":"folders/Sprites/Stage Sprites/Green Hill.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

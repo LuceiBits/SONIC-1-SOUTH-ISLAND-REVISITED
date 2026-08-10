@@ -1,7 +1,9 @@
 {
   "$GMObject":"",
   "%Name":"obj_path_offsetter",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_path_offsetter",
   "overriddenProperties":[],
@@ -23,7 +25,16 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"path","filters":[
+        "GMPath",
+      ],"listItems":[],"multiselect":false,"name":"path","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"","varType":5,},
+    {"$GMObjectProperty":"v2","%Name":"spd","filters":[],"listItems":[],"multiselect":false,"name":"spd","rangeEnabled":true,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"1","varType":1,},
+    {"$GMObjectProperty":"v2","%Name":"dir","filters":[],"listItems":[
+        "\"right\"",
+        "\"left\"",
+      ],"multiselect":false,"name":"dir","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"right\"","varType":6,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
@@ -32,5 +43,5 @@
     "path":"sprites/spr_path_offsetter/spr_path_offsetter.yy",
   },
   "spriteMaskId":null,
-  "visible":true,
+  "visible":false,
 }
