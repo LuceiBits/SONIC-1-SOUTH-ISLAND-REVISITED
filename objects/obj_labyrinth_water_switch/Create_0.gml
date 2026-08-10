@@ -1,4 +1,4 @@
 image_speed = 0
 image_index = 0
 activated = false
-depth = 1000
+//depth = 1000

@@ -9,6 +9,11 @@
   "channelFormat":0,
   "compression":1,
   "compressionQuality":4,
+  "ConfigValues":{
+    "Dev":{
+      "audioGroupId":"{ \"name\":\"audiogroup_default\", \"path\":\"audiogroups/audiogroup_default\" }",
+    },
+  },
   "conversionMode":0,
   "duration":11.883923,
   "exportDir":"",
