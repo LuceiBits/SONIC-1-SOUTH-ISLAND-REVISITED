@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":21.923174,
+  "duration":11.883923,
   "exportDir":"",
   "name":"j_invincible",
   "parent":{
