@@ -307,6 +307,7 @@
     {"id":{"name":"rm_greenhill_2","path":"rooms/rm_greenhill_2/rm_greenhill_2.yy",},},
     {"id":{"name":"rm_greenhill_test","path":"rooms/rm_greenhill_test/rm_greenhill_test.yy",},},
     {"id":{"name":"rm_init","path":"rooms/rm_init/rm_init.yy",},},
+    {"id":{"name":"rm_labyrinth_1","path":"rooms/rm_labyrinth_1/rm_labyrinth_1.yy",},},
     {"id":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
     {"id":{"name":"rm_objtest","path":"rooms/rm_objtest/rm_objtest.yy",},},
     {"id":{"name":"rm_splash","path":"rooms/rm_splash/rm_splash.yy",},},
@@ -899,6 +900,7 @@
     {"roomId":{"name":"rm_template_collisions","path":"rooms/rm_template_collisions/rm_template_collisions.yy",},},
     {"roomId":{"name":"rm_blank","path":"rooms/rm_blank/rm_blank.yy",},},
     {"roomId":{"name":"rm_objtest","path":"rooms/rm_objtest/rm_objtest.yy",},},
+    {"roomId":{"name":"rm_labyrinth_1","path":"rooms/rm_labyrinth_1/rm_labyrinth_1.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
