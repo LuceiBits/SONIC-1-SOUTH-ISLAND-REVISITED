@@ -417,6 +417,7 @@
     {"id":{"name":"j_speedshoe","path":"sounds/j_speedshoe/j_speedshoe.yy",},},
     {"id":{"name":"j_super","path":"sounds/j_super/j_super.yy",},},
     {"id":{"name":"j_zone_complete","path":"sounds/j_zone_complete/j_zone_complete.yy",},},
+    {"id":{"name":"labyrinth_zone_act1_samwow","path":"sounds/labyrinth_zone_act1_samwow/labyrinth_zone_act1_samwow.yy",},},
     {"id":{"name":"sfx_air_warning","path":"sounds/sfx_air_warning/sfx_air_warning.yy",},},
     {"id":{"name":"sfx_beep","path":"sounds/sfx_beep/sfx_beep.yy",},},
     {"id":{"name":"sfx_blue_sphere","path":"sounds/sfx_blue_sphere/sfx_blue_sphere.yy",},},

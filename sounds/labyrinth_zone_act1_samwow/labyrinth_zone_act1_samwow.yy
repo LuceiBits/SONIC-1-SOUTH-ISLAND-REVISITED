@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"labyrinth_zone_act1_samwow",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":0,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":105.365875,
+  "exportDir":"",
+  "name":"labyrinth_zone_act1_samwow",
+  "parent":{
+    "name":"Stage Music",
+    "path":"folders/Sounds/Music/Stage Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"labyrinth_zone_act1_samwow.ogg",
+  "volume":1.0,
+}
