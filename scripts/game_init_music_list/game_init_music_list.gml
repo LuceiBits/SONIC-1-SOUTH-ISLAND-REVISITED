@@ -13,6 +13,9 @@ function game_init_music_list()
 	music_add(MUSIC.BONUS, bgm_bonus, 16.657, 92.33, true);
 	music_add(MUSIC.BLUE_SPHERES, bgm_blue_spheres, 6.923);
 	music_add(MUSIC.TEMP, bgm_temp, 0.000);
+	music_add(MUSIC.WATERFALL_ZONE, waterfall_zone_tripleb, 2.050,71.790,true);
+	music_add(MUSIC.LABYRINTH_ZONE_ACT_1, labyrinth_zone_act1_samwow, 3.900,105.360,true);
+	
 	
 	// General stage music:
 	music_add(MUSIC.MINI_BOSS, bgm_mini_boss, 6.923);
@@ -42,4 +45,6 @@ function game_init_music_list()
 		ACT_CLEAR,
 		SUPER,
 		TEMP,
+		WATERFALL_ZONE,
+		LABYRINTH_ZONE_ACT_1
 	}
