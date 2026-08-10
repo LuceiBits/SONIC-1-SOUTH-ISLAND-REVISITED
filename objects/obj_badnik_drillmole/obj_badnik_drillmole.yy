@@ -36,8 +36,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_ribbot",
-    "path":"sprites/spr_ribbot/spr_ribbot.yy",
+    "name":"spr_drillmole_walk",
+    "path":"sprites/spr_drillmole_walk/spr_drillmole_walk.yy",
   },
   "spriteMaskId":null,
   "visible":true,
