@@ -22,8 +22,8 @@ function game_init_music_list()
 	
 	// Game jingles:
 	music_add(MUSIC.GAME_OVER, j_game_over, 0.00, 0.00, false);
-	music_add(MUSIC.INVINCIBLE, j_invincible, 0.00, 0.00, false);
-	music_add(MUSIC.SPEEDSHOES, j_invincible, 0.00, 0.00, false);
+	music_add(MUSIC.INVINCIBLE, j_invincible,0.890,, true);
+	music_add(MUSIC.SPEEDSHOES, j_speedshoe,0.890,, true);
 	music_add(MUSIC.ACT_CLEAR, j_zone_complete, 0.00, 0.00, false);
 	music_add(MUSIC.SUPER, j_super, 0.565);
 }

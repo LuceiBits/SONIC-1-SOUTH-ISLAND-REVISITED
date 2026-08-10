@@ -6,11 +6,11 @@
     "path":"audiogroups/audiogroup_default",
   },
   "bitDepth":1,
-  "channelFormat":0,
+  "channelFormat":1,
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":22.613333,
+  "duration":11.883923,
   "exportDir":"",
   "name":"j_speedshoe",
   "parent":{

@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":8.256508,
+  "duration":6.0535827,
   "exportDir":"",
   "name":"j_zone_complete",
   "parent":{
