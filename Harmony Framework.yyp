@@ -484,6 +484,7 @@
     {"id":{"name":"sfx_warp_ring","path":"sounds/sfx_warp_ring/sfx_warp_ring.yy",},},
     {"id":{"name":"sfx_water_run","path":"sounds/sfx_water_run/sfx_water_run.yy",},},
     {"id":{"name":"sfx_water_splash","path":"sounds/sfx_water_splash/sfx_water_splash.yy",},},
+    {"id":{"name":"waterfall_zone_tripleb","path":"sounds/waterfall_zone_tripleb/waterfall_zone_tripleb.yy",},},
     {"id":{"name":"bg_grid","path":"sprites/bg_grid/bg_grid.yy",},},
     {"id":{"name":"spr_aaz_boss_block","path":"sprites/spr_aaz_boss_block/spr_aaz_boss_block.yy",},},
     {"id":{"name":"spr_aaz_bridge","path":"sprites/spr_aaz_bridge/spr_aaz_bridge.yy",},},
