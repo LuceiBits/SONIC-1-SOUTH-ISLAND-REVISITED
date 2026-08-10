@@ -1,46 +1,47 @@
 live_auto_call
 
-var player = player_find(0);
+/// @description Script
+// Update the culling bounding box to match the moving radius
+culling_struct.region.left = old_culling_box.left - range_x - PLATFORM_CULL_W;
+culling_struct.region.right = old_culling_box.right + range_x + PLATFORM_CULL_W;
+culling_struct.region.top = old_culling_box.top - range_y - PLATFORM_CULL_H;
+culling_struct.region.bottom = old_culling_box.bottom + range_y + PLATFORM_CULL_H;
+
+// Make it semi solid and find the player object
 var col = player_act_semi_solid();
+var p = player_find(0);
 
-var _ymiddle = y + sprite_get_height(sprite_index) / 2
+// Get the osscilator timer
+var timer = obj_level.platform_oscillate_timer;
 
+// Get previous position values
+var old_x = x;
+var old_y = y;
 
-if instance_exists(obj_water)
+// Position the platform
+//x = round(origin_x + range_x * dsin((timer * x_speed) + angle_x));
+//y = round(origin_y + range_y * dcos((timer * y_speed) + angle_y) + sink_offset);
+
+// Sink the platform
+var sinkcond = sink && col && p.ground;
+sink_offset = lerp(sink_offset, 8 * sinkcond, 0.2);
+
+// Move the player
+if(col && p.ground)
 {
-	if _ymiddle > obj_water.y
-		y_speed = math_approach(y_speed, -1, 0.1)
-	else
-		y_speed += 0.21875
+	p.x += x - old_x;
+	p.y += y - old_y;
 }
 
-
-
-if(!ground)
+// Carry attached objects
+var inst;
+for (var i = 0; i < ds_list_size(attached_list); ++i) 
 {
-	//Update position by speed
-	y += y_speed;
+	inst = attached_list[| i];
 		
-	//Gravity
-	if(!ground) 
-	{
-		y_speed += 0.2;
-	}
-		
-	//Collision
-	var c = collision_active_sensor(floor((bbox_right - bbox_left) / 2), floor(bbox_bottom - y - 1), COLLISION_MODE.FLOOR, PLANE.A, true);
-		
-	if(c.height < 0 && y_speed >= 0)
-	{
-		y_speed = 0;
-		ground = true;
-		y += c.height;
-	}
+	inst.x += x - old_x;
+	inst.y += y - old_y;
 }
-
-
-
-
 
 if mouse_check_button(mb_left)
 {

@@ -8,8 +8,8 @@
   "name":"obj_water_current",
   "overriddenProperties":[],
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Labyrinth",
+    "path":"folders/Objects/Stage Objects/Labyrinth.yy",
   },
   "parentObjectId":null,
   "persistent":false,

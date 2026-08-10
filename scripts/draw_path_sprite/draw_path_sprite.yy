@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"draw_path_sprite",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"draw_path_sprite",
+  "parent":{
+    "name":"shit",
+    "path":"folders/Scripts/shit.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
