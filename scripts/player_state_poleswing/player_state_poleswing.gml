@@ -1,7 +1,7 @@
 function player_state_poleswing()
 {
 	live_auto_call
-	
+
 	var movement = hold_right - hold_left;
 	
 	with pole_id

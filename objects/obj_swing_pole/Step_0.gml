@@ -8,7 +8,7 @@ if swing_pole_cooldown > 0
 
 
 
-if obj_player.state != player_state_watercurrent
+if obj_player.state != player_state_watercurrent && obj_player.state != player_state_death
 {
 	
 	if /*instance_place(x,y,obj_player)*/player_collide_object() && 
@@ -34,7 +34,7 @@ if obj_player.state != player_state_watercurrent
 }
 else
 {
-		if player_collide_object() && swing_pole_cooldown = 0 
+		if player_collide_object() && swing_pole_cooldown = 0 && obj_player.state != player_state_death
 	{
 		with obj_player
 		{
