@@ -76,6 +76,7 @@
 	dev_menu_add_category("SONIC 1 REVISITED");
 	dev_menu_add_entry("Techdemo", rm_techdemo_tower);
 	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
+	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
 	
 	//Add the presentation category
 	dev_menu_add_category("PRESENTATION");
