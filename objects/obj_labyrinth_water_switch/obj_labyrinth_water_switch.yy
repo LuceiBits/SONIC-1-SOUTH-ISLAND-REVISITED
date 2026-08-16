@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_water_level_set",
-    "path":"sprites/spr_water_level_set/spr_water_level_set.yy",
+    "name":"spr_water_level_set_debug",
+    "path":"sprites/spr_water_level_set_debug/spr_water_level_set_debug.yy",
   },
   "spriteMaskId":null,
   "visible":true,
