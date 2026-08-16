@@ -5,6 +5,7 @@ function level_reset_data()
 	global.checkpoint_id = noone;
 	global.checkpoint_type = CHECKPOINT.NORMAL;
 	global.time_store = 0;
+	global.water_level_store = -4;
 	global.rings = 0;
 	global.stage_timer = 0;
 	ds_list_clear(global.special_ring_store);

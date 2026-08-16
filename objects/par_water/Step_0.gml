@@ -6,3 +6,4 @@
 	
 	if y != level_target
 	obj_camera.camera_shake = 1
+	

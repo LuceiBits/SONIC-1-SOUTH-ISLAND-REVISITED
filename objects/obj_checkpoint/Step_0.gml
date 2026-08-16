@@ -20,6 +20,10 @@
 		//Store checkpoint timer
 		global.time_store = global.stage_timer;
 		
+		if instance_exists(obj_water)
+		global.water_level_store = obj_water.level_target
+		
+		
 		//Store backgrounds for next respawn
 		level_store_bg_visibility();
 		
