@@ -1,21 +1,19 @@
 {
   "$GMObject":"",
-  "%Name":"obj_corkblock",
+  "%Name":"obj_corkblock_DEPRECATED",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_corkblock",
+  "name":"obj_corkblock_DEPRECATED",
   "overriddenProperties":[],
   "parent":{
     "name":"Labyrinth",
     "path":"folders/Objects/Stage Objects/Labyrinth.yy",
   },
-  "parentObjectId":{
-    "name":"par_moving_platform",
-    "path":"objects/par_moving_platform/par_moving_platform.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,

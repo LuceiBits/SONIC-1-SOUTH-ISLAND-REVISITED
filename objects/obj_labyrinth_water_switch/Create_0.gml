@@ -22,4 +22,4 @@ image_xscale = 1
 
 x = target_x
 activated = false
-//depth = 1000
+depth += 100

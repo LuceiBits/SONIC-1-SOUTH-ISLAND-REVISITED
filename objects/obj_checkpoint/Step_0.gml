@@ -8,11 +8,13 @@
 		//Trigger the checkpoint
 		triggered = true;
 		
-		if global.rings >= MIN_BONUS_STAGE
-		{
-			showing_stars = true
-			star_type = 4
-		}
+		//if global.rings >= MIN_BONUS_STAGE
+		//{
+		//	showing_stars = true
+		//	star_type = 4
+		//}
+		
+		// DISABLED BONUS STAGE FOR SONIC 1 RE-GENESIS
 		
 		//Store checkpoint ID
 		global.checkpoint_id = id;

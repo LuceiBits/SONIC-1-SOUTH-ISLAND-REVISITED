@@ -25,7 +25,7 @@ if underwater
 	//	y = math_approach(y, ystart, 0.5)
 	
 	image_yscale = 1
-	animation_set_speed(animator, 1)
+	animation_set_speed(animator, 15)
 }
 else
 {

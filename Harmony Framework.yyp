@@ -230,6 +230,7 @@
     {"id":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},},
     {"id":{"name":"obj_collapsing_tile","path":"objects/obj_collapsing_tile/obj_collapsing_tile.yy",},},
     {"id":{"name":"obj_combine_ring","path":"objects/obj_combine_ring/obj_combine_ring.yy",},},
+    {"id":{"name":"obj_corkblock_DEPRECATED","path":"objects/obj_corkblock_DEPRECATED/obj_corkblock_DEPRECATED.yy",},},
     {"id":{"name":"obj_corkblock","path":"objects/obj_corkblock/obj_corkblock.yy",},},
     {"id":{"name":"obj_crumple_spring","path":"objects/obj_crumple_spring/obj_crumple_spring.yy",},},
     {"id":{"name":"obj_debris","path":"objects/obj_debris/obj_debris.yy",},},
