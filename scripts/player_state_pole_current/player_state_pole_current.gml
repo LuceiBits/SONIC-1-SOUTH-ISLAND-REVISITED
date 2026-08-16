@@ -1,8 +1,7 @@
 function player_state_pole_current()
 {
-	live_auto_call
 	
-		
+	live_auto_call
 	gravity_allow = false
 	
 	with pole_id
@@ -21,6 +20,8 @@ function player_state_pole_current()
 		var _movespeed = 2
 		
 		//x_speed = lengthdir_x(water_current_id.spd, _angle) + (_movespeed * _movx)
+		y_speed = 0
+		
 		y_speed = (_movespeed * _movy)		
 	
 	pole_anim_speed = 0

@@ -59,14 +59,16 @@
 			{
 				switch(menu_select)
 				{
-					//Start the whole game
+					//Start the whole game NOW CHAR SELECT
 					case 0:	
-						game_restart();
+						state = dev_menu_state.character_select;
+						//game_restart();
 					break;
 					
-					//Go to the character select
+					//Go to the character select NOW START GAME
 					case 1:
-						state = dev_menu_state.character_select;
+						//state = dev_menu_state.character_select;
+						game_restart();
 					break;
 					
 					//Go to options

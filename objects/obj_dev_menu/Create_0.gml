@@ -4,7 +4,7 @@
 	hold_h = 0;
 	hold_v = 0;
 	state = dev_menu_state.normal;
-	menu_list = ["START GAME", "STAGE SELECT", "OPTIONS", "EXIT GAME"];
+	menu_list = ["STAGE SELECT","START GAME", "OPTIONS", "EXIT GAME"];
 	menu_select = 0;
 	
 	//Suspend the game
@@ -57,8 +57,8 @@
 	
 	//Add all of the characters
 	dev_menu_add_character("SONIC");
-	dev_menu_add_character("TAILS");
-	dev_menu_add_character("KNUCKLES");
+	//dev_menu_add_character("TAILS");
+	//dev_menu_add_character("KNUCKLES");
 	
 	//Add all of option entries
 	dev_menu_add_option_number("Sound Volume", "sfx_volume", 0.0, 1.0, 0.05);
@@ -68,27 +68,29 @@
 	dev_menu_add_option_number("Window Size", "window_size", 1, 4, 1);
 	dev_menu_add_option_number("Camera Pan", "camera_pan_type", 0, 2, 1);
 	dev_menu_add_option_flag("Mania Camera", "camera_type");
-	dev_menu_add_option_flag("Spindash Flag", "use_spindash");
-	dev_menu_add_option_flag("Airroll Flag", "use_airroll");
-	dev_menu_add_option_flag("Dropdash Flag", "use_dropdash");
-	dev_menu_add_option_flag("Peelout Flag", "use_peelout");
+	//dev_menu_add_option_flag("Spindash Flag", "use_spindash");
+	//dev_menu_add_option_flag("Airroll Flag", "use_airroll");
+	//dev_menu_add_option_flag("Dropdash Flag", "use_dropdash");
+	//dev_menu_add_option_flag("Peelout Flag", "use_peelout");
+	// You're going to play labyrinth zone as god intended damn it ~ Samwow
 	
 	dev_menu_add_category("SONIC 1 REVISITED");
 	dev_menu_add_entry("Techdemo", rm_techdemo_tower);
 	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
+	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
 	
 	//Add the presentation category
-	dev_menu_add_category("PRESENTATION");
-	dev_menu_add_entry("SPLASH", rm_splash);
-	dev_menu_add_entry("TITLE SCREEN", rm_title_screen);
-	dev_menu_add_entry("MAIN MENU", rm_main_menu);
-	dev_menu_add_entry("STAGE SELECT", rm_stage_select);
+	//dev_menu_add_category("PRESENTATION");
+	//dev_menu_add_entry("SPLASH", rm_splash);
+	//dev_menu_add_entry("TITLE SCREEN", rm_title_screen);
+	//dev_menu_add_entry("MAIN MENU", rm_main_menu);
+	//dev_menu_add_entry("STAGE SELECT", rm_stage_select);
 	
 	//Add the presentation category
-	dev_menu_add_category("REGULAR STAGES");
-	dev_menu_add_entry("YOUR LEVEL", rm_techdemo_tower);
-	dev_menu_add_entry("ARBOREAL AGATE 1", rm_arboreal_agate1);
-	dev_menu_add_entry("ARBOREAL AGATE 2", rm_arboreal_agate2);
+	//dev_menu_add_category("REGULAR STAGES");
+	//dev_menu_add_entry("YOUR LEVEL", rm_techdemo_tower);
+	//dev_menu_add_entry("ARBOREAL AGATE 1", rm_arboreal_agate1);
+	//dev_menu_add_entry("ARBOREAL AGATE 2", rm_arboreal_agate2);
 	
 	//Add all of the rooms
 	dev_menu_add_category("EVERY SCENE");
