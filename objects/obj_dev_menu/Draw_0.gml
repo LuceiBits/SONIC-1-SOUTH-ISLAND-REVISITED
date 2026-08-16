@@ -26,7 +26,7 @@
 	draw_set_valign(fa_top);
 	
 	//Draw the game header
-	draw_text(center_x, center_y - 64, "HARMONY FRAMEWORK DEV MENU");
+	draw_text(center_x, center_y - 64, "SONIC 1 RE-GENESIS EARLY TEST BUILD");
 	draw_set_color(unselected_text_color);
 	draw_text(center_x, center_y - 48, window_get_caption());
 	draw_text(center_x, center_y - 40, GM_version);

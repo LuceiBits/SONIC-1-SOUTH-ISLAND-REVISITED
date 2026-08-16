@@ -1,3 +1,5 @@
+	exit; // TEMP DELETE WHEN DOING MENU STUFF
+	
 	draw_sprite(spr_title_background, 0, CAMERA_VIEW_W / 2, CAMERA_VIEW_H / 2);
 	
 	var animScale = scale_test;

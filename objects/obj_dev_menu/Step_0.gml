@@ -1,15 +1,17 @@
 /// @description Script
 
 	//Exit the dev menu
-	if(keyboard_check_pressed(vk_escape) && cool_down = 0 || input_press(INPUT.B) && cool_down = 0 && state == dev_menu_state.normal)
+	if room != rm_title_screen
 	{
-		//Trigger the window event
-		game_call_window_resize();
+		if(keyboard_check_pressed(vk_escape) && cool_down = 0 || input_press(INPUT.B) && cool_down = 0 && state == dev_menu_state.normal) 
+		{
+			//Trigger the window event
+			game_call_window_resize();
 		
-		global.process_objects = true;
-		instance_destroy();
+			global.process_objects = true;
+			instance_destroy();
+		}
 	}
-	
 	//Cool down the exit timer
 	cool_down = max(cool_down - 1, 0);
 	
@@ -68,7 +70,10 @@
 					//Go to the character select NOW START GAME
 					case 1:
 						//state = dev_menu_state.character_select;
-						game_restart();
+						global.process_objects = true;
+						fade_to_room(rm_greenhill_test, 2, FADE_COLOR.WHITE, 30);
+						with obj_dev
+						alarm[2] = 100
 					break;
 					
 					//Go to options
@@ -192,6 +197,8 @@
 				
 				//Go to the room
 				room_goto(scene_room[category_select + 1][scene_select]);
+				with obj_dev
+				alarm[2] = 10 // turn on collisions for proto builds
 			}
 		break;
 		

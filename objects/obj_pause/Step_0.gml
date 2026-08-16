@@ -104,7 +104,10 @@
 						room_restart();
 					}
 					else
-						room_goto(rm_main_menu);
+					{
+						//room_goto(rm_main_menu);
+						room_goto(rm_title_screen);
+					}
 				}
 			}
 			

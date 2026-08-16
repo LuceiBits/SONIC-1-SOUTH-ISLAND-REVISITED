@@ -5,7 +5,7 @@
 	
 	fade_in_room(2);
 	
-	music_play(MUSIC.TITLE);
+	music_play(MUSIC.LABYRINTH_ZONE_ACT_2);
 	
 	sonic_face = new animator_create();
 	sonic_face_timer = 0;

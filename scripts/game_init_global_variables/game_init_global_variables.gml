@@ -26,6 +26,7 @@ function game_init_global_variables()
 	global.special_ring_x = 0;
 	global.special_ring_y = 0;
 	global.special_ring_store = ds_list_create();
+	global.water_level_store = -4; // water level for loading from checkpoints
 	
 	global.bonus_room = rm_bonus				//Which bonus stage a checkpoint sends you to
 	global.store_object_state = ds_list_create();
