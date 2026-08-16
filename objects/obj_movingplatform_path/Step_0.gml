@@ -2,10 +2,10 @@ live_auto_call
 
 /// @description Script
 // Update the culling bounding box to match the moving radius
-culling_struct.region.left = old_culling_box.left/* - range_x*/ - PLATFORM_CULL_W;
-culling_struct.region.right = old_culling_box.right/* + range_x*/ + PLATFORM_CULL_W;
-culling_struct.region.top = old_culling_box.top/* - range_y*/ - PLATFORM_CULL_H;
-culling_struct.region.bottom = old_culling_box.bottom/* + range_y*/ + PLATFORM_CULL_H;
+//culling_struct.region.left = old_culling_box.left/* - range_x*/ - PLATFORM_CULL_W;
+//culling_struct.region.right = old_culling_box.right/* + range_x*/ + PLATFORM_CULL_W;
+//culling_struct.region.top = old_culling_box.top/* - range_y*/ - PLATFORM_CULL_H;
+//culling_struct.region.bottom = old_culling_box.bottom/* + range_y*/ + PLATFORM_CULL_H;
 
 // Make it semi solid and find the player object
 var col = player_act_semi_solid();

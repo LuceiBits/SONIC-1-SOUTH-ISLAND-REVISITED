@@ -107,7 +107,12 @@
 			obj_player.speed_shoes = 1200;
 		}
 		
-		//Combine Rings
+		if(keyboard_check_pressed(vk_backspace))
+		{
+		change_water_level(obj_player.y + 32,32)
+		}
+		
+			//Combine Rings
 		if(keyboard_check_pressed(ord("6")))
 		{
 			obj_player.combinering = 1;
@@ -135,7 +140,7 @@
 			obj_player.y = t.y;
 			obj_camera.camera_x = t.x;
 			obj_camera.camera_y = t.y;
-			
+			global.rings = 1
 			obj_camera.target_x = obj_camera.camera_x;
 			obj_camera.target_y = obj_camera.camera_y - 16;
 			obj_camera.target_right = room_width;
@@ -151,6 +156,9 @@
 			teleport_id %= instance_number(obj_debug_teleport);
 		}
 	}
+	
+
+	
 	//Stop if player doesn't exist
 	if(!instance_exists(obj_player)) exit;
 		

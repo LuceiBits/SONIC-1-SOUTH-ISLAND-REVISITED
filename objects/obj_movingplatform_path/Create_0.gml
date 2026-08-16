@@ -6,17 +6,17 @@ sink_offset = 0;
 origin_x = xstart
 origin_y = ystart
 	
-culling_box = _instance_make_hitbox(id)
+//culling_box = _instance_make_hitbox(id)
 	
-instance_register_culling(culling_box, noone, CULL_FLAG.CHECK_ENTITY_START);
+//instance_register_culling(culling_box, noone, CULL_FLAG.CHECK_ENTITY_START);
 	
-old_culling_box = 
-{
-	left	: culling_struct.region.left,
-	right	: culling_struct.region.right,
-	top		: culling_struct.region.top,
-	bottom	: culling_struct.region.bottom
-};
+//old_culling_box = 
+//{
+//	left	: culling_struct.region.left,
+//	right	: culling_struct.region.right,
+//	top		: culling_struct.region.top,
+//	bottom	: culling_struct.region.bottom
+//};
 
 /*
 attached_list = ds_list_create();
