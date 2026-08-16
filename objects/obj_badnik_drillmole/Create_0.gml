@@ -19,6 +19,7 @@
 	
 	on_reset = function()
 	{
+		animation_play(animator, 0, true);
 		x_speed = 0;
 		y_speed = 0;
 		grounded = true
