@@ -42,10 +42,10 @@ if (instance_place(x,y,obj_player) && bounce_delay = 0 && visible = true) || (in
 	}
 }
 
-if bounce_delay > 0
+if bounce_delay > 0 || bbox_top < obj_water.y
 {
 	visible = false
 	bounce_delay -= 1
 }
-else
+else if bbox_top > obj_water.y
 	visible = true
