@@ -316,6 +316,7 @@
     {"id":{"name":"path_test_1","path":"paths/path_test_1/path_test_1.yy",},},
     {"id":{"name":"path_test_2","path":"paths/path_test_2/path_test_2.yy",},},
     {"id":{"name":"path_test_3","path":"paths/path_test_3/path_test_3.yy",},},
+    {"id":{"name":"Path4","path":"paths/Path4/Path4.yy",},},
     {"id":{"name":"rm_arboreal_agate1","path":"rooms/rm_arboreal_agate1/rm_arboreal_agate1.yy",},},
     {"id":{"name":"rm_arboreal_agate2","path":"rooms/rm_arboreal_agate2/rm_arboreal_agate2.yy",},},
     {"id":{"name":"rm_blank","path":"rooms/rm_blank/rm_blank.yy",},},
