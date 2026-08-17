@@ -24,8 +24,8 @@ if obj_player.state != player_state_watercurrent && obj_player.state != player_s
 			pole_id = other.id
 			pole_xspd_save = x_speed
 			//y_speed = (abs(x_speed)*0.9) * sign(y_speed)
-			if y_speed < 0
-				y_speed = min(-abs(x_speed), y_speed)
+			//if y_speed < 0
+			y_speed = -abs(x_speed)
 			x_speed = 0
 			state = player_state_poleswing
 			animation_play(animator, ANIM.POLESWING);
