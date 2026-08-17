@@ -20,9 +20,9 @@
 		x = origin_x
 
 		var c = collision_get_distance(x, bbox_top, COLLISION_MODE.CEILING, PLANE.A, true)
-		show_debug_message("CEILING_DISTANCE: " + string(c))
+		//show_debug_message("CEILING_DISTANCE: " + string(c))
 		var b = collision_get_distance(x, bbox_bottom, COLLISION_MODE.FLOOR, PLANE.A, true)
-		show_debug_message("GROUND_DISTANCE: " + string(b))
+		//show_debug_message("GROUND_DISTANCE: " + string(b))
 
 
 		if b < 0 && top_collision = false

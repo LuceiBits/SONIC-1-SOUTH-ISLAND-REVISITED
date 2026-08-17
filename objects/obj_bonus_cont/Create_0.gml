@@ -4,3 +4,5 @@
 	}
 	
 	exiting = false;
+	
+	targetRoom = obj_level.next_level

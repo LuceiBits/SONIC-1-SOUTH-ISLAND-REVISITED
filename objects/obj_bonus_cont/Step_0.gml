@@ -8,9 +8,11 @@
 			obj_player.visible = false;	
 			obj_player.input_disable = true;
 			
-			// Fade back to the level
-			fade_to_room(global.previous_room, 2, FADE_COLOR.BLACK, 30);
-			music_fade_channel(BGM, FADE.OUT, 2);
+			// Fade back to the NEXT level
+			level_reset_data();
+			//level_reset_bg_visibility();
+			room_goto(obj_level.next_level);
+			//music_fade_channel(BGM, FADE.OUT, 2);
 			
 			// Set the flag
 			other.exiting = true;
