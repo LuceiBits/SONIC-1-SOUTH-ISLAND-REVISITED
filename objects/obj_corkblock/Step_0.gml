@@ -6,7 +6,17 @@
 	//culling_struct.region.bottom = old_culling_box.bottom + range_y + PLATFORM_CULL_H;
 	
 	// Make it semi solid and find the player object
+	if !solid_cork
+	{
+	sprite_index = spr_corkblock
 	var col = player_act_semi_solid();
+	}
+	else
+	{
+	sprite_index = spr_corkblock
+	var col = player_act_solid();
+	}
+	
 	var p = player_find(0);
 	
 	// Get the osscilator timer
