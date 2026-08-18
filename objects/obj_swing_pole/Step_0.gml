@@ -8,7 +8,7 @@ if swing_pole_cooldown > 0
 
 
 
-if obj_player.state != player_state_watercurrent && obj_player.state != player_state_death
+if obj_player.state != player_state_watercurrent && obj_player.state != player_state_death && obj_player.state != player_state_poleswing
 {
 	
 	if /*instance_place(x,y,obj_player)*/player_collide_object() && 
@@ -27,14 +27,14 @@ if obj_player.state != player_state_watercurrent && obj_player.state != player_s
 			//if y_speed < 0
 			y_speed = -abs(x_speed)
 			x_speed = 0
+			if state != player_state_poleswing
 			state = player_state_poleswing
-			animation_play(animator, ANIM.POLESWING);
 		}
 	}
 }
 else
 {
-		if player_collide_object() && swing_pole_cooldown = 0 && obj_player.state != player_state_death
+		if player_collide_object() && swing_pole_cooldown = 0 && obj_player.state != player_state_death && obj_player.state != player_state_poleswing
 	{
 		with obj_player
 		{
