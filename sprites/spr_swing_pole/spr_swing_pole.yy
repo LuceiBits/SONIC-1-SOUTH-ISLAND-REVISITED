@@ -24,7 +24,7 @@
   "name":"spr_swing_pole",
   "nineSlice":{
     "$GMNineSliceData":"",
-    "bottom":4,
+    "bottom":8,
     "enabled":true,
     "guideColour":[4294902015,4294902015,4294902015,4294902015,],
     "highlightColour":1728023040,
@@ -40,7 +40,7 @@
       0,
       1,
     ],
-    "top":18,
+    "top":8,
   },
   "origin":7,
   "parent":{
