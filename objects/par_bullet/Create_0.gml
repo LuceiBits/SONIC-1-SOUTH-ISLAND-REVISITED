@@ -3,3 +3,5 @@
 	y_speed = 0;
 	grav = 0;
 	bounce = false;
+	water_kill = false;
+	solid_kill = false;

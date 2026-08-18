@@ -1,5 +1,9 @@
 /// @description Script
-	
+	if water_kill = true && instance_exists(obj_water)
+		{
+		if y > obj_water.y
+		instance_destroy()
+		}
 	//Update speeds
 	x += x_speed;
 	y += y_speed;
@@ -28,6 +32,17 @@
 			}
 		}
 	}
+	
+	if solid_kill
+		{
+		var fcheck = collision_get_distance(x, y + 15, COLLISION_MODE.FLOOR, PLANE.A, true);
+		var wallcheck = collision_get_distance(x + 12 * badnikdirection, y, badnikdirection ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, PLANE.A, true);	
+	
+		if fcheck <= 1 || wallcheck <= 1
+		instance_destroy()
+		}
+	
+	
 	//Destroy off screen
 	if(!instance_on_screen(64, 64)) 
 	{

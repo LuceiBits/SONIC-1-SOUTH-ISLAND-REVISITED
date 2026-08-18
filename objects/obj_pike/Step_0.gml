@@ -34,7 +34,7 @@ toggle_timer -= 1
 
 player_spike_parry(x,y)
 
-if place_meeting(x,y,obj_player) && obj_player.state != player_state_death
+if place_meeting(x,y,obj_player) && obj_player.state != player_state_death && obj_player.state != player_state_drown
 {
 	
 var center_x = floor((obj_player.x + 16)/32) * 32;
