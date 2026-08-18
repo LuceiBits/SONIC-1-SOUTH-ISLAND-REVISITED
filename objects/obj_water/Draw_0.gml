@@ -50,4 +50,4 @@
 	*/
 	//Draw the water horizon
 	for(var i = 0; i < screen_width + 2; i++)
-		draw_sprite(sprite_index, FRAME_TIMER * anim_speed, (round(cx/spr_width)*spr_width)+spr_width*i, y);
+		draw_sprite_ext(sprite_index, FRAME_TIMER * anim_speed, (round(cx/spr_width)*spr_width)+spr_width*i,y,1,1,0,c_white,0.5);
