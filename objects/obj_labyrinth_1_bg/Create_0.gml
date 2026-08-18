@@ -8,7 +8,7 @@
 	
 	// You may use fractions as parallax factors too!
 	background_add(bg_labyrinth_hl, 0, 2/3, 2/3, 0, 0, 0, 512, true); //ID 0
-	background_add_line(spr_bg_aaz_water, 1, 2/3, 2/3, 0, 0, 0, 4100, 1, (2/3)/96); //ID 1
+	background_add_line(spr_bg_aaz_water, 1, 2/3, 2/3, 0.25, 0, 0, 4100, 1, (2/3)/96); //ID 1
 	
 
 	
