@@ -76,7 +76,7 @@ sprite_index = spr_waterfall_2x4_up_left
 exit;
 }
 
-
+image_speed = 1.2
 
 
 
