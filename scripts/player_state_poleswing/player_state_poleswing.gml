@@ -53,14 +53,7 @@ function player_state_poleswing()
 	{
 		with pole_id
 		{
-			if destroyable = true
-			{
-			other.pole_id = noone
-			instance_destroy()
-			}
-			
-			swing_pole_cooldown = 10
-			
+			swing_pole_cooldown = 10	
 		}
 		
 		if movement != 0
@@ -74,8 +67,20 @@ function player_state_poleswing()
 		if x_speed != 0
 			facing = sign(x_speed)
 		state = player_state_jump
-		pole_id = noone
+		
 		jump_buffer = 0
+		
+		with pole_id
+		{
+			if destroyable = true
+			{
+			other.pole_id = noone
+			instance_destroy()
+			}
+		}
+		
+		pole_id = noone
+			
 		exit;
 	}
 
