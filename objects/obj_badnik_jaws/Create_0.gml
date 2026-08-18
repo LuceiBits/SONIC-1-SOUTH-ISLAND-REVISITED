@@ -11,6 +11,7 @@ badnikdirection = 1
 grounded = true;
 x_speed = 0;
 y_speed = 0;
+force_jump = false
 animator = new animator_create();
 	
 on_reset = function()
@@ -18,7 +19,7 @@ on_reset = function()
 	x = xstart;	
 	y = ystart;	
 	waittimer = 0;
-	
+	force_jump = true
 	if y > obj_water.bbox_top
 	underwater = true
 	else
@@ -33,7 +34,7 @@ on_reset = function()
 	
 }
 	
-instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
+instance_register_culling([-64, -64, 64, 64], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
 	
 animation_add(0, sprite_index, 15);
 animation_play(animator, 0);

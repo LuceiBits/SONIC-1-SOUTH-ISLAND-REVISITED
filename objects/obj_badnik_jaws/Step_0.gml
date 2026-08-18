@@ -36,10 +36,11 @@ else
 	if(y_speed > 0)
 	{
 		//var c = collision_get_distance(x, y, COLLISION_MODE.FLOOR, PLANE.A, true)
-		if(fcheck < 0)
+		if(fcheck < 0) || force_jump = true
 		{
+			force_jump = false
 			x_speed *= -1;
-			y_speed = -5
+			y_speed = -4
 			animator_reset(animator);
 			
 			// Snap it to the floor
