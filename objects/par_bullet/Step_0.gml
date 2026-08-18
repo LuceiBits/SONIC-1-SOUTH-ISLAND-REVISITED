@@ -35,8 +35,8 @@
 	
 	if solid_kill
 		{
-		var fcheck = collision_get_distance(x, y + 15, COLLISION_MODE.FLOOR, PLANE.A, true);
-		var wallcheck = collision_get_distance(x + 12 * badnikdirection, y, badnikdirection ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, PLANE.A, true);	
+		var fcheck = collision_get_distance(x, y, COLLISION_MODE.FLOOR, PLANE.A, true);
+		var wallcheck = collision_get_distance(x, y, image_xscale ? COLLISION_MODE.LEFT_WALL : COLLISION_MODE.RIGHT_WALL, PLANE.A, true);	
 	
 		if fcheck <= 1 || wallcheck <= 1
 		instance_destroy()
