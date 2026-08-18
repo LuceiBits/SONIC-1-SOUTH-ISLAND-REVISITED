@@ -37,3 +37,16 @@ function set_collision_colors()
 	
 	show_debug_message("COLLISION COLORS SET")
 }
+
+function colour_get_inverse(_color)
+{
+	var _r = colour_get_red(_color)
+	var _g = colour_get_green(_color)
+	var _b = colour_get_blue(_color)
+	
+	var _ir = (255 - _r) mod 256
+	var _ig = (255 - _g) mod 256
+	var _ib = (255 - _b) mod 256
+	
+	return make_colour_rgb(_ir, _ig, _ib)
+}
