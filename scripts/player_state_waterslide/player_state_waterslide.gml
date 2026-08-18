@@ -27,7 +27,7 @@ function player_state_waterslide()
 		exit;
 	}
 	
-	var pseudo_clamp = 20 // clamp speed gain
+	var pseudo_clamp = 15 // clamp speed gain
 	
 	if on_terrain = true
 	{
