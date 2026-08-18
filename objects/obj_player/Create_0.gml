@@ -11,6 +11,7 @@ x_dir = 0;							// Multiplier for horizontal ground movement
 y_dir = 1;							// Multiplier for vertical ground movement
 steps = 1;							// Variable used for precise collision
 control_lock = 0;					// Timer used for locking controls when you're on steep slopes
+jump_lock = 0;						// Disable Jumping for a set period of time, decrements
 ceiling_landing = 0;				// Ceiling landing state machine
 plane = PLANE.A;					// Collision planes/layers
 floor_delay = 0;					// Delay timer for when player changes floor mode, hacky fix for jittery mode changes
