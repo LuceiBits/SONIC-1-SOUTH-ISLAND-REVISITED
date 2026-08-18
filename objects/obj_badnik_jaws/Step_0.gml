@@ -39,7 +39,7 @@ else
 		if(fcheck < 0)
 		{
 			x_speed *= -1;
-			y_speed = -3
+			y_speed = -5
 			animator_reset(animator);
 			
 			// Snap it to the floor
