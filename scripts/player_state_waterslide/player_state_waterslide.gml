@@ -4,10 +4,11 @@ function player_state_waterslide()
 	
 	animation_play(animator, ANIM.HURT)
 	
+
 	control_lock = 2
 	
 
-	if (jump_buffer || press_action) && ground
+	if (jump_buffer || press_action) && (on_terrain || ground) && jump_lock = 0
 	{
 		on_terrain = false
 		ground = false
@@ -17,23 +18,30 @@ function player_state_waterslide()
 		exit;
 	}
 
-	if (ground && y_speed >= 0) || underwater
+	if (!ground && y_speed >= 0) || underwater
 	{
+		show_debug_message("why am i being triggered" + "| ground?: " + string(ground) + "| on_terrain?: " + string(on_terrain))
 		on_terrain = false
 		control_lock = 0
 		state = player_state_normal
 		exit;
 	}
 	
-	var pseudo_clamp = 10 // clamp speed gain
+	var pseudo_clamp = 20 // clamp speed gain
 	
 	if on_terrain = true
 	{
-	if abs(ground_speed) > pseudo_clamp
+	if ground_speed > pseudo_clamp
+	{
+	show_debug_message("clamp speed right?")
 	ground_speed = pseudo_clamp
+	}
 	
-	if abs(ground_speed) * -1 < (pseudo_clamp * -1)
-	ground_speed = pseudo_clamp
+	if ground_speed < (pseudo_clamp * -1)
+	{
+	show_debug_message("clamp speed left?")
+	ground_speed = pseudo_clamp * -1
+	}
 	}
 	
 	

@@ -5,6 +5,7 @@ function player_misc()
 	//Subtract timers
 	control_lock = max(control_lock-1, 0);
 	ceiling_lock = max(ceiling_lock-1, 0);
+	jump_lock = max(jump_lock-1, 0);
 
 	//Kill the player after time has reached the limit
 	//if(global.stage_timer == 599999) 
