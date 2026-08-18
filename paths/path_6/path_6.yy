@@ -1,12 +1,12 @@
 {
   "$GMPath":"",
-  "%Name":"Path6",
+  "%Name":"path_6",
   "closed":true,
   "kind":0,
-  "name":"Path6",
+  "name":"path_6",
   "parent":{
-    "name":"Arboreal Agate",
-    "path":"folders/Objects/Stage Objects/Arboreal Agate.yy",
+    "name":"Test",
+    "path":"folders/Paths/Test.yy",
   },
   "points":[
     {"speed":100.0,"x":12832.0,"y":13664.0,},

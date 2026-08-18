@@ -30,7 +30,14 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[],
+  "properties":[
+    {"$GMObjectProperty":"v2","%Name":"draw_side","filters":[],"listItems":[
+        "\"Left\"",
+        "\"Bottom\"",
+        "\"Top\"",
+        "\"Right\"",
+      ],"multiselect":false,"name":"draw_side","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Top\"","varType":6,},
+  ],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
