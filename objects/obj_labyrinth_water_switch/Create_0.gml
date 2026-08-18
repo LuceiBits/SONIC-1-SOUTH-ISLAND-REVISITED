@@ -22,4 +22,4 @@ image_xscale = 1
 
 x = target_x
 activated = false
-depth += 500
+depth = obj_player.depth + 500
