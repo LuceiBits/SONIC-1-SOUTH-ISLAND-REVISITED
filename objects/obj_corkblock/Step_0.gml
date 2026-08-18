@@ -13,7 +13,7 @@
 	}
 	else
 	{
-	sprite_index = spr_corkblock
+	sprite_index = spr_floatingdoor
 	var col = player_act_solid();
 	}
 	

@@ -28,6 +28,7 @@ function player_animation_list()
 		CORKSCREW,
 		DROPDASH,
 		POLESWING,
+		WATER_TUNNEL,
 		
 		TAILSFLY,
 		TAILSTIRED,
@@ -92,7 +93,8 @@ function player_animation_list()
 		animation_add(ANIM.TRANSFORM, spr_sonic_transform, 0.4, 3, true, false);
 		animation_add(ANIM.CORKSCREW, spr_sonic_corkscrew, 0.2, 0, true, false);
 		animation_add(ANIM.DROPDASH, spr_sonic_dropdash, 0.5, 1, true, false);
-		animation_add(ANIM.POLESWING, spr_sonic_poleswing, 0.2, 0, true, false);
+		animation_add(ANIM.POLESWING, spr_sonic_poleswing, 0.2, 0, true, true);
+		animation_add(ANIM.WATER_TUNNEL, spr_sonic_tunnel, 4, 0, true, true);
 		break;
 		
 		case CHAR_TAILS:

@@ -7,8 +7,13 @@ function player_state_poleswing()
 	with pole_id
 		other.x = x
 	
-	pole_anim_speed = abs(y_speed)
-	animation_set_duration(animator, pole_anim_speed)
+	pole_anim_speed = abs(pole_xspd_save)
+	if !animation_is_playing(animator,ANIM.POLESWING)
+	{
+	animation_play(animator, ANIM.POLESWING);
+	pole_anim_speed = clamp(pole_anim_speed,2,pole_anim_speed)
+	animation_set_duration(animator, 10/ pole_anim_speed,ANIM.POLESWING)
+	}
 	//show_debug_message(animation_get_duration(animator))
 	
 	if !ground
