@@ -2,10 +2,13 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = MUSIC.INVINCIBLE
+		stage_music = MUSIC.LABYRINTH_ZONE_ACT_2
 		
-		//Set level state
-		level_state = LEVEL_STATE.BONUS;
+		//Set level name
+		stage_name = "PLAYTEST END!";
+		
+		//Set stage act
+		act = 0;
 		
 		//Is next level doing act transition in case if you do a multi-zone level.
 		act_transition = false;
@@ -14,8 +17,5 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		if global.previous_room = rm_labyrinth_1
-		next_level = rm_playtest_end;
-		else
-		next_level = rm_labyrinth_1
+		next_level = room;
 	}

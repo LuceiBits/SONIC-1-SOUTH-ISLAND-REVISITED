@@ -75,7 +75,7 @@
 	// You're going to play labyrinth zone as god intended damn it ~ Samwow
 	
 	dev_menu_add_category("SONIC 1 REVISITED");
-	dev_menu_add_entry("Techdemo", rm_techdemo_tower);
+	dev_menu_add_entry("Test Level (Not a Real Zone)", rm_techdemo_tower);
 	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
 	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
 	
@@ -93,13 +93,16 @@
 	//dev_menu_add_entry("ARBOREAL AGATE 2", rm_arboreal_agate2);
 	
 	//Add all of the rooms
-	dev_menu_add_category("EVERY SCENE");
-	var r = room_first;
-	var i=0;
-	dev_menu_add_entry(room_get_name(r), r);
-	while(r!=room_last)
+	if os_get_config() = "Dev" // disable every scene if playtest build to avoid confusion
 	{
-		r = room_next(r);
-		i++;
+		dev_menu_add_category("EVERY SCENE");
+		var r = room_first;
+		var i=0;
 		dev_menu_add_entry(room_get_name(r), r);
+		while(r!=room_last)
+		{
+			r = room_next(r);
+			i++;
+			dev_menu_add_entry(room_get_name(r), r);
+		}
 	}

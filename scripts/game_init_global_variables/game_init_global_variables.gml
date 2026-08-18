@@ -15,8 +15,8 @@ function game_init_global_variables()
 	global.draw_state = ds_stack_create();
 	
 	//Setup volume
-	global.bgm_volume = 0.8;					//Music's channel volume
-	global.sfx_volume = 0.5;					//Sound effects volume
+	global.bgm_volume = 0.6;					//Music's channel volume
+	global.sfx_volume = 0.3;					//Sound effects volume
 	
 	//Checkpoint values
 	global.checkpoint = ds_list_create();	//The list of active checkpoints

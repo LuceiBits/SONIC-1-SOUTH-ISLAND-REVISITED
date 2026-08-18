@@ -17,5 +17,5 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		next_level = room;
+		next_level = rm_playtest_end;
 	}

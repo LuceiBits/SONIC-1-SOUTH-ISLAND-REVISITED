@@ -9,8 +9,8 @@
   "name":"obj_waterslide_visual",
   "overriddenProperties":[],
   "parent":{
-    "name":"UNFINISHED TESTS",
-    "path":"folders/Objects/UNFINISHED TESTS.yy",
+    "name":"Labyrinth",
+    "path":"folders/Objects/Stage Objects/Labyrinth.yy",
   },
   "parentObjectId":null,
   "persistent":false,

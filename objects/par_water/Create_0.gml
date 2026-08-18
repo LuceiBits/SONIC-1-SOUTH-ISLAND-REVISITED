@@ -24,6 +24,9 @@ switch room
 	case rm_labyrinth_1:
 		water_color = $6FDBAE//$6FDBFF//$6FDB8C//$6FDBDB
 	break;
+	case rm_greenhill_test:
+		water_color = $6FDBAE//$6FDBFF//$6FDB8C//$6FDBDB
+	break;
 }
 
 water_color = colour_get_inverse(water_color)

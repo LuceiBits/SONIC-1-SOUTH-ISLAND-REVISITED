@@ -1,7 +1,7 @@
 /// @description Dev menu
 	room_speed = 60;
 	
-	if(keyboard_check_pressed(vk_escape) && !instance_exists(obj_dev_menu) && !obj_shell.isOpen)
+	if(keyboard_check_pressed(vk_escape) && !instance_exists(obj_dev_menu) && !obj_shell.isOpen) && os_get_config() = "Dev"
 	{
 		instance_create_depth(0, 0, -99999, obj_dev_menu)
 	}
@@ -9,6 +9,9 @@
 	//Destroy just in case
 	if(!global.dev_mode) 
 		instance_destroy();
+	
+	if os_get_config() != "Dev"
+	exit;
 	
 	//Go to level select
 	if(keyboard_check_pressed(ord("M")) && !obj_shell.isOpen)
@@ -132,7 +135,7 @@
 		}
 		
 		//Toggle teleport
-		if(keyboard_check_pressed(vk_space) && instance_exists(obj_debug_teleport))
+		if(keyboard_check_pressed(vk_space) && instance_exists(obj_debug_teleport)) && os_get_config() = "Dev"
 		{
 			var t = instance_find(obj_debug_teleport, teleport_id);
 		

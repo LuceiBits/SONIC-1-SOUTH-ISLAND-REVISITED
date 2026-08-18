@@ -1,10 +1,10 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = MUSIC.TECHDEMO_TOWER
+		stage_music = MUSIC.LABYRINTH_ZONE_ACT_2
 		
 		//Set level name
-		stage_name = "Techdemo Tower";
+		stage_name = "Test Level";
 		
 		//Set stage act
 		act = 0;
@@ -16,5 +16,5 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		next_level = room;
+		next_level = rm_greenhill_test;
 	}
