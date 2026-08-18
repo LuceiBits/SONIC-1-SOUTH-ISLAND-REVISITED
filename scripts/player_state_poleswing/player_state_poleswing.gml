@@ -33,11 +33,13 @@ function player_state_poleswing()
 		if movement != 0
 		{
 			ground_speed = (abs(pole_xspd_save) + abs(y_speed/2)) * movement
+			x_speed = (abs(pole_xspd_save) + abs(y_speed/2)) * movement
 			//facing = movement
 		}
 		else
 		{
 			ground_speed = (abs(pole_xspd_save) + abs(y_speed/2)) * image_xscale
+			x_speed = (abs(pole_xspd_save) + abs(y_speed/2)) * image_xscale
 			//facing = image_xscale
 		}
 		
@@ -50,7 +52,16 @@ function player_state_poleswing()
 	if jump_buffer || press_action || y < pole_id.bbox_top || y > pole_id.bbox_bottom - 10
 	{
 		with pole_id
+		{
+			if destroyable = true
+			{
+			other.pole_id = noone
+			instance_destroy()
+			}
+			
 			swing_pole_cooldown = 10
+			
+		}
 		
 		if movement != 0
 			x_speed = abs(pole_xspd_save) * movement
