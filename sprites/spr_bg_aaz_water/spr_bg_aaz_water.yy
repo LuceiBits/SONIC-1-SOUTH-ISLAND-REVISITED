@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Dev":{
-      "textureGroupId":"{ \"name\":\"ArborealAgate\", \"path\":\"texturegroups/ArborealAgate\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
