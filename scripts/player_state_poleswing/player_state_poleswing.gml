@@ -51,6 +51,7 @@ function player_state_poleswing()
 
 	if jump_buffer || press_action || y < pole_id.bbox_top || y > pole_id.bbox_bottom - 10
 	{
+		jump_flag = true
 		with pole_id
 		{
 			swing_pole_cooldown = 10	

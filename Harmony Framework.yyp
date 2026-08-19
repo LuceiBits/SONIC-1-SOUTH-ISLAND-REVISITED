@@ -447,6 +447,7 @@
     {"id":{"name":"bgm_temp","path":"sounds/bgm_temp/bgm_temp.yy",},},
     {"id":{"name":"bgm_test_stage","path":"sounds/bgm_test_stage/bgm_test_stage.yy",},},
     {"id":{"name":"bgm_title_screen","path":"sounds/bgm_title_screen/bgm_title_screen.yy",},},
+    {"id":{"name":"greenhillact1_tripleb","path":"sounds/greenhillact1_tripleb/greenhillact1_tripleb.yy",},},
     {"id":{"name":"j_chaos_emerald","path":"sounds/j_chaos_emerald/j_chaos_emerald.yy",},},
     {"id":{"name":"j_drowning","path":"sounds/j_drowning/j_drowning.yy",},},
     {"id":{"name":"j_extra_life","path":"sounds/j_extra_life/j_extra_life.yy",},},

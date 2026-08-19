@@ -1,0 +1,26 @@
+{
+  "$GMSound":"v2",
+  "%Name":"greenhillact1_tripleb",
+  "audioGroupId":{
+    "name":"audiogroup_default",
+    "path":"audiogroups/audiogroup_default",
+  },
+  "bitDepth":1,
+  "channelFormat":1,
+  "compression":0,
+  "compressionQuality":4,
+  "conversionMode":0,
+  "duration":116.02648,
+  "exportDir":"",
+  "name":"greenhillact1_tripleb",
+  "parent":{
+    "name":"Stage Music",
+    "path":"folders/Sounds/Music/Stage Music.yy",
+  },
+  "preload":false,
+  "resourceType":"GMSound",
+  "resourceVersion":"2.0",
+  "sampleRate":44100,
+  "soundFile":"greenhillact1_tripleb.ogg",
+  "volume":1.0,
+}

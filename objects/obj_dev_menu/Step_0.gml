@@ -71,7 +71,7 @@
 					case 1:
 						//state = dev_menu_state.character_select;
 						global.process_objects = true;
-						fade_to_room(rm_greenhill_test, 2, FADE_COLOR.WHITE, 30);
+						fade_to_room(rm_techdemo_tower, 2, FADE_COLOR.WHITE, 30);
 						with obj_dev
 						alarm[2] = 100
 					break;

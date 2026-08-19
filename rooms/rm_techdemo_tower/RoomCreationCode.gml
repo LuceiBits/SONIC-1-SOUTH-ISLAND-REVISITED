@@ -1,10 +1,10 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = MUSIC.LABYRINTH_ZONE_ACT_2
+		stage_music = MUSIC.GREEN_HILL_ZONE_ACT_1
 		
 		//Set level name
-		stage_name = "Test Level";
+		stage_name = "Green Hill Shaping Test";
 		
 		//Set stage act
 		act = 0;

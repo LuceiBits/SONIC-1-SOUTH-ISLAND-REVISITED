@@ -47,5 +47,5 @@ if bounce_delay > 0 || bbox_top < obj_water.y
 	visible = false
 	bounce_delay -= 1
 }
-else if bbox_top > obj_water.y
+else if bbox_top > obj_water.y && !instance_place(x,y,obj_player)
 	visible = true
