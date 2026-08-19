@@ -17,19 +17,19 @@
   "edgeFiltering":false,
   "For3D":false,
   "frames":[
-    {"$GMSpriteFrame":"v1","%Name":"ea2a8e6f-1eb9-406f-84b5-593eec5eb8b8","name":"ea2a8e6f-1eb9-406f-84b5-593eec5eb8b8","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
-    {"$GMSpriteFrame":"v1","%Name":"0c7c0f4c-f223-480d-8f65-8550b53e0f9c","name":"0c7c0f4c-f223-480d-8f65-8550b53e0f9c","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"216d6395-a163-419b-b369-455e3d9c3717","name":"216d6395-a163-419b-b369-455e3d9c3717","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
+    {"$GMSpriteFrame":"v1","%Name":"2f10f263-e1db-4e86-aafe-c71192a3e288","name":"2f10f263-e1db-4e86-aafe-c71192a3e288","resourceType":"GMSpriteFrame","resourceVersion":"2.0",},
   ],
   "gridX":0,
   "gridY":0,
   "height":32,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"dc3dc2f6-0f08-4dc8-8b3e-660864ac6587","blendMode":0,"displayName":"default","isLocked":false,"name":"dc3dc2f6-0f08-4dc8-8b3e-660864ac6587","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"0d2be3cc-a1c4-4f4f-a3f3-43174f732ba9","blendMode":0,"displayName":"default","isLocked":false,"name":"0d2be3cc-a1c4-4f4f-a3f3-43174f732ba9","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_wheeltank",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Base Stage",
     "path":"folders/Sprites/Stage Sprites/Base Stage.yy",
@@ -77,16 +77,16 @@
     "tracks":[
       {"$GMSpriteFramesTrack":"","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"$KeyframeStore<SpriteFrameKeyframe>":"","Keyframes":[
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"ea2a8e6f-1eb9-406f-84b5-593eec5eb8b8","path":"sprites/spr_wheeltank/spr_wheeltank.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"4eeb0de9-59d8-4b8d-9ea3-8f2d53b63e1d","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"216d6395-a163-419b-b369-455e3d9c3717","path":"sprites/spr_wheeltank/spr_wheeltank.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"1b009d15-f7a7-49ae-aff5-cb79bcbd0a51","IsCreationKey":false,"Key":0.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
             {"$Keyframe<SpriteFrameKeyframe>":"","Channels":{
-                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"0c7c0f4c-f223-480d-8f65-8550b53e0f9c","path":"sprites/spr_wheeltank/spr_wheeltank.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
-              },"Disabled":false,"id":"f03f7446-a18b-49f8-b7b8-bd2e660b44ff","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
+                "0":{"$SpriteFrameKeyframe":"","Id":{"name":"2f10f263-e1db-4e86-aafe-c71192a3e288","path":"sprites/spr_wheeltank/spr_wheeltank.yy",},"resourceType":"SpriteFrameKeyframe","resourceVersion":"2.0",},
+              },"Disabled":false,"id":"9b38553b-6b16-4ef8-a023-411e113fdab2","IsCreationKey":false,"Key":1.0,"Length":1.0,"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"2.0","Stretch":false,},
           ],"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"2.0",},"modifiers":[],"name":"frames","resourceType":"GMSpriteFramesTrack","resourceVersion":"2.0","spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange":null,
     "volume":1.0,
-    "xorigin":24,
+    "xorigin":20,
     "yorigin":16,
   },
   "swatchColours":null,
@@ -97,5 +97,5 @@
   },
   "type":0,
   "VTile":false,
-  "width":47,
+  "width":40,
 }
