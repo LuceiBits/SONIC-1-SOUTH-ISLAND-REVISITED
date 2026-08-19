@@ -22,7 +22,9 @@
 	//Add title card timer
 	timer++;
 	
-	if(timer < 90)
+	var animcurve_timer = 180
+	
+	if(timer < animcurve_timer)
 	{
 		var curve = animcurve_get(curve_titlecard_bonus)
 		var c_channel_1 = animcurve_get_channel(curve,"curve1")
@@ -36,7 +38,7 @@
 		offset[5] = animcurve_channel_evaluate(c_channel_1, min(timer / 80,1)) * 512
 	}
 	
-	if(timer > 90)
+	if(timer > animcurve_timer)
 	{
 		var curve = animcurve_get(curve_titlecard_leave)
 		var c_channel_1 = animcurve_get_channel(curve,"curve1")
@@ -48,10 +50,12 @@
 		offset[3] = (animcurve_channel_evaluate(c_channel_2, min((timer-90) / 40,1)) * (WINDOW_WIDTH *2))
 	}
 	
+	var second_timer = animcurve_timer
+	
 	//freeze player while running titlecard
-	if(timer <= 130)
+	if(timer <= second_timer)
 	{
-		obj_player.visible = false
+		obj_player.visible = true
 		
 		if (instance_exists(obj_shield)) 
 		{
@@ -61,20 +65,20 @@
 		obj_player.x_speed = 0
 		obj_player.y_speed = 0
 		obj_player.y = obj_player.ystart
-		obj_player.state = player_state_spring
+		//obj_player.state = player_state_spring
 	}
-	//launch player up
-	if (timer = 130) {
-		obj_player.visible = true
-		if (instance_exists(obj_shield)) {
-			obj_shield.visible = true
-		}
-		obj_player.x_speed = 0
-		obj_player.y_speed = -10
-	}
+	////launch player up
+	//if (timer = second_timer) {
+	//	obj_player.visible = true
+	//	if (instance_exists(obj_shield)) {
+	//		obj_shield.visible = true
+	//	}
+	//	obj_player.x_speed = 0
+	//	obj_player.y_speed = -10
+	//}
 	
 	//Enable flags
-	if(timer > 130)
+	if(timer > second_timer)
 	{
 		if(!act_card)
 		{
@@ -86,7 +90,7 @@
 		obj_bonus_hud.slide_in = true;
 		
 		//End card
-		if(timer = 200) {
+		if(timer = second_timer * 3) {
 			offset[0] = 0
 			offset[1] = 0
 			offset[2] = 0

@@ -1,6 +1,6 @@
 {
   "$GMSound":"v2",
-  "%Name":"bgm_temp",
+  "%Name":"sfx_elevator",
   "audioGroupId":{
     "name":"audiogroup_default",
     "path":"audiogroups/audiogroup_default",
@@ -10,17 +10,17 @@
   "compression":0,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":128.85905,
+  "duration":0.53126985,
   "exportDir":"",
-  "name":"bgm_temp",
+  "name":"sfx_elevator",
   "parent":{
-    "name":"Stage Music",
-    "path":"folders/Sounds/Music/Stage Music.yy",
+    "name":"Objects",
+    "path":"folders/Sounds/Sound Effects/Objects.yy",
   },
   "preload":false,
   "resourceType":"GMSound",
   "resourceVersion":"2.0",
-  "sampleRate":22050,
-  "soundFile":"bgm_temp.ogg",
-  "volume":0.6,
+  "sampleRate":44100,
+  "soundFile":"sfx_elevator.ogg",
+  "volume":1.0,
 }

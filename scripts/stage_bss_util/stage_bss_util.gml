@@ -993,6 +993,15 @@ function bss_special_stage_start()
 	global.bss.ring_phase = 0;
 }
 
+function special_stage_start()
+{
+	exit_timer        = 0;
+	reward_is_emerald = false;
+	emerald_was_new   = false;
+	emerald_index     = 0;
+	exit_result       = "";
+}
+
 // Taken from the "Frustum 1" and "Frustum 2" tile layers of Sonic Mania Data.rsdk : Stages/SpecialBS/Scene1.bin. Do not hand edit.
 function bss_frustum_tables() {
 	global.bss.frustum1X = [

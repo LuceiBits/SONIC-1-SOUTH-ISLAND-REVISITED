@@ -17,7 +17,7 @@ sprite_index = spr_big_ring_disappear
 obj_player.input_disable = true;
 			
 			sound_play(sfx_warp_into);
-			fade_to_room(rm_labyrinth_bonus, 2, FADE_COLOR.WHITE, 30);
+			fade_to_room(rm_bonus_temp, 2, FADE_COLOR.WHITE, 30);
 			music_fade_channel(BGM, FADE.OUT, 3);
 			
 			global.store_player_state.combinering = obj_player.combinering;

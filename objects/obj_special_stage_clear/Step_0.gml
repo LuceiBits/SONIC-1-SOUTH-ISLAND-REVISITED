@@ -14,7 +14,10 @@
 	if (timer == 30 && state == 0)
 	{
 		music_reset_fade();
+		if obj_emerald.fail_state = false
 		music_play(MUSIC.ACT_CLEAR, 0);
+		else
+		music_play(MUSIC.GAME_OVER, 0);
 	}
 
 	//Move in card stuff
@@ -99,5 +102,5 @@
 	{
 		if (timer == 79 && super_shown) { state = 2; timer = 0; }
 		if (timer == 80) fade_change(FADE.OUT, 5, FADE_COLOR.BLACK);
-		if (timer == 110) room_goto(global.previous_room);
+		if (timer == 110) special_stage_exit()
 	}

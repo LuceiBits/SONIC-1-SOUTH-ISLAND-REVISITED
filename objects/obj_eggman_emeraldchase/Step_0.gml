@@ -48,11 +48,22 @@ if aligning = false && pause_timer = 0
 		x += movespeed
 	}
 
-if movedir_x = "WON"
-lose_timer += 1
+//if movedir_x = "WON"
+//lose_timer += 1
 
-if lose_timer > 500 && obj_player.state != player_state_death
-obj_player.state = player_state_death
+
+if movedir_x = "WON"
+{
+movedir_y = "PLAYED SOUND"
+}
+
+//if lose_timer = 1 && obj_player.state != player_state_death
+//{
+///obj_player.state = player_state_death
+//ground = false
+//on_terrain = false
+//y_speed = -10
+//}
 
 movespeed_increase_timer -= 1
 
