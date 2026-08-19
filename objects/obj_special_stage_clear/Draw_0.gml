@@ -26,8 +26,8 @@
 		draw_sprite(spr_hud_actclear_character, global.character, cx + offset_x[0], hy - 9);
 		draw_sprite(spr_hud_ssclear_a_chaos_emerald, 0, cx + offset_x[0], hy + 9);
 	}
-	else
-		draw_sprite(spr_hud_ssclear_chaos_emeralds, 0, cx + offset_x[0], hy);
+	else if (heading == "failed")
+		draw_sprite(spr_hud_ssclear_lost_to_eggman, 0, cx + offset_x[0], hy);
 
 	//Draw collected emeralds
 	if (FRAME_TIMER mod 2 == 0)

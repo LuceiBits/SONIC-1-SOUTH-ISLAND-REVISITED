@@ -50,11 +50,19 @@ function player_state_death()
 	if(death_timer == 120)
 	{
 		// Decrement life
+		if obj_level.level_state != LEVEL_STATE.BONUS
 		global.life = max(global.life - 1, 0);
 		
 		if(global.life != 0 && !is_time_over)
 		{
+			if obj_level.level_state != LEVEL_STATE.BONUS
 			fade_change(FADE.OUT, 3,FADE_COLOR.BLACK)
+			else
+			with obj_emerald
+			{
+			fail_state = true
+			activated = true
+			}
 			music_set_fade(FADE.OUT, 2);
 		}
 		else
@@ -75,7 +83,7 @@ function player_state_death()
 	}
 
 	//Restart
-	if(death_timer == 180 && global.life != 0 && !is_time_over)
+	if(death_timer == 180 && global.life != 0 && !is_time_over && obj_level.level_state != LEVEL_STATE.BONUS)
 	{
 		global.store_player_state.combinering = 0;
 		global.store_player_state.shield = SHIELD.NONE;

@@ -34,7 +34,11 @@
 	}
 	
 	if(level_state == LEVEL_STATE.BONUS)
-		exit;
+	{
+	_level_clear_player_effects()	
+	exit;
+	}
+		
 		
 	var force_visible_for_new_keys = level_state != LEVEL_STATE.BONUS && array_length(variable_struct_get_names(global.store_background_visibility)) == 0;
 

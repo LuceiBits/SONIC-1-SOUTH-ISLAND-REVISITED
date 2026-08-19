@@ -21,6 +21,7 @@
 	heading_off = 0;
 	super_off = global.window_width;
 	end_wait = 0;
+	obj_player.disable_death = true
 
 	//Take the white screen over
 	obj_global.fade.timer = 512;

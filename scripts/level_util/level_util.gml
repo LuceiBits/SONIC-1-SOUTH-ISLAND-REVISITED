@@ -78,3 +78,17 @@ function _level_get_end_results()
 	
 	
 }
+
+function _level_clear_player_effects()
+{
+	with obj_player
+	{
+	shield = SHIELD.NONE;
+	invincible_timer = 0;
+	speed_shoes = 0;
+	invincible = false;
+	speed_shoes_flag = false;
+	hitbox_allow = false;
+	direction_allow = false;
+	}
+}

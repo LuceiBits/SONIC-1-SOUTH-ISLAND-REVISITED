@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"special_stage_exit",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"special_stage_exit",
+  "parent":{
+    "name":"shit",
+    "path":"folders/Scripts/shit.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

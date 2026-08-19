@@ -74,11 +74,11 @@
 	//dev_menu_add_option_flag("Peelout Flag", "use_peelout");
 	// You're going to play labyrinth zone as god intended damn it ~ Samwow
 	
-	dev_menu_add_category("SONIC 1 REVISITED");
+	dev_menu_add_category("SONIC 1 RE-GENESIS");
 	dev_menu_add_entry("Test Level (Not a Real Zone)", rm_techdemo_tower);
 	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
 	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
-	
+	dev_menu_add_entry("Special Stage Test", rm_bonus_temp);
 	//Add the presentation category
 	//dev_menu_add_category("PRESENTATION");
 	//dev_menu_add_entry("SPLASH", rm_splash);
