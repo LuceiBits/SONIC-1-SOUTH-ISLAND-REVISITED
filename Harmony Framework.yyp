@@ -344,7 +344,7 @@
     {"id":{"name":"rm_labyrinth_1","path":"rooms/rm_labyrinth_1/rm_labyrinth_1.yy",},},
     {"id":{"name":"rm_labyrinth_bonus","path":"rooms/rm_labyrinth_bonus/rm_labyrinth_bonus.yy",},},
     {"id":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-    {"id":{"name":"rm_marble_1","path":"rooms/rm_marble_1/rm_marble_1.yy",},},
+    {"id":{"name":"rm_marble_shaping_test","path":"rooms/rm_marble_shaping_test/rm_marble_shaping_test.yy",},},
     {"id":{"name":"rm_objtest","path":"rooms/rm_objtest/rm_objtest.yy",},},
     {"id":{"name":"rm_pathtest","path":"rooms/rm_pathtest/rm_pathtest.yy",},},
     {"id":{"name":"rm_playtest_end","path":"rooms/rm_playtest_end/rm_playtest_end.yy",},},
@@ -987,7 +987,7 @@
     {"roomId":{"name":"rm_labyrinth_1_waterslides","path":"rooms/rm_labyrinth_1_waterslides/rm_labyrinth_1_waterslides.yy",},},
     {"roomId":{"name":"rm_playtest_end","path":"rooms/rm_playtest_end/rm_playtest_end.yy",},},
     {"roomId":{"name":"rm_bonus_temp","path":"rooms/rm_bonus_temp/rm_bonus_temp.yy",},},
-    {"roomId":{"name":"rm_marble_1","path":"rooms/rm_marble_1/rm_marble_1.yy",},},
+    {"roomId":{"name":"rm_marble_shaping_test","path":"rooms/rm_marble_shaping_test/rm_marble_shaping_test.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
