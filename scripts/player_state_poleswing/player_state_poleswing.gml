@@ -27,6 +27,7 @@ function player_state_poleswing()
 	
 	if ground
 	{
+		state = force_roll ? player_state_roll : player_state_normal;
 		with pole_id
 			swing_pole_cooldown = 10
 		
@@ -44,7 +45,6 @@ function player_state_poleswing()
 		}
 		
 		pole_id = noone
-		state = force_roll ? player_state_roll : player_state_normal;
 		jump_buffer = 0
 		exit;
 	}

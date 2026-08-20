@@ -73,11 +73,11 @@ function player_water()
             if(!underwater)
             {
                 //Slow down the player
-				if on_terrain
-                x_speed *= 0.90
+				if on_terrain || ground
+                x_speed *= 0.92
 				else
-				x_speed *= 0.80
-				y_speed *= 0.50;
+				x_speed *= 0.90
+				y_speed *= 0.65;
                 
                 //Create effects
                 if (!is_pool || is_pool && y < water.pos_y+8)
