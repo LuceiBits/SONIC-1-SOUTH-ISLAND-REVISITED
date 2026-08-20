@@ -116,7 +116,7 @@ function player_water()
 			// x_speed *= 0.75;
 			if state = player_state_jump
 			{
-             y_speed *= 1.6
+             y_speed *= 1.2
 			}
 			
             //Create effects
