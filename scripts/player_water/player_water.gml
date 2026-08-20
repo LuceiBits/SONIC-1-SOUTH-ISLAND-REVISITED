@@ -77,7 +77,7 @@ function player_water()
                 x_speed *= 0.92
 				else
 				x_speed *= 0.90
-				y_speed *= 0.65;
+				y_speed *= 0.80;
                 
                 //Create effects
                 if (!is_pool || is_pool && y < water.pos_y+8)
