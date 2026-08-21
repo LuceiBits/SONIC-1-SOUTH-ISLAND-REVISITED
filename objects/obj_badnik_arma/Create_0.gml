@@ -180,4 +180,7 @@ speed_allow = true;
 		visual_angle = 0;					// Used for rotation of the player's sprite
 	}
 	
+if start_rolling = true
+arma_state = ARMA_STATE.TUCKED
+	
 		instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
