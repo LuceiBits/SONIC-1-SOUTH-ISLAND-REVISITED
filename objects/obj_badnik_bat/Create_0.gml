@@ -14,7 +14,8 @@
 	
 		
 		//animation_add(0, spr_newton, 1,, true);
-	animation_add(0, spr_fish, 0.2,, true);
+	animation_add(0, spr_bat_perched, 0,, true);
+	animation_add(1, spr_bat_fly, 0.2,, true);
 	animation_play(animator, 0, true);
 
 	on_reset = function()

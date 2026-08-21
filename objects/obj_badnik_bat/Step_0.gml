@@ -15,6 +15,7 @@ flying = 2
 
 if flying = 0
 {
+animation_play(animator, 0, true);
 y_speed = 0
 if point_distance(x,y,obj_player.x,obj_player.y) < 180
 flying = 1
@@ -39,6 +40,7 @@ flying = 4
 
 if flying = 4
 {
+animation_play(animator, 1, true);
 x_speed = 2 * (image_xscale);	
 x += x_speed
 }
