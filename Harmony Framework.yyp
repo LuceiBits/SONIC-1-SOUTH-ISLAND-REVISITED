@@ -356,6 +356,7 @@
     {"id":{"name":"rm_pathtest","path":"rooms/rm_pathtest/rm_pathtest.yy",},},
     {"id":{"name":"rm_playtest_end","path":"rooms/rm_playtest_end/rm_playtest_end.yy",},},
     {"id":{"name":"rm_splash","path":"rooms/rm_splash/rm_splash.yy",},},
+    {"id":{"name":"rm_springyard_test","path":"rooms/rm_springyard_test/rm_springyard_test.yy",},},
     {"id":{"name":"rm_stage_select","path":"rooms/rm_stage_select/rm_stage_select.yy",},},
     {"id":{"name":"rm_techdemo_tower","path":"rooms/rm_techdemo_tower/rm_techdemo_tower.yy",},},
     {"id":{"name":"rm_template_collisions","path":"rooms/rm_template_collisions/rm_template_collisions.yy",},},
@@ -1001,6 +1002,7 @@
     {"roomId":{"name":"rm_playtest_end","path":"rooms/rm_playtest_end/rm_playtest_end.yy",},},
     {"roomId":{"name":"rm_bonus_temp","path":"rooms/rm_bonus_temp/rm_bonus_temp.yy",},},
     {"roomId":{"name":"rm_marble_shaping_test","path":"rooms/rm_marble_shaping_test/rm_marble_shaping_test.yy",},},
+    {"roomId":{"name":"rm_springyard_test","path":"rooms/rm_springyard_test/rm_springyard_test.yy",},},
   ],
   "templateType":null,
   "TextureGroups":[
