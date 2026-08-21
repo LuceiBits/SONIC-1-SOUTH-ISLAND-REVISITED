@@ -15,7 +15,7 @@ var c = point_distance(x,y,obj_player.x,obj_player.y)
 
 if c < 100
 {
-if arma_attack = false
+if arma_attack = false && ground
 	{
 	//duped jump code
 	
@@ -47,10 +47,6 @@ if arma_attack = false
 	arma_attack = true	
 	arma_attack_timer = timer_init
 	arma_state = ARMA_STATE.TUCKED
-	
-
-	
-	
 	}
 }	
 }
