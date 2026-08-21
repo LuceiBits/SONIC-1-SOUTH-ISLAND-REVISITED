@@ -83,7 +83,7 @@ x_speed = 5 * facing
 ground_speed = x_speed
 }
 
-if x_speed = 0 && ground_speed = 0 && arma_state = ARMA_STATE.TUCKED && arma_attack = false
+if x_speed = 0 && ground_speed = 0 && arma_state = ARMA_STATE.TUCKED && arma_attack = false && ground
 idle_timer += 1
 else if idle_timer > 0
 idle_timer -= 1
