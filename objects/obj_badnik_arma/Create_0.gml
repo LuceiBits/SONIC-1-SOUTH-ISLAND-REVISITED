@@ -133,34 +133,43 @@ semi_solid_condition = false		// A condition flag used to see if semi solids can
 speed_allow = true;
 
 
-	animator = new animator_create();
+
+arma_animator = new animator_create();
+
+animation_add(0,spr_arma_idle,0,0,true)
+animation_add(1,spr_arma_roll,0.2,0,true)
+animation_add(2,spr_arma_idle_no_shell,0,0,true)
+animation_add(3,spr_arma_roll_no_shell,0.2,0,true)
+animation_play(arma_animator,0,true)
+
+	//animator = new animator_create();
 	
-	animation_add(ANIM.STAND, spr_sonic_idle, 0.2)
-			animation_add(ANIM.WAIT, spr_sonic_wait, 5, 0, false, true);
-			animation_add(ANIM.WALK, spr_sonic_walk, 3, 0, true, true);
-			animation_add(ANIM.WALKWATER, spr_sonic_walk_water, 3, 0, true, true);
-			animation_add(ANIM.RUN, spr_sonic_run, 2, 0, true, true);
-			animation_add(ANIM.MAXRUN, spr_sonic_peelout, 0, 0, true, true);
-			animation_add(ANIM.LOOKDOWN, spr_sonic_lookdown, 0.4, 0, false, false);
-			animation_add(ANIM.LOOKUP, spr_sonic_lookup, 0.4, 0, false, false);
-			animation_add(ANIM.PUSH, spr_sonic_push, 0.1, 0, true, false);
-			animation_add(ANIM.ROLL, spr_sonic_roll, 0, 0, true, true);
-			animation_add(ANIM.SPINDASH, spr_sonic_spindash, 0.6, 0, true, false);
-			animation_add(ANIM.SPRING, spr_sonic_spring, 0.4, 0, true, false);
-			animation_add(ANIM.SKID, spr_sonic_skid, 0.4, 0, false, false);
-			animation_add(ANIM.SKIDTURN, spr_sonic_skidturn, 0.3, 0, false, false);
-			animation_add(ANIM.HURT, spr_sonic_hurt, 0.3, 0, false, false);
-			animation_add(ANIM.DIE, spr_sonic_death, 0.3, 0, false, false);
-			animation_add(ANIM.DROWN, spr_sonic_drown, 0.3, 0, false, false);
-			animation_add(ANIM.BREATHE, spr_sonic_breathe, 16, 0, false, true);
-			animation_add(ANIM.LEDGE1, spr_sonic_ledge1, 0.1, 0, true, false);
-			animation_add(ANIM.LEDGE2, spr_sonic_ledge2, 0.1, 0, true, false);
-			animation_add(ANIM.VICTORY, spr_sonic_victory, 0.1, 1, true, false);
-			animation_add(ANIM.TRANSFORM, spr_sonic_transform, 0.4, 3, true, false);
-			animation_add(ANIM.CORKSCREW, spr_sonic_corkscrew, 0.2, 0, true, false);
-			animation_add(ANIM.DROPDASH, spr_sonic_dropdash, 0.5, 1, true, false);
-			animation_add(ANIM.POLESWING, spr_sonic_poleswing, 0.2, 0, true, true);
-			animation_add(ANIM.WATER_TUNNEL, spr_sonic_tunnel, 4, 0, true, true);
+	//		animation_add(ANIM.STAND, spr_sonic_idle, 0.2)
+	//		animation_add(ANIM.WAIT, spr_sonic_wait, 5, 0, false, true);
+	//		animation_add(ANIM.WALK, spr_sonic_walk, 3, 0, true, true);
+	//		animation_add(ANIM.WALKWATER, spr_sonic_walk_water, 3, 0, true, true);
+	//		animation_add(ANIM.RUN, spr_sonic_run, 2, 0, true, true);
+	//		animation_add(ANIM.MAXRUN, spr_sonic_peelout, 0, 0, true, true);
+	//		animation_add(ANIM.LOOKDOWN, spr_sonic_lookdown, 0.4, 0, false, false);
+	//		animation_add(ANIM.LOOKUP, spr_sonic_lookup, 0.4, 0, false, false);
+	//		animation_add(ANIM.PUSH, spr_sonic_push, 0.1, 0, true, false);
+	//		animation_add(ANIM.ROLL, spr_sonic_roll, 0, 0, true, true);
+	//		animation_add(ANIM.SPINDASH, spr_sonic_spindash, 0.6, 0, true, false);
+	//		animation_add(ANIM.SPRING, spr_sonic_spring, 0.4, 0, true, false);
+	//		animation_add(ANIM.SKID, spr_sonic_skid, 0.4, 0, false, false);
+	//		animation_add(ANIM.SKIDTURN, spr_sonic_skidturn, 0.3, 0, false, false);
+	//		animation_add(ANIM.HURT, spr_sonic_hurt, 0.3, 0, false, false);
+	//		animation_add(ANIM.DIE, spr_sonic_death, 0.3, 0, false, false);
+	//		animation_add(ANIM.DROWN, spr_sonic_drown, 0.3, 0, false, false);
+	//		animation_add(ANIM.BREATHE, spr_sonic_breathe, 16, 0, false, true);
+	//		animation_add(ANIM.LEDGE1, spr_sonic_ledge1, 0.1, 0, true, false);
+	//		animation_add(ANIM.LEDGE2, spr_sonic_ledge2, 0.1, 0, true, false);
+	//		animation_add(ANIM.VICTORY, spr_sonic_victory, 0.1, 1, true, false);
+	//		animation_add(ANIM.TRANSFORM, spr_sonic_transform, 0.4, 3, true, false);
+	//		animation_add(ANIM.CORKSCREW, spr_sonic_corkscrew, 0.2, 0, true, false);
+	//		animation_add(ANIM.DROPDASH, spr_sonic_dropdash, 0.5, 1, true, false);
+	//		animation_add(ANIM.POLESWING, spr_sonic_poleswing, 0.2, 0, true, true);
+	//		animation_add(ANIM.WATER_TUNNEL, spr_sonic_tunnel, 4, 0, true, true);
 	//animation_play(animator, 0, true);
 	
 	player_get_input();					//Setup player inputs
@@ -182,6 +191,9 @@ speed_allow = true;
 	}
 	
 if start_rolling = true
+{
 arma_state = ARMA_STATE.TUCKED
+animation_play(arma_animator,1,true)
+}
 	
-		instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
+instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);

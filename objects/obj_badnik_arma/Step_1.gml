@@ -7,6 +7,10 @@ var timer_init = 50
 
 if arma_state = ARMA_STATE.IDLE
 {
+if has_shell
+animation_play(arma_animator, 0,);
+else
+animation_play(arma_animator, 2,);
 	
 x_speed = 0
 ground_speed = 0
@@ -18,6 +22,11 @@ if c < 100
 if arma_attack = false && ground
 	{
 	//duped jump code
+	if has_shell
+	animation_play(arma_animator, 1, true);
+	else
+	animation_play(arma_animator, 3, true);
+	
 	
 		y_speed -= jump_strength * dcos(ground_angle);	
 		x_speed -= jump_strength * dsin(ground_angle);
@@ -27,7 +36,7 @@ if arma_attack = false && ground
 			
 		//Detach player off the ground and change state
 		ground = false;
-		state = player_state_jump
+		//state = player_state_jump
 		//dropdash_timer = 0;
 		//idle_timer = 0;
 		
@@ -112,9 +121,13 @@ if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKE
 		y_speed *= 0.8
 		player.ground = false;
 		//arma_state = ARMA_STATE.VULNERABLE
-		has_shell = false
 		arma_attack = false
-		sound_play(sfx_bumper)
+				if has_shell
+		{
+		animation_play(arma_animator, 3, true);
+		sound_play(sfx_rubber)
+		has_shell = false
+		}
 	}
 }	
 	
@@ -126,7 +139,7 @@ if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKE
 // PLAYER CODE FUCKERY START
 
 //hacky physics fix this sucks
-state = player_state_roll()
+state = arma_state_roll()
 	
 
 	hitbox_top_offset = 0;
@@ -171,7 +184,7 @@ state = player_state_roll()
 	arma_control();
 
 	//Update player's animator
-	animator_update(animator);
+	animator_update(arma_animator);
 	
 	//Handle player states
 	//player_states();

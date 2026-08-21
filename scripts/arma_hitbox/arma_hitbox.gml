@@ -3,23 +3,23 @@ function arma_hitbox(){
 	var old_hitbox_h = hitbox_h;
 	
 	//Reset camera offset if player is not playing rolling animation
-	if(!animation_is_playing(animator, ANIM.ROLL)) 
-	{
+	//if(!animation_is_playing(animator, ANIM.ROLL)) 
+	//{
 		//obj_camera.roll_offset = 0;
-	}
+	//}
 	
 	//Original hitbox values
 	hitbox_w = hitbox_normal[global.character][0];
 	hitbox_h = hitbox_normal[global.character][1];
 	
 	//Roll hitboxes
-	if(animation_is_playing(animator, ANIM.ROLL) || animation_is_playing(animator, ANIM.DROPDASH) || state == player_state_jump)
+	if state == player_state_jump
 	{
 		//Change the camera offset for rolling
-		if(ground)
-		{
-			//obj_camera.roll_offset = camera_rolling_offset[global.character];
-		}
+		//if(ground)
+		//{
+		//	//obj_camera.roll_offset = camera_rolling_offset[global.character];
+		//}
 		
 		//Change the hitbox for rolling animation
 		hitbox_w = hitbox_rolling[global.character][0];
@@ -40,10 +40,10 @@ function arma_hitbox(){
 	}
 	
 	//Crouch hitbox offset
-	if(animation_is_playing(animator, ANIM.LOOKDOWN))
-	{
-		hitbox_top_offset = -hitbox_normal[global.character][1];
-	}
+	//if(animation_is_playing(animator, ANIM.LOOKDOWN))
+	//{
+	//	hitbox_top_offset = -hitbox_normal[global.character][1];
+	//}
 	
 
 }
