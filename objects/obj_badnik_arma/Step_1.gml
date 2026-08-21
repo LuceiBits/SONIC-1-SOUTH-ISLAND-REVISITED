@@ -93,6 +93,7 @@ if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKE
 		inv_timer = 20
 		var player = instance_nearest(x,y,obj_player);
 		var angle = point_direction(x,y,player.x,player.y);
+		var player_ground_speed = player.ground_speed
 		player.x_speed = BUMPER_FACTOR * dcos(angle);
 		player.y_speed = -BUMPER_FACTOR * dsin(angle);
 		if player.ground || player.on_terrain
@@ -101,8 +102,9 @@ if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKE
 		y_speed = -BUMPER_FACTOR * dsin(angle + 180);
 		if ground || on_terrain
 		{
-		if ground_speed = 0 && arma_attack = true
-		ground_speed = 4 * facing
+		if ground_speed = 0
+		ground_speed = player_ground_speed
+		else
 		ground_speed = ground_speed * -1
 		}
 		else
