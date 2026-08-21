@@ -116,7 +116,8 @@ function player_water()
 			// x_speed *= 0.75;
 			if state = player_state_jump
 			{
-             y_speed *= 1.2
+             y_speed *= 1.4
+			 y_speed = clamp(y_speed,0,-6)
 			}
 			
             //Create effects
