@@ -76,6 +76,7 @@
 	
 	dev_menu_add_category("SONIC 1 RE-GENESIS");
 	dev_menu_add_entry("Green Hill Shaping Test", rm_techdemo_tower);
+	dev_menu_add_entry("Marble Zone Collision Test", rm_marble_shaping_test);
 	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
 	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
 	dev_menu_add_entry("Special Stage Test", rm_bonus_temp);
