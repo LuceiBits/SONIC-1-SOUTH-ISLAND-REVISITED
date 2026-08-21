@@ -5,10 +5,10 @@
 		stage_music = MUSIC.TECHDEMO_TOWER
 		
 		//Set level name
-		stage_name = "Template Level";
+		stage_name = "SPRING YARD ZONE";
 		
 		//Set stage act
-		act = 0;
+		act = 1;
 		
 		//Is next level doing act transition in case if you do a multi-zone level.
 		act_transition = false;
@@ -17,5 +17,5 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		next_level = room;
+		next_level = rm_greenhill_test;
 	}

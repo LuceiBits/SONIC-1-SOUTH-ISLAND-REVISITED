@@ -4,6 +4,7 @@ exit;
 
 // ACTUAL ENEMY CODE
 var timer_init = 50
+var arma_attack_range = 125
 
 if arma_state = ARMA_STATE.IDLE
 {
@@ -11,16 +12,29 @@ if has_shell
 animation_play(arma_animator, 0,);
 else
 animation_play(arma_animator, 2,);
+
+			if obj_player.x > x 
+		{
+		facing = 1
+		show_debug_message("FACE PLAYER ON RIGHT")
+		}
+
+		if obj_player.x < x 
+		{
+		facing = -1
+		show_debug_message("FACE PLAYER ON LEFT")
+		}	
 	
 x_speed = 0
 ground_speed = 0
 
 var c = point_distance(x,y,obj_player.x,obj_player.y)	
 
-if c < 100
+if c < arma_attack_range
 {
 if arma_attack = false && ground
 	{
+		
 	//duped jump code
 	if has_shell
 	animation_play(arma_animator, 1, true);

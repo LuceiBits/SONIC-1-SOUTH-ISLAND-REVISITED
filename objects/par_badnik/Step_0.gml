@@ -14,6 +14,7 @@
 			instance_create_depth(x, y, depth, obj_animal);
 		
 			//Player bounce
+			if player_collide_object() || player_insta_shield_collide()
 			obj_player.y_speed = -abs(obj_player.y_speed);
 		
 			//Create score object and add combo and badnik chain

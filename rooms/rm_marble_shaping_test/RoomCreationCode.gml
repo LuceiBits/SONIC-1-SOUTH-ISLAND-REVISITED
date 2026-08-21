@@ -17,5 +17,5 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		next_level = rm_greenhill_test;
+		next_level = rm_springyard_test;
 	}

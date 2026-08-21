@@ -4,7 +4,7 @@ function arma_state_roll(){
 	//animation_play(animator, ANIM.ROLL);
 	//if(ground && character != CHAR_TAILS)
 	//{
-	//	animation_set_duration(animator, floor(max(0, 4-abs(ground_speed))));
+	animation_set_duration(arma_animator, floor(max(0, 4-abs(ground_speed))));
 	//}
 	
 	//Change flags

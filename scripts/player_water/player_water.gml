@@ -117,7 +117,7 @@ function player_water()
 			if state = player_state_jump
 			{
              y_speed *= 1.4
-			 y_speed = clamp(y_speed,0,-6)
+			 y_speed = clamp(y_speed,0,-6) // we need to do something better than this, it fucks up a cool moment in waterfall zone
 			}
 			
             //Create effects

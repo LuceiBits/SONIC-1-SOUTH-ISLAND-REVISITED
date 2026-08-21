@@ -137,9 +137,9 @@ speed_allow = true;
 arma_animator = new animator_create();
 
 animation_add(0,spr_arma_idle,0,0,true)
-animation_add(1,spr_arma_roll,0.2,0,true)
+animation_add(1,spr_arma_roll,0.2,0,true,true)
 animation_add(2,spr_arma_idle_no_shell,0,0,true)
-animation_add(3,spr_arma_roll_no_shell,0.2,0,true)
+animation_add(3,spr_arma_roll_no_shell,0.2,0,true,true)
 animation_play(arma_animator,0,true)
 
 	//animator = new animator_create();
