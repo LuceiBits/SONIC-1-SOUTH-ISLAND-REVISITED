@@ -4,6 +4,12 @@
 	
 	var c = player_act_solid();
 	var player = player_find(0);
+	if instance_place(x,y,obj_badnik_arma)
+	{
+	player = instance_place(x,y,obj_badnik_arma)
+	c = COLLISION.TOP
+	}
+
 	var m = detach_sides ? 0 : player.mode;
 	
 	if(c == COLLISION.TOP && sign(image_yscale) == 1)

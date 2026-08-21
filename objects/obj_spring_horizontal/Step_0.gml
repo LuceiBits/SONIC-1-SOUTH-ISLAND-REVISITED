@@ -5,6 +5,14 @@
 	//Get player's instance
 	var player = player_find(0);
 	var c = player_act_solid()
+		if instance_place(x,y,obj_badnik_arma)
+	{
+	player = instance_place(x,y,obj_badnik_arma)
+	if image_xscale = 1
+	c = COLLISION.LEFT
+	else
+	c = COLLISION.RIGHT
+	}
 	
 	//Get player's speed
 	var player_speed = player.x_speed;

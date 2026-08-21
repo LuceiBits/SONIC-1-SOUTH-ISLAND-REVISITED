@@ -1,5 +1,29 @@
 // Inherit the parent event
 event_inherited();
+
+
+
+// ACTUAL BADNIK STATES
+
+
+enum ARMA_STATE {
+TUCKED,
+VULNERABLE,
+IDLE,
+}
+
+arma_attack = false
+arma_attack_timer = 50
+arma_state = ARMA_STATE.IDLE
+inv_timer = 0
+has_shell = true
+idle_timer = 0
+
+
+
+// FUCK SHIT SONIC CODE DUPLICATED
+
+
 tails = noone
 jump_lock = false
 control_lock = 0

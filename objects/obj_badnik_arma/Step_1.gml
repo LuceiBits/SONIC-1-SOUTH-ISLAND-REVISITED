@@ -1,22 +1,134 @@
 /// @description Main player
-
+if global.process_objects = false
+exit;
 
 // ACTUAL ENEMY CODE
+var timer_init = 50
 
+if arma_state = ARMA_STATE.IDLE
+{
+	
+x_speed = 0
+ground_speed = 0
+
+var c = point_distance(x,y,obj_player.x,obj_player.y)	
+
+if c < 100
+{
+if arma_attack = false
+	{
+	//duped jump code
+	
+		y_speed -= jump_strength * dcos(ground_angle);	
+		x_speed -= jump_strength * dsin(ground_angle);
+			
+		//Trigger the jump flag
+		jump_flag = true;
+			
+		//Detach player off the ground and change state
+		ground = false;
+		state = player_state_jump
+		//dropdash_timer = 0;
+		//idle_timer = 0;
+		
+		//Change jump animation duration
+		//jump_anim_speed = floor(max(0, 4 - abs(ground_speed)));
+			
+		//Reset angle and floor mode
+		ground_angle = 0;
+		player_mode(COLLISION_MODE.FLOOR);
+			
+		//Play the sound
+		sound_play(sfx_jump);
+		//jump_buffer = 0
+	
+	//
+
+	arma_attack = true	
+	arma_attack_timer = timer_init
+	arma_state = ARMA_STATE.TUCKED
+	
+
+	
+	
+	}
+}	
+}
+	
+if arma_attack = true && ground
+{
+if arma_attack_timer = timer_init
+{
+sound_play(sfx_spindash)
+	if obj_player.x > x 
+		{
+		facing = 1
+		show_debug_message("FACE PLAYER ON RIGHT")
+		}
+
+		if obj_player.x < x 
+		{
+		facing = -1
+		show_debug_message("FACE PLAYER ON LEFT")
+		}	
+}
+arma_attack_timer -= 1
+}
+
+if arma_attack_timer = 0 && arma_attack = true
+{
+arma_attack = false
+show_debug_message("attempted to spindash")
+x_speed = 5 * facing
+ground_speed = x_speed
+}
+
+if x_speed = 0 && ground_speed = 0 && arma_state = ARMA_STATE.TUCKED && arma_attack = false
+idle_timer += 1
+else if idle_timer > 0
+idle_timer -= 1
+
+if idle_timer > 50
+arma_state = ARMA_STATE.IDLE
+	
+if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKED && has_shell = true
+{
+	if player_collide_object(COLLISION.MAIN){
+		inv_timer = 20
+		var player = instance_nearest(x,y,obj_player);
+		var angle = point_direction(x,y,player.x,player.y);
+		player.x_speed = BUMPER_FACTOR * dcos(angle);
+		player.y_speed = -BUMPER_FACTOR * dsin(angle);
+		if player.ground || player.on_terrain
+		player.ground_speed = ground_speed * -1
+		x_speed = BUMPER_FACTOR * dcos(angle + 180);
+		y_speed = -BUMPER_FACTOR * dsin(angle + 180);
+		if ground || on_terrain
+		{
+		if ground_speed = 0 && arma_attack = true
+		ground_speed = 4 * facing
+		ground_speed = ground_speed * -1
+		}
+		else
+		x_speed *= 0.8
+		y_speed *= 0.8
+		player.ground = false;
+		//arma_state = ARMA_STATE.VULNERABLE
+		has_shell = false
+		arma_attack = false
+		sound_play(sfx_bumper)
+	}
+}	
+	
+	
+	
+	
+	
+	
+// PLAYER CODE FUCKERY START
+
+//hacky physics fix this sucks
 state = player_state_roll()
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 	hitbox_top_offset = 0;
@@ -58,7 +170,7 @@ state = player_state_roll()
 	}
 	
 	//Handle how player is controlled:
-	player_control();
+	arma_control();
 
 	//Update player's animator
 	animator_update(animator);

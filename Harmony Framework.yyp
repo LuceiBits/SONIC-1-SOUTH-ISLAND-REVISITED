@@ -362,6 +362,7 @@
     {"id":{"name":"rm_template","path":"rooms/rm_template/rm_template.yy",},},
     {"id":{"name":"rm_title_screen","path":"rooms/rm_title_screen/rm_title_screen.yy",},},
     {"id":{"name":"animator_util","path":"scripts/animator_util/animator_util.yy",},},
+    {"id":{"name":"arma_control","path":"scripts/arma_control/arma_control.yy",},},
     {"id":{"name":"arma_hitbox","path":"scripts/arma_hitbox/arma_hitbox.yy",},},
     {"id":{"name":"arma_misc","path":"scripts/arma_misc/arma_misc.yy",},},
     {"id":{"name":"background_util","path":"scripts/background_util/background_util.yy",},},
