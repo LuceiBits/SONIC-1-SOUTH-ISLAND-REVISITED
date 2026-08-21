@@ -18,6 +18,7 @@ arma_state = ARMA_STATE.IDLE
 inv_timer = 0
 has_shell = true
 idle_timer = 0
+press_action = false
 
 
 
