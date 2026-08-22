@@ -1,0 +1,43 @@
+{
+  "$GMTileSet":"v1",
+  "%Name":"tile_labriynth",
+  "autoTileSets":[],
+  "ConfigValues":{
+    "Dev":{
+      "textureGroupId":"{ \"name\":\"BridgeZone\", \"path\":\"texturegroups/BridgeZone\" }",
+    },
+  },
+  "macroPageTiles":{
+    "SerialiseHeight":0,
+    "SerialiseWidth":0,
+    "TileSerialiseData":[],
+  },
+  "name":"tile_labriynth",
+  "out_columns":39,
+  "out_tilehborder":2,
+  "out_tilevborder":2,
+  "parent":{
+    "name":"Labyrinth Zone Tiles & Assets",
+    "path":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets.yy",
+  },
+  "resourceType":"GMTileSet",
+  "resourceVersion":"2.0",
+  "spriteId":{
+    "name":"tex_labriynth_tile",
+    "path":"sprites/tex_labriynth_tile/tex_labriynth_tile.yy",
+  },
+  "spriteNoExport":true,
+  "textureGroupId":{
+    "name":"Default",
+    "path":"texturegroups/Default",
+  },
+  "tileAnimationFrames":[],
+  "tileAnimationSpeed":15.0,
+  "tileHeight":16,
+  "tilehsep":0,
+  "tilevsep":0,
+  "tileWidth":16,
+  "tilexoff":0,
+  "tileyoff":0,
+  "tile_count":1517,
+}
