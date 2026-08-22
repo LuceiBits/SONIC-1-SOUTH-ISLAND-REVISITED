@@ -73,11 +73,11 @@ function player_water()
             if(!underwater)
             {
                 //Slow down the player
-				if on_terrain || ground
-                x_speed *= 0.92
-				else
-				x_speed *= 0.90
-				y_speed *= 0.80;
+				//if on_terrain || ground
+                //x_speed *= 0.92
+				//else
+				x_speed *= 0.50;
+				y_speed *= 0.50;
                 
                 //Create effects
                 if (!is_pool || is_pool && y < water.pos_y+8)
@@ -114,10 +114,10 @@ function player_water()
             //Speed up the player
 			
 			// x_speed *= 0.75;
-			if state = player_state_jump
+			if state != player_state_spring
 			{
-             y_speed *= 1.4
-			 y_speed = clamp(y_speed,0,-6) // we need to do something better than this, it fucks up a cool moment in waterfall zone
+             y_speed *= 1.6
+			 //y_speed = clamp(y_speed,0,-6) // we need to do something better than this, it fucks up a cool moment in waterfall zone
 			}
 			
             //Create effects

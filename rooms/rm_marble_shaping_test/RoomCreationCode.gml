@@ -2,7 +2,7 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = MUSIC.LABYRINTH_ZONE_ACT_2
+		stage_music = MUSIC.MARBLE_ZONE_ACT_1
 		
 		//Set level name
 		stage_name = "MARBLE ZONE";

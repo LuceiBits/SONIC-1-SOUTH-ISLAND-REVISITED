@@ -14,9 +14,12 @@ function game_init_music_list()
 	music_add(MUSIC.BLUE_SPHERES, bgm_blue_spheres, 6.923);
 	music_add(MUSIC.TEMP, bgm_temp, 0.000);
 	music_add(MUSIC.GREEN_HILL_ZONE_ACT_1, greenhillact1_tripleb,,,true);
+	music_add(MUSIC.MARBLE_ZONE_ACT_1, marble_zone, 2.030,74.030,true);
+	music_add(MUSIC.SPRING_YARD_ZONE_ACT_1, springyard_zone, 2.290,79.090,true);
 	music_add(MUSIC.WATERFALL_ZONE, waterfall_zone_tripleb, 2.050,71.790,true);
 	music_add(MUSIC.LABYRINTH_ZONE_ACT_1, labyrinth_zone_act1_samwow, 3.900,105.360,true);
 	music_add(MUSIC.LABYRINTH_ZONE_ACT_2, labyrinth_zone_act2_wip, 39.270,104.720,true);
+
 	
 	
 	// General stage music:
@@ -48,6 +51,8 @@ function game_init_music_list()
 		SUPER,
 		TEMP,
 		GREEN_HILL_ZONE_ACT_1,
+		MARBLE_ZONE_ACT_1,
+		SPRING_YARD_ZONE_ACT_1,
 		WATERFALL_ZONE,
 		LABYRINTH_ZONE_ACT_1,
 		LABYRINTH_ZONE_ACT_2,

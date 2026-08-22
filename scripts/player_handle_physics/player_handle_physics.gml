@@ -62,14 +62,16 @@ function player_handle_physics()
     }
 	
 	//Underwater multiplier
+	var g = 0.6
+	
     if(underwater) 
 	{
-        top_speed *= 0.5;
-        x_accel *= 0.5;
-		x_deaccel *= 0.5;
-		roll_friction *= 0.5;
-        friction_speed *= 0.5;
-		jump_release *= 0.5;
-		jump_strength *= 0.5;
+        top_speed *= g;
+        x_accel *= g;
+		x_deaccel *= g;
+		roll_friction *= g;
+        friction_speed *= g;
+		jump_release *= g;
+		jump_strength *= g;
     }
 }

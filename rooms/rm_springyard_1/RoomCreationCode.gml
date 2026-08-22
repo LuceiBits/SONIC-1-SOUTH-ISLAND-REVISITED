@@ -2,7 +2,7 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = MUSIC.TECHDEMO_TOWER
+		stage_music = MUSIC.SPRING_YARD_ZONE_ACT_1
 		
 		//Set level name
 		stage_name = "SPRING YARD ZONE";
