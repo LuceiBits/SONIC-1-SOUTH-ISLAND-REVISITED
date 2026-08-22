@@ -4,7 +4,7 @@ event_inherited();
 depth = 0
 
 y += y_speed
-y_speed += 0.09375
+y_speed += spx(24)
 
 if y >= ystart// && waittimer = 0 
 {
