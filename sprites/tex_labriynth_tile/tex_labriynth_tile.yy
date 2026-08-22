@@ -10,7 +10,7 @@
   "collisionTolerance":0,
   "ConfigValues":{
     "Dev":{
-      "textureGroupId":"{ \"name\":\"BridgeZone\", \"path\":\"texturegroups/BridgeZone\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "DynamicTexturePage":false,
