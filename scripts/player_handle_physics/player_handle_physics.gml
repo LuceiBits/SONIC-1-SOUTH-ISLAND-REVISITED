@@ -62,7 +62,7 @@ function player_handle_physics()
     }
 	
 	//Underwater multiplier
-	var g = 0.6
+	var g = 0.5
 	
     if(underwater) 
 	{

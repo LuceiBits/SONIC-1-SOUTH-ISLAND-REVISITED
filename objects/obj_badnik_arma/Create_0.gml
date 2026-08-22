@@ -202,4 +202,4 @@ arma_state = ARMA_STATE.TUCKED
 animation_play(arma_animator,1,true)
 }
 	
-instance_register_culling([-32, -32, 32, 32], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);
+instance_register_culling([-200, -200, 200, 200], on_reset, CULL_FLAG.CHECK_ENTITY_START | CULL_FLAG.CHECK_ENTITY_POS);

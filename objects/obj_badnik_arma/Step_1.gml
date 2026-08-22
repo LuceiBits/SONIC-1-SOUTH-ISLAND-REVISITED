@@ -3,75 +3,83 @@ if global.process_objects = false
 exit;
 
 // ACTUAL ENEMY CODE
-var timer_init = 50
-var arma_attack_range = 125
+var timer_init = 50 // how long it takes to spindash once grounded
+var arma_attack_range = 200 // range it checks for player in
+var spin_speed = 6 // spindash speed
 
 if arma_state = ARMA_STATE.IDLE
 {
-if has_shell
-animation_play(arma_animator, 0,);
-else
-animation_play(arma_animator, 2,);
-
-			if obj_player.x > x 
-		{
-		facing = 1
-		show_debug_message("FACE PLAYER ON RIGHT")
-		}
-
-		if obj_player.x < x 
-		{
-		facing = -1
-		show_debug_message("FACE PLAYER ON LEFT")
-		}	
-	
-x_speed = 0
-ground_speed = 0
-
-var c = point_distance(x,y,obj_player.x,obj_player.y)	
-
-if c < arma_attack_range
-{
-if arma_attack = false && ground
-	{
-		
-	//duped jump code
 	if has_shell
-	animation_play(arma_animator, 1, true);
+	animation_play(arma_animator, 0,);
 	else
-	animation_play(arma_animator, 3, true);
-	
-	
-		y_speed -= jump_strength * dcos(ground_angle);	
-		x_speed -= jump_strength * dsin(ground_angle);
-			
-		//Trigger the jump flag
-		jump_flag = true;
-			
-		//Detach player off the ground and change state
-		ground = false;
-		//state = player_state_jump
-		//dropdash_timer = 0;
-		//idle_timer = 0;
-		
-		//Change jump animation duration
-		//jump_anim_speed = floor(max(0, 4 - abs(ground_speed)));
-			
-		//Reset angle and floor mode
-		ground_angle = 0;
-		player_mode(COLLISION_MODE.FLOOR);
-			
-		//Play the sound
-		sound_play(sfx_jump);
-		//jump_buffer = 0
-	
-	//
+	animation_play(arma_animator, 2,);
 
-	arma_attack = true	
-	arma_attack_timer = timer_init
-	arma_state = ARMA_STATE.TUCKED
-	}
-}	
+				if obj_player.x > x 
+			{
+			facing = 1
+			show_debug_message("FACE PLAYER ON RIGHT")
+			}
+
+			if obj_player.x < x 
+			{
+			facing = -1
+			show_debug_message("FACE PLAYER ON LEFT")
+			}	
+	
+	x_speed = 0
+	ground_speed = 0
+
+	var c = point_distance(x,y,obj_player.x,obj_player.y)	
+
+	if c < arma_attack_range
+	{
+	if arma_attack = false && ground
+		{
+		arma_state = ARMA_STATE.TUCKED		
+		//duped jump code
+		if has_shell
+		animation_play(arma_animator, 1, true);
+		else
+		animation_play(arma_animator, 3, true);
+	
+	
+			y_speed -= jump_strength * dcos(ground_angle);	
+			x_speed -= jump_strength * dsin(ground_angle);
+			
+			//Trigger the jump flag
+			jump_flag = true;
+			
+			//Detach player off the ground and change state
+			ground = false;
+			//state = player_state_jump
+			//dropdash_timer = 0;
+			//idle_timer = 0;
+		
+			//Change jump animation duration
+			//jump_anim_speed = floor(max(0, 4 - abs(ground_speed)));
+			
+			//Reset angle and floor mode
+			ground_angle = 0;
+			player_mode(COLLISION_MODE.FLOOR);
+			
+			//Play the sound
+			sound_play(sfx_jump);
+			//jump_buffer = 0
+	
+		//
+
+		arma_attack = true	
+		arma_attack_timer = timer_init
+		}
+	}	
+}
+
+if arma_state = ARMA_STATE.TUCKED && (!animation_is_playing(arma_animator,1) || !animation_is_playing(arma_animator,3))
+{
+if has_shell
+		animation_play(arma_animator, 1, true);
+		else
+		animation_play(arma_animator, 3, true);
 }
 	
 if arma_attack = true && ground
@@ -98,7 +106,7 @@ if arma_attack_timer = 0 && arma_attack = true
 {
 arma_attack = false
 show_debug_message("attempted to spindash")
-x_speed = 5 * facing
+x_speed = spin_speed * facing
 ground_speed = x_speed
 }
 
@@ -108,7 +116,10 @@ else if idle_timer > 0
 idle_timer -= 1
 
 if idle_timer > 50
+{
+show_debug_message("SET TO IDLE")
 arma_state = ARMA_STATE.IDLE
+}
 	
 if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKED && has_shell = true
 {

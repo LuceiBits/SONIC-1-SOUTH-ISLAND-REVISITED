@@ -22,6 +22,8 @@
 		triggered = true;
 		animator.animation_finished = false;
 		sound_play(sfx_spring);
+		if player.object_index = obj_badnik_arma
+		player.arma_state = ARMA_STATE.TUCKED
 		
 		if(player.ground && !detach_sides || player.ground && player.mode == 0 && detach_sides)
 		{
