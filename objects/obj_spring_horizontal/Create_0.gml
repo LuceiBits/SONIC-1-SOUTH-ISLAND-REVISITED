@@ -23,5 +23,5 @@
 	animation_play(animator, 0);
 	
 	// Register the object for culling
-	if room != rm_springyard_test
+	if room != rm_springyard_1
 	instance_register_culling();

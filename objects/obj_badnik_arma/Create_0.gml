@@ -176,7 +176,9 @@ animation_play(arma_animator,0,true)
 	
 	on_reset = function()
 	{
-		//animation_play(animator, 0, true);
+		if arma_state != ARMA_STATE.TUCKED
+		{
+		animation_play(arma_animator, 0, true);
 		x_speed = 0;
 		y_speed = 0;
 		ground = true
@@ -187,7 +189,11 @@ animation_play(arma_animator,0,true)
 		mode = COLLISION_MODE.FLOOR
 		x = xstart;
 		y = ystart;
-		visual_angle = 0;					// Used for rotation of the player's sprite
+		visual_angle = 0;	
+		arma_state = ARMA_STATE.IDLE
+		has_shell = true
+		}
+		// Used for rotation of the player's sprite
 	}
 	
 if start_rolling = true

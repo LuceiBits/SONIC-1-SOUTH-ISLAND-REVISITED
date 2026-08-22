@@ -1,8 +1,10 @@
 animator_update(animator);
 
-if player_collide_object(COLLISION.MAIN)
+if player_collide_object(COLLISION.MAIN) || instance_place(x,y,obj_badnik_arma)
 {
 	var player = instance_nearest(x,y,obj_player);
+	if instance_place(x,y,obj_badnik_arma)
+	player = instance_place(x,y,obj_badnik_arma) 
 	var angle = point_direction(x,y,player.x,player.y);
 	player.x_speed = BUMPER_FACTOR * dcos(angle);
 	player.y_speed = -BUMPER_FACTOR * dsin(angle);

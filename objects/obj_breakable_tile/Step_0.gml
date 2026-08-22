@@ -65,3 +65,6 @@
 		}
 		instance_destroy();
 	}
+
+if place_meeting(x,y,obj_badnik_arma)
+instance_destroy()

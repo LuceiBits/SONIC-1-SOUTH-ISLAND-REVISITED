@@ -4,7 +4,7 @@ enum BUMPERANI{
 };
 score_life = 16;
 
-#macro BUMPER_FACTOR 7
+#macro BUMPER_FACTOR 9
 
 animator = new animator_create();
 animation_add(BUMPERANI.STOPPED, spr_bumper, 0.2);
