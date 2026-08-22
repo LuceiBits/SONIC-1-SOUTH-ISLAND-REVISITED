@@ -35,6 +35,9 @@
     "name":"spr_bumper",
     "path":"sprites/spr_bumper/spr_bumper.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_bumper",
+    "path":"sprites/spr_bumper/spr_bumper.yy",
+  },
   "visible":true,
 }
