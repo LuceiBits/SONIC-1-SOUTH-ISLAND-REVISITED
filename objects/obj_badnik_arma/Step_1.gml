@@ -231,3 +231,6 @@ state = arma_state_roll()
 	
 	// Update the recorder
 	//instance_recorder_update(recorder);
+	
+	if instance_place(x,y,obj_spikes_horizontal) || instance_place(x,y,obj_spikes_vertical) || instance_place(x,y,obj_spikeball)
+	touched_spike = true

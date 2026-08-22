@@ -2,17 +2,18 @@
 /// @description Parent script
 	
 	//Destroy the enemy
-	if((player_collide_object() || player_insta_shield_collide()) && destructible)
+	if((player_collide_object() || player_insta_shield_collide()) && destructible) || touched_spike = true
 	{
 		var fly_angle = 90 - point_direction(obj_player.x, obj_player.y,x,y) 
 		var fly_cond = (obj_player.state == player_state_tailsfly && abs(fly_angle) < 45)
 		
-		if(obj_player.attacking || obj_player.invincible || fly_cond) && inv_timer = 0 && has_shell = false
+		if ((obj_player.attacking || obj_player.invincible || fly_cond) && inv_timer = 0 && has_shell = false) || touched_spike = true
 		{
 			//Create animal buddies instead
 			instance_create_depth(x, y, depth, obj_animal);
 		
 			//Player bounce
+			if touched_spike = false
 			obj_player.y_speed = -abs(obj_player.y_speed);
 		
 			//Create score object and add combo and badnik chain
@@ -33,7 +34,7 @@
 		}
 		
 		
-		if(hurting) && obj_player.attacking = false && inv_timer = 0
+		if(hurting) && obj_player.attacking = false && inv_timer = 0 && touched_spike = false
 		{
 			//Player getting hurt
 			player_hurt();

@@ -73,14 +73,39 @@
 	//dev_menu_add_option_flag("Dropdash Flag", "use_dropdash");
 	//dev_menu_add_option_flag("Peelout Flag", "use_peelout");
 	// You're going to play labyrinth zone as god intended damn it ~ Samwow
+	if os_get_config() = "Dev" // disable every scene if playtest build to avoid confusion
+	{
+	dev_menu_add_category("DEV PRIORITY");
+	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
+	dev_menu_add_entry("Spring Yard Zone Act 1", rm_springyard_1);
+	
+	
+	dev_menu_add_category("TEST ROOMS");
+	dev_menu_add_entry("Green Hill Zone Shaping Test", rm_techdemo_tower);
+	dev_menu_add_entry("Marble Zone Collision Test", rm_marble_shaping_test);
+	dev_menu_add_entry("Spring Yard Testroom", rm_springyard_test);
+	dev_menu_add_entry("Special Stage Test", rm_bonus_temp);
+	}
 	
 	dev_menu_add_category("SONIC 1 RE-GENESIS");
-	dev_menu_add_entry("Green Hill Shaping Test", rm_techdemo_tower);
-	dev_menu_add_entry("Marble Zone Collision Test", rm_marble_shaping_test);
-	dev_menu_add_entry("Spring Yard Test", rm_springyard_1);
-	dev_menu_add_entry("Waterfall Zone", rm_greenhill_test);
-	dev_menu_add_entry("Labyrinth Zone Act 1", rm_labyrinth_1);
-	dev_menu_add_entry("Special Stage Test", rm_bonus_temp);
+	dev_menu_add_entry("Green Hill 1 (TEST)", rm_techdemo_tower);
+	dev_menu_add_entry("Green Hill 2 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Marble 1 (TEST)", rm_marble_shaping_test);
+	dev_menu_add_entry("Marble 2 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Marble/Spring (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Spring Yard 1 (WIP)", rm_springyard_1);
+	dev_menu_add_entry("Spring Yard 2 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Waterfall (LAYOUT DONE)", rm_greenhill_test);
+	dev_menu_add_entry("Labyrinth 1 (LAYOUT DONE)", rm_labyrinth_1);
+	dev_menu_add_entry("Labyrinth 2 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Lab/Star (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Starlight 1 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Starlight 2 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Skybase (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Scrap Brain 1 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Scrap Brain 2 (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Final Zone (NOT STARTED)", rm_playtest_end);
+	
 	//Add the presentation category
 	//dev_menu_add_category("PRESENTATION");
 	//dev_menu_add_entry("SPLASH", rm_splash);
