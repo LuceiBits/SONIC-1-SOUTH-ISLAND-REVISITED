@@ -1,17 +1,16 @@
 {
   "$GMObject":"",
-  "%Name":"obj_bumper",
+  "%Name":"obj_spike_rotator",
   "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_bumper",
+  "name":"obj_spike_rotator",
   "overriddenProperties":[],
   "parent":{
-    "name":"Base Stage",
-    "path":"folders/Objects/Stage Objects/Base Stage.yy",
+    "name":"Harmony Framework",
+    "path":"Harmony Framework.yyp",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,12 +31,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_bumper",
-    "path":"sprites/spr_bumper/spr_bumper.yy",
+    "name":"spr_spike_rotator",
+    "path":"sprites/spr_spike_rotator/spr_spike_rotator.yy",
   },
-  "spriteMaskId":{
-    "name":"spr_bumper",
-    "path":"sprites/spr_bumper/spr_bumper.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }
