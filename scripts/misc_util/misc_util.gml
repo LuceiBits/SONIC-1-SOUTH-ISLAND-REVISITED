@@ -50,3 +50,9 @@ function colour_get_inverse(_color)
 	
 	return make_colour_rgb(_ir, _ig, _ib)
 }
+
+// subpixel
+function spx(_amount)
+{
+	return _amount / 256
+}
