@@ -3,6 +3,13 @@ if player_collide_object() && obj_player.y_speed > 0
 	invframes = 5
 	player_hurt();
 }
+
+if player_insta_shield_collide() && obj_player.y_speed > 0
+{
+	invframes = 5
+	player_spike_parry();
+}
+
 invframes = max(invframes - 1,0);
 destructible = invframes == 0
 

@@ -13,6 +13,7 @@ y_speed = 0;
 animator = new animator_create();
 
 invframes = 0
+parryTimer = 0
 
 on_reset = function()
 {
