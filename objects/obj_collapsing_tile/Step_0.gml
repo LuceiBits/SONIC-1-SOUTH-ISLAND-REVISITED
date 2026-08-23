@@ -1,6 +1,6 @@
 /// @description Collaps it
 
-	if(obj_player.ground && player_collide_object(noone, COLLISION.BOTTOM) && !triggered)
+	if(obj_player.ground && player_collide_object(noone, COLLISION.BOTTOM) && !triggered && obj_player.bbox_bottom < bbox_bottom) //bbox stuff is adjustment to make it more consistent in more situations for freer tiling
 	{
 		triggered = true
 		event_user(1) //generates tile data to be saved
