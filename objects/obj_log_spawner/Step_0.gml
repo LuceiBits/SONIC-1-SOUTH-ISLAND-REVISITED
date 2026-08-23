@@ -34,7 +34,7 @@ if spawn_type = "three"
 	instance_create_depth(bbox_left,bbox_top,0,obj_log_platform)
 	}
 
-	if alternator = 1
+	if alternator = 1 || alternator = 3
 	{
 	instance_create_depth(x,bbox_top,0,obj_log_platform)
 	}
@@ -57,6 +57,6 @@ alternator = 0
 }
 else
 {
-if alternator > 2
+if alternator > 3
 alternator = 0	
 }

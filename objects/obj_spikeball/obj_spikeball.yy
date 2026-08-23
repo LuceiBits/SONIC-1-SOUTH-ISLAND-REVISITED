@@ -9,8 +9,8 @@
   "name":"obj_spikeball",
   "overriddenProperties":[],
   "parent":{
-    "name":"Spikes",
-    "path":"folders/Objects/Stage Objects/Common Objects/Spikes.yy",
+    "name":"Springyard",
+    "path":"folders/Objects/Stage Objects/Springyard.yy",
   },
   "parentObjectId":null,
   "persistent":false,

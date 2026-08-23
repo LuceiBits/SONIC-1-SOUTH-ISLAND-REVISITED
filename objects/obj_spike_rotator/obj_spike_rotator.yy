@@ -9,8 +9,8 @@
   "name":"obj_spike_rotator",
   "overriddenProperties":[],
   "parent":{
-    "name":"Harmony Framework",
-    "path":"Harmony Framework.yyp",
+    "name":"Springyard",
+    "path":"folders/Objects/Stage Objects/Springyard.yy",
   },
   "parentObjectId":null,
   "persistent":false,
