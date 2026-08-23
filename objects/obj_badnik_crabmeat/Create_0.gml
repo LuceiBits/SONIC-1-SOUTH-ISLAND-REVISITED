@@ -7,7 +7,7 @@ event_inherited();
 
 // Set up badnik's values
 waittimer = 0
-badnikdirection = 1
+badnikdirection = -1
 grounded = true;
 y_speed = 0;
 animator = new animator_create();
@@ -18,6 +18,7 @@ shot = false
 
 on_reset = function()
 {
+	badnikdirection = -1
 	x = xstart;	
 	y = ystart;	
 	waittimer = 0;
