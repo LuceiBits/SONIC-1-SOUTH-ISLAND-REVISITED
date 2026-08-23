@@ -394,7 +394,6 @@
     {"name":"inst_51615CAD","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_295A5A80","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_675B5BE9","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
-    {"name":"inst_A5516E6","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_7506722A","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_133A3313","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_7C8BC931","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
@@ -590,9 +589,6 @@
         {"$GMRInstance":"v4","%Name":"inst_675B5BE9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_675B5BE9","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"propertyId":{"name":"angle_speed","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1.5",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.4,"x":7184.0,"y":936.0,},
-        {"$GMRInstance":"v4","%Name":"inst_A5516E6","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_A5516E6","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"properties":[
-            {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"propertyId":{"name":"angle_speed","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1.5",},
-          ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":180.0,"scaleX":1.0,"scaleY":1.4,"x":7184.0,"y":952.0,},
         {"$GMRInstance":"v4","%Name":"inst_68585F1E","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_68585F1E","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"properties":[
             {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"obj_aaz_spikeball_chain","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"propertyId":{"name":"angle_speed","path":"objects/obj_aaz_spikeball_chain/obj_aaz_spikeball_chain.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"-1.5",},
           ],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":180.0,"scaleX":1.0,"scaleY":1.4,"x":9536.0,"y":896.0,},
