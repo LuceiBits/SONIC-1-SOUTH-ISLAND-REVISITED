@@ -794,6 +794,7 @@
     {"id":{"name":"spr_knuckles_wait","path":"sprites/spr_knuckles_wait/spr_knuckles_wait.yy",},},
     {"id":{"name":"spr_knuckles_waiting","path":"sprites/spr_knuckles_waiting/spr_knuckles_waiting.yy",},},
     {"id":{"name":"spr_knuckles_walk","path":"sprites/spr_knuckles_walk/spr_knuckles_walk.yy",},},
+    {"id":{"name":"spr_labrealdoor","path":"sprites/spr_labrealdoor/spr_labrealdoor.yy",},},
     {"id":{"name":"spr_labyrinth_path","path":"sprites/spr_labyrinth_path/spr_labyrinth_path.yy",},},
     {"id":{"name":"spr_labyrinth_platform","path":"sprites/spr_labyrinth_platform/spr_labyrinth_platform.yy",},},
     {"id":{"name":"spr_labyrinth_wheel","path":"sprites/spr_labyrinth_wheel/spr_labyrinth_wheel.yy",},},
