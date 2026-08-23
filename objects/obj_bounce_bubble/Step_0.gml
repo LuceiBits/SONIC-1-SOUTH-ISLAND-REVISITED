@@ -1,4 +1,4 @@
-if (instance_place(x,y,obj_player) && bounce_delay = 0 && visible = true) || (instance_place(x,y,obj_insta_shield) && visible = true)
+if (instance_place(x,y,obj_player) && bounce_delay = 0 && visible = true) || (instance_place(x,y,obj_insta_shield) && visible = true) && obj_player.state != player_state_drown
 {
 	sound_play(sfx_bubble_jump);	
 	if obj_player.on_terrain = false && !instance_exists(obj_insta_shield)
