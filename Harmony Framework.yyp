@@ -55,6 +55,8 @@
     {"$GMFolder":"","%Name":"Sonic 1 Revisited","folderPath":"folders/Rooms/Sonic 1 Revisited.yy","name":"Sonic 1 Revisited","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Green Hill Zone","folderPath":"folders/Rooms/Sonic 1 Revisited/Green Hill Zone.yy","name":"Green Hill Zone","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Labyrinth Zone","folderPath":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone.yy","name":"Labyrinth Zone","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Labyrinth Zone Tiles & Assets","folderPath":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets.yy","name":"Labyrinth Zone Tiles & Assets","resourceType":"GMFolder","resourceVersion":"2.0",},
+    {"$GMFolder":"","%Name":"Assets","folderPath":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets/Assets.yy","name":"Assets","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Marble Zone","folderPath":"folders/Rooms/Sonic 1 Revisited/Marble Zone.yy","name":"Marble Zone","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Scrap Brain Zone","folderPath":"folders/Rooms/Sonic 1 Revisited/Scrap Brain Zone.yy","name":"Scrap Brain Zone","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Springyard Zone","folderPath":"folders/Rooms/Sonic 1 Revisited/Springyard Zone.yy","name":"Springyard Zone","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -156,8 +158,6 @@
     {"$GMFolder":"","%Name":"Bonus Stage","folderPath":"folders/Tile Sets/Bonus Stage.yy","name":"Bonus Stage","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Collision Tileset","folderPath":"folders/Tile Sets/Collision Tileset.yy","name":"Collision Tileset","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Example Tileset","folderPath":"folders/Tile Sets/Example Tileset.yy","name":"Example Tileset","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Labyrinth Zone Tiles & Assets","folderPath":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets.yy","name":"Labyrinth Zone Tiles & Assets","resourceType":"GMFolder","resourceVersion":"2.0",},
-    {"$GMFolder":"","%Name":"Assets","folderPath":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets/Assets.yy","name":"Assets","resourceType":"GMFolder","resourceVersion":"2.0",},
   ],
   "ForcedPrefabProjectReferences":[
     {"link":"io.gamemaker.gm_filter_tintfilter-1.0.0","name":"io.gamemaker.gm_filter_tintfilter-1.0.0","path":"io.gamemaker.gm_filter_tintfilter-1.0.0.yyp",},
