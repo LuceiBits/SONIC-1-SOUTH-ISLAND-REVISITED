@@ -9,6 +9,12 @@
 	var col = player_act_solid();
 	var p = player_find(0);
 	
+	
+	
+	var arma_p = instance_nearest(x,y,obj_badnik_arma)
+	if arma_p != noone
+	var arma_col = instance_act_solid(arma_p)
+	
 	// Get the osscilator timer
 	var timer = obj_level.platform_oscillate_timer;
 	//show_debug_message(platform_oscillate_timer)
@@ -30,6 +36,14 @@
 	{
 		p.x += x - old_x;
 		p.y += y - old_y;
+	}
+	
+	if arma_p != noone
+	if(arma_col && arma_p.ground && p.y <= bbox_top)
+	{
+		ground = true
+		arma_p.x += x - old_x;
+		arma_p.y += y - old_y;	
 	}
 	
 	// Carry attached objects
