@@ -131,7 +131,11 @@ if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKE
 		player.x_speed = BUMPER_FACTOR * dcos(angle);
 		player.y_speed = -BUMPER_FACTOR * dsin(angle);
 		if player.ground || player.on_terrain
-		player.ground_speed = ground_speed * -1
+		{
+		if sign(player.ground_speed) != sign(ground_speed)
+		player.ground_speed *= -1
+		player.ground_speed += ground_speed
+		}
 		x_speed = BUMPER_FACTOR * dcos(angle + 180);
 		y_speed = -BUMPER_FACTOR * dsin(angle + 180);
 		if ground || on_terrain
@@ -142,9 +146,11 @@ if inv_timer = 0 && obj_player.attacking = true && arma_state = ARMA_STATE.TUCKE
 		ground_speed = ground_speed * -1
 		}
 		else
+		{
 		x_speed *= 0.8
 		y_speed *= 0.8
-		player.ground = false;
+		//player.ground = false;
+		}
 		//arma_state = ARMA_STATE.VULNERABLE
 		arma_attack = false
 				if has_shell

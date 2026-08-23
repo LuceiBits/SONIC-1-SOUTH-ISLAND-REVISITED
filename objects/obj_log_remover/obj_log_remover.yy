@@ -1,16 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_spike_rotator",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_log_remover",
+  "eventList":[],
   "managed":true,
-  "name":"obj_spike_rotator",
+  "name":"obj_log_remover",
   "overriddenProperties":[],
   "parent":{
-    "name":"Springyard",
-    "path":"folders/Objects/Stage Objects/Springyard.yy",
+    "name":"Waterfall",
+    "path":"folders/Objects/Stage Objects/Waterfall.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_spike_rotator",
-    "path":"sprites/spr_spike_rotator/spr_spike_rotator.yy",
+    "name":"spr_log_remover",
+    "path":"sprites/spr_log_remover/spr_log_remover.yy",
   },
   "spriteMaskId":null,
   "visible":true,
