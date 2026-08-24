@@ -585,6 +585,7 @@
     {"name":"inst_40358A0","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_40898C01","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
     {"name":"inst_6ECBDF3B","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
+    {"name":"inst_883C4F9","path":"rooms/rm_springyard_1/rm_springyard_1.yy",},
   ],
   "isDnd":false,
   "layers":[
@@ -2115,7 +2116,9 @@
         {"$GMRInstance":"v4","%Name":"inst_40898C01","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_40898C01","objectId":{"name":"obj_bumper","path":"objects/obj_bumper/obj_bumper.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":6272.0,"y":976.0,},
         {"$GMRInstance":"v4","%Name":"inst_6ECBDF3B","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_6ECBDF3B","objectId":{"name":"obj_badnik_arma","path":"objects/obj_badnik_arma/obj_badnik_arma.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":11240.0,"y":1760.0,},
       ],"layers":[],"name":"Objects","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
-    {"$GMRInstanceLayer":"","%Name":"BackgroundObject","depth":1000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[],"layers":[],"name":"BackgroundObject","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
+    {"$GMRInstanceLayer":"","%Name":"BackgroundObject","depth":1000,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"instances":[
+        {"$GMRInstance":"v4","%Name":"inst_883C4F9","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"name":"inst_883C4F9","objectId":{"name":"obj_springyard_1_bg","path":"objects/obj_springyard_1_bg/obj_springyard_1_bg.yy",},"properties":[],"resourceType":"GMRInstance","resourceVersion":"2.0","rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":0.0,"y":64.0,},
+      ],"layers":[],"name":"BackgroundObject","properties":[],"resourceType":"GMRInstanceLayer","resourceVersion":"2.0","userdefinedDepth":false,"visible":true,},
     {"$GMRBackgroundLayer":"","%Name":"Background","animationFPS":30.0,"animationSpeedType":0,"colour":4283184440,"depth":1100,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"hspeed":0.0,"htiled":true,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[],"name":"Background","properties":[],"resourceType":"GMRBackgroundLayer","resourceVersion":"2.0","spriteId":{"name":"bg_grid","path":"sprites/bg_grid/bg_grid.yy",},"stretch":false,"userdefinedAnimFPS":false,"userdefinedDepth":false,"visible":true,"vspeed":0.0,"vtiled":true,"x":0,"y":0,},
   ],
   "name":"rm_springyard_1",
