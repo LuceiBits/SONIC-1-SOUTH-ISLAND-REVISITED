@@ -25,7 +25,6 @@
 		if instance_exists(obj_water)
 		global.water_level_store = obj_water.level_target
 		
-		
 		//Store backgrounds for next respawn
 		level_store_bg_visibility();
 		
@@ -34,6 +33,8 @@
 		
 		//Play sound
 		sound_play(sfx_checkpoint);
+		
+		instance_create_depth(x + 32, y - 48, depth, obj_checkpoint_timer)
 	}
 	
 	//Spin the checkpoint
