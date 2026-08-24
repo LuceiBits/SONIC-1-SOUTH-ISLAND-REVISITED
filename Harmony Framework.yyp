@@ -243,6 +243,7 @@
     {"id":{"name":"obj_capsule_piece","path":"objects/obj_capsule_piece/obj_capsule_piece.yy",},},
     {"id":{"name":"obj_capsule","path":"objects/obj_capsule/obj_capsule.yy",},},
     {"id":{"name":"obj_character_select","path":"objects/obj_character_select/obj_character_select.yy",},},
+    {"id":{"name":"obj_checkpoint_timer","path":"objects/obj_checkpoint_timer/obj_checkpoint_timer.yy",},},
     {"id":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},},
     {"id":{"name":"obj_chemical_block","path":"objects/obj_chemical_block/obj_chemical_block.yy",},},
     {"id":{"name":"obj_collapsing_tile","path":"objects/obj_collapsing_tile/obj_collapsing_tile.yy",},},
