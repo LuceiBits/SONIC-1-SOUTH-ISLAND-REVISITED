@@ -6,9 +6,12 @@ if player_collide_object(COLLISION.MAIN) || instance_place(x,y,obj_badnik_arma)
 	if instance_place(x,y,obj_badnik_arma)
 	player = instance_place(x,y,obj_badnik_arma) 
 	var angle = point_direction(x,y,player.x,player.y);
+	player.jump_flag = false
+	player.ground = false;
 	player.x_speed = BUMPER_FACTOR * dcos(angle);
 	player.y_speed = -BUMPER_FACTOR * dsin(angle);
-	player.ground = false;
+
+
 	
 	sound_play(sfx_bumper)
 	score_life--;
