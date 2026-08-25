@@ -4,7 +4,7 @@
   "autoTileSets":[],
   "ConfigValues":{
     "Dev":{
-      "textureGroupId":"{ \"name\":\"GumballMachine\", \"path\":\"texturegroups/GumballMachine\" }",
+      "textureGroupId":"{ \"name\":\"Default\", \"path\":\"texturegroups/Default\" }",
     },
   },
   "macroPageTiles":{
