@@ -18,7 +18,7 @@
   "out_tilevborder":2,
   "parent":{
     "name":"Labyrinth Zone Tiles & Assets",
-    "path":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Labyrinth Zone/Labyrinth Zone Tiles & Assets.yy",
   },
   "resourceType":"GMTileSet",
   "resourceVersion":"2.0",

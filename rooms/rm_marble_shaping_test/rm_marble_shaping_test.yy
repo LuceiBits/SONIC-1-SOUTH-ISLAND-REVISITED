@@ -384,7 +384,7 @@
   "name":"rm_marble_shaping_test",
   "parent":{
     "name":"Marble Zone",
-    "path":"folders/Rooms/Sonic 1 Revisited/Marble Zone.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Marble Zone.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

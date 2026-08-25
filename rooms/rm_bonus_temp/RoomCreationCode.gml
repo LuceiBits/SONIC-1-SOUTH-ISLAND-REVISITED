@@ -21,4 +21,6 @@
 		next_level = rm_playtest_end;
 		else
 		next_level = rm_labyrinth_1
+		
+		show_collisions = true
 	}

@@ -17840,7 +17840,7 @@
   "name":"rm_labyrinth_1",
   "parent":{
     "name":"Labyrinth Zone",
-    "path":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Labyrinth Zone.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

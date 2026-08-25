@@ -46,8 +46,8 @@
   ],
   "name":"rm_playtest_end",
   "parent":{
-    "name":"Sonic 1 Revisited",
-    "path":"folders/Rooms/Sonic 1 Revisited.yy",
+    "name":"Sonic 1 Re-Genesis",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

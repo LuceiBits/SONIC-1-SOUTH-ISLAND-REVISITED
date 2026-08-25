@@ -86,16 +86,23 @@
 	dev_menu_add_entry("Spring Yard Testroom", rm_springyard_test);
 	dev_menu_add_entry("Special Stage Test", rm_bonus_temp);
 	}
+	else
+	{
+	dev_menu_add_category("PLAYTEST FOCUS");
+	dev_menu_add_entry("Spring Yard 1 (WIP)", rm_springyard_1);
+	dev_menu_add_entry("Waterfall (LAYOUT DONE)",rm_waterfall_zone );
+	dev_menu_add_entry("Labyrinth 1 (LAYOUT DONE)", rm_labyrinth_1);
+	}
 	
 	dev_menu_add_category("SONIC 1 RE-GENESIS");
 	dev_menu_add_entry("Green Hill 1 (TEST)", rm_techdemo_tower);
 	dev_menu_add_entry("Green Hill 2 (NOT STARTED)", rm_playtest_end);
 	dev_menu_add_entry("Marble 1 (TEST)", rm_marble_shaping_test);
 	dev_menu_add_entry("Marble 2 (NOT STARTED)", rm_playtest_end);
-	dev_menu_add_entry("Marble/Spring (NOT STARTED)", rm_playtest_end);
+	dev_menu_add_entry("Marble/Spring (TEST)", rm_jungle_zone);
 	dev_menu_add_entry("Spring Yard 1 (WIP)", rm_springyard_1);
 	dev_menu_add_entry("Spring Yard 2 (NOT STARTED)", rm_playtest_end);
-	dev_menu_add_entry("Waterfall (LAYOUT DONE)", rm_greenhill_test);
+	dev_menu_add_entry("Waterfall (LAYOUT DONE)",rm_waterfall_zone );
 	dev_menu_add_entry("Labyrinth 1 (LAYOUT DONE)", rm_labyrinth_1);
 	dev_menu_add_entry("Labyrinth 2 (NOT STARTED)", rm_playtest_end);
 	dev_menu_add_entry("Lab/Star (NOT STARTED)", rm_playtest_end);

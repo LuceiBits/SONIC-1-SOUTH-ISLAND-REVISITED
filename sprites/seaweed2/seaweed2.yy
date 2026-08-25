@@ -29,7 +29,7 @@
   "origin":0,
   "parent":{
     "name":"Assets",
-    "path":"folders/Rooms/Sonic 1 Revisited/Labyrinth Zone/Labyrinth Zone Tiles & Assets/Assets.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Labyrinth Zone/Labyrinth Zone Tiles & Assets/Assets.yy",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",

@@ -18,4 +18,7 @@
 		
 		//Next level
 		next_level = rm_playtest_end;
+		
+		// Show debug collisions? (use true if not tiled)
+		show_collisions = false
 	}

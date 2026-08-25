@@ -60,3 +60,12 @@
 	
 	show_debug_message(global.store_background_visibility);
 	
+	if show_collisions = true // use for levels that don't have tiling
+	{
+	with obj_dev
+	alarm[2] = 10 // turn ON collision visibility
+	}
+	else
+	with obj_dev
+	alarm[3] = 10 // turn OFF collision visibility
+	

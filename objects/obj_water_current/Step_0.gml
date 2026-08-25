@@ -25,3 +25,4 @@ if place_meeting(x, y, obj_player) //player_collide_object()
 		state = player_state_watercurrent
 	}
 }
+

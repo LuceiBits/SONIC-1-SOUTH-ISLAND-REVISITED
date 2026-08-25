@@ -149,7 +149,7 @@
   "name":"rm_greenhill_1",
   "parent":{
     "name":"Green Hill Zone",
-    "path":"folders/Rooms/Sonic 1 Revisited/Green Hill Zone.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Green Hill Zone.yy",
   },
   "parentRoom":null,
   "physicsSettings":{

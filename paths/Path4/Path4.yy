@@ -6,7 +6,7 @@
   "name":"Path4",
   "parent":{
     "name":"Green Hill Zone",
-    "path":"folders/Rooms/Sonic 1 Revisited/Green Hill Zone.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Green Hill Zone.yy",
   },
   "points":[
     {"speed":100.0,"x":13312.0,"y":13554.0,},

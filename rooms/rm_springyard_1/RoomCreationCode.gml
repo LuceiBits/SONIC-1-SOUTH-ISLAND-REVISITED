@@ -17,5 +17,8 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		next_level = rm_greenhill_test;
+		next_level = rm_waterfall_zone;
+		
+		// Show debug collisions? (use true if not tiled)
+		show_collisions = true
 	}

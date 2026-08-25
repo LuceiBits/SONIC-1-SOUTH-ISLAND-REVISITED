@@ -2,10 +2,10 @@
 	with(obj_level)
 	{
 		//Set stage music and loop points
-		stage_music = MUSIC.MARBLE_ZONE_ACT_1
+		stage_music = MUSIC.WATERFALL_ZONE
 		
 		//Set level name
-		stage_name = "MARBLE ZONE";
+		stage_name = "Waterfall Zone";
 		
 		//Set stage act
 		act = 1;
@@ -17,7 +17,7 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
-		next_level = rm_springyard_1;
+		next_level = rm_labyrinth_1;
 		
 		show_collisions = true
 	}

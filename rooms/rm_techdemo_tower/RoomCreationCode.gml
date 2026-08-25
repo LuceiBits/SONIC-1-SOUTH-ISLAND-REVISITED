@@ -17,4 +17,6 @@
 		
 		//Next level
 		next_level = rm_marble_shaping_test;
+		
+		show_collisions = true
 	}

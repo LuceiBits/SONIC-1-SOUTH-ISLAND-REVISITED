@@ -6,6 +6,10 @@
 	platform_oscillate_timer = 0;
 	level_state = LEVEL_STATE.NORMAL;
 	
+	//TESTING CONFIG
+	
+	show_collisions = false
+	
 	//====================================================//
 	//				 **DEFAULT STAGE SETUP**			  //
 	//====================================================//

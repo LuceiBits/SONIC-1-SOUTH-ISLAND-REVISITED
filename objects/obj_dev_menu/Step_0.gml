@@ -197,8 +197,8 @@
 				
 				//Go to the room
 				room_goto(scene_room[category_select + 1][scene_select]);
-				with obj_dev
-				alarm[2] = 10 // turn on collisions for proto builds
+				//with obj_dev
+				//alarm[2] = 10 // turn on collisions for proto builds
 			}
 		break;
 		

@@ -17,6 +17,20 @@ enum INPUT
 /// @description							Function used for initializing the input system
 function input_init()
 {
+	if (array_length(gamepads) > 0)
+{
+controller_slot = 0
+}
+
+controller_slot = 0
+	
+//	if (array_length(devices) > 0)
+//{
+// controller_slot = devices[array_length(devices)]
+//}
+	
+
+	
 	input_data_hold = [];
 	input_data_press = [];
 	input_data_release = [];
@@ -32,6 +46,10 @@ function input_init()
 /// @description							Function used for updating the input system
 function input_update()
 {
+
+
+	
+	
 	var size = array_length(input_data_keyboard);
 	
 	for (var i = 0; i < size; ++i) 
@@ -41,13 +59,13 @@ function input_update()
 		
 		// Get the axis flip flag and set it's conditions
 		var axisFlip = input_data_controller_axis[i][1];
-		var axisCondition = axisFlip ? (gamepad_axis_value(0, input_data_controller_axis[i][0]) < -GAMEPAD_AXIS_DEADZONE) : (gamepad_axis_value(0, input_data_controller_axis[i][0]) > GAMEPAD_AXIS_DEADZONE);
+		var axisCondition = axisFlip ? (gamepad_axis_value(controller_slot, input_data_controller_axis[i][0]) < -GAMEPAD_AXIS_DEADZONE) : (gamepad_axis_value(0, input_data_controller_axis[i][0]) > GAMEPAD_AXIS_DEADZONE);
 		
 		// Is the input coming keyboard?
 		var isKeyboard = keyboard_check(input_data_keyboard[i]);
 		
 		// Is the input coming from the controller
-		var isController = axisCondition ||  gamepad_button_check(0, input_data_controller[i]);
+		var isController = axisCondition ||  gamepad_button_check(controller_slot, input_data_controller[i]);
 		
 		// Decide if gamepad is currently being used or not
 		if(isKeyboard)

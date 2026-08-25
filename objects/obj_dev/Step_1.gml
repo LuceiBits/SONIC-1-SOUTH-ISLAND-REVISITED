@@ -9,6 +9,14 @@
 	//Destroy just in case
 	if(!global.dev_mode) 
 		instance_destroy();
+		
+		// moved out of obj_shell for easier to set fullscreen
+		if(keyboard_check_pressed(vk_f4)) 
+		{
+			//Change the value and modulate it
+			global.window_size = math_wrap(global.window_size + 1, 1, global.window_size_limit);
+			game_call_window_resize();
+		}
 	
 	if os_get_config() != "Dev"
 	exit;
@@ -35,12 +43,7 @@
 		if(keyboard_check_pressed(vk_f7)) show_player = !show_player;
 		if(keyboard_check_pressed(vk_f12)) show_culling = !show_culling;
 		if(keyboard_check_pressed(ord("Q"))) show_debug_overlay(!is_debug_overlay_open())
-		if(keyboard_check_pressed(vk_f4)) 
-		{
-			//Change the value and modulate it
-			global.window_size = math_wrap(global.window_size + 1, 1, global.window_size_limit);
-			game_call_window_resize();
-		}
+
 		
 		if(keyboard_check_pressed(vk_f2)) 
 		{
