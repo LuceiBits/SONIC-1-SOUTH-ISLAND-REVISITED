@@ -23,25 +23,25 @@
 	game_call_window_resize();
 	
 	// Define input actions
-	//input_add_action(INPUT.UP, vk_up, gp_padu, [gp_axislv, true]);
-	//input_add_action(INPUT.DOWN, vk_down, gp_padd, [gp_axislv, false]);
-	//input_add_action(INPUT.LEFT, vk_left, gp_padl, [gp_axislh, true]);
-	//input_add_action(INPUT.RIGHT, vk_right, gp_padr, [gp_axislh, false]);
-	//input_add_action(INPUT.A, "A", gp_face1);
-	//input_add_action(INPUT.B, "S", gp_face2);
-	//input_add_action(INPUT.C, "D", gp_face3);
-	//input_add_action(INPUT.START, vk_enter, gp_start);
+	input_add_action(INPUT.UP, vk_up, gp_padu, [gp_axislv, true]);
+	input_add_action(INPUT.DOWN, vk_down, gp_padd, [gp_axislv, false]);
+	input_add_action(INPUT.LEFT, vk_left, gp_padl, [gp_axislh, true]);
+	input_add_action(INPUT.RIGHT, vk_right, gp_padr, [gp_axislh, false]);
+	input_add_action(INPUT.A, "A", gp_face1);
+	input_add_action(INPUT.B, "S", gp_face2);
+	input_add_action(INPUT.C, "D", gp_face3);
+	input_add_action(INPUT.START, vk_enter, gp_start);
 	
 	//bindings
 	// fuck ha19 bro
-	input_add_action(INPUT.UP, "W", gp_padu, [gp_axislv, true]);
-	input_add_action(INPUT.DOWN, "S", gp_padd, [gp_axislv, false]);
-	input_add_action(INPUT.LEFT, "A", gp_padl, [gp_axislh, true]);
-	input_add_action(INPUT.RIGHT, "D", gp_padr, [gp_axislh, false]);
-	input_add_action(INPUT.A, "J", gp_face1);
-	input_add_action(INPUT.B, "K", gp_face2);
-	input_add_action(INPUT.C, "L", gp_face3);
-	input_add_action(INPUT.START, vk_enter, gp_start);
+	//input_add_action(INPUT.UP, "W", gp_padu, [gp_axislv, true]);
+	//input_add_action(INPUT.DOWN, "S", gp_padd, [gp_axislv, false]);
+	//input_add_action(INPUT.LEFT, "A", gp_padl, [gp_axislh, true]);
+	//input_add_action(INPUT.RIGHT, "D", gp_padr, [gp_axislh, false]);
+	//input_add_action(INPUT.A, "J", gp_face1);
+	//input_add_action(INPUT.B, "K", gp_face2);
+	//input_add_action(INPUT.C, "L", gp_face3);
+	//input_add_action(INPUT.START, vk_enter, gp_start);
 	
 	//Controlers for dev mode
 	if(global.dev_mode) 
