@@ -16,7 +16,17 @@ if active
 	
 	string_x = _p.x
 	string_y_bottom = _p.bbox_bottom - 8
-	_p.y_speed = lerp(_p.y_speed, 0, 0.1)
+
+	with _p
+	{
+		y_speed = lerp(y_speed, 0, 0.1)
+		
+		var _boundLeft = other.bbox_left + 16
+		var _boundRight = other.bbox_right - 16
+		x = clamp(x, _boundLeft, _boundRight)
+		if (x == _boundLeft || x == _boundRight)
+			x_speed = 0
+	}
 	
 	if timer > 10
 	{
