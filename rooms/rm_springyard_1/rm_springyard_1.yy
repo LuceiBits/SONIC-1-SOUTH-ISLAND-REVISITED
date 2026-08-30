@@ -3301,7 +3301,7 @@
   "name":"rm_springyard_1",
   "parent":{
     "name":"Springyard Zone",
-    "path":"folders/Rooms/Sonic 1 Revisited/Springyard Zone.yy",
+    "path":"folders/Rooms/Sonic 1 Re-Genesis/Springyard Zone.yy",
   },
   "parentRoom":null,
   "physicsSettings":{
