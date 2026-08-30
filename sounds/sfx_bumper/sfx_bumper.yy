@@ -10,7 +10,7 @@
   "compression":1,
   "compressionQuality":4,
   "conversionMode":0,
-  "duration":0.59557825,
+  "duration":0.55199546,
   "exportDir":"",
   "name":"sfx_bumper",
   "parent":{

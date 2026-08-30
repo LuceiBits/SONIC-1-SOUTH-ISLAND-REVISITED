@@ -4,7 +4,7 @@
 y += y_speed;
 	
 //Friction
-y_speed = min(y_speed + spx(12), 0)
+y_speed = min(y_speed + spx(24), 0)
 	
 //timer timer
 timer += 1;

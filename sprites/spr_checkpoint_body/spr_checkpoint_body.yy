@@ -19,7 +19,7 @@
   "height":48,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"4af9269e-8ac4-46a9-8443-d04c04170613","blendMode":0,"displayName":"default","isLocked":false,"name":"4af9269e-8ac4-46a9-8443-d04c04170613","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"2d173a0d-4f7d-4646-9c81-ef8017630a8f","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"2d173a0d-4f7d-4646-9c81-ef8017630a8f","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_checkpoint_body",
   "nineSlice":null,

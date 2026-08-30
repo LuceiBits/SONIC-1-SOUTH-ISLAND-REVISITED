@@ -5,7 +5,7 @@
   "bbox_bottom":29,
   "bbox_left":0,
   "bbox_right":47,
-  "bbox_top":1,
+  "bbox_top":0,
   "collisionKind":1,
   "collisionTolerance":0,
   "DynamicTexturePage":false,
@@ -19,6 +19,7 @@
   "height":30,
   "HTile":false,
   "layers":[
+    {"$GMImageLayer":"","%Name":"0e9ef35a-dc83-46e3-85c2-c1a4064a50da","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"0e9ef35a-dc83-46e3-85c2-c1a4064a50da","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
     {"$GMImageLayer":"","%Name":"8b40ea93-9c65-46ca-83c1-80a2d862e3d2","blendMode":0,"displayName":"default","isLocked":false,"name":"8b40ea93-9c65-46ca-83c1-80a2d862e3d2","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_signpost_eggman",

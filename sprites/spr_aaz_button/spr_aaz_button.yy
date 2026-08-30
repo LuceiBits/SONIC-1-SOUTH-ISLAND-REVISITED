@@ -25,7 +25,7 @@
   "height":16,
   "HTile":false,
   "layers":[
-    {"$GMImageLayer":"","%Name":"df311481-649b-4529-8d4d-ccd2b53d2c32","blendMode":0,"displayName":"default","isLocked":false,"name":"df311481-649b-4529-8d4d-ccd2b53d2c32","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
+    {"$GMImageLayer":"","%Name":"c2fa8309-e025-4381-a4b0-2ad73360ae7a","blendMode":0,"displayName":"Layer 1","isLocked":false,"name":"c2fa8309-e025-4381-a4b0-2ad73360ae7a","opacity":100.0,"resourceType":"GMImageLayer","resourceVersion":"2.0","visible":true,},
   ],
   "name":"spr_aaz_button",
   "nineSlice":{
