@@ -25,7 +25,7 @@
   ],
   "name":"spr_sonic_wait",
   "nineSlice":null,
-  "origin":9,
+  "origin":4,
   "parent":{
     "name":"Sonic",
     "path":"folders/Sprites/Player Sprites/Sonic.yy",
@@ -84,7 +84,7 @@
     "visibleRange":null,
     "volume":1.0,
     "xorigin":32,
-    "yorigin":33,
+    "yorigin":32,
   },
   "swatchColours":null,
   "swfPrecision":2.525,

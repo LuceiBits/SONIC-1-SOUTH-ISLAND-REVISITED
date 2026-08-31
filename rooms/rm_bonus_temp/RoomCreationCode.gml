@@ -1,5 +1,7 @@
 	with(obj_level)
 	{
+		with obj_dev // this stupid with statement needs to exist of else temp_bonus is fucking invisible
+		show_collision = true
 		//Set stage music and loop points
 		stage_music = MUSIC.TEMP
 		
@@ -30,5 +32,4 @@
 		next_level = rm_playtest_end;
 		}
 		
-		show_collisions = true
 	}

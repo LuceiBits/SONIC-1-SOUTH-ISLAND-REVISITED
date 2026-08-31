@@ -92,6 +92,7 @@
 	dev_menu_add_entry("Spring Yard 1 (WIP)", rm_springyard_1);
 	dev_menu_add_entry("Waterfall (LAYOUT DONE)",rm_waterfall_zone );
 	dev_menu_add_entry("Labyrinth 1 (LAYOUT DONE)", rm_labyrinth_1);
+	dev_menu_add_entry("Special Stage Test", rm_bonus_temp);
 	}
 	
 	dev_menu_add_category("SONIC 1 RE-GENESIS");
