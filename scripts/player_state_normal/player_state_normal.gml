@@ -190,7 +190,6 @@ function player_state_normal()
 		if(i == facing || i == 0)
 			skid_timer--;
 	}
-
 	
 	//Trigger rolling
 	if(player_check_roll())
@@ -199,4 +198,10 @@ function player_state_normal()
 	//Trigger jump
 	if(player_check_jump())
 		exit;
+		
+	if place_meeting(x, y, obj_corkscrew) && ground && abs(ground_speed) >= 4
+	{
+		var _corksew = place_meeting(x, y, obj_corkscrew)
+		state = player_state_corkscrew
+	}
 }

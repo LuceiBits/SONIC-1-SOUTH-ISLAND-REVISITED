@@ -26,6 +26,7 @@ function player_animation_list()
 		VICTORY,
 		TRANSFORM,
 		CORKSCREW,
+		CORKSCREW_FRONT,
 		DROPDASH,
 		POLESWING,
 		WATER_TUNNEL,
@@ -92,6 +93,7 @@ function player_animation_list()
 		animation_add(ANIM.VICTORY, spr_sonic_victory, 0.1, 1, true, false);
 		animation_add(ANIM.TRANSFORM, spr_sonic_transform, 0.4, 3, true, false);
 		animation_add(ANIM.CORKSCREW, spr_sonic_corkscrew, 0.2, 0, true, false);
+		animation_add(ANIM.CORKSCREW_FRONT, spr_sonic_corkscrew_front, 0.2, 0, true, false);
 		animation_add(ANIM.DROPDASH, spr_sonic_dropdash, 0.5, 1, true, false);
 		animation_add(ANIM.POLESWING, spr_sonic_poleswing, 0.2, 0, true, true);
 		animation_add(ANIM.WATER_TUNNEL, spr_sonic_tunnel, 4, 0, true, true);
