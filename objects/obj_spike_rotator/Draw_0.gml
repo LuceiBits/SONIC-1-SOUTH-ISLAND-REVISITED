@@ -13,6 +13,9 @@ sin_angle = sin256(angle)/256;
 cos_angle = cos256(angle)/256;
 var _length = abs(round(image_yscale))
 
+
+
+
 for (var i = 0; i < _length; i++)
 {
 	var _lengthPos = i * 16
@@ -21,6 +24,11 @@ for (var i = 0; i < _length; i++)
 	var _y = y + lengthdir_y(_lengthPos, angle) + _yOffset
 	
 	draw_sprite(sprite_index, 0, _x, _y)
+	
+	player_spike_parry(_x,_y)
+	
+	if collision_point(_x,_y,obj_player,true,true)
+	player_hurt();
 	
 	/*
 	// Hurt the player

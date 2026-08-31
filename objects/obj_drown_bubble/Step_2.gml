@@ -1,6 +1,8 @@
 /// @description Script
 	//Play the animation
 	animator_update(animator);
+	
+	type = clamp(type,0,5)
 	animation_play(animator, type);
 	
 	//Add timer

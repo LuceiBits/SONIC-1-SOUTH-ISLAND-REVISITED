@@ -179,6 +179,12 @@ function player_water()
 		
 			//Add air timer
 			air++;
+			if global.toxic_water = true // check if water is toxic water for toxic zone
+			{
+			if air < 20 * 60
+			air = 20*60 // insta drown?
+			}
+
 		}
 		else
 		{

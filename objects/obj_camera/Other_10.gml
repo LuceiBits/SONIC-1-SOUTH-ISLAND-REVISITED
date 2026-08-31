@@ -137,12 +137,12 @@
 	}
 		
 	//Shifting time
-	if(look_timer <= -120)
+	if(look_timer <= -30)
 	{
 		look_shift = math_approach(look_shift, -104, 2);
 	}
 	
-	if(look_timer >= 120)
+	if(look_timer >= 30)
 	{
 		look_shift = math_approach(look_shift, 88, 2);
 	}

@@ -18,7 +18,7 @@
 		
 		//Next level
 		next_level = rm_playtest_end;
-		
+		global.toxic_water = true
 		// Show debug collisions? (use true if not tiled)
 		show_collisions = false
 	}

@@ -23,7 +23,7 @@ obj_player.visible = false
 			//global.store_player_state.combinering = obj_player.combinering;
 			//global.store_player_state.shield = obj_player.shield;
 			//global.store_player_state.rings = global.rings;
-			//global.previous_room = room;
+			global.previous_room = room;
 			
 			//global.process_objects = false;
 			bonus_stage_trigger = true;

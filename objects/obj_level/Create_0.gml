@@ -34,3 +34,6 @@
 	
 	// Set the base collision index
 	global.collision_index = COL_INDEX.GLOBAL;
+	
+	//clear toxic water effect
+	global.toxic_water = false

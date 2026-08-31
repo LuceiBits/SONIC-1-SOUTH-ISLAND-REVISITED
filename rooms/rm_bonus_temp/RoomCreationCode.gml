@@ -17,10 +17,18 @@
 		animal = [A_FLICKY, A_CUCKY, A_RICKY];
 		
 		//Next level
+		if global.previous_room = rm_springyard_1
+		{
+		next_level = rm_waterfall_zone;
+		}
+		if global.previous_room = rm_waterfall_zone
+		{
+		next_level = rm_labyrinth_1;
+		}
 		if global.previous_room = rm_labyrinth_1
+		{
 		next_level = rm_playtest_end;
-		else
-		next_level = rm_labyrinth_1
+		}
 		
 		show_collisions = true
 	}
