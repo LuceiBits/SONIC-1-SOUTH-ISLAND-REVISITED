@@ -7,7 +7,7 @@ event_inherited();
 
 // Set up badnik's values
 waittimer = 0
-badnikdirection = 1
+badnikdirection = sign(image_xscale)
 grounded = true;
 y_speed = 0;
 animator = new animator_create();
