@@ -51,6 +51,15 @@ function colour_get_inverse(_color)
 	return make_colour_rgb(_ir, _ig, _ib)
 }
 
+function colour_add_hsv(_color, _addHue, _addSaturation, _addValue)
+{
+	var _h = (colour_get_hue(_color) + _addHue) mod 256
+	var _s = clamp((colour_get_saturation(_color) + _addSaturation), 0, 255)
+	var _v = clamp((colour_get_value(_color) + _addValue), 0, 255)
+	
+	return make_colour_hsv(_h, _s, _v)
+}
+
 // subpixel
 function spx(_amount)
 {
