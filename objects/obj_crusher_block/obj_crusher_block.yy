@@ -8,18 +8,12 @@
   ],
   "managed":true,
   "name":"obj_crusher_block",
-  "overriddenProperties":[
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_moving_platform","path":"objects/par_moving_platform/par_moving_platform.yy",},"propertyId":{"name":"range_y","path":"objects/par_moving_platform/par_moving_platform.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"32",},
-    {"$GMOverriddenProperty":"v1","%Name":"","name":"","objectId":{"name":"par_moving_platform","path":"objects/par_moving_platform/par_moving_platform.yy",},"propertyId":{"name":"y_speed","path":"objects/par_moving_platform/par_moving_platform.yy",},"resourceType":"GMOverriddenProperty","resourceVersion":"2.0","value":"1",},
-  ],
+  "overriddenProperties":[],
   "parent":{
     "name":"Springyard",
     "path":"folders/Objects/Stage Objects/Springyard.yy",
   },
-  "parentObjectId":{
-    "name":"par_moving_platform",
-    "path":"objects/par_moving_platform/par_moving_platform.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
