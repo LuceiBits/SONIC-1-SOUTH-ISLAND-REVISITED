@@ -13,7 +13,10 @@
     "name":"Springyard",
     "path":"folders/Objects/Stage Objects/Springyard.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"par_moving_platform",
+    "path":"objects/par_moving_platform/par_moving_platform.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
